@@ -320,7 +320,7 @@ export const testimonials = [
     initials: "AO",
     accent: "teal",
     quote:
-      "Temitayo rebuilt our delivery pipeline from a brittle weekly release into a 40-per-week GitOps engine. The team finally trusts production again \u2014 and our weekends came back.",
+      "Temitayo rebuilt our delivery pipeline from a brittle weekly release into a 40-per-week GitOps engine. The team finally trusts production again, and our weekends came back.",
   },
   {
     id: "t2",
@@ -350,7 +350,7 @@ export const testimonials = [
     initials: "DK",
     accent: "amber",
     quote:
-      "The bare-metal Kubernetes platform he designed for us reads like a textbook on production discipline \u2014 GitOps, Vault, External Secrets, Velero, Kyverno \u2014 every layer thought through.",
+      "The bare-metal Kubernetes platform he designed for us reads like a textbook on production discipline, GitOps, Vault, External Secrets, Velero, Kyverno, every layer thought through.",
   },
   {
     id: "t5",
@@ -370,7 +370,7 @@ export const testimonials = [
     initials: "JR",
     accent: "amber",
     quote:
-      "His AI-assisted ops workflow gave us evidence-grounded triage with human approval gates baked in \u2014 exactly the safety posture we needed before letting LLMs near production.",
+      "His AI-assisted ops workflow gave us evidence-grounded triage with human approval gates baked in, exactly the safety posture we needed before letting LLMs near production.",
   },
 ];
 
