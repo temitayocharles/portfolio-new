@@ -201,10 +201,19 @@ async def list_contact_messages(limit: int = 100):
 
 app.include_router(api_router)
 
+# CORS — restrict in production via CORS_ORIGINS env (comma-separated). Use "*" for dev.
+_cors_raw = os.environ.get("CORS_ORIGINS", "*")
+if _cors_raw.strip() == "*":
+    cors_origins = ["*"]
+    cors_credentials = False  # cannot use credentials with wildcard
+else:
+    cors_origins = [o.strip() for o in _cors_raw.split(",") if o.strip()]
+    cors_credentials = True
+
 app.add_middleware(
     CORSMiddleware,
-    allow_credentials=True,
-    allow_origins=["*"],
+    allow_credentials=cors_credentials,
+    allow_origins=cors_origins,
     allow_methods=["*"],
     allow_headers=["*"],
 )

@@ -1,10 +1,20 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# =============================================================================
+# Repository .gitignore
+# =============================================================================
 
-# IDE and editors
-.idea/
-.vscode/
+# --- Secrets / Environment ---
+.env
+.env.*
+!.env.example
+*.env
+!*.env.example
 
-# Dependencies
+# Tokens and credentials
+*token.json*
+*credentials.json*
+*.pem
+
+# --- Node / Frontend ---
 node_modules/
 /node_modules
 /.pnp
@@ -16,55 +26,50 @@ node_modules/
 !.yarn/releases
 !.yarn/versions
 
-# Testing
-/coverage
-
-# Next.js
-/.next/
-/out/
-next-env.d.ts
-*.tsbuildinfo
-
-# Production builds
-/build
+# --- Build output ---
+build/
 dist/
-dist
+.next/
+.cache/
+.parcel-cache/
+.vercel
+.netlify
 
-# Environment files (comprehensive coverage)
+# --- Coverage / Tests ---
+/coverage
+test_reports/
 
-*token.json*
-*credentials.json*
+# --- IDE / Editor ---
+.idea/
+.vscode/
+*.swp
+*.swo
 
-# Logs and debug files
+# --- Python ---
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+venv/
+.venv/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# --- Logs & debug ---
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
+*.log
 dump.rdb
 
-# System files
+# --- OS ---
 .DS_Store
-*.pem
+Thumbs.db
 
-# Python
-__pycache__/
-*pyc*
-venv/
-.venv/
-
-# Development tools
-chainlit.md
-.chainlit
-.ipynb_checkpoints/
-.ac
-
-# Deployment
-.vercel
-
-# Data and databases
-agenthub/agents/youtube/db
-
-# Archive files and large assets
+# --- Archives / large assets (avoid bloat) ---
 **/*.zip
 **/*.tar.gz
 **/*.tar
@@ -73,10 +78,23 @@ agenthub/agents/youtube/db
 *.deb
 *.dylib
 
-# Build caches
-.cache/
+# --- Emergent platform internals (not relevant to GitHub) ---
+.emergent/
+memory/
+test_result.md
+backend_test.py
 
-memory/test_credentials.md
-
-# Mobile development
+# --- Misc ---
+chainlit.md
+.chainlit
+.ipynb_checkpoints/
 android-sdk/
+-e 
+# Environment and credential files
+.env
+.env.*
+*.env
+credentials.json
+*.pem
+*.key
+.credentials
