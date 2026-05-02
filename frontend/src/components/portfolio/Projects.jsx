@@ -35,7 +35,7 @@ const Projects = () => {
           </h2>
           <p className="text-slate-400 max-w-md text-sm leading-relaxed">
             Hands-on engineering builds focused on reliability, security,
-            observability, and AI-assisted operations — not slideware.
+            observability, and AI-assisted operations, not slideware.
           </p>
         </div>
 

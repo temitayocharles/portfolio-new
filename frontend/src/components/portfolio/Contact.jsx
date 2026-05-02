@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 import { Mail, Linkedin, Github, Send, MapPin, Loader2, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -8,6 +9,8 @@ import { useToast } from "@/hooks/use-toast";
 import { profile } from "@/mock";
 import { SectionLabel } from "./About";
 
+const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
+
 const Contact = () => {
   const { toast } = useToast();
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
@@ -15,7 +18,7 @@ const Contact = () => {
 
   const onChange = (e) => setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     if (!form.name || !form.email || !form.message) {
       toast({
@@ -25,19 +28,26 @@ const Contact = () => {
       return;
     }
     setStatus("sending");
-    // Mock submit — will be wired to backend later
-    setTimeout(() => {
-      const stored = JSON.parse(localStorage.getItem("tca_messages") || "[]");
-      stored.push({ ...form, ts: new Date().toISOString() });
-      localStorage.setItem("tca_messages", JSON.stringify(stored));
+    try {
+      const { data } = await axios.post(`${API}/contact`, form, { timeout: 15000 });
       setStatus("sent");
+      const delivered = data.email_status === "sent";
       toast({
-        title: "Message captured (mock)",
-        description: "Saved locally. Backend wiring will deliver it via email next.",
+        title: delivered ? "Message sent, check inbox" : "Message saved",
+        description: delivered
+          ? "Your message was emailed successfully. I'll respond within 24 hours."
+          : "Saved successfully, I'll be in touch shortly. (Email delivery is being configured.)",
       });
       setForm({ name: "", email: "", subject: "", message: "" });
       setTimeout(() => setStatus("idle"), 2400);
-    }, 800);
+    } catch (err) {
+      setStatus("idle");
+      const detail = err?.response?.data?.detail || err?.message || "Unknown error";
+      toast({
+        title: "Could not send message",
+        description: typeof detail === "string" ? detail : "Please try again or email directly.",
+      });
+    }
   };
 
   return (
@@ -45,7 +55,7 @@ const Contact = () => {
       <div className="absolute -top-32 right-0 h-[420px] w-[420px] rounded-full bg-teal-500/10 blur-3xl pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-10">
-        <SectionLabel index="05" title="Contact" />
+        <SectionLabel index="07" title="Contact" />
 
         <div className="mt-12 grid lg:grid-cols-12 gap-10 lg:gap-14">
           <div className="lg:col-span-5">
@@ -58,7 +68,7 @@ const Contact = () => {
               Open to opportunities where I can help teams improve cloud
               reliability, accelerate delivery, reduce operational risk,
               strengthen DevSecOps, and build modern platform engineering
-              systems — from Kubernetes and GitOps to AI-assisted operations.
+              systems, from Kubernetes and GitOps to AI-assisted operations.
             </p>
 
             <div className="mt-8 space-y-3">

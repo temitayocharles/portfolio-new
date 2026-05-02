@@ -1,6 +1,8 @@
 import React from "react";
 import { aboutParagraphs, aboutHighlights, heroVisuals } from "@/mock";
 import { Quote } from "lucide-react";
+import Topology from "./Topology";
+import AnimatedStat from "./AnimatedStat";
 
 const About = () => {
   return (
@@ -25,37 +27,33 @@ const About = () => {
 
             <div className="mt-10 grid grid-cols-2 gap-3">
               {aboutHighlights.map((h) => (
-                <div
-                  key={h.label}
-                  className="rounded-lg border border-white/5 bg-white/[0.02] px-4 py-4"
-                >
-                  <div className="text-2xl font-semibold text-slate-100 font-mono">
-                    {h.value}
-                  </div>
-                  <div className="text-xs uppercase tracking-wider text-slate-500 mt-1">
-                    {h.label}
-                  </div>
-                </div>
+                <AnimatedStat key={h.label} value={h.value} label={h.label} />
               ))}
             </div>
           </div>
 
           <div className="lg:col-span-5">
             <div className="relative">
-              <div className="rounded-2xl overflow-hidden border border-white/10 aspect-[4/5]">
-                <img
-                  src={heroVisuals.aboutVisual}
-                  alt="Abstract infrastructure network nodes"
-                  className="h-full w-full object-cover"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f14] via-transparent to-[#0a0f14]/40" />
+              <div className="rounded-2xl overflow-hidden border border-white/10 aspect-[4/5] bg-gradient-to-br from-[#0e1620] via-[#0b121b] to-[#080c11] relative">
+                {/* Animated topology */}
+                <div className="absolute inset-0 flex items-center justify-center p-6">
+                  <Topology />
+                </div>
+                {/* subtle header label */}
+                <div className="absolute top-4 left-4 right-4 flex items-center justify-between font-mono text-[10px] text-slate-500 uppercase tracking-[0.2em]">
+                  <span className="inline-flex items-center gap-1.5">
+                    <span className="h-1.5 w-1.5 rounded-full bg-teal-300 animate-pulse" />
+                    live topology
+                  </span>
+                  <span>prod.us-east-1</span>
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f14] via-transparent to-transparent pointer-events-none" />
               </div>
 
               <div className="absolute -bottom-6 left-6 right-6 bg-[#0e1620] border border-white/10 rounded-xl p-5 shadow-2xl">
                 <Quote className="h-5 w-5 text-teal-300 mb-2" />
                 <p className="text-sm text-slate-300 leading-relaxed italic">
-                  Reliable platforms aren't built from frameworks alone — they
+                  Reliable platforms aren't built from frameworks alone. They
                   emerge from disciplined automation, sharp observability, and
                   thoughtful human-in-the-loop controls.
                 </p>
