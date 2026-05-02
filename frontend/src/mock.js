@@ -1,0 +1,253 @@
+// Mock data for Temitayo Charles Akinniranye's portfolio
+// All content here will eventually be served from backend / CMS.
+
+export const profile = {
+  name: "Temitayo Charles Akinniranye",
+  firstName: "Temitayo",
+  title: "DevOps · Cloud Platform · AI Infrastructure Engineer",
+  tagline:
+    "I build reliable cloud platforms, secure automation, and AI-ready infrastructure.",
+  location: "Remote",
+  email: "tayocharlesaki@gmail.com",
+  linkedin: "https://linkedin.com/in/temitayocharles",
+  github: "https://github.com/temitayocharles",
+  resumeUrl:
+    "https://customer-assets.emergentagent.com/job_cloud-platform-eng/artifacts/igklw0m7_TCA-Resume-DevOps.pdf",
+  avatar:
+    "https://customer-assets.emergentagent.com/job_cloud-platform-eng/artifacts/janhkteu_84D5EDAF-6D42-4EB1-86E8-9E19C46F8D5C.png",
+  yearsExperience: 8,
+};
+
+export const heroStats = [
+  { value: "99.99%", label: "Platform availability" },
+  { value: "$216K+", label: "Annual AWS savings" },
+  { value: "2M+", label: "API requests / day" },
+  { value: "4h → 15m", label: "Deployment time cut" },
+];
+
+export const aboutParagraphs = [
+  "I started my career in Linux systems and infrastructure operations, where I built a strong foundation in servers, automation, monitoring, backups, documentation, and production support. Over time, I moved deeper into cloud infrastructure, DevOps, platform engineering, and reliability — helping teams modernize deployment workflows, migrate workloads to AWS, and improve operational discipline.",
+  "My experience spans fintech, SaaS, and remote engineering environments where reliability, security, and speed matter. I have led infrastructure automation, CI/CD modernization, Kubernetes platform delivery, disaster recovery planning, observability implementation, and cloud cost optimization — reducing deployment cycles from hours to minutes, lifting platform availability to 99.99%, cutting AWS spend by more than $216K annually, and supporting systems processing more than 2 million API requests per day.",
+  "Today, I combine DevOps and platform engineering with AI infrastructure and workflow automation. I build production-style Kubernetes platforms, GitOps-driven delivery systems, AI-assisted operations workflows, and secure automation patterns that include human approval, observability context, runbook memory, and operational controls. My unique value is connecting infrastructure engineering, reliability, automation, security, and AI workflows into practical systems that solve real business problems.",
+];
+
+export const aboutHighlights = [
+  { label: "Years engineering", value: "8+" },
+  { label: "Production releases enabled", value: "200+/mo" },
+  { label: "Apps migrated to AWS", value: "12 monoliths" },
+  { label: "DR window collapsed", value: "4h → 15m" },
+];
+
+export const skillGroups = [
+  {
+    id: "cloud",
+    title: "Cloud & Infrastructure",
+    icon: "Cloud",
+    items: [
+      "AWS", "EKS", "ECS", "EC2", "S3", "Lambda", "RDS", "CloudFormation",
+      "Route 53", "IAM", "KMS", "SSM", "AWS Organizations", "Azure", "GCP",
+      "FinOps", "Multi-account governance", "Cost optimization",
+    ],
+  },
+  {
+    id: "k8s",
+    title: "Kubernetes & Platform Engineering",
+    icon: "Boxes",
+    items: [
+      "Kubernetes", "EKS", "K3s", "Docker", "Helm", "ArgoCD", "GitOps",
+      "Envoy Gateway", "Gateway API", "Kong API Gateway", "MetalLB",
+      "Longhorn", "Rancher", "Platform operations", "Env standardization",
+    ],
+  },
+  {
+    id: "iac",
+    title: "IaC, CI/CD & GitOps",
+    icon: "GitBranch",
+    items: [
+      "Terraform", "Terraform Cloud", "OpenTofu", "Ansible", "CloudFormation",
+      "GitHub Actions", "Jenkins", "GitLab CI/CD", "Quality gates",
+      "Release governance", "Reusable modules",
+    ],
+  },
+  {
+    id: "sec",
+    title: "DevSecOps & Supply Chain",
+    icon: "ShieldCheck",
+    items: [
+      "HashiCorp Vault", "External Secrets", "Trivy", "Checkov", "SonarQube",
+      "IAM", "KMS", "Least privilege", "Secrets management",
+      "SAST / DAST", "Policy-as-code", "SOC 2 controls",
+    ],
+  },
+  {
+    id: "obs",
+    title: "Observability & SRE",
+    icon: "Activity",
+    items: [
+      "Prometheus", "Grafana", "CloudWatch", "ELK Stack", "Loki",
+      "Alertmanager", "Datadog", "PagerDuty", "SLI / SLO", "Incident response",
+      "RCA", "RTO / RPO", "MTTR reduction", "Error budgets",
+    ],
+  },
+  {
+    id: "ai",
+    title: "AI Infrastructure & Workflow Automation",
+    icon: "Sparkles",
+    items: [
+      "LLM workflow integration", "AI-assisted operations", "Prompt design",
+      "Local / self-hosted AI", "n8n-style automation", "API orchestration",
+      "Webhook workflows", "Tool-calling patterns", "Human-in-the-loop",
+    ],
+  },
+  {
+    id: "code",
+    title: "Scripting, APIs & Data",
+    icon: "Code2",
+    items: [
+      "Python", "Bash", "Boto3", "Groovy", "HCL", "YAML", "REST APIs",
+      "JSON", "Webhooks", "MySQL", "PostgreSQL", "Aurora", "DynamoDB", "Redis",
+    ],
+  },
+  {
+    id: "lead",
+    title: "Leadership & Delivery",
+    icon: "Users",
+    items: [
+      "Agile", "Scrum", "SAFe", "PMP", "CSM", "Mentoring", "Onboarding",
+      "Technical documentation", "Runbooks", "Stakeholder communication",
+      "Release coordination", "Operational handoff",
+    ],
+  },
+];
+
+export const experiences = [
+  {
+    id: "kanshe",
+    role: "Senior DevOps & Cloud Platform Engineer",
+    company: "Kanshe Infotech",
+    location: "Remote",
+    period: "Apr 2022 — Present",
+    summary:
+      "Architect and operate cloud platform, CI/CD, Kubernetes, GitOps, DevSecOps, observability, and reliability workflows for production environments — improving deployment speed, infrastructure reliability, cost governance, and operational consistency.",
+    achievements: [
+      "Reduced deployment time from 4 hours to 15 minutes via GitHub Actions and Jenkins pipelines.",
+      "Enabled 200+ monthly production releases with zero rollbacks through stronger validation and delivery controls.",
+      "Lifted platform reliability from 99.9% to 99.99% for infra serving 2M+ API requests / day.",
+      "Cut AWS spend by ~$18K / month through audits, rightsizing, tagging, and governance.",
+      "Drove GitOps adoption with ArgoCD and Helm — 40+ production releases / week, no weekend windows.",
+      "Integrated Trivy, Checkov, SonarQube, and HashiCorp Vault into delivery for DevSecOps and audit readiness.",
+      "Designed disaster recovery across 8 services — RTO 4h → 15m, MTTR < 30 minutes.",
+    ],
+  },
+  {
+    id: "infonas-2",
+    role: "Platform Engineer",
+    company: "Infonas",
+    location: "Remote",
+    period: "Mar 2020 — Mar 2022",
+    summary:
+      "Modernized application delivery, cloud infrastructure, automation, monitoring, and operational support for AWS-based environments — supporting cloud migration, microservices delivery, secure infra design, and 24/7 platform operations.",
+    achievements: [
+      "Led migration of 12 monolithic applications to AWS — 35% infrastructure cost reduction.",
+      "Designed GitLab CI/CD workflows scaling releases from weekly to multiple daily pushes.",
+      "Built multi-AZ VPCs, least-privilege IAM, and HA EKS clusters with Terraform.",
+      "Automated provisioning, patching, and rollouts via Ansible + Terraform — env build days → < 4 hours.",
+      "Created Bash / Python automation for backups, restoration, and log management — 40% less manual work.",
+      "Established centralized observability with ELK + CloudWatch — 35% lower MTTD on critical incidents.",
+    ],
+  },
+  {
+    id: "infonas-1",
+    role: "DevOps Engineer",
+    company: "Infonas",
+    location: "Remote",
+    period: "Jan 2018 — Feb 2020",
+    summary:
+      "Developed and maintained CI/CD pipelines, infrastructure automation, containerized workloads, monitoring systems, and secure AWS operations — strengthening foundations in repeatable delivery and cloud reliability.",
+    achievements: [
+      "Built CI/CD and infrastructure automation using GitLab CI/CD, Terraform, and Ansible.",
+      "Implemented Docker and Kubernetes / EKS practices for scalability and deployment consistency.",
+      "Created automated monitoring and logging workflows with ELK Stack and CloudWatch.",
+      "Enforced IAM best practices and managed secrets via AWS SSM Parameter Store.",
+    ],
+  },
+  {
+    id: "earlier",
+    role: "Linux Systems Engineer · Scrum Facilitator · Linux SysAdmin",
+    company: "Beyond Solutions · British Council Bahrain · Cambridge International School",
+    location: "On-site",
+    period: "2014 — 2017",
+    summary:
+      "Managed Linux systems, server operations, backups, monitoring, storage, Apache, MySQL, and infrastructure documentation — building the operational discipline that still shapes how I design reliable platforms today.",
+    achievements: [
+      "Managed and optimized 200+ Ubuntu and CentOS servers.",
+      "Automated backups, log rotation, maintenance, and monitoring with Bash and Python.",
+      "Authored technical runbooks and disaster recovery documentation.",
+    ],
+  },
+];
+
+export const projects = [
+  {
+    id: "infraforge",
+    name: "TCA InfraForge",
+    subtitle: "Production-Style Kubernetes Platform",
+    description:
+      "A bare-metal Ubuntu / K3s high-availability platform demonstrating enterprise-style Kubernetes operations: GitOps delivery, Gateway API ingress, secure secrets externalization, resilient storage, observability, backup and recovery, policy controls, and operational runbooks.",
+    stack: [
+      "K3s", "ArgoCD", "Envoy Gateway", "MetalLB", "Longhorn", "Vault",
+      "External Secrets", "Prometheus", "Grafana", "Loki", "Alertmanager",
+      "Kyverno", "Trivy", "Renovate", "Velero", "Cloudflare Tunnel", "Tailscale",
+    ],
+    pillars: ["GitOps", "Security", "Observability", "DR"],
+    accent: "teal",
+  },
+  {
+    id: "forgewatch",
+    name: "ForgeWatch AIOps",
+    subtitle: "AI-Assisted Kubernetes Operations",
+    description:
+      "Local-first AIOps workflows combining LLM reasoning, observability signals, incident context, runbook memory, and read-only analysis patterns — supporting safer incident triage, evidence-based recommendations, hallucination-resistant investigation, and future approval-gated execution.",
+    stack: ["LLM", "Prometheus", "Loki", "Runbook Memory", "Read-only Tools"],
+    pillars: ["AIOps", "SRE", "Human-in-loop"],
+    accent: "amber",
+  },
+  {
+    id: "iris",
+    name: "Project Iris",
+    subtitle: "Local-First AI Assistant Platform",
+    description:
+      "A local-first AI assistant platform built with FastAPI and React / Vite — featuring memory governance, tool execution, managed browser capability, TLS / auth hardening, backup and restore validation, and user-facing workflow controls. Designed with privacy, control, and operational safety in mind.",
+    stack: ["FastAPI", "React", "Vite", "TLS", "Auth", "Backup", "Memory governance"],
+    pillars: ["AI", "Privacy", "Local-first"],
+    accent: "teal",
+  },
+  {
+    id: "openleaf",
+    name: "OpenLeaf Reader Platform",
+    subtitle: "Cloud-Native Microservices Simulation",
+    description:
+      "Cloud-native platform simulation using Kong Gateway, decK, Python services, React, RabbitMQ, MongoDB, Stripe webhooks, GitHub Actions, ArgoCD, Prometheus, Grafana, Loki, and Chaos Mesh. Validates API gateway governance, microservices delivery, event-driven integration, release automation, observability, and reliability testing.",
+    stack: [
+      "Kong", "decK", "Python", "React", "RabbitMQ", "MongoDB", "Stripe",
+      "GitHub Actions", "ArgoCD", "Prometheus", "Grafana", "Loki", "Chaos Mesh",
+    ],
+    pillars: ["Microservices", "API Gateway", "Chaos"],
+    accent: "amber",
+  },
+];
+
+export const navLinks = [
+  { href: "#about", label: "About" },
+  { href: "#skills", label: "Skills" },
+  { href: "#experience", label: "Experience" },
+  { href: "#projects", label: "Projects" },
+  { href: "#contact", label: "Contact" },
+];
+
+export const heroVisuals = {
+  abstract:
+    "https://images.unsplash.com/photo-1639322537228-f710d846310a?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxODl8MHwxfHNlYXJjaHwyfHxrdWJlcm5ldGVzJTIwbmV0d29ya3xlbnwwfHx8YmxhY2t8MTc3Nzc0MjE3OXww&ixlib=rb-4.1.0&q=85",
+  aboutVisual:
+    "https://images.unsplash.com/photo-1639322537504-6427a16b0a28?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxODl8MHwxfHNlYXJjaHwzfHxrdWJlcm5ldGVzJTIwbmV0d29ya3xlbnwwfHx8YmxhY2t8MTc3Nzc0MjE3OXww&ixlib=rb-4.1.0&q=85",
+};
