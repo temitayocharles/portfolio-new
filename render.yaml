@@ -1,0 +1,39 @@
+services:
+  - type: web
+    name: tca-portfolio-api
+    runtime: python
+    plan: free
+    region: ohio
+    branch: main
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn server:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/health
+    autoDeployTrigger: commit
+    envVars:
+      - key: ENVIRONMENT
+        value: production
+      - key: LOG_LEVEL
+        value: INFO
+      - key: DB_NAME
+        value: portfolio
+      - key: OWNER_NAME
+        value: Temitayo Charles Akinniranye
+      - key: CONTACT_RATE_LIMIT_WINDOW_SECONDS
+        value: "60"
+      - key: CONTACT_RATE_LIMIT_MAX_REQUESTS
+        value: "5"
+      - key: MAX_CONTACT_LIST_LIMIT
+        value: "500"
+      - key: MONGO_URL
+        sync: false
+      - key: CORS_ORIGINS
+        sync: false
+      - key: ADMIN_API_KEY
+        sync: false
+      - key: RESEND_API_KEY
+        sync: false
+      - key: SENDER_EMAIL
+        sync: false
+      - key: CONTACT_TO_EMAILS
+        sync: false
