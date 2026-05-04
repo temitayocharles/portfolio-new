@@ -55,7 +55,12 @@ def _positive_int_env(name: str, default: int) -> int:
 # MongoDB connection
 mongo_url = _required_env("MONGO_URL")
 db_name = _required_env("DB_NAME")
-client = AsyncIOMotorClient(mongo_url)
+client = AsyncIOMotorClient(
+    mongo_url,
+    serverSelectionTimeoutMS=5000,
+    connectTimeoutMS=5000,
+    socketTimeoutMS=5000,
+)
 db = client[db_name]
 
 # Resend setup
@@ -323,14 +328,27 @@ async def submit_contact(payload: ContactCreate, request: Request):
         msg.email_status = "failed"
         msg.email_error = "Email delivery failed. Message was saved for follow-up."
 
+    storage_persisted = False
     try:
-        await db.contact_messages.insert_one(msg.model_dump())
+        await asyncio.wait_for(
+            db.contact_messages.insert_one(msg.model_dump()),
+            timeout=3,
+        )
+        storage_persisted = True
     except Exception as exc:
-        logger.exception("Mongo insert failed")
-        raise HTTPException(status_code=500, detail="Storage failed.") from exc
+        logger.exception("Mongo insert failed; continuing if email delivery already completed")
+        if msg.email_status == "failed":
+            raise HTTPException(
+                status_code=503,
+                detail="Contact delivery and storage failed.",
+            ) from exc
 
     if msg.email_status == "failed":
         logger.warning("Contact saved but email delivery failed for message id %s", msg.id)
+
+    if not storage_persisted:
+        logger.warning("Contact email delivered but Mongo persistence failed for message id %s", msg.id)
+
     return msg
 
 
@@ -342,11 +360,16 @@ async def submit_contact(payload: ContactCreate, request: Request):
 async def list_contact_messages(
     limit: int = Query(default=100, ge=1, le=MAX_CONTACT_LIST_LIMIT),
 ):
-    rows = (
-        await db.contact_messages.find({}, {"_id": 0})
-        .sort("created_at", -1)
-        .to_list(limit)
-    )
+    try:
+        cursor = db.contact_messages.find({}, {"_id": 0}).sort("created_at", -1)
+        rows = await asyncio.wait_for(cursor.to_list(limit), timeout=5)
+    except Exception as exc:
+        logger.exception("Mongo contact listing failed")
+        raise HTTPException(
+            status_code=503,
+            detail="Contact storage unavailable.",
+        ) from exc
+
     return [ContactMessage(**row) for row in rows]
 
 
