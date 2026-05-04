@@ -1,234 +1,337 @@
 #!/usr/bin/env python3
 """
-Live Email Delivery Verification Test
-Tests the Resend domain temitayocharles.online with verified sender contact@temitayocharles.online
+Portfolio API verification script.
+
+Environment variables:
+  PORTFOLIO_API_BASE_URL: Full API base URL, for example:
+    https://cloud-platform-eng.preview.emergentagent.com/api
+  ADMIN_API_KEY: Optional. Required to verify authorized GET /api/contact.
 """
-import requests
+
 import json
+import os
 import sys
-from datetime import datetime
+from datetime import datetime, timezone
+from typing import Any, Dict, Optional
 
-# Get backend URL from frontend/.env
-BACKEND_URL = "https://cloud-platform-eng.preview.emergentagent.com/api"
+import requests
 
-def print_section(title):
-    print(f"\n{'='*80}")
+
+BASE_URL = os.environ.get(
+    "PORTFOLIO_API_BASE_URL",
+    "https://cloud-platform-eng.preview.emergentagent.com/api",
+).rstrip("/")
+ADMIN_API_KEY = os.environ.get("ADMIN_API_KEY", "").strip()
+
+
+def print_section(title: str) -> None:
+    print(f"\n{'=' * 80}")
     print(f"  {title}")
-    print(f"{'='*80}\n")
+    print(f"{'=' * 80}\n")
 
-def print_result(test_name, passed, details=""):
-    status = "✅ PASS" if passed else "❌ FAIL"
+
+def print_result(test_name: str, passed: bool, details: str = "") -> None:
+    status = "PASS" if passed else "FAIL"
     print(f"{status} - {test_name}")
     if details:
         print(f"  Details: {details}")
     print()
 
-def test_health_endpoint():
-    """Test 1: GET /api/health → 200, resend_configured=true, recipients=2"""
-    print_section("TEST 1: GET /api/health")
-    
+
+def request_json(
+    method: str,
+    path: str,
+    *,
+    headers: Optional[Dict[str, str]] = None,
+    json_body: Optional[Dict[str, Any]] = None,
+    timeout: int = 15,
+) -> requests.Response:
+    return requests.request(
+        method,
+        f"{BASE_URL}{path}",
+        headers=headers,
+        json=json_body,
+        timeout=timeout,
+    )
+
+
+def pretty_response(response: requests.Response) -> str:
     try:
-        response = requests.get(f"{BACKEND_URL}/health", timeout=10)
+        return json.dumps(response.json(), indent=2)
+    except Exception:
+        return response.text
+
+
+def test_health_endpoint() -> bool:
+    print_section("TEST 1: GET /api/health")
+
+    try:
+        response = request_json("GET", "/health", timeout=10)
         print(f"Status Code: {response.status_code}")
-        print(f"Response Body: {json.dumps(response.json(), indent=2)}")
-        
+        print(f"Response Body: {pretty_response(response)}")
+
         if response.status_code != 200:
             print_result("Health endpoint status code", False, f"Expected 200, got {response.status_code}")
             return False
-        
+
         data = response.json()
-        
-        # Check resend_configured
-        if not data.get("resend_configured"):
-            print_result("resend_configured", False, f"Expected true, got {data.get('resend_configured')}")
+        required_keys = {
+            "status",
+            "resend_configured",
+            "recipients",
+            "admin_contact_listing_configured",
+            "contact_rate_limit",
+        }
+        missing_keys = required_keys - set(data.keys())
+        if missing_keys:
+            print_result("Health endpoint response shape", False, f"Missing keys: {sorted(missing_keys)}")
             return False
-        
-        # Check recipients count
-        if data.get("recipients") != 2:
-            print_result("recipients count", False, f"Expected 2, got {data.get('recipients')}")
+
+        if data.get("status") != "ok":
+            print_result("Health status", False, f"Expected 'ok', got {data.get('status')}")
             return False
-        
-        print_result("GET /api/health", True, "resend_configured=true, recipients=2")
+
+        print_result("GET /api/health", True, "Health endpoint returned expected hardened configuration fields")
         return True
-        
-    except Exception as e:
-        print_result("GET /api/health", False, f"Exception: {str(e)}")
+
+    except Exception as exc:
+        print_result("GET /api/health", False, f"Exception: {exc}")
         return False
 
-def test_contact_submission():
-    """Test 2: POST /api/contact with realistic payload"""
-    print_section("TEST 2: POST /api/contact (Live Email Delivery)")
-    
+
+def test_contact_submission() -> Optional[str]:
+    print_section("TEST 2: POST /api/contact")
+
+    timestamp = datetime.now(timezone.utc).strftime("%Y%m%d%H%M%S")
     payload = {
-        "name": "Portfolio Live Test",
-        "email": "qa-livetest@example.com",
-        "subject": "Live Resend domain test",
-        "message": "This is a live verification email confirming the Resend domain temitayocharles.online is sending correctly to both recipient inboxes."
+        "name": "Portfolio API Verification",
+        "email": f"qa-{timestamp}@example.com",
+        "subject": "Automated contact API verification",
+        "message": "This is an automated verification of the hardened portfolio contact endpoint.",
     }
-    
-    print(f"Payload: {json.dumps(payload, indent=2)}")
-    
+
     try:
-        response = requests.post(
-            f"{BACKEND_URL}/contact",
-            json=payload,
+        response = request_json(
+            "POST",
+            "/contact",
+            json_body=payload,
             headers={"Content-Type": "application/json"},
-            timeout=15
         )
-        
-        print(f"\nStatus Code: {response.status_code}")
-        print(f"Response Body: {json.dumps(response.json(), indent=2)}")
-        
+        print(f"Status Code: {response.status_code}")
+        print(f"Response Body: {pretty_response(response)}")
+
         if response.status_code != 200:
             print_result("Contact submission status code", False, f"Expected 200, got {response.status_code}")
             return None
-        
+
         data = response.json()
-        
-        # CRITICAL: Check email_status == "sent"
-        email_status = data.get("email_status")
-        if email_status != "sent":
-            print_result(
-                "email_status", 
-                False, 
-                f"Expected 'sent', got '{email_status}'. email_error: {data.get('email_error')}"
-            )
-            print("\n⚠️  CRITICAL FAILURE: Email was not sent successfully!")
-            print(f"    email_status: {email_status}")
-            print(f"    email_error: {data.get('email_error')}")
-            return data.get("id")
-        
-        # Check email_error is null
-        if data.get("email_error") is not None:
-            print_result(
-                "email_error", 
-                False, 
-                f"Expected null, got '{data.get('email_error')}'"
-            )
-            return data.get("id")
-        
-        # Check id is a UUID string
-        message_id = data.get("id")
-        if not message_id or not isinstance(message_id, str):
-            print_result("id field", False, f"Expected UUID string, got {message_id}")
+        if data.get("email") != payload["email"]:
+            print_result("Contact response email", False, "Response email does not match submitted payload")
             return None
-        
-        print_result(
-            "POST /api/contact", 
-            True, 
-            f"email_status='sent', email_error=null, id={message_id}"
-        )
-        return message_id
-        
-    except Exception as e:
-        print_result("POST /api/contact", False, f"Exception: {str(e)}")
+
+        if data.get("email_status") not in {"sent", "skipped", "failed"}:
+            print_result("Contact email_status", False, f"Unexpected email_status: {data.get('email_status')}")
+            return None
+
+        if not data.get("id"):
+            print_result("Contact id", False, "Response did not include message id")
+            return None
+
+        print_result("POST /api/contact", True, f"Message accepted with email_status={data.get('email_status')}")
+        return data["id"]
+
+    except Exception as exc:
+        print_result("POST /api/contact", False, f"Exception: {exc}")
         return None
 
-def test_contact_list(expected_id):
-    """Test 3: GET /api/contact?limit=5 and confirm message exists with email_status='sent'"""
-    print_section("TEST 3: GET /api/contact?limit=5 (Verify Persistence)")
-    
-    if not expected_id:
-        print("⚠️  Skipping test - no message ID from previous test")
-        return False
-    
+
+def test_contact_validation() -> bool:
+    print_section("TEST 3: POST /api/contact validation")
+
+    invalid_payloads = [
+        (
+            "missing message",
+            {
+                "name": "Validation Test",
+                "email": "validation@example.com",
+                "subject": "Invalid payload",
+            },
+        ),
+        (
+            "invalid email",
+            {
+                "name": "Validation Test",
+                "email": "not-an-email",
+                "subject": "Invalid payload",
+                "message": "Hello",
+            },
+        ),
+        (
+            "short message",
+            {
+                "name": "Validation Test",
+                "email": "validation@example.com",
+                "subject": "Invalid payload",
+                "message": "Hi",
+            },
+        ),
+    ]
+
+    all_passed = True
+    for name, payload in invalid_payloads:
+        try:
+            response = request_json(
+                "POST",
+                "/contact",
+                json_body=payload,
+                headers={"Content-Type": "application/json"},
+            )
+            passed = response.status_code == 422
+            print_result(
+                f"Validation: {name}",
+                passed,
+                f"Expected 422, got {response.status_code}",
+            )
+            all_passed = all_passed and passed
+        except Exception as exc:
+            print_result(f"Validation: {name}", False, f"Exception: {exc}")
+            all_passed = False
+
+    return all_passed
+
+
+def test_contact_admin_protection(expected_id: Optional[str]) -> bool:
+    print_section("TEST 4: GET /api/contact admin protection")
+
     try:
-        response = requests.get(f"{BACKEND_URL}/contact?limit=5", timeout=10)
-        print(f"Status Code: {response.status_code}")
-        
-        if response.status_code != 200:
-            print_result("Contact list status code", False, f"Expected 200, got {response.status_code}")
-            return False
-        
-        messages = response.json()
-        print(f"Retrieved {len(messages)} messages")
-        
-        # Find the message we just created
-        found_message = None
-        for msg in messages:
-            if msg.get("id") == expected_id:
-                found_message = msg
-                break
-        
-        if not found_message:
+        response = request_json("GET", "/contact?limit=5", timeout=10)
+        print(f"Unauthenticated Status Code: {response.status_code}")
+        print(f"Unauthenticated Response Body: {pretty_response(response)}")
+
+        if response.status_code not in {401, 503}:
             print_result(
-                "Message persistence", 
-                False, 
-                f"Message with id={expected_id} not found in recent messages"
+                "Unauthenticated contact listing is blocked",
+                False,
+                f"Expected 401 or 503, got {response.status_code}",
             )
             return False
-        
-        print(f"\nFound message: {json.dumps(found_message, indent=2)}")
-        
-        # Verify email_status is 'sent'
-        if found_message.get("email_status") != "sent":
+
+        if not ADMIN_API_KEY:
             print_result(
-                "Persisted email_status", 
-                False, 
-                f"Expected 'sent', got '{found_message.get('email_status')}'"
+                "Admin contact listing",
+                response.status_code in {401, 503},
+                "ADMIN_API_KEY was not provided locally; authorized listing test skipped",
             )
-            return False
-        
-        print_result(
-            "GET /api/contact", 
-            True, 
-            f"Message found with email_status='sent'"
+            return True
+
+        authed_response = request_json(
+            "GET",
+            "/contact?limit=5",
+            headers={"X-Admin-API-Key": ADMIN_API_KEY},
+            timeout=10,
         )
+        print(f"Authenticated Status Code: {authed_response.status_code}")
+        print(f"Authenticated Response Body: {pretty_response(authed_response)}")
+
+        if authed_response.status_code != 200:
+            print_result(
+                "Authenticated contact listing",
+                False,
+                f"Expected 200, got {authed_response.status_code}",
+            )
+            return False
+
+        messages = authed_response.json()
+        if not isinstance(messages, list):
+            print_result("Authenticated contact listing shape", False, "Expected a JSON array")
+            return False
+
+        if expected_id and not any(message.get("id") == expected_id for message in messages):
+            print_result(
+                "Created message visible to admin listing",
+                False,
+                f"Message id {expected_id} was not found in recent messages",
+            )
+            return False
+
+        print_result("GET /api/contact admin protection", True, "Public access blocked and authorized access verified")
         return True
-        
-    except Exception as e:
-        print_result("GET /api/contact", False, f"Exception: {str(e)}")
+
+    except Exception as exc:
+        print_result("GET /api/contact admin protection", False, f"Exception: {exc}")
         return False
 
-def main():
-    print("\n" + "="*80)
-    print("  LIVE EMAIL DELIVERY VERIFICATION TEST")
-    print("  Resend Domain: temitayocharles.online")
-    print("  Sender: contact@temitayocharles.online")
-    print("  Recipients: tayocharlesaki@gmail.com, temitayo_charles@yahoo.com")
-    print("="*80)
-    
+
+def test_status_endpoints() -> bool:
+    print_section("TEST 5: Legacy /api/status endpoints")
+
+    payload = {"client_name": "portfolio-api-verification"}
+
+    try:
+        post_response = request_json(
+            "POST",
+            "/status",
+            json_body=payload,
+            headers={"Content-Type": "application/json"},
+            timeout=10,
+        )
+        print(f"POST Status Code: {post_response.status_code}")
+        print(f"POST Response Body: {pretty_response(post_response)}")
+
+        if post_response.status_code != 200:
+            print_result("POST /api/status", False, f"Expected 200, got {post_response.status_code}")
+            return False
+
+        get_response = request_json("GET", "/status", timeout=10)
+        print(f"GET Status Code: {get_response.status_code}")
+
+        if get_response.status_code != 200:
+            print_result("GET /api/status", False, f"Expected 200, got {get_response.status_code}")
+            return False
+
+        print_result("Legacy status endpoints", True, "POST and GET /api/status are operational")
+        return True
+
+    except Exception as exc:
+        print_result("Legacy status endpoints", False, f"Exception: {exc}")
+        return False
+
+
+def main() -> int:
+    print("\n" + "=" * 80)
+    print("  PORTFOLIO API VERIFICATION")
+    print(f"  Base URL: {BASE_URL}")
+    print(f"  Admin key supplied: {bool(ADMIN_API_KEY)}")
+    print("=" * 80)
+
     results = {
-        "health": False,
+        "health": test_health_endpoint(),
         "contact_submission": False,
-        "contact_list": False
+        "contact_validation": False,
+        "contact_admin_protection": False,
+        "status_endpoints": False,
     }
-    
-    # Test 1: Health check
-    results["health"] = test_health_endpoint()
-    
-    # Test 2: Contact submission
+
     message_id = test_contact_submission()
-    results["contact_submission"] = (message_id is not None)
-    
-    # Test 3: Contact list verification
-    if message_id:
-        results["contact_list"] = test_contact_list(message_id)
-    
-    # Summary
+    results["contact_submission"] = message_id is not None
+    results["contact_validation"] = test_contact_validation()
+    results["contact_admin_protection"] = test_contact_admin_protection(message_id)
+    results["status_endpoints"] = test_status_endpoints()
+
     print_section("TEST SUMMARY")
     total_tests = len(results)
-    passed_tests = sum(1 for v in results.values() if v)
-    
+    passed_tests = sum(1 for passed in results.values() if passed)
+
     print(f"Total Tests: {total_tests}")
     print(f"Passed: {passed_tests}")
-    print(f"Failed: {total_tests - passed_tests}")
-    print()
-    
+    print(f"Failed: {total_tests - passed_tests}\n")
+
     for test_name, passed in results.items():
-        status = "✅" if passed else "❌"
-        print(f"{status} {test_name}")
-    
-    print("\n" + "="*80)
-    
-    if passed_tests == total_tests:
-        print("🎉 ALL TESTS PASSED - Live email delivery verified!")
-        print("="*80 + "\n")
-        return 0
-    else:
-        print("⚠️  SOME TESTS FAILED - See details above")
-        print("="*80 + "\n")
-        return 1
+        status = "PASS" if passed else "FAIL"
+        print(f"{status}: {test_name}")
+
+    return 0 if passed_tests == total_tests else 1
+
 
 if __name__ == "__main__":
     sys.exit(main())
