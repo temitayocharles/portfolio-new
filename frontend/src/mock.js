@@ -12,9 +12,9 @@ export const profile = {
   linkedin: "https://linkedin.com/in/temitayocharles",
   github: "https://github.com/temitayocharles",
   resumeUrl:
-    "https://customer-assets.emergentagent.com/job_cloud-platform-eng/artifacts/igklw0m7_TCA-Resume-DevOps.pdf",
+    "/assets/TCA-Resume-DevOps.pdf",
   avatar:
-    "https://customer-assets.emergentagent.com/job_cloud-platform-eng/artifacts/janhkteu_84D5EDAF-6D42-4EB1-86E8-9E19C46F8D5C.png",
+    "/assets/temitayo-charles-headshot.png",
   yearsExperience: 8,
 };
 

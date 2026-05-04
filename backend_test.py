@@ -4,7 +4,7 @@ Portfolio API verification script.
 
 Environment variables:
   PORTFOLIO_API_BASE_URL: Full API base URL, for example:
-    https://cloud-platform-eng.preview.emergentagent.com/api
+    http://localhost:8001/api
   ADMIN_API_KEY: Optional. Required to verify authorized GET /api/contact.
 """
 
@@ -19,7 +19,7 @@ import requests
 
 BASE_URL = os.environ.get(
     "PORTFOLIO_API_BASE_URL",
-    "https://cloud-platform-eng.preview.emergentagent.com/api",
+    "http://localhost:8001/api",
 ).rstrip("/")
 ADMIN_API_KEY = os.environ.get("ADMIN_API_KEY", "").strip()
 
