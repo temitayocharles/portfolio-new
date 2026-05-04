@@ -12,7 +12,7 @@ export const profile = {
   linkedin: "https://linkedin.com/in/temitayocharles",
   github: "https://github.com/temitayocharles",
   resumeUrl: "",
-  avatar: "",
+  avatar: "/assets/temitayo-charles-headshot.png",
   yearsExperience: 8,
 };
 
