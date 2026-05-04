@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "updatedAt": "2026-05-04T02:20:00-04:00",
+  "assets": [
+    {
+      "id": "temitayo-primary-headshot",
+      "type": "headshot",
+      "status": "source-provided-needs-optimization",
+      "recommendedPath": "frontend/public/images/headshots/temitayo-primary.jpg",
+      "recommendedUse": [
+        "home-hero",
+        "about-page",
+        "resume-page",
+        "opengraph-fallback"
+      ],
+      "alt": "Professional portrait of Temitayo Charles Akinniranye against a dark background.",
+      "notes": "Use as the primary recruiter-facing portrait. Optimize before committing production image assets."
+    },
+    {
+      "id": "temitayo-authentic-headshot",
+      "type": "headshot",
+      "status": "source-provided-needs-optimization",
+      "recommendedPath": "frontend/public/images/headshots/temitayo-authentic.jpg",
+      "recommendedUse": [
+        "about-section",
+        "contact-page",
+        "personal-intro"
+      ],
+      "alt": "Approachable portrait of Temitayo Charles Akinniranye in a dark shirt against a muted background.",
+      "notes": "Use as a warmer and more authentic supporting portrait."
+    },
+    {
+      "id": "temitayo-editorial-bw-headshot",
+      "type": "headshot",
+      "status": "source-provided-needs-optimization",
+      "recommendedPath": "frontend/public/images/headshots/temitayo-editorial-bw.jpg",
+      "recommendedUse": [
+        "linkedin-banner-draft",
+        "github-banner-draft",
+        "dark-mode-accent"
+      ],
+      "alt": "Black-and-white editorial portrait of Temitayo Charles Akinniranye in formal attire.",
+      "notes": "Use sparingly because the style is strong and may read as highly stylized."
+    },
+    {
+      "id": "homelab-architecture-diagram",
+      "type": "diagram",
+      "status": "needed",
+      "recommendedPath": "frontend/public/images/diagrams/homelab-architecture.png",
+      "recommendedUse": [
+        "proxmox-k3s-homelab-case-study"
+      ],
+      "alt": "Architecture diagram of the Proxmox K3s homelab platform with GitOps, Vault, Envoy Gateway, and Cloudflare Tunnel.",
+      "notes": "Should represent actual platform components and avoid fictional scale."
+    },
+    {
+      "id": "gitops-pipeline-diagram",
+      "type": "diagram",
+      "status": "needed",
+      "recommendedPath": "frontend/public/images/diagrams/gitops-pipeline.png",
+      "recommendedUse": [
+        "kubernetes-gitops-case-study"
+      ],
+      "alt": "Diagram showing GitHub Actions publishing container images and Argo CD deploying Helm releases to Kubernetes.",
+      "notes": "Should map to the real GitHub, GHCR, Helm, and Argo CD flow."
+    },
+    {
+      "id": "ai-operations-diagram",
+      "type": "diagram",
+      "status": "needed",
+      "recommendedPath": "frontend/public/images/diagrams/ai-operations.png",
+      "recommendedUse": [
+        "ai-infrastructure-case-study"
+      ],
+      "alt": "Diagram showing AI-assisted operations with observability data, human review, and Kubernetes platform boundaries.",
+      "notes": "Must emphasize guardrails and human-in-the-loop controls."
+    }
+  ]
+}
