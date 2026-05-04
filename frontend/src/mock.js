@@ -11,7 +11,7 @@ export const profile = {
   email: "tayocharlesaki@gmail.com",
   linkedin: "https://linkedin.com/in/temitayocharles",
   github: "https://github.com/temitayocharles",
-  resumeUrl: "",
+  resumeUrl: "/assets/TCA-Resume-DevOps.pdf",
   avatar: "/assets/temitayo-charles-headshot.png",
   yearsExperience: 8,
 };
