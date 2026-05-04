@@ -189,3 +189,37 @@ Before public announcement:
 - Admin contact endpoint is protected.
 - No deprecated portfolio content remains at `temitayocharles.online`.
 - LinkedIn and GitHub profile drafts are reviewed before publication.
+
+## Production Cutover Completion Record
+
+Date: 2026-05-04
+
+Final production endpoints:
+- Frontend apex: https://temitayocharles.online
+- Frontend www redirect: https://www.temitayocharles.online -> https://temitayocharles.online
+- API health: https://api.temitayocharles.online/api/health
+- Contact endpoint: POST https://api.temitayocharles.online/api/contact
+- Admin contact listing: GET https://api.temitayocharles.online/api/contact?limit=5 with X-Admin-API-Key
+
+Final platform architecture:
+- Frontend: Netlify, proxied by Cloudflare
+- API: Cloudflare Tunnel -> Envoy Gateway -> K3s portfolio-api service
+- Secrets: Vault KV -> External Secrets Operator -> Kubernetes Secret
+- Database: MongoDB Atlas
+- Email: Resend
+- GitOps: Argo CD
+
+Final validation:
+- Apex frontend returned HTTP 200
+- WWW returned HTTP 301 to apex
+- API health returned HTTP 200
+- Contact POST returned HTTP 200
+- Resend email delivery returned sent
+- MongoDB ping returned ok
+- Admin contact listing returned HTTP 200
+- portfolio-networking Argo CD Application reached Synced / Healthy
+
+Important follow-up:
+- Backend image currently uses mutable tag ghcr.io/temitayocharles/portfolio-new-api:main
+- Move to immutable image tags or digests in the next hardening cycle
+- MongoDB Atlas egress NetworkPolicy uses static shard IPs and must be reviewed if Atlas shard IPs change
