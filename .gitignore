@@ -2,22 +2,36 @@
 # Repository .gitignore
 # =============================================================================
 
-# --- Secrets / Environment ---
+# Secrets and environment files
 .env
 .env.*
-!.env.example
 *.env
+!.env.example
 !*.env.example
-
-# Tokens and credentials
 *token.json*
 *credentials.json*
+credentials.json
 *.pem
+*.key
+.credentials
 
-# --- Node / Frontend ---
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+
+# Node and frontend
 node_modules/
-/node_modules
-/.pnp
+.pnp
 .pnp.js
 .yarn/install-state.gz
 .yarn/*
@@ -26,50 +40,41 @@ node_modules/
 !.yarn/releases
 !.yarn/versions
 
-# --- Build output ---
+# Build outputs and platform caches
 build/
 dist/
+frontend/build/
+frontend/dist/
 .next/
 .cache/
 .parcel-cache/
-.vercel
-.netlify
+.vercel/
+.netlify/
 
-# --- Coverage / Tests ---
-/coverage
+# Coverage and test artifacts
+coverage/
 test_reports/
 
-# --- IDE / Editor ---
+# Logs and debug output
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.log
+dump.rdb
+
+# IDE and editor files
 .idea/
 .vscode/
 *.swp
 *.swo
+.ipynb_checkpoints/
 
-# --- Python ---
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-venv/
-.venv/
-*.egg-info/
-.pytest_cache/
-.mypy_cache/
-.ruff_cache/
-
-# --- Logs & debug ---
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-.pnpm-debug.log*
-*.log
-dump.rdb
-
-# --- OS ---
+# Operating system files
 .DS_Store
 Thumbs.db
 
-# --- Archives / large assets (avoid bloat) ---
+# Archives and large local assets
 **/*.zip
 **/*.tar.gz
 **/*.tar
@@ -78,23 +83,9 @@ Thumbs.db
 *.deb
 *.dylib
 
-# --- Emergent platform internals (not relevant to GitHub) ---
+# Local platform internals
 .emergent/
 memory/
-test_result.md
-backend_test.py
-
-# --- Misc ---
-chainlit.md
 .chainlit
-.ipynb_checkpoints/
+chainlit.md
 android-sdk/
--e 
-# Environment and credential files
-.env
-.env.*
-*.env
-credentials.json
-*.pem
-*.key
-.credentials
