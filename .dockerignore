@@ -1,0 +1,44 @@
+# Git and local metadata
+.git
+.gitignore
+.github
+
+# Secrets and local environment
+.env
+.env.*
+*.env
+!*.env.example
+
+# Python caches
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+
+# Node/frontend artifacts
+frontend/node_modules/
+frontend/build/
+frontend/dist/
+node_modules/
+build/
+dist/
+
+# Logs and OS files
+*.log
+.DS_Store
+Thumbs.db
+
+# Documentation not needed in backend image
+docs/
+content/
+README.md
+DEPLOYMENT_FREE_TIER.md
+render.yaml
+vercel.json

@@ -1,0 +1,87 @@
+{
+  "version": 1,
+  "updatedAt": "2026-05-04T03:05:00-04:00",
+  "positioning": "Cloud, DevOps, Platform Engineering, AI Infrastructure, Automation, Security, Observability, and Networking portfolio.",
+  "projects": [
+    {
+      "id": "proxmox-k3s-homelab",
+      "title": "Proxmox K3s Home Lab",
+      "category": "Platform Engineering",
+      "themes": ["Proxmox", "K3s", "GitOps", "Argo CD", "Vault", "Envoy Gateway", "Cloudflare Tunnel", "Observability"],
+      "complexity": "Advanced",
+      "businessValue": "Demonstrates always-on platform operations, GitOps delivery, secure secret management, and production-style infrastructure discipline.",
+      "caseStudyPath": "content/case-studies/proxmox-k3s-homelab.md",
+      "status": "draft"
+    },
+    {
+      "id": "kubernetes-gitops-platform",
+      "title": "Kubernetes GitOps Multi-App Platform",
+      "category": "DevOps and Platform Automation",
+      "themes": ["Kubernetes", "GitOps", "Helm", "ApplicationSets", "GHCR", "CI/CD", "Vault"],
+      "complexity": "Advanced",
+      "businessValue": "Shows a repeatable software delivery model with separation of source, charts, environment values, images, and secrets.",
+      "caseStudyPath": "content/case-studies/kubernetes-gitops-platform.md",
+      "status": "draft"
+    },
+    {
+      "id": "ai-operations-automation",
+      "title": "AI Operations and Automation Platform",
+      "category": "AI Infrastructure",
+      "themes": ["AI Operations", "Human-in-the-loop", "Observability", "Automation", "Guardrails", "Platform Engineering"],
+      "complexity": "Advanced",
+      "businessValue": "Positions AI as practical operator support for platform visibility, triage, documentation, and safe workflow acceleration.",
+      "caseStudyPath": "content/case-studies/ai-operations-automation.md",
+      "status": "draft"
+    },
+    {
+      "id": "opensis-vault-docker-platform",
+      "title": "openSIS Vault Docker Platform",
+      "category": "DevSecOps",
+      "themes": ["Docker", "HashiCorp Vault", "Vault Agent", "AppRole", "MariaDB", "Traefik", "TLS"],
+      "complexity": "Intermediate to Advanced",
+      "businessValue": "Demonstrates secure secret delivery and service isolation in a containerized application platform.",
+      "caseStudyPath": "content/case-studies/opensis-vault-docker-platform.md",
+      "status": "draft"
+    },
+    {
+      "id": "aws-cloudtrail-security-alerting",
+      "title": "AWS CloudTrail Security Alerting",
+      "category": "Cloud Security",
+      "themes": ["AWS", "CloudTrail", "EventBridge", "Lambda", "IAM", "KMS", "Security Monitoring"],
+      "complexity": "Intermediate",
+      "businessValue": "Turns cloud audit events into actionable security signals for operator review.",
+      "caseStudyPath": "content/case-studies/aws-cloudtrail-security-alerting.md",
+      "status": "draft"
+    },
+    {
+      "id": "devops-monitoring-in-a-box",
+      "title": "DevOps Monitoring in a Box",
+      "category": "Observability",
+      "themes": ["Prometheus", "Grafana", "Loki", "Promtail", "Alertmanager", "Dashboards", "Health Checks"],
+      "complexity": "Intermediate",
+      "businessValue": "Demonstrates operational visibility through metrics, logs, alerts, and dashboard-driven troubleshooting.",
+      "caseStudyPath": "content/case-studies/devops-monitoring-in-a-box.md",
+      "status": "draft"
+    },
+    {
+      "id": "yelb-ha-redis-postgresql",
+      "title": "YELB High Availability Redis and PostgreSQL",
+      "category": "High Availability Systems",
+      "themes": ["Redis Sentinel", "PostgreSQL", "HAProxy", "Failover", "Stateful Services"],
+      "complexity": "Intermediate to Advanced",
+      "businessValue": "Shows understanding of stateful service availability, replication, routing, and failover design.",
+      "caseStudyPath": "content/case-studies/yelb-ha-redis-postgresql.md",
+      "status": "draft"
+    },
+    {
+      "id": "network-troubleshooting-ccna-labs",
+      "title": "Network Troubleshooting and CCNA Labs",
+      "category": "Networking",
+      "themes": ["Layered Troubleshooting", "Routing", "VLANs", "Fiber", "SFPs", "OSPF", "BGP", "VRF"],
+      "complexity": "Foundational to Intermediate",
+      "businessValue": "Grounds cloud and platform engineering work in practical networking fundamentals and structured diagnostics.",
+      "caseStudyPath": "content/case-studies/network-troubleshooting-ccna-labs.md",
+      "status": "draft"
+    }
+  ]
+}

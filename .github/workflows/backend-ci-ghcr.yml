@@ -1,0 +1,31 @@
+name: Backend CI and GHCR Image
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "backend/**"
+      - "backend_test.py"
+      - ".github/workflows/backend-ci-ghcr.yml"
+  pull_request:
+    paths:
+      - "backend/**"
+      - "backend_test.py"
+      - ".github/workflows/backend-ci-ghcr.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  backend-ci-ghcr:
+    uses: temitayocharles/shared-workflows/.github/workflows/service-python-ci-ghcr.yml@main
+    with:
+      python-version: "3.11"
+      requirements-file: "backend/requirements.txt"
+      test-cmd: "python -m py_compile backend/server.py && python -m py_compile backend_test.py"
+      context: "backend"
+      dockerfile: "backend/Dockerfile"
+      image-name: "ghcr.io/temitayocharles/portfolio-new-api"
