@@ -39,8 +39,29 @@ Each entry must include:
 
 **Risks or follow-up items:**
 
-- Backend containerization is still required before homelab deployment.
-- GHCR build workflow is still required.
+- Backend containerization was handled in the next execution entry.
 - Helm chart and GitOps manifests are still required.
 - Vault secrets must be seeded manually or through approved secure automation. Secrets must not be committed to Git.
 - Cloudflare public hostname and DNS changes require explicit approval before execution.
+
+### 2026-05-04 02:36 EDT
+
+**Tool or system used:** ChatGPT, GitHub connector
+
+**Action performed:** Added backend containerization and GHCR CI foundation for the FastAPI backend.
+
+**Files changed:**
+
+- `backend/Dockerfile`
+- `.dockerignore`
+- `backend/.dockerignore`
+- `.github/workflows/backend-ci-ghcr.yml`
+
+**Result:** The backend now has a production-oriented Dockerfile and a GitHub Actions workflow that uses `temitayocharles/shared-workflows/.github/workflows/service-python-ci-ghcr.yml@main` to validate Python files and publish `ghcr.io/temitayocharles/portfolio-new-api` from the `backend` build context on `main`.
+
+**Risks or follow-up items:**
+
+- Workflow execution must be verified after merge.
+- The shared workflow performs dependency installation from `backend/requirements.txt`; if dependency resolution fails, requirements must be tightened.
+- Runtime validation still requires real production environment variables from Vault.
+- Homelab Helm and Argo CD deployment files are still required.
