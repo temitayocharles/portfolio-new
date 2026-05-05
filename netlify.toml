@@ -8,6 +8,26 @@
   YARN_VERSION = "1.22.22"
   REACT_APP_BACKEND_URL = "https://api.temitayocharles.online"
 
+[[headers]]
+  for = "/"
+  [headers.values]
+    Cache-Control = "no-store, no-cache, must-revalidate, max-age=0"
+    CDN-Cache-Control = "no-store"
+    Cloudflare-CDN-Cache-Control = "no-store"
+
+[[headers]]
+  for = "/index.html"
+  [headers.values]
+    Cache-Control = "no-store, no-cache, must-revalidate, max-age=0"
+    CDN-Cache-Control = "no-store"
+    Cloudflare-CDN-Cache-Control = "no-store"
+
+[[headers]]
+  for = "/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    X-Content-Type-Options = "nosniff"
+
 [[redirects]]
   from = "http://temitayocharles.online/*"
   to = "https://temitayocharles.online/:splat"
