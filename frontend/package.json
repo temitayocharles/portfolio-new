@@ -59,7 +59,8 @@
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",
-    "postbuild": "node scripts/postbuild-netlify.js"
+    "postbuild": "node scripts/postbuild-netlify.js",
+    "qa:portfolio": "node scripts/qa-portfolio-smoke.js"
   },
   "browserslist": {
     "production": [

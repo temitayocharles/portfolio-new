@@ -29,6 +29,14 @@ const accentMap = {
 const Writing = () => {
   const [selectedNote, setSelectedNote] = useState(null);
 
+  const openNote = (note, event) => {
+    if (event) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    setSelectedNote(note);
+  };
+
   return (
     <section id="writing" className="relative py-24 lg:py-32 bg-[#0b1117]">
       <div className="absolute inset-0 bg-grid opacity-[0.18] pointer-events-none" />
@@ -91,13 +99,16 @@ const Writing = () => {
                       </span>
                       <button
                         type="button"
+                        data-portfolio-action="open-writing-note"
+                        aria-haspopup="dialog"
+                        aria-label={`Open note: ${w.title}`}
                         onPointerDown={(event) => event.stopPropagation()}
-                        onClick={(event) => {
-                          event.preventDefault();
-                          event.stopPropagation();
-                          setSelectedNote(w);
+                        onPointerUp={(event) => openNote(w, event)}
+                        onClick={(event) => openNote(w, event)}
+                        onKeyDown={(event) => {
+                          if (event.key === "Enter" || event.key === " ") openNote(w, event);
                         }}
-                        className={`group inline-flex items-center gap-1 rounded-lg px-2 py-1 text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-300/60 ${a.icon}`}
+                        className={`group inline-flex min-h-10 items-center gap-1 rounded-xl border border-white/10 bg-white/[0.035] px-3 py-2 text-sm transition-colors hover:border-teal-300/30 hover:bg-teal-300/[0.08] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-300/60 ${a.icon}`}
                       >
                         Read
                         <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
