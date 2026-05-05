@@ -1,5 +1,5 @@
-import React from "react";
-import { BookOpen, Clock, ArrowUpRight, Calendar } from "lucide-react";
+import React, { useState } from "react";
+import { BookOpen, Clock, ArrowUpRight, Calendar, X } from "lucide-react";
 import {
   Carousel,
   CarouselContent,
@@ -13,32 +13,36 @@ import { SectionLabel } from "./About";
 const accentMap = {
   teal: {
     tag: "bg-teal-300/[0.08] text-teal-200 border-teal-300/20",
-    icon: "text-teal-300",
+    icon: "text-teal-300 hover:text-teal-200",
     hover: "hover:border-teal-300/30 hover:shadow-[0_0_40px_-12px_rgba(94,234,212,0.25)]",
+    result: "border-teal-300/20 bg-teal-300/[0.06] text-teal-100",
   },
   amber: {
     tag: "bg-amber-300/[0.08] text-amber-200 border-amber-300/20",
-    icon: "text-amber-300",
+    icon: "text-amber-300 hover:text-amber-200",
     hover: "hover:border-amber-300/30 hover:shadow-[0_0_40px_-12px_rgba(251,191,36,0.22)]",
+    result: "border-amber-300/20 bg-amber-300/[0.06] text-amber-100",
   },
 };
 
 const Writing = () => {
+  const [selectedNote, setSelectedNote] = useState(null);
+
   return (
     <section id="writing" className="relative py-24 lg:py-32 bg-[#0b1117]">
       <div className="absolute inset-0 bg-grid opacity-[0.18] pointer-events-none" />
       <div className="relative max-w-7xl mx-auto px-6 lg:px-10">
-        <SectionLabel index="05" title="Writing" />
+        <SectionLabel index="06" title="Writing" />
 
         <div className="mt-10 mb-12 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
           <h2 className="text-3xl lg:text-4xl font-semibold tracking-[-0.02em] text-slate-50 max-w-3xl leading-tight">
             Notes on{" "}
-            <span className="text-teal-300">platform engineering</span>, reliability, and
+            <span className="text-teal-300">company-grade platforms</span>, reliability, and
             AI-assisted operations.
           </h2>
           <p className="text-slate-400 max-w-md text-sm leading-relaxed">
-            Long-form writing drawn from production systems, incident reviews, and real
-            platform decisions. No hot takes, no slideware.
+            Practical notes drawn from founder-led platform work, production systems,
+            incident reviews, and real operating decisions. No hot takes, no slideware.
           </p>
         </div>
 
@@ -84,12 +88,14 @@ const Writing = () => {
                         <Calendar className="h-3 w-3" />
                         {w.date}
                       </span>
-                      <span
-                        className={`group inline-flex items-center gap-1 text-sm cursor-pointer ${a.icon}`}
+                      <button
+                        type="button"
+                        onClick={() => setSelectedNote(w)}
+                        className={`group inline-flex items-center gap-1 text-sm transition-colors ${a.icon}`}
                       >
                         Read
                         <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                      </span>
+                      </button>
                     </div>
                   </article>
                 </CarouselItem>
@@ -108,7 +114,38 @@ const Writing = () => {
           </div>
         </Carousel>
       </div>
+
+      {selectedNote && (
+        <NoteModal note={selectedNote} onClose={() => setSelectedNote(null)} />
+      )}
     </section>
+  );
+};
+
+const NoteModal = ({ note, onClose }) => {
+  const a = accentMap[note.accent] || accentMap.teal;
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6" role="dialog" aria-modal="true">
+      <button className="absolute inset-0 bg-black/75 backdrop-blur-sm" onClick={onClose} aria-label="Close note" />
+      <div className="relative w-full max-w-2xl max-h-[86vh] overflow-y-auto rounded-3xl border border-white/10 bg-[#081018] shadow-2xl">
+        <div className="sticky top-0 z-10 flex items-start justify-between gap-4 border-b border-white/10 bg-[#081018]/95 p-5 sm:p-6 backdrop-blur">
+          <div>
+            <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-teal-300">Operator note</div>
+            <h3 className="mt-2 text-2xl font-semibold text-slate-50">{note.noteTitle || note.title}</h3>
+            <p className="mt-1 text-sm text-slate-500">{note.tag} · {note.readTime} · {note.date}</p>
+          </div>
+          <button type="button" onClick={onClose} className="rounded-full border border-white/10 bg-white/[0.04] p-2 text-slate-400 hover:text-slate-100 hover:border-white/20">
+            <X className="h-4 w-4" />
+          </button>
+        </div>
+        <div className="p-5 sm:p-6 space-y-5">
+          <p className="text-slate-300 leading-relaxed">{note.noteBody || note.excerpt}</p>
+          <div className={`rounded-2xl border p-4 text-sm leading-relaxed ${a.result}`}>
+            This note is written from the perspective of a founder and platform operator: the value is not just the tool choice, it is the operating model a company can depend on.
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 

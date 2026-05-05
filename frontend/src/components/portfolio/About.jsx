@@ -13,10 +13,10 @@ const About = () => {
         <div className="mt-12 grid lg:grid-cols-12 gap-10 lg:gap-14">
           <div className="lg:col-span-7">
             <h2 className="text-3xl lg:text-4xl font-semibold tracking-tight text-slate-50 leading-tight">
-              Eight years connecting infrastructure,
+              Founder and platform engineer connecting infrastructure,
               <span className="text-teal-300"> reliability</span>, and
               <span className="text-teal-300"> AI workflows</span> into systems
-              that solve real business problems.
+              companies can operate.
             </h2>
 
             <div className="mt-8 space-y-5 text-slate-400 leading-relaxed">

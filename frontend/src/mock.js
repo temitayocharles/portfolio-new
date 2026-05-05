@@ -4,9 +4,9 @@
 export const profile = {
   name: "Temitayo Charles Akinniranye",
   firstName: "Temitayo",
-  title: "DevOps · Cloud Platform · AI Infrastructure Engineer",
+  title: "Founder · Cloud Platform · AI Infrastructure Engineer",
   tagline:
-    "I build reliable cloud platforms, secure automation, and AI-ready infrastructure.",
+    "I build company-ready cloud platforms, secure automation, and AI infrastructure.",
   location: "Remote",
   email: "tayocharlesaki@gmail.com",
   linkedin: "https://linkedin.com/in/temitayocharles",
@@ -24,9 +24,9 @@ export const heroStats = [
 ];
 
 export const aboutParagraphs = [
-  "I started my career in Linux systems and infrastructure operations, where I built a strong foundation in servers, automation, monitoring, backups, documentation, and production support. Over time, I moved deeper into cloud infrastructure, DevOps, platform engineering, and reliability, helping teams modernize deployment workflows, migrate workloads to AWS, and improve operational discipline.",
-  "My experience spans fintech, SaaS, and remote engineering environments where reliability, security, and speed matter. I have led infrastructure automation, CI/CD modernization, Kubernetes platform delivery, disaster recovery planning, observability implementation, and cloud cost optimization, reducing deployment cycles from hours to minutes, lifting platform availability to 99.99%, cutting AWS spend by more than $216K annually, and supporting systems processing more than 2 million API requests per day.",
-  "Today, I combine DevOps and platform engineering with AI infrastructure and workflow automation. I build production-style Kubernetes platforms, GitOps-driven delivery systems, AI-assisted operations workflows, and secure automation patterns that include human approval, observability context, runbook memory, and operational controls. My unique value is connecting infrastructure engineering, reliability, automation, security, and AI workflows into practical systems that solve real business problems.",
+  "I am the founder and operator behind TCA InfraForge, a platform engineering company focused on helping startups and growing teams run secure, observable, and recoverable cloud systems. My work is not framed as hobby infrastructure. It is the operating layer behind client-ready delivery, internal products, managed environments, and business-critical automation.",
+  "I started in Linux systems and infrastructure operations, then moved deeper into cloud infrastructure, DevOps, platform engineering, and reliability. Across fintech, SaaS, and remote engineering environments, I have modernized deployment workflows, migrated workloads to AWS, improved operational discipline, reduced deployment cycles from hours to minutes, lifted platform availability to 99.99%, cut AWS spend by more than $216K annually, and supported systems processing more than 2 million API requests per day.",
+  "Today, I combine company ownership, platform engineering, AI infrastructure, and workflow automation. I build Kubernetes platforms, GitOps delivery systems, AI-assisted operations workflows, and secure automation patterns with human approval, observability context, runbook memory, and operational controls. My unique value is turning infrastructure engineering into business systems that founders, operators, and engineering teams can actually run.",
 ];
 
 export const aboutHighlights = [
@@ -189,10 +189,10 @@ export const projects = [
   {
     id: "infraforge",
     name: "TCA InfraForge",
-    subtitle: "Managed Kubernetes Platform for Operating Teams",
-    category: "Platform Engineering",
+    subtitle: "My Platform Engineering Company",
+    category: "Founder-led Platform Company",
     description:
-      "A production-style platform operating model for startups and growing companies that need reliable delivery, secure secrets, private networking, recovery paths, and observable Kubernetes operations without waiting for a full enterprise platform team.",
+      "TCA InfraForge is the platform engineering company I own and operate. It packages secure Kubernetes operations, GitOps delivery, secrets management, private networking, observability, and recovery workflows for startups and growing companies that need serious infrastructure without building a full platform team first.",
     stack: [
       "K3s", "ArgoCD", "Envoy Gateway", "MetalLB", "Longhorn", "Vault",
       "External Secrets", "Prometheus", "Grafana", "Loki", "Alertmanager",
@@ -200,10 +200,22 @@ export const projects = [
     ],
     pillars: ["GitOps", "Security", "Observability", "DR"],
     outcomes: ["Repeatable platform releases", "Registry and state recovery", "Production domain cutover"],
-    signal: "Business-grade platform operations",
+    signal: "Founder-owned company platform",
     repo: "homelab-gitops",
-    visibility: "Private operating case study",
+    visibility: "Founder-owned company case study",
     accent: "teal",
+    caseStudy: {
+      title: "How I operate InfraForge as a company platform",
+      context:
+        "InfraForge is the business wrapper around my platform engineering work. The goal is to give startups and operators a reliable infrastructure baseline that covers delivery, secrets, routing, observability, backups, recovery, and operational runbooks.",
+      decisions: [
+        "Use GitOps as the operating source of truth so infrastructure changes are auditable and repeatable.",
+        "Separate application delivery from gateway and networking ownership to avoid Argo CD shared-resource drift.",
+        "Keep stateful services recoverable through Longhorn retention, Harbor recovery notes, and documented restore paths.",
+      ],
+      result:
+        "The platform now supports production domain routing, Harbor registry recovery, portfolio API delivery, Vault-backed secrets, and a hardened operating model that can be reused for company and client workloads.",
+    },
   },
   {
     id: "project-iris",
@@ -219,6 +231,18 @@ export const projects = [
     repo: "project-iris",
     visibility: "Private product case study",
     accent: "amber",
+    caseStudy: {
+      title: "Private AI operations for founders and technical teams",
+      context:
+        "Project Iris explores how a private AI workspace can support operators without giving away control of memory, tools, credentials, or execution boundaries.",
+      decisions: [
+        "Treat memory as governed infrastructure instead of a hidden black box.",
+        "Keep tool execution explicit so users understand what the assistant can act on.",
+        "Design for TLS, auth, backup, and recovery from the beginning instead of after the prototype phase.",
+      ],
+      result:
+        "The project demonstrates how AI products can feel useful while still respecting operational boundaries, privacy needs, and founder-level control.",
+    },
   },
   {
     id: "ai-builders-academy",
@@ -234,6 +258,18 @@ export const projects = [
     repo: "ai-builders-academy",
     visibility: "Private product case study",
     accent: "teal",
+    caseStudy: {
+      title: "A business delivery platform for AI education",
+      context:
+        "AI Builders Academy needs delivery discipline that fits a real education business: fast application changes, clear deployable boundaries, and runtime confidence.",
+      decisions: [
+        "Refine deployable path filters so only relevant changes trigger product delivery workflows.",
+        "Promote runtime images deliberately instead of relying on ambiguous moving state.",
+        "Add drift checks and runbooks so platform behavior stays visible after deploy.",
+      ],
+      result:
+        "The platform is positioned as an operating system for an AI education business, not a one-off app build.",
+    },
   },
   {
     id: "vault-ops",
@@ -249,6 +285,18 @@ export const projects = [
     repo: "vault-ops",
     visibility: "Private operating case study",
     accent: "amber",
+    caseStudy: {
+      title: "Secrets operations that teams can safely run",
+      context:
+        "Vault Ops exists for platform teams that need secure secret workflows without turning every rotation, sync, or recovery step into risky manual work.",
+      decisions: [
+        "Keep Vault as the authority while External Secrets handles Kubernetes delivery.",
+        "Document bootstrap and recovery paths so operators can act under pressure.",
+        "Validate secret shape and sync state before application rollouts depend on them.",
+      ],
+      result:
+        "The toolkit gives platform work a safer secrets operating model that is audit-friendly and practical for small teams.",
+    },
   },
   {
     id: "sentinel-copilot",
@@ -265,6 +313,18 @@ export const projects = [
     repoUrl: "https://github.com/temitayocharles/sentinel-copilot",
     visibility: "Public repo",
     accent: "teal",
+    caseStudy: {
+      title: "Assistant-backed triage for lean operations teams",
+      context:
+        "Sentinel Copilot explores how AI can help teams reason through alerts, evidence, and next steps without letting automation make unsafe changes on its own.",
+      decisions: [
+        "Separate investigation from execution so recommendations remain reviewable.",
+        "Favor reusable triage flows over scattered one-off scripts.",
+        "Make evidence and reasoning visible before any operator takes action.",
+      ],
+      result:
+        "The prototype shows a practical path for AI-assisted SecOps where human approval stays central.",
+    },
   },
   {
     id: "openleaf",
@@ -281,6 +341,18 @@ export const projects = [
     repoUrl: "https://github.com/temitayocharles/OpenLeaf-Reader-Platform",
     visibility: "Public repo",
     accent: "amber",
+    caseStudy: {
+      title: "A SaaS architecture reference for digital products",
+      context:
+        "OpenLeaf models the architecture patterns a digital content business needs once product delivery moves beyond a simple monolith.",
+      decisions: [
+        "Use gateway governance to keep APIs discoverable and controlled.",
+        "Model event-driven boundaries where services need asynchronous coordination.",
+        "Include observability and chaos testing so reliability is visible, not assumed.",
+      ],
+      result:
+        "The project serves as a public architecture reference for product teams thinking through cloud-native SaaS design.",
+    },
   },
 ];
 
@@ -290,7 +362,7 @@ export const architectureScenarios = [
     label: "Platform mesh",
     title: "GitOps-controlled Kubernetes platform",
     summary:
-      "This is framed as a business platform operating model: GitHub drives Argo CD, secrets flow through Vault and External Secrets, traffic enters through Cloudflare and Envoy Gateway, and Longhorn keeps stateful services recoverable.",
+      "This is the InfraForge operating model: GitHub drives Argo CD, secrets flow through Vault and External Secrets, traffic enters through Cloudflare and Envoy Gateway, and Longhorn keeps company-critical services recoverable.",
     metric: "5 GitOps apps healthy",
     nodes: [
       { id: "github", label: "GitHub", x: 7, y: 52, tone: "teal" },
@@ -386,6 +458,8 @@ export const writings = [
     readTime: "8 min",
     date: "Mar 12, 2025",
     accent: "teal",
+    noteTitle: "How I design Kubernetes platforms for companies",
+    noteBody: "The goal is not to collect Kubernetes tools. The goal is to give a company a stable operating model: Git as the source of truth, a gateway layer that owns ingress clearly, a secrets path that operators can audit, observability that explains failures, and recovery procedures that are tested before they are needed.",
     featured: true,
   },
   {
@@ -397,6 +471,8 @@ export const writings = [
     readTime: "11 min",
     date: "Feb 4, 2025",
     accent: "amber",
+    noteTitle: "Human-approved AI operations",
+    noteBody: "AI operations should not mean blind automation. I design the flow so telemetry, logs, runbooks, and prior incidents create context first. The assistant proposes ranked actions, but the operator keeps approval authority. That keeps AI useful without giving it unsafe production control.",
   },
   {
     id: "w3",
@@ -407,6 +483,8 @@ export const writings = [
     readTime: "14 min",
     date: "Jan 21, 2025",
     accent: "teal",
+    noteTitle: "GitOps as an operating model",
+    noteBody: "GitOps works best when teams treat it as a control system, not just a deploy button. Ownership boundaries, sync waves, rollback paths, and drift checks matter because they prevent platform teams from debugging invisible state during outages.",
   },
   {
     id: "w4",
@@ -417,6 +495,8 @@ export const writings = [
     readTime: "9 min",
     date: "Nov 18, 2024",
     accent: "amber",
+    noteTitle: "Secrets are product infrastructure",
+    noteBody: "Secrets work should be boring, auditable, and recoverable. Vault, External Secrets, and clear runbooks let a team rotate credentials, recover missing values, and validate application configuration without guessing under pressure.",
   },
   {
     id: "w5",
@@ -427,6 +507,8 @@ export const writings = [
     readTime: "16 min",
     date: "Oct 3, 2024",
     accent: "teal",
+    noteTitle: "Practical disaster recovery",
+    noteBody: "Recovery is only real when operators know which data matters, where it lives, how to restore it, and how to prove the application works after the restore. For stateful Kubernetes services, volume retention, PVC binding, and app-level validation all matter.",
   },
   {
     id: "w6",
@@ -437,6 +519,8 @@ export const writings = [
     readTime: "12 min",
     date: "Aug 27, 2024",
     accent: "amber",
+    noteTitle: "Supply chain security without blocking delivery",
+    noteBody: "Security checks become useful when they are placed where developers already work. Trivy, Checkov, SonarQube, and Vault-backed secrets can improve confidence without becoming release theater if findings are visible, prioritized, and connected to action.",
   },
 ];
 

@@ -5,7 +5,7 @@ import { profile, heroStats, heroVisuals } from "@/mock";
 import AnimatedStat from "./AnimatedStat";
 
 const ROTATING = [
-  "reliable cloud platforms",
+  "company-ready platforms",
   "secure automation",
   "AI-ready infrastructure",
   "observable systems",
@@ -13,7 +13,7 @@ const ROTATING = [
 ];
 
 const TERMINAL_LINES = [
-  { p: "$", c: "kubectl get platforms --all-namespaces", out: ["NAME           STATUS    AGE", "tca-infraforge READY     8y"] },
+  { p: "$", c: "kubectl get platforms --all-namespaces", out: ["NAME           STATUS    AGE", "tca-infraforge READY     founder"] },
   { p: "$", c: "argocd app sync prod --prune --strict", out: ["Synced → 99.99% availability"] },
   { p: "$", c: "terraform apply -auto-approve", out: ["Plan: 14 to add, 0 to destroy"] },
 ];

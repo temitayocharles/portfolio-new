@@ -25,10 +25,10 @@ const ArchitectureLab = () => {
         <div className="mt-10 grid lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
           <div className="lg:col-span-4 space-y-4">
             <h2 className="text-3xl lg:text-4xl font-semibold tracking-tight text-slate-50 leading-tight">
-              Explore the systems behind the portfolio.
+              Explore the systems behind the company story.
             </h2>
             <p className="text-slate-400 text-sm leading-relaxed">
-              These diagrams frame the strongest builds as business systems: control planes,
+              These diagrams frame the strongest builds as company operating systems: control planes,
               delivery paths, human-approved AI operations, and recovery-oriented platform design.
             </p>
 

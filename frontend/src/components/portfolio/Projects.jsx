@@ -1,5 +1,5 @@
-import React from "react";
-import { ArrowUpRight, Eye, GitBranch, Layers, LockKeyhole, Sparkles } from "lucide-react";
+import React, { useState } from "react";
+import { ArrowUpRight, Eye, GitBranch, Layers, LockKeyhole, Sparkles, X } from "lucide-react";
 import { projects } from "@/mock";
 import { SectionLabel } from "./About";
 
@@ -11,6 +11,7 @@ const accentMap = {
     iconBg: "bg-teal-300/10 border-teal-300/20 text-teal-300",
     pillarBg: "bg-teal-300/[0.06] text-teal-200 border-teal-300/15",
     glow: "from-teal-300/15",
+    action: "text-teal-300 hover:text-teal-200",
   },
   amber: {
     border: "hover:border-amber-300/35",
@@ -19,10 +20,13 @@ const accentMap = {
     iconBg: "bg-amber-300/10 border-amber-300/20 text-amber-300",
     pillarBg: "bg-amber-300/[0.06] text-amber-200 border-amber-300/15",
     glow: "from-amber-300/15",
+    action: "text-amber-300 hover:text-amber-200",
   },
 };
 
 const Projects = () => {
+  const [selectedProject, setSelectedProject] = useState(null);
+
   return (
     <section id="projects" className="relative py-24 lg:py-32 bg-[#0b1117]">
       <div className="absolute inset-0 bg-grid opacity-[0.18] pointer-events-none" />
@@ -32,12 +36,12 @@ const Projects = () => {
 
         <div className="mt-10 mb-14 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
           <h2 className="text-3xl lg:text-4xl font-semibold tracking-tight text-slate-50 max-w-3xl leading-tight">
-            Business-facing systems with
+            Founder-led and business-facing systems with
             <span className="text-teal-300"> production-shaped</span> constraints.
           </h2>
           <p className="text-slate-400 max-w-md text-sm leading-relaxed">
-            I selected the work that best maps to company needs: platform operations,
-            AIOps, secrets automation, product delivery, and cloud-native architecture.
+            I selected the work that best maps to company needs: InfraForge as my platform company,
+            AI product infrastructure, AIOps, secrets automation, product delivery, and SaaS architecture.
           </p>
         </div>
 
@@ -56,7 +60,7 @@ const Projects = () => {
                   <div className={`h-11 w-11 rounded-lg border flex items-center justify-center ${accent.iconBg}`}>
                     {p.accent === "amber" ? <Sparkles className="h-5 w-5" /> : <Layers className="h-5 w-5" />}
                   </div>
-                  <span className="font-mono text-xs text-slate-500">/repo.{String(i + 1).padStart(2, "0")}</span>
+                  <span className="font-mono text-xs text-slate-500">/case.{String(i + 1).padStart(2, "0")}</span>
                 </div>
 
                 <div className="relative mt-5 flex items-center gap-2 text-[11px] uppercase tracking-[0.18em] text-slate-500">
@@ -113,22 +117,81 @@ const Projects = () => {
                     {isPublic ? <GitBranch className="h-3.5 w-3.5" /> : <LockKeyhole className="h-3.5 w-3.5" />}
                     <span>{p.visibility}</span>
                   </div>
-                  {isPublic ? (
-                    <a href={p.repoUrl} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 text-slate-400 hover:text-teal-300 transition-colors">
-                      View repo <ArrowUpRight className="h-3.5 w-3.5" />
-                    </a>
-                  ) : (
-                    <span className="inline-flex items-center gap-1.5 text-slate-500">
+                  <div className="flex items-center gap-3">
+                    {isPublic && (
+                      <a href={p.repoUrl} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 text-slate-500 hover:text-teal-300 transition-colors">
+                        Repo <ArrowUpRight className="h-3.5 w-3.5" />
+                      </a>
+                    )}
+                    <button
+                      type="button"
+                      onClick={() => setSelectedProject(p)}
+                      className={`inline-flex items-center gap-1.5 transition-colors ${accent.action}`}
+                    >
                       Case study <ArrowUpRight className="h-3.5 w-3.5" />
-                    </span>
-                  )}
+                    </button>
+                  </div>
                 </div>
               </article>
             );
           })}
         </div>
       </div>
+
+      {selectedProject && (
+        <ProjectCaseStudy project={selectedProject} onClose={() => setSelectedProject(null)} />
+      )}
     </section>
+  );
+};
+
+const ProjectCaseStudy = ({ project, onClose }) => {
+  const accent = accentMap[project.accent] || accentMap.teal;
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6" role="dialog" aria-modal="true">
+      <button className="absolute inset-0 bg-black/75 backdrop-blur-sm" onClick={onClose} aria-label="Close case study" />
+      <div className="relative w-full max-w-3xl max-h-[86vh] overflow-y-auto rounded-3xl border border-white/10 bg-[#081018] shadow-2xl">
+        <div className="sticky top-0 z-10 flex items-start justify-between gap-4 border-b border-white/10 bg-[#081018]/95 p-5 sm:p-6 backdrop-blur">
+          <div>
+            <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-teal-300">Case study</div>
+            <h3 className="mt-2 text-2xl font-semibold text-slate-50">{project.caseStudy?.title || project.name}</h3>
+            <p className="mt-1 text-sm text-slate-400">{project.name} · {project.category}</p>
+          </div>
+          <button type="button" onClick={onClose} className="rounded-full border border-white/10 bg-white/[0.04] p-2 text-slate-400 hover:text-slate-100 hover:border-white/20">
+            <X className="h-4 w-4" />
+          </button>
+        </div>
+
+        <div className="p-5 sm:p-6 space-y-6">
+          <p className="text-slate-300 leading-relaxed">{project.caseStudy?.context || project.description}</p>
+
+          <div className="rounded-2xl border border-white/[0.06] bg-white/[0.025] p-4">
+            <div className="text-[11px] uppercase tracking-[0.18em] text-slate-500 mb-3">Key decisions</div>
+            <ul className="space-y-3">
+              {(project.caseStudy?.decisions || project.outcomes).map((item) => (
+                <li key={item} className="flex gap-3 text-sm text-slate-300 leading-relaxed">
+                  <span className="mt-2 h-1.5 w-1.5 flex-none rounded-full bg-teal-300" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className={`rounded-2xl border p-4 ${accent.pillarBg}`}>
+            <div className="text-[11px] uppercase tracking-[0.18em] opacity-75 mb-2">Result</div>
+            <p className="text-sm leading-relaxed">{project.caseStudy?.result}</p>
+          </div>
+
+          <div className="flex flex-wrap gap-2 pt-2">
+            {project.stack.map((item) => (
+              <span key={item} className="rounded-md border border-white/[0.07] bg-white/[0.03] px-2.5 py-1 font-mono text-[11px] text-slate-400">
+                {item}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 
