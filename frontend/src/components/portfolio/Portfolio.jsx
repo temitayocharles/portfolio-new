@@ -5,6 +5,7 @@ import About from "./About";
 import Skills from "./Skills";
 import Experience from "./Experience";
 import Projects from "./Projects";
+import ArchitectureLab from "./ArchitectureLab";
 import Writing from "./Writing";
 import Testimonials from "./Testimonials";
 import Contact from "./Contact";
@@ -21,6 +22,7 @@ const Portfolio = () => {
         <Skills />
         <Experience />
         <Projects />
+        <ArchitectureLab />
         <Writing />
         <Testimonials />
         <Contact />

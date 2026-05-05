@@ -99,3 +99,49 @@ code,
     @apply bg-background text-foreground;
   }
 }
+
+/* Stabilize hero rotating phrase so text changes do not reflow the page. */
+.hero-headline-row {
+  display: block;
+}
+
+.hero-rotating-slot {
+  position: relative;
+  display: inline-grid;
+  min-width: 13.6em;
+  min-height: 1.08em;
+  vertical-align: baseline;
+  contain: layout paint;
+}
+
+.hero-rotating-word {
+  grid-area: 1 / 1;
+  display: inline-block;
+  white-space: nowrap;
+  animation: fade-up 0.55s ease-out both;
+  will-change: opacity, transform;
+}
+
+@media (max-width: 720px) {
+  .hero-rotating-slot {
+    display: block;
+    min-width: 0;
+    max-width: 100%;
+    min-height: 2.25em;
+  }
+
+  .hero-rotating-word {
+    white-space: normal;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.001ms !important;
+  }
+}

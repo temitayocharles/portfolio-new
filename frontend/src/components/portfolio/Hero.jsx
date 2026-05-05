@@ -77,29 +77,31 @@ const Hero = () => {
               Available for new platform engagements
             </div>
 
-            <h1 className="text-[2.7rem] sm:text-5xl lg:text-[4.25rem] font-semibold leading-[1.02] tracking-[-0.03em] text-slate-50">
-              I build{" "}
-              <span className="relative inline-block align-baseline">
-                <span
-                  key={wordIdx}
-                  className="bg-gradient-to-r from-teal-200 via-teal-300 to-teal-400 bg-clip-text text-transparent inline-block"
-                  style={{ animation: "fade-up 0.55s ease-out both" }}
-                >
-                  {ROTATING[wordIdx]}
+            <h1 className="text-[2.7rem] sm:text-5xl lg:text-[4.25rem] font-semibold leading-[1.02] tracking-[-0.03em] text-slate-50 hero-headline">
+              <span className="hero-headline-row">
+                I build{" "}
+                <span className="hero-rotating-slot" aria-live="polite">
+                  <span
+                    key={wordIdx}
+                    className="hero-rotating-word bg-gradient-to-r from-teal-200 via-teal-300 to-teal-400 bg-clip-text text-transparent"
+                  >
+                    {ROTATING[wordIdx]}
+                  </span>
+                  <svg
+                    className="absolute -bottom-1.5 left-0 w-full"
+                    viewBox="0 0 200 8"
+                    preserveAspectRatio="none"
+                    aria-hidden="true"
+                  >
+                    <path d="M0 5 Q 50 0 100 4 T 200 3" stroke="#5eead4" strokeWidth="2" fill="none" opacity="0.5" />
+                  </svg>
                 </span>
-                <svg
-                  className="absolute -bottom-1.5 left-0 w-full"
-                  viewBox="0 0 200 8"
-                  preserveAspectRatio="none"
-                  aria-hidden="true"
-                >
-                  <path d="M0 5 Q 50 0 100 4 T 200 3" stroke="#5eead4" strokeWidth="2" fill="none" opacity="0.5" />
-                </svg>
               </span>
-              <br />
-              for the teams shipping{" "}
-              <span className="text-slate-50">tomorrow's</span>{" "}
-              <span className="text-teal-300">infrastructure</span>.
+              <span className="block mt-1 lg:mt-2">
+                for the teams shipping{" "}
+                <span className="text-slate-50">tomorrow's</span>{" "}
+                <span className="text-teal-300">infrastructure</span>.
+              </span>
             </h1>
 
             <p className="mt-7 text-lg text-slate-400 max-w-2xl leading-relaxed">
