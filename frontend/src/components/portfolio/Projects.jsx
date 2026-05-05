@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { ArrowUpRight, Eye, GitBranch, Layers, LockKeyhole, Sparkles, X } from "lucide-react";
 import { projects } from "@/mock";
 import { SectionLabel } from "./About";
@@ -30,7 +31,7 @@ const Projects = () => {
   return (
     <section id="projects" className="relative py-24 lg:py-32 bg-[#0b1117]">
       <div className="absolute inset-0 bg-grid opacity-[0.18] pointer-events-none" />
-      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-teal-300/30 to-transparent" />
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-teal-300/30 to-transparent pointer-events-none" />
       <div className="relative max-w-7xl mx-auto px-6 lg:px-10">
         <SectionLabel index="04" title="Projects" />
 
@@ -52,9 +53,9 @@ const Projects = () => {
             return (
               <article
                 key={p.id}
-                className={`group relative overflow-hidden rounded-2xl border border-white/5 bg-gradient-to-b from-white/[0.04] to-white/[0.015] p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_80px_-48px_rgba(94,234,212,0.75)] ${accent.border}`}
+                className={`group relative overflow-hidden rounded-2xl border border-white/5 bg-gradient-to-b from-white/[0.04] to-white/[0.015] p-6 transition-[border-color,box-shadow,background-color] duration-300 hover:shadow-[0_24px_80px_-48px_rgba(94,234,212,0.75)] ${accent.border}`}
               >
-                <div className={`absolute -right-16 -top-16 h-44 w-44 rounded-full bg-gradient-to-br ${accent.glow} to-transparent blur-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100`} />
+                <div className={`pointer-events-none absolute -right-16 -top-16 h-44 w-44 rounded-full bg-gradient-to-br ${accent.glow} to-transparent blur-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100`} />
 
                 <div className="relative flex items-start justify-between gap-4">
                   <div className={`h-11 w-11 rounded-lg border flex items-center justify-center ${accent.iconBg}`}>
@@ -125,8 +126,12 @@ const Projects = () => {
                     )}
                     <button
                       type="button"
-                      onClick={() => setSelectedProject(p)}
-                      className={`inline-flex items-center gap-1.5 transition-colors ${accent.action}`}
+                      onClick={(event) => {
+                        event.preventDefault();
+                        event.stopPropagation();
+                        setSelectedProject(p);
+                      }}
+                      className={`inline-flex items-center gap-1.5 rounded-lg px-2 py-1 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-300/60 ${accent.action}`}
                     >
                       Case study <ArrowUpRight className="h-3.5 w-3.5" />
                     </button>
@@ -147,9 +152,23 @@ const Projects = () => {
 
 const ProjectCaseStudy = ({ project, onClose }) => {
   const accent = accentMap[project.accent] || accentMap.teal;
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6" role="dialog" aria-modal="true">
-      <button className="absolute inset-0 bg-black/75 backdrop-blur-sm" onClick={onClose} aria-label="Close case study" />
+
+  useEffect(() => {
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKeyDown = (event) => {
+      if (event.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [onClose]);
+
+  return createPortal(
+    <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 sm:p-6" role="dialog" aria-modal="true">
+      <button className="absolute inset-0 bg-black/80 backdrop-blur-sm" onClick={onClose} aria-label="Close case study" />
       <div className="relative w-full max-w-3xl max-h-[86vh] overflow-y-auto rounded-3xl border border-white/10 bg-[#081018] shadow-2xl">
         <div className="sticky top-0 z-10 flex items-start justify-between gap-4 border-b border-white/10 bg-[#081018]/95 p-5 sm:p-6 backdrop-blur">
           <div>
@@ -157,7 +176,7 @@ const ProjectCaseStudy = ({ project, onClose }) => {
             <h3 className="mt-2 text-2xl font-semibold text-slate-50">{project.caseStudy?.title || project.name}</h3>
             <p className="mt-1 text-sm text-slate-400">{project.name} · {project.category}</p>
           </div>
-          <button type="button" onClick={onClose} className="rounded-full border border-white/10 bg-white/[0.04] p-2 text-slate-400 hover:text-slate-100 hover:border-white/20">
+          <button type="button" onClick={onClose} className="rounded-full border border-white/10 bg-white/[0.04] p-2 text-slate-400 hover:text-slate-100 hover:border-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-300/60">
             <X className="h-4 w-4" />
           </button>
         </div>
@@ -191,7 +210,8 @@ const ProjectCaseStudy = ({ project, onClose }) => {
           </div>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 };
 

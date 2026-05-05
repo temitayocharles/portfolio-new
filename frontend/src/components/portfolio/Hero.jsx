@@ -80,7 +80,7 @@ const Hero = () => {
             <h1 className="text-[2.7rem] sm:text-5xl lg:text-[4.25rem] font-semibold leading-[1.02] tracking-[-0.03em] text-slate-50 hero-headline">
               <span className="hero-headline-row">
                 I build{" "}
-                <span className="hero-rotating-slot" aria-live="polite">
+                <span className="hero-rotating-slot" aria-live="polite" aria-atomic="true">
                   <span
                     key={wordIdx}
                     className="hero-rotating-word bg-gradient-to-r from-teal-200 via-teal-300 to-teal-400 bg-clip-text text-transparent"
@@ -159,7 +159,7 @@ const Hero = () => {
           <div className="lg:col-span-5 relative">
             <div className="relative max-w-md mx-auto">
               {/* Decorative abstract image */}
-              <div className="absolute -top-12 -right-8 w-44 h-44 rounded-2xl overflow-hidden border border-white/5 rotate-6 opacity-80 hidden md:block">
+              <div className="absolute -top-12 -right-8 w-44 h-44 rounded-2xl overflow-hidden border border-white/5 rotate-6 opacity-80 hidden md:block pointer-events-none">
                 <img
                   src={heroVisuals.abstract}
                   alt="Kubernetes cluster network visualization"
@@ -185,7 +185,7 @@ const Hero = () => {
               </div>
 
               {/* Animated terminal card */}
-              <div className="absolute -bottom-8 -left-6 right-2 lg:-left-16 lg:right-6 bg-[#0b121b]/95 backdrop-blur-sm border border-white/10 rounded-xl shadow-2xl overflow-hidden">
+              <div className="absolute -bottom-8 -left-6 right-2 lg:-left-16 lg:right-6 min-h-[126px] bg-[#0b121b]/95 backdrop-blur-sm border border-white/10 rounded-xl shadow-2xl overflow-hidden">
                 <div className="flex items-center gap-1.5 px-3 py-2 border-b border-white/5 bg-white/[0.02]">
                   <span className="h-2.5 w-2.5 rounded-full bg-rose-400/70" />
                   <span className="h-2.5 w-2.5 rounded-full bg-amber-400/70" />
@@ -194,7 +194,7 @@ const Hero = () => {
                     <Terminal className="h-3 w-3" /> tca, zsh
                   </div>
                 </div>
-                <div className="px-3.5 py-3 font-mono text-[11.5px] leading-relaxed">
+                <div className="px-3.5 py-3 min-h-[90px] font-mono text-[11.5px] leading-relaxed">
                   <div className="text-teal-300">
                     <span className="text-slate-500 mr-1.5">{currentLine.p}</span>
                     <span className="term-cursor">{typed}</span>

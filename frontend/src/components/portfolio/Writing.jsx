@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { BookOpen, Clock, ArrowUpRight, Calendar, X } from "lucide-react";
 import {
   Carousel,
@@ -59,7 +60,7 @@ const Writing = () => {
                   className="pl-4 md:basis-1/2 lg:basis-1/3"
                 >
                   <article
-                    className={`h-full rounded-2xl border border-white/5 bg-gradient-to-b from-white/[0.035] to-transparent p-6 transition-all duration-300 ${a.hover}`}
+                    className={`h-full rounded-2xl border border-white/5 bg-gradient-to-b from-white/[0.035] to-transparent p-6 transition-[border-color,box-shadow,background-color] duration-300 ${a.hover}`}
                     style={{ animation: `fade-up 0.55s ease-out ${i * 70}ms both` }}
                   >
                     <div className="flex items-start justify-between gap-3">
@@ -90,8 +91,13 @@ const Writing = () => {
                       </span>
                       <button
                         type="button"
-                        onClick={() => setSelectedNote(w)}
-                        className={`group inline-flex items-center gap-1 text-sm transition-colors ${a.icon}`}
+                        onPointerDown={(event) => event.stopPropagation()}
+                        onClick={(event) => {
+                          event.preventDefault();
+                          event.stopPropagation();
+                          setSelectedNote(w);
+                        }}
+                        className={`group inline-flex items-center gap-1 rounded-lg px-2 py-1 text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-300/60 ${a.icon}`}
                       >
                         Read
                         <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -124,9 +130,23 @@ const Writing = () => {
 
 const NoteModal = ({ note, onClose }) => {
   const a = accentMap[note.accent] || accentMap.teal;
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6" role="dialog" aria-modal="true">
-      <button className="absolute inset-0 bg-black/75 backdrop-blur-sm" onClick={onClose} aria-label="Close note" />
+
+  useEffect(() => {
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKeyDown = (event) => {
+      if (event.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [onClose]);
+
+  return createPortal(
+    <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 sm:p-6" role="dialog" aria-modal="true">
+      <button className="absolute inset-0 bg-black/80 backdrop-blur-sm" onClick={onClose} aria-label="Close note" />
       <div className="relative w-full max-w-2xl max-h-[86vh] overflow-y-auto rounded-3xl border border-white/10 bg-[#081018] shadow-2xl">
         <div className="sticky top-0 z-10 flex items-start justify-between gap-4 border-b border-white/10 bg-[#081018]/95 p-5 sm:p-6 backdrop-blur">
           <div>
@@ -134,7 +154,7 @@ const NoteModal = ({ note, onClose }) => {
             <h3 className="mt-2 text-2xl font-semibold text-slate-50">{note.noteTitle || note.title}</h3>
             <p className="mt-1 text-sm text-slate-500">{note.tag} · {note.readTime} · {note.date}</p>
           </div>
-          <button type="button" onClick={onClose} className="rounded-full border border-white/10 bg-white/[0.04] p-2 text-slate-400 hover:text-slate-100 hover:border-white/20">
+          <button type="button" onClick={onClose} className="rounded-full border border-white/10 bg-white/[0.04] p-2 text-slate-400 hover:text-slate-100 hover:border-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-300/60">
             <X className="h-4 w-4" />
           </button>
         </div>
@@ -145,7 +165,8 @@ const NoteModal = ({ note, onClose }) => {
           </div>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 };
 
