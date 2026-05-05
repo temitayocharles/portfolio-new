@@ -32,12 +32,12 @@ const Projects = () => {
 
         <div className="mt-10 mb-14 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
           <h2 className="text-3xl lg:text-4xl font-semibold tracking-tight text-slate-50 max-w-3xl leading-tight">
-            GitHub-backed builds with
+            Business-facing systems with
             <span className="text-teal-300"> production-shaped</span> constraints.
           </h2>
           <p className="text-slate-400 max-w-md text-sm leading-relaxed">
-            I selected the projects that best show platform engineering, AIOps,
-            secrets automation, product delivery, and cloud-native architecture.
+            I selected the work that best maps to company needs: platform operations,
+            AIOps, secrets automation, product delivery, and cloud-native architecture.
           </p>
         </div>
 

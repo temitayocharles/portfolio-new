@@ -28,7 +28,7 @@ const ArchitectureLab = () => {
               Explore the systems behind the portfolio.
             </h2>
             <p className="text-slate-400 text-sm leading-relaxed">
-              These diagrams turn the strongest GitHub projects into architecture stories: control planes,
+              These diagrams frame the strongest builds as business systems: control planes,
               delivery paths, human-approved AI operations, and recovery-oriented platform design.
             </p>
 
