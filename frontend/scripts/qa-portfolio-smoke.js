@@ -7,6 +7,7 @@ const read = (relativePath) => fs.readFileSync(path.join(root, relativePath), "u
 const files = {
   projects: read("src/components/portfolio/Projects.jsx"),
   writing: read("src/components/portfolio/Writing.jsx"),
+  architecture: read("src/components/portfolio/ArchitectureLab.jsx"),
   hero: read("src/components/portfolio/Hero.jsx"),
   mock: read("src/mock.js"),
   css: read("src/index.css"),
@@ -17,6 +18,9 @@ const requiredChecks = [
   ["Writing opens note dialog", files.writing.includes("data-portfolio-action=\"open-writing-note\"") && files.writing.includes("createPortal") && files.writing.includes("aria-haspopup=\"dialog\"")],
   ["Project case-study content exists", (files.mock.match(/caseStudy:\s*{/g) || []).length >= 5],
   ["Writing note content exists", (files.mock.match(/noteBody:/g) || []).length >= 5],
+  ["Project architecture data exists", files.mock.includes("export const projectArchitectures") && (files.mock.match(/businessValue:/g) || []).length >= 6],
+  ["ForgeWatch uses sentinel-copilot as source", files.mock.includes("name: \"ForgeWatch\"") && files.mock.includes("repo: \"sentinel-copilot\"")],
+  ["Architecture explorer is interactive", files.architecture.includes("selectedNodeId") && files.architecture.includes("activeTab") && files.architecture.includes("projectArchitectures")],
   ["Hero rotating slot is layout stable", files.hero.includes("hero-rotating-slot") && files.css.includes("scrollbar-gutter: stable")],
   ["No em dash in portfolio copy", !Object.values(files).some((content) => content.includes("\u2014"))],
 ];
