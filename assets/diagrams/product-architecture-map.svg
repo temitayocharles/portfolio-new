@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-label="Enterprise Cloud Platform AI-Enabled DevOps Architecture">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#07111f"/>
+      <stop offset="100%" stop-color="#10243f"/>
+    </linearGradient>
+    <style>
+      .title{font:700 42px Arial,sans-serif;fill:#fff}.sub{font:400 22px Arial,sans-serif;fill:#b8d7ff}.box{rx:16;fill:#f8fbff;stroke:#bcd3ee;stroke-width:2}.layer{font:700 20px Arial,sans-serif;fill:#0d2340}.small{font:400 16px Arial,sans-serif;fill:#173250}.chip{fill:#eaf4ff;stroke:#9fc2e8;stroke-width:1.5}.arrow{stroke:#74a6d8;stroke-width:3;marker-end:url(#arrowhead)}.side{font:700 18px Arial,sans-serif;fill:#d9ecff}.note{font:400 15px Arial,sans-serif;fill:#d9ecff}
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#74a6d8"/></marker>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <text x="70" y="70" class="title">Enterprise Cloud Platform - AI-Enabled DevOps Architecture</text>
+  <text x="70" y="105" class="sub">Secure, scalable, GitOps-driven platform engineering portfolio</text>
+  <g transform="translate(70,150)">
+    <rect class="box" x="0" y="0" width="1180" height="640"/>
+    <g transform="translate(35,30)">
+      <rect class="chip" x="0" y="0" width="260" height="62" rx="12"/><text x="20" y="38" class="layer">1. Users and Access</text>
+      <rect class="chip" x="310" y="0" width="760" height="62" rx="12"/><text x="335" y="38" class="small">Developers - Operators - Hiring Teams - Clients - Stakeholders</text>
+      <line class="arrow" x1="130" y1="70" x2="130" y2="100"/>
+      <rect class="chip" x="0" y="105" width="260" height="62" rx="12"/><text x="20" y="143" class="layer">2. Edge and Gateway</text>
+      <rect class="chip" x="310" y="105" width="760" height="62" rx="12"/><text x="335" y="143" class="small">DNS - TLS - CDN - WAF - API Gateway - Ingress</text>
+      <line class="arrow" x1="130" y1="175" x2="130" y2="205"/>
+      <rect class="chip" x="0" y="210" width="260" height="62" rx="12"/><text x="20" y="248" class="layer">3. Application Platform</text>
+      <rect class="chip" x="310" y="210" width="760" height="62" rx="12"/><text x="335" y="248" class="small">Web Apps - APIs - Workers - Ops Consoles - Product Workflows</text>
+      <line class="arrow" x1="130" y1="280" x2="130" y2="310"/>
+      <rect class="chip" x="0" y="315" width="260" height="62" rx="12"/><text x="20" y="353" class="layer">4. CI/CD and GitOps</text>
+      <rect class="chip" x="310" y="315" width="760" height="62" rx="12"/><text x="335" y="353" class="small">GitHub Actions - Jenkins - Scans - Image Promotion - Argo CD</text>
+      <line class="arrow" x1="130" y1="385" x2="130" y2="415"/>
+      <rect class="chip" x="0" y="420" width="260" height="62" rx="12"/><text x="20" y="458" class="layer">5. Kubernetes Runtime</text>
+      <rect class="chip" x="310" y="420" width="760" height="62" rx="12"/><text x="335" y="458" class="small">Helm - Manifests - Services - Jobs - Secrets - Environment Overlays</text>
+      <line class="arrow" x1="130" y1="490" x2="130" y2="520"/>
+      <rect class="chip" x="0" y="525" width="260" height="62" rx="12"/><text x="20" y="563" class="layer">6. SRE and AI Ops</text>
+      <rect class="chip" x="310" y="525" width="760" height="62" rx="12"/><text x="335" y="563" class="small">Prometheus - Grafana - Loki - Runbooks - RAG - Approval Gates</text>
+    </g>
+  </g>
+  <g transform="translate(1290,165)">
+    <text x="0" y="0" class="side">Product Proof Points</text>
+    <text x="0" y="45" class="note">- Platform Engineering</text>
+    <text x="0" y="80" class="note">- Kubernetes and GitOps</text>
+    <text x="0" y="115" class="note">- CI/CD Automation</text>
+    <text x="0" y="150" class="note">- DevSecOps Controls</text>
+    <text x="0" y="185" class="note">- SRE and Observability</text>
+    <text x="0" y="220" class="note">- AI-Assisted Ops</text>
+    <text x="0" y="255" class="note">- Public Case Studies</text>
+  </g>
+  <text x="70" y="845" class="note">Public-facing architecture map for GitHub, portfolio, and LinkedIn. Sanitized for external review.</text>
+</svg>
