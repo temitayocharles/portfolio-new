@@ -9,6 +9,24 @@
   REACT_APP_BACKEND_URL = "https://api.temitayocharles.online"
 
 [[redirects]]
+  from = "http://temitayocharles.online/*"
+  to = "https://temitayocharles.online/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.temitayocharles.online/*"
+  to = "https://temitayocharles.online/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.temitayocharles.online/*"
+  to = "https://temitayocharles.online/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
