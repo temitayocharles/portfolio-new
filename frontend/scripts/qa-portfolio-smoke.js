@@ -19,8 +19,10 @@ const requiredChecks = [
   ["Project case-study content exists", (files.mock.match(/caseStudy:\s*{/g) || []).length >= 5],
   ["Writing note content exists", (files.mock.match(/noteBody:/g) || []).length >= 5],
   ["Project architecture data exists", files.mock.includes("export const projectArchitectures") && (files.mock.match(/businessValue:/g) || []).length >= 6],
+  ["Architecture diagram assets are referenced", files.mock.includes("infraforge-architecture.png") && files.mock.includes("forgewatch-architecture.png") && files.mock.includes("project-iris-architecture.png") && files.mock.includes("jerry-architecture.png")],
   ["ForgeWatch uses sentinel-copilot as source", files.mock.includes("name: \"ForgeWatch\"") && files.mock.includes("repo: \"sentinel-copilot\"")],
   ["Architecture explorer is interactive", files.architecture.includes("selectedNodeId") && files.architecture.includes("activeTab") && files.architecture.includes("projectArchitectures")],
+  ["Architecture explorer renders visual diagrams", files.architecture.includes("active.diagramImage") && files.architecture.includes("Curated systems visual")],
   ["Hero rotating slot is layout stable", files.hero.includes("hero-rotating-slot") && files.css.includes("scrollbar-gutter: stable")],
   ["No em dash in portfolio copy", !Object.values(files).some((content) => content.includes("\u2014"))],
 ];

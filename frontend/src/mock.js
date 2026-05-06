@@ -202,6 +202,10 @@ export const projects = [
     outcomes: ["Repeatable platform releases", "Registry and state recovery", "Production domain cutover"],
     signal: "Founder-owned company platform",
     repo: "homelab-gitops",
+    diagramImage: {
+      src: "/images/architecture/infraforge-architecture.png",
+      alt: "TCA InfraForge company platform architecture diagram",
+    },
     visibility: "Founder-owned company case study",
     accent: "teal",
     caseStudy: {
@@ -229,6 +233,10 @@ export const projects = [
     outcomes: ["Private workflow control", "Governed memory model", "Recoverable AI workspace"],
     signal: "AI operations product track",
     repo: "project-iris",
+    diagramImage: {
+      src: "/images/architecture/project-iris-architecture.png",
+      alt: "Project Iris local-first AI workspace architecture diagram",
+    },
     visibility: "Private product case study",
     accent: "amber",
     caseStudy: {
@@ -243,6 +251,49 @@ export const projects = [
       result:
         "The project demonstrates how AI products can feel useful while still respecting operational boundaries, privacy needs, and founder-level control.",
     },
+  },
+  {
+    id: "jerry",
+    projectId: "jerry",
+    label: "Personal AI system",
+    title: "Jerry durable personal assistant architecture",
+    repo: "Jerry assistant system",
+    diagramImage: {
+      src: "/images/architecture/jerry-architecture.png",
+      alt: "Jerry personal assistant architecture diagram",
+    },
+    summary:
+      "Jerry is modeled as a local-first personal assistant with durable memory, retrieval, guarded actions, and backup-aware state. The architecture frames the assistant as an owned operating system for personal productivity rather than a novelty chatbot.",
+    businessValue:
+      "Shows how personal AI can be designed with the same discipline as production software: memory, consent, auditability, durability, and reversible execution.",
+    metric: "Durable memory, local-first control, guarded execution",
+    tabs: ["Visual", "Topology", "Flows", "Controls"],
+    nodes: [
+      { id: "inputs", label: "Input Channels", layer: "Experience", x: 8, y: 36, tone: "teal", details: "Chat, notes, local files, browser context, images, and other user-controlled sources." },
+      { id: "assistant", label: "Assistant Core", layer: "Reasoning", x: 28, y: 48, tone: "teal", details: "Intent routing, task continuity, conversation state, reminders, and personal workflow coordination." },
+      { id: "models", label: "Local Models", layer: "Intelligence", x: 48, y: 26, tone: "amber", details: "Local model runtime and embeddings support private reasoning, retrieval, and summarization." },
+      { id: "memory", label: "Semantic Memory", layer: "Knowledge", x: 50, y: 68, tone: "teal", details: "Durable memory treats personal context as governed infrastructure rather than transient chat history." },
+      { id: "actions", label: "Guarded Actions", layer: "Execution", x: 70, y: 45, tone: "amber", details: "File operations, browser tasks, notifications, and sync flows pass through consent-aware execution boundaries." },
+      { id: "store", label: "SQLite + Backups", layer: "State", x: 88, y: 28, tone: "teal", details: "Primary local state with backup and replication paths for continuity after device or runtime failure." },
+      { id: "audit", label: "Audit Trail", layer: "Trust", x: 88, y: 70, tone: "amber", details: "Actions remain reviewable and reversible so the assistant earns trust through visibility." },
+    ],
+    edges: [
+      ["inputs", "assistant", "context"],
+      ["assistant", "models", "reason"],
+      ["models", "memory", "retrieve"],
+      ["assistant", "memory", "recall"],
+      ["assistant", "actions", "request"],
+      ["actions", "audit", "record"],
+      ["memory", "store", "persist"],
+      ["audit", "store", "history"],
+    ],
+    flows: [
+      "User context enters through explicit channels so the assistant does not blur private sources with uncontrolled automation.",
+      "The assistant core routes intent through local models, semantic memory, and task continuity before recommending or taking action.",
+      "Any meaningful action crosses a guarded execution boundary with consent, logging, and reviewable outcomes.",
+      "SQLite and backup paths make memory durable enough to support long-running personal workflows.",
+    ],
+    controls: ["Local-first privacy", "Consent-gated execution", "Durable memory", "Audit trail", "Backup-aware state"],
   },
   {
     id: "ai-builders-academy",
@@ -368,7 +419,7 @@ export const projectArchitectures = [
     businessValue:
       "Shows that InfraForge is a real platform company with an owned operating model, not a collection of lab resources.",
     metric: "GitOps, secrets, registry, DR, and edge routing",
-    tabs: ["Topology", "Flows", "Controls"],
+    tabs: ["Visual", "Topology", "Flows", "Controls"],
     nodes: [
       { id: "cloudflare", label: "Cloudflare", layer: "Edge", x: 8, y: 24, tone: "amber", details: "Public DNS, TLS edge, caching, and routed entry for company and client-facing endpoints." },
       { id: "tailscale", label: "Tailscale", layer: "Access", x: 9, y: 70, tone: "amber", details: "Private operator access path for internal systems and administrative workflows." },
@@ -411,7 +462,7 @@ export const projectArchitectures = [
     businessValue:
       "Positions private AI as a controlled product workspace for teams that need capability without losing custody of data and actions.",
     metric: "Private memory, tool control, and recovery",
-    tabs: ["Topology", "Flows", "Controls"],
+    tabs: ["Visual", "Topology", "Flows", "Controls"],
     nodes: [
       { id: "user", label: "Operator", layer: "User", x: 7, y: 48, tone: "amber", details: "Founder, operator, or technical user working inside a private AI workspace." },
       { id: "web", label: "React UI", layer: "Experience", x: 24, y: 30, tone: "teal", details: "Workspace interface for conversations, workflows, managed actions, and project context." },
@@ -525,12 +576,16 @@ export const projectArchitectures = [
     label: "AIOps copilot",
     title: "ForgeWatch evidence-first operations copilot",
     repo: "sentinel-copilot",
+    diagramImage: {
+      src: "/images/architecture/forgewatch-architecture.png",
+      alt: "ForgeWatch evidence-first AIOps architecture diagram",
+    },
     summary:
       "ForgeWatch uses Ollama function calling to gather read-only evidence from Kubernetes, Prometheus, Loki, and Argo CD. It can propose write actions, but policy and operator approval control every mutation.",
     businessValue:
       "Gives InfraForge and lean platform teams a safer AIOps loop where AI accelerates diagnosis without silently changing production.",
     metric: "Read-only autonomous tools, approval-gated writes",
-    tabs: ["Topology", "Flows", "Controls"],
+    tabs: ["Visual", "Topology", "Flows", "Controls"],
     nodes: [
       { id: "operator", label: "Operator", layer: "Human", x: 7, y: 48, tone: "amber", details: "Engineer or platform owner asking questions, reviewing evidence, and approving or denying proposed actions." },
       { id: "api", label: "ForgeWatch API", layer: "Application", x: 25, y: 48, tone: "teal", details: "FastAPI service exposing ask, alert, digest, watchdog, outcome, memory, and writes routes." },

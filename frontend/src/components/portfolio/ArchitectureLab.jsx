@@ -38,7 +38,7 @@ const nodeToneDot = {
 
 const ArchitectureLab = () => {
   const [activeId, setActiveId] = useState(projectArchitectures[0]?.id);
-  const [activeTab, setActiveTab] = useState("Topology");
+  const [activeTab, setActiveTab] = useState(projectArchitectures[0]?.diagramImage ? "Visual" : "Topology");
   const [query, setQuery] = useState("");
   const [selectedNodeId, setSelectedNodeId] = useState(projectArchitectures[0]?.nodes?.[0]?.id);
 
@@ -69,7 +69,7 @@ const ArchitectureLab = () => {
   const chooseArchitecture = (id) => {
     const next = projectArchitectures.find((item) => item.id === id) || projectArchitectures[0];
     setActiveId(id);
-    setActiveTab("Topology");
+    setActiveTab(next.diagramImage ? "Visual" : "Topology");
     setQuery("");
     setSelectedNodeId(next.nodes[0]?.id);
   };
@@ -165,6 +165,7 @@ const ArchitectureLab = () => {
                           : "border-white/[0.07] bg-white/[0.025] text-slate-500 hover:text-slate-300 hover:border-white/15"
                       }`}
                     >
+                      {tab === "Visual" && <Sparkles className="h-3 w-3" />}
                       {tab === "Topology" && <Route className="h-3 w-3" />}
                       {tab === "Flows" && <GitBranch className="h-3 w-3" />}
                       {tab === "Controls" && <ShieldCheck className="h-3 w-3" />}
@@ -173,6 +174,35 @@ const ArchitectureLab = () => {
                   ))}
                 </div>
               </div>
+
+
+              {activeTab === "Visual" && active.diagramImage && (
+                <div className="relative p-4 sm:p-6">
+                  <div className="overflow-hidden rounded-3xl border border-white/[0.08] bg-white/[0.025] shadow-[0_28px_90px_-50px_rgba(15,23,42,0.9)]">
+                    <div className="relative bg-slate-950/40">
+                      <img
+                        src={active.diagramImage.src}
+                        alt={active.diagramImage.alt}
+                        loading="lazy"
+                        className="block w-full object-cover"
+                      />
+                      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#081018]/85 to-transparent" />
+                    </div>
+                    <div className="grid gap-4 border-t border-white/[0.06] bg-[#0a0f14]/88 p-4 sm:grid-cols-[1.2fr_0.8fr] sm:p-5">
+                      <div>
+                        <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-teal-300">Curated systems visual</div>
+                        <p className="mt-2 text-sm leading-relaxed text-slate-400">
+                          This board is the executive visual for the project. Use the topology, flows, and controls tabs for the interactive technical drill-down.
+                        </p>
+                      </div>
+                      <div className="rounded-2xl border border-white/[0.07] bg-white/[0.025] p-4">
+                        <div className="text-[11px] uppercase tracking-[0.18em] text-slate-500">Source</div>
+                        <div className="mt-2 text-sm font-medium text-slate-200">{active.repo}</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
 
               {activeTab === "Topology" && (
                 <div className="relative grid min-h-[620px] lg:grid-cols-[minmax(0,1fr)_280px]">
