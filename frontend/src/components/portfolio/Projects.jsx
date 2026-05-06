@@ -44,6 +44,7 @@ const normalizeProject = (project = {}) => ({
 
 const Projects = () => {
   const normalizedProjects = asArray(projects).map(normalizeProject);
+  const projectCards = Array.isArray(normalizedProjects) ? normalizedProjects : [];
   const [selectedProject, setSelectedProject] = useState(null);
 
   const openProjectCaseStudy = (project, event) => {
@@ -73,7 +74,7 @@ const Projects = () => {
         </div>
 
         <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-5">
-          {normalizedProjects.map((p, i) => {
+          {projectCards.map((p, i) => {
             const accent = accentMap[p.accent] || accentMap.teal;
             const isPublic = p.visibility === "Public repo" && p.repoUrl;
             const pillars = asArray(p.pillars);
@@ -176,14 +177,15 @@ const Projects = () => {
       </div>
 
       {selectedProject && (
-        <ProjectCaseStudy project={selectedProject} onClose={() => setSelectedProject(null)} />
+        <ProjectCaseStudy project={normalizeProject(selectedProject)} onClose={() => setSelectedProject(null)} />
       )}
     </section>
   );
 };
 
 const ProjectCaseStudy = ({ project, onClose }) => {
-  const accent = accentMap[project.accent] || accentMap.teal;
+  const safeProject = normalizeProject(project);
+  const accent = accentMap[safeProject.accent] || accentMap.teal;
 
   useEffect(() => {
     const previousOverflow = document.body.style.overflow;
@@ -205,8 +207,8 @@ const ProjectCaseStudy = ({ project, onClose }) => {
         <div className="sticky top-0 z-10 flex items-start justify-between gap-4 border-b border-white/10 bg-[#081018]/95 p-5 sm:p-6 backdrop-blur">
           <div>
             <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-teal-300">Case study</div>
-            <h3 className="mt-2 text-2xl font-semibold text-slate-50">{project.caseStudy?.title || project.name}</h3>
-            <p className="mt-1 text-sm text-slate-400">{project.name} · {project.category}</p>
+            <h3 className="mt-2 text-2xl font-semibold text-slate-50">{safeProject.caseStudy?.title || safeProject.name}</h3>
+            <p className="mt-1 text-sm text-slate-400">{safeProject.name} · {safeProject.category}</p>
           </div>
           <button type="button" onClick={onClose} className="rounded-full border border-white/10 bg-white/[0.04] p-2 text-slate-400 hover:text-slate-100 hover:border-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-300/60">
             <X className="h-4 w-4" />
@@ -214,12 +216,12 @@ const ProjectCaseStudy = ({ project, onClose }) => {
         </div>
 
         <div className="p-5 sm:p-6 space-y-6">
-          <p className="text-slate-300 leading-relaxed">{project.caseStudy?.context || project.description}</p>
+          <p className="text-slate-300 leading-relaxed">{safeProject.caseStudy?.context || safeProject.description}</p>
 
           <div className="rounded-2xl border border-white/[0.06] bg-white/[0.025] p-4">
             <div className="text-[11px] uppercase tracking-[0.18em] text-slate-500 mb-3">Key decisions</div>
             <ul className="space-y-3">
-              {asArray(project.caseStudy?.decisions?.length ? project.caseStudy.decisions : project.outcomes).map((item) => (
+              {asArray(safeProject.caseStudy?.decisions?.length ? safeProject.caseStudy.decisions : safeProject.outcomes).map((item) => (
                 <li key={item} className="flex gap-3 text-sm text-slate-300 leading-relaxed">
                   <span className="mt-2 h-1.5 w-1.5 flex-none rounded-full bg-teal-300" />
                   <span>{item}</span>
@@ -230,11 +232,11 @@ const ProjectCaseStudy = ({ project, onClose }) => {
 
           <div className={`rounded-2xl border p-4 ${accent.pillarBg}`}>
             <div className="text-[11px] uppercase tracking-[0.18em] opacity-75 mb-2">Result</div>
-            <p className="text-sm leading-relaxed">{project.caseStudy?.result}</p>
+            <p className="text-sm leading-relaxed">{safeProject.caseStudy?.result}</p>
           </div>
 
           <div className="flex flex-wrap gap-2 pt-2">
-            {asArray(project.stack).map((item) => (
+            {asArray(safeProject.stack).map((item) => (
               <span key={item} className="rounded-md border border-white/[0.07] bg-white/[0.03] px-2.5 py-1 font-mono text-[11px] text-slate-400">
                 {item}
               </span>
