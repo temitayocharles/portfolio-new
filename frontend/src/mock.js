@@ -186,7 +186,7 @@ export const experiences = [
 ];
 
 export const projects = [
-  {
+{
     id: "infraforge",
     name: "TCA InfraForge",
     subtitle: "My Platform Engineering Company",
@@ -252,50 +252,38 @@ export const projects = [
         "The project demonstrates how AI products can feel useful while still respecting operational boundaries, privacy needs, and founder-level control.",
     },
   },
-  {
+    {
     id: "jerry",
-    projectId: "jerry",
-    label: "Personal AI system",
-    title: "Jerry durable personal assistant architecture",
+    name: "Jerry",
+    subtitle: "Durable Personal AI Assistant",
+    category: "Personal AI Infrastructure",
+    description:
+      "Jerry is a local-first personal assistant system designed around durable memory, guarded actions, private context, and recoverable state. It frames personal AI as owned infrastructure: useful, auditable, and controlled by the operator.",
+    stack: ["Ollama", "Qwen", "SQLite", "Litestream", "Cloudflare R2", "Local-first Memory", "Approval Gates"],
+    pillars: ["Memory", "Privacy", "Actions", "Durability"],
+    outcomes: ["Local-first personal AI model", "Durable memory and backup posture", "Approval-gated execution path"],
+    signal: "Personal AI operating system track",
     repo: "Jerry assistant system",
     diagramImage: {
       src: "/images/architecture/jerry-architecture.png",
       alt: "Jerry personal assistant architecture diagram",
     },
-    summary:
-      "Jerry is modeled as a local-first personal assistant with durable memory, retrieval, guarded actions, and backup-aware state. The architecture frames the assistant as an owned operating system for personal productivity rather than a novelty chatbot.",
-    businessValue:
-      "Shows how personal AI can be designed with the same discipline as production software: memory, consent, auditability, durability, and reversible execution.",
-    metric: "Durable memory, local-first control, guarded execution",
-    tabs: ["Visual", "Topology", "Flows", "Controls"],
-    nodes: [
-      { id: "inputs", label: "Input Channels", layer: "Experience", x: 8, y: 36, tone: "teal", details: "Chat, notes, local files, browser context, images, and other user-controlled sources." },
-      { id: "assistant", label: "Assistant Core", layer: "Reasoning", x: 28, y: 48, tone: "teal", details: "Intent routing, task continuity, conversation state, reminders, and personal workflow coordination." },
-      { id: "models", label: "Local Models", layer: "Intelligence", x: 48, y: 26, tone: "amber", details: "Local model runtime and embeddings support private reasoning, retrieval, and summarization." },
-      { id: "memory", label: "Semantic Memory", layer: "Knowledge", x: 50, y: 68, tone: "teal", details: "Durable memory treats personal context as governed infrastructure rather than transient chat history." },
-      { id: "actions", label: "Guarded Actions", layer: "Execution", x: 70, y: 45, tone: "amber", details: "File operations, browser tasks, notifications, and sync flows pass through consent-aware execution boundaries." },
-      { id: "store", label: "SQLite + Backups", layer: "State", x: 88, y: 28, tone: "teal", details: "Primary local state with backup and replication paths for continuity after device or runtime failure." },
-      { id: "audit", label: "Audit Trail", layer: "Trust", x: 88, y: 70, tone: "amber", details: "Actions remain reviewable and reversible so the assistant earns trust through visibility." },
-    ],
-    edges: [
-      ["inputs", "assistant", "context"],
-      ["assistant", "models", "reason"],
-      ["models", "memory", "retrieve"],
-      ["assistant", "memory", "recall"],
-      ["assistant", "actions", "request"],
-      ["actions", "audit", "record"],
-      ["memory", "store", "persist"],
-      ["audit", "store", "history"],
-    ],
-    flows: [
-      "User context enters through explicit channels so the assistant does not blur private sources with uncontrolled automation.",
-      "The assistant core routes intent through local models, semantic memory, and task continuity before recommending or taking action.",
-      "Any meaningful action crosses a guarded execution boundary with consent, logging, and reviewable outcomes.",
-      "SQLite and backup paths make memory durable enough to support long-running personal workflows.",
-    ],
-    controls: ["Local-first privacy", "Consent-gated execution", "Durable memory", "Audit trail", "Backup-aware state"],
+    visibility: "Private product case study",
+    accent: "amber",
+    caseStudy: {
+      title: "A personal assistant designed like infrastructure",
+      context:
+        "Jerry explores what happens when a personal AI assistant is treated as an operating system for daily work rather than a disposable chatbot. The focus is durable memory, explicit consent, and recoverable state.",
+      decisions: [
+        "Use local-first storage and model execution to keep personal context under the operator's control.",
+        "Route meaningful actions through approval gates so the assistant can help without becoming opaque or risky.",
+        "Treat memory, backups, and audit history as first-class parts of the assistant architecture.",
+      ],
+      result:
+        "The system demonstrates a premium personal AI pattern: private by default, durable over time, and designed for controlled action instead of uncontrolled automation.",
+    },
   },
-  {
+{
     id: "ai-builders-academy",
     name: "AI Builders Academy",
     subtitle: "Program Delivery Platform for AI Education",
@@ -408,7 +396,7 @@ export const projects = [
 ];
 
 export const projectArchitectures = [
-  {
+{
     id: "infraforge",
     projectId: "infraforge",
     label: "Company platform",
@@ -491,7 +479,50 @@ export const projectArchitectures = [
     ],
     controls: ["TLS and auth hardening", "Governed memory", "Explicit tool boundaries", "Visible browser actions", "Backup and restore model"],
   },
-  {
+    {
+    id: "jerry",
+    projectId: "jerry",
+    label: "Personal AI system",
+    title: "Jerry durable personal assistant architecture",
+    repo: "Jerry assistant system",
+    diagramImage: {
+      src: "/images/architecture/jerry-architecture.png",
+      alt: "Jerry personal assistant architecture diagram",
+    },
+    summary:
+      "Jerry is modeled as a local-first personal assistant with durable memory, retrieval, guarded actions, and backup-aware state. The architecture frames the assistant as an owned operating system for personal productivity rather than a novelty chatbot.",
+    businessValue:
+      "Shows how personal AI can be designed with the same discipline as production software: memory, consent, auditability, durability, and reversible execution.",
+    metric: "Durable memory, local-first control, guarded execution",
+    tabs: ["Visual", "Topology", "Flows", "Controls"],
+    nodes: [
+      { id: "inputs", label: "Input Channels", layer: "Experience", x: 8, y: 36, tone: "teal", details: "Chat, notes, local files, browser context, images, and other user-controlled sources." },
+      { id: "assistant", label: "Assistant Core", layer: "Reasoning", x: 28, y: 48, tone: "teal", details: "Intent routing, task continuity, conversation state, reminders, and personal workflow coordination." },
+      { id: "models", label: "Local Models", layer: "Intelligence", x: 48, y: 26, tone: "amber", details: "Local model runtime and embeddings support private reasoning, retrieval, and summarization." },
+      { id: "memory", label: "Semantic Memory", layer: "Knowledge", x: 50, y: 68, tone: "teal", details: "Durable memory treats personal context as governed infrastructure rather than transient chat history." },
+      { id: "actions", label: "Guarded Actions", layer: "Execution", x: 70, y: 45, tone: "amber", details: "File operations, browser tasks, notifications, and sync flows pass through consent-aware execution boundaries." },
+      { id: "store", label: "SQLite + Backups", layer: "State", x: 88, y: 28, tone: "teal", details: "Primary local state with backup and replication paths for continuity after device or runtime failure." },
+      { id: "audit", label: "Audit Trail", layer: "Trust", x: 88, y: 70, tone: "amber", details: "Actions remain reviewable and reversible so the assistant earns trust through visibility." },
+    ],
+    edges: [
+      ["inputs", "assistant", "context"],
+      ["assistant", "models", "reason"],
+      ["models", "memory", "retrieve"],
+      ["assistant", "memory", "recall"],
+      ["assistant", "actions", "request"],
+      ["actions", "audit", "record"],
+      ["memory", "store", "persist"],
+      ["audit", "store", "history"],
+    ],
+    flows: [
+      "User context enters through explicit channels so the assistant does not blur private sources with uncontrolled automation.",
+      "The assistant core routes intent through local models, semantic memory, and task continuity before recommending or taking action.",
+      "Any meaningful action crosses a guarded execution boundary with consent, logging, and reviewable outcomes.",
+      "SQLite and backup paths make memory durable enough to support long-running personal workflows.",
+    ],
+    controls: ["Local-first privacy", "Consent-gated execution", "Durable memory", "Audit trail", "Backup-aware state"],
+  },
+{
     id: "ai-builders-academy",
     projectId: "ai-builders-academy",
     label: "Education business platform",

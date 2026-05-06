@@ -58,6 +58,9 @@ const Projects = () => {
           {projects.map((p, i) => {
             const accent = accentMap[p.accent] || accentMap.teal;
             const isPublic = p.visibility === "Public repo" && p.repoUrl;
+            const pillars = Array.isArray(p.pillars) ? p.pillars : [];
+            const outcomes = Array.isArray(p.outcomes) ? p.outcomes : [];
+            const stack = Array.isArray(p.stack) ? p.stack : [];
             return (
               <article
                 key={p.id}
@@ -84,7 +87,7 @@ const Projects = () => {
                 <p className="relative mt-4 text-[14px] text-slate-400 leading-relaxed">{p.description}</p>
 
                 <div className="relative mt-5 flex flex-wrap gap-1.5">
-                  {p.pillars.map((pl) => (
+                  {pillars.map((pl) => (
                     <span key={pl} className={`px-2.5 py-1 rounded-md font-mono text-[11px] border ${accent.pillarBg}`}>
                       {pl}
                     </span>
@@ -96,7 +99,7 @@ const Projects = () => {
                     <Eye className="h-3 w-3" /> Proof points
                   </div>
                   <ul className="space-y-1.5">
-                    {p.outcomes.map((item) => (
+                    {outcomes.map((item) => (
                       <li key={item} className="flex items-start gap-2 text-xs text-slate-400">
                         <span className="mt-1.5 h-1 w-1 rounded-full bg-teal-300/70" />
                         <span>{item}</span>
@@ -108,7 +111,7 @@ const Projects = () => {
                 <div className="relative mt-5 pt-5 border-t border-white/5">
                   <div className="text-[11px] uppercase tracking-wider text-slate-500 mb-2">Stack</div>
                   <div className="flex flex-wrap gap-1.5">
-                    {p.stack.slice(0, 8).map((s) => (
+                    {stack.slice(0, 8).map((s) => (
                       <span key={s} className="px-2 py-0.5 rounded font-mono text-[11px] text-slate-400 bg-white/[0.03] border border-white/[0.06]">
                         {s}
                       </span>
@@ -198,7 +201,7 @@ const ProjectCaseStudy = ({ project, onClose }) => {
           <div className="rounded-2xl border border-white/[0.06] bg-white/[0.025] p-4">
             <div className="text-[11px] uppercase tracking-[0.18em] text-slate-500 mb-3">Key decisions</div>
             <ul className="space-y-3">
-              {(project.caseStudy?.decisions || project.outcomes).map((item) => (
+              {(project.caseStudy?.decisions || project.outcomes || []).map((item) => (
                 <li key={item} className="flex gap-3 text-sm text-slate-300 leading-relaxed">
                   <span className="mt-2 h-1.5 w-1.5 flex-none rounded-full bg-teal-300" />
                   <span>{item}</span>
