@@ -89,3 +89,4 @@ memory/
 .chainlit
 chainlit.md
 android-sdk/
+.vercel
