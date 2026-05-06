@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+
+const PROJECTS_SCHEMA_GUARD_VERSION = "2026-05-05-projects-array-guard";
 import { createPortal } from "react-dom";
 import { ArrowUpRight, Eye, GitBranch, Layers, LockKeyhole, Sparkles, X } from "lucide-react";
 import { projects } from "@/mock";
@@ -37,7 +39,7 @@ const Projects = () => {
   };
 
   return (
-    <section id="projects" className="relative py-24 lg:py-32 bg-[#0b1117]">
+    <section id="projects" data-schema-guard={PROJECTS_SCHEMA_GUARD_VERSION} className="relative py-24 lg:py-32 bg-[#0b1117]">
       <div className="absolute inset-0 bg-grid opacity-[0.18] pointer-events-none" />
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-teal-300/30 to-transparent pointer-events-none" />
       <div className="relative max-w-7xl mx-auto px-6 lg:px-10">
