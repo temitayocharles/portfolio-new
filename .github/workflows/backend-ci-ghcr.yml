@@ -1,14 +1,12 @@
 name: Backend CI and GHCR Image
 
+# GHCR publishing is intentionally limited to main/manual runs.
+# Pull requests are covered by Backend CI and Backend Container Scan.
+
 on:
   push:
     branches:
       - main
-    paths:
-      - "backend/**"
-      - "backend_test.py"
-      - ".github/workflows/backend-ci-ghcr.yml"
-  pull_request:
     paths:
       - "backend/**"
       - "backend_test.py"
