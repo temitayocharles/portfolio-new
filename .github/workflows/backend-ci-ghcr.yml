@@ -24,8 +24,8 @@ jobs:
     uses: temitayocharles/shared-workflows/.github/workflows/service-python-ci-ghcr.yml@main
     with:
       python-version: "3.11"
-      test_runs_on_json: '["self-hosted","linux","infraforge","workloads"]'
-      docker_runs_on_json: '["self-hosted","linux","infraforge","workloads"]'
+      test_runs_on_json: '["portfolio-new-workloads"]'
+      docker_runs_on_json: '["portfolio-new-workloads"]'
       requirements-file: "backend/requirements.txt"
       test-cmd: "python -m py_compile backend/server.py backend_test.py && MONGO_URL=mongodb://localhost:27017 DB_NAME=portfolio_ci ADMIN_API_KEY=ci-admin-key CONTACT_RATE_LIMIT_WINDOW_SECONDS=60 CONTACT_RATE_LIMIT_MAX_REQUESTS=5 MAX_CONTACT_LIST_LIMIT=500 CORS_ORIGINS=http://localhost:3000,http://127.0.0.1:3000 pytest -q backend/tests"
       context: "backend"

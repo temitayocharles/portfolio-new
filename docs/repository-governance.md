@@ -44,7 +44,7 @@ Runtime deployment state for the backend is promoted through `homelab-gitops`.
 GitHub Actions must use the Home Lab ARC self-hosted runners, not GitHub-hosted `ubuntu-latest`.
 
 ```text
-General and Docker-capable jobs: [self-hosted, linux, infraforge, workloads]
+General and Docker-capable jobs: portfolio-new-workloads
 ```
 
 

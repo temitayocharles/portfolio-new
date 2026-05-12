@@ -19,7 +19,7 @@ permissions:
 
 jobs:
   build-and-scan:
-    runs-on: [self-hosted, linux, infraforge, workloads]
+    runs-on: portfolio-new-workloads
 
     steps:
       - name: Checkout repository
