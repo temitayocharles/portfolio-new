@@ -8,7 +8,8 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { writings } from "@/mock";
+import { writings as fallbackWritings } from "@/mock";
+import { usePortfolioContent } from "@/context/PortfolioContentContext";
 import { SectionLabel } from "./About";
 
 const accentMap = {
@@ -27,6 +28,7 @@ const accentMap = {
 };
 
 const Writing = () => {
+  const { writings = fallbackWritings } = usePortfolioContent();
   const [selectedNote, setSelectedNote] = useState(null);
 
   const openNote = (note, event) => {

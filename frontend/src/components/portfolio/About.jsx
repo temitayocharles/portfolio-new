@@ -1,10 +1,12 @@
 import React from "react";
-import { aboutParagraphs, aboutHighlights, heroVisuals } from "@/mock";
+import { aboutParagraphs as fallbackAboutParagraphs, aboutHighlights as fallbackAboutHighlights, heroVisuals as fallbackHeroVisuals } from "@/mock";
+import { usePortfolioContent } from "@/context/PortfolioContentContext";
 import { Quote } from "lucide-react";
 import Topology from "./Topology";
 import AnimatedStat from "./AnimatedStat";
 
 const About = () => {
+  const { aboutParagraphs = fallbackAboutParagraphs, aboutHighlights = fallbackAboutHighlights, heroVisuals = fallbackHeroVisuals } = usePortfolioContent();
   return (
     <section id="about" className="relative py-24 lg:py-32">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">

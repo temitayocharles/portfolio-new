@@ -9,7 +9,8 @@ import {
   Code2,
   Users,
 } from "lucide-react";
-import { skillGroups } from "@/mock";
+import { skillGroups as fallbackSkillGroups } from "@/mock";
+import { usePortfolioContent } from "@/context/PortfolioContentContext";
 import { SectionLabel } from "./About";
 
 const iconMap = {
@@ -24,6 +25,7 @@ const iconMap = {
 };
 
 const Skills = () => {
+  const { skillGroups = fallbackSkillGroups } = usePortfolioContent();
   return (
     <section id="skills" className="relative py-24 lg:py-32 bg-[#0b1117]">
       <div className="absolute inset-0 bg-grid opacity-[0.18] pointer-events-none" />

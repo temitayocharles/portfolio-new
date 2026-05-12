@@ -14,7 +14,8 @@ import {
   Sparkles,
   Workflow,
 } from "lucide-react";
-import { projectArchitectures } from "@/mock";
+import { projectArchitectures as fallbackProjectArchitectures } from "@/mock";
+import { usePortfolioContent } from "@/context/PortfolioContentContext";
 import { SectionLabel } from "./About";
 
 const iconMap = {
@@ -37,14 +38,16 @@ const nodeToneDot = {
 };
 
 const ArchitectureLab = () => {
-  const [activeId, setActiveId] = useState(projectArchitectures[0]?.id);
-  const [activeTab, setActiveTab] = useState(projectArchitectures[0]?.diagramImage ? "Visual" : "Topology");
+  const { projectArchitectures = fallbackProjectArchitectures } = usePortfolioContent();
+  const architectures = Array.isArray(projectArchitectures) && projectArchitectures.length ? projectArchitectures : fallbackProjectArchitectures;
+  const [activeId, setActiveId] = useState(architectures[0]?.id);
+  const [activeTab, setActiveTab] = useState(architectures[0]?.diagramImage ? "Visual" : "Topology");
   const [query, setQuery] = useState("");
-  const [selectedNodeId, setSelectedNodeId] = useState(projectArchitectures[0]?.nodes?.[0]?.id);
+  const [selectedNodeId, setSelectedNodeId] = useState(architectures[0]?.nodes?.[0]?.id);
 
   const active = useMemo(
-    () => projectArchitectures.find((item) => item.id === activeId) || projectArchitectures[0],
-    [activeId]
+    () => architectures.find((item) => item.id === activeId) || architectures[0],
+    [activeId, architectures]
   );
 
   const selectedNode = useMemo(
@@ -67,7 +70,7 @@ const ArchitectureLab = () => {
   });
 
   const chooseArchitecture = (id) => {
-    const next = projectArchitectures.find((item) => item.id === id) || projectArchitectures[0];
+    const next = architectures.find((item) => item.id === id) || architectures[0];
     setActiveId(id);
     setActiveTab(next.diagramImage ? "Visual" : "Topology");
     setQuery("");
@@ -105,7 +108,7 @@ const ArchitectureLab = () => {
             </div>
 
             <div className="grid gap-3">
-              {projectArchitectures.map((item) => {
+              {architectures.map((item) => {
                 const Icon = iconMap[item.id] || Layers;
                 const isActive = item.id === active.id;
                 return (
