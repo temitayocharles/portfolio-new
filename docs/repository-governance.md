@@ -37,3 +37,13 @@ docs: document home lab deployment path
 
 Application source code lives here.
 Runtime deployment state for the backend is promoted through `homelab-gitops`.
+
+
+## Runner baseline
+
+GitHub Actions must use the Home Lab ARC self-hosted runners, not GitHub-hosted `ubuntu-latest`.
+
+```text
+General jobs: [self-hosted, linux]
+Docker jobs:  [self-hosted, linux, homelab-docker]
+```

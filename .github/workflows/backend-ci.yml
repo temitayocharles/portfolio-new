@@ -20,7 +20,7 @@ permissions:
 
 jobs:
   backend-ci:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux]
 
     env:
       MONGO_URL: mongodb://localhost:27017

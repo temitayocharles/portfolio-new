@@ -43,3 +43,13 @@ Performance is warning-level in Phase 1 because image optimization and bundle cl
 - Pin reusable workflow references to immutable SHAs.
 - Add CodeQL.
 - Add preview deployment checks.
+
+
+## Runner baseline
+
+GitHub Actions must use the Home Lab ARC self-hosted runners, not GitHub-hosted `ubuntu-latest`.
+
+```text
+General jobs: [self-hosted, linux]
+Docker jobs:  [self-hosted, linux, homelab-docker]
+```
