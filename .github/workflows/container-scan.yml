@@ -19,7 +19,7 @@ permissions:
 
 jobs:
   build-and-scan:
-    runs-on: [self-hosted, linux, homelab-docker]
+    runs-on: [self-hosted, linux, infraforge, workloads]
 
     steps:
       - name: Checkout repository

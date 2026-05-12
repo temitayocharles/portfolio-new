@@ -50,6 +50,8 @@ Performance is warning-level in Phase 1 because image optimization and bundle cl
 GitHub Actions must use the Home Lab ARC self-hosted runners, not GitHub-hosted `ubuntu-latest`.
 
 ```text
-General jobs: [self-hosted, linux]
-Docker jobs:  [self-hosted, linux, homelab-docker]
+General and Docker-capable jobs: [self-hosted, linux, infraforge, workloads]
 ```
+
+
+The `infraforge, workloads` labels come from `homelab-gitops/applications/arc-runners/homelab-workloads-values.yaml`; that scale set uses DIND and is the appropriate lane for portfolio application CI/CD.

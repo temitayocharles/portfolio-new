@@ -20,7 +20,7 @@ permissions:
 
 jobs:
   frontend-ci:
-    runs-on: [self-hosted, linux]
+    runs-on: [self-hosted, linux, infraforge, workloads]
     defaults:
       run:
         working-directory: frontend

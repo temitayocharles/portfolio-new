@@ -20,7 +20,7 @@ permissions:
 
 jobs:
   backend-ci:
-    runs-on: [self-hosted, linux]
+    runs-on: [self-hosted, linux, infraforge, workloads]
 
     env:
       MONGO_URL: mongodb://localhost:27017
