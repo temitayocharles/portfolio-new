@@ -55,3 +55,8 @@ General and Docker-capable jobs: portfolio-new-workloads
 
 
 The `infraforge, workloads` labels come from `homelab-gitops/applications/arc-runners/homelab-workloads-values.yaml`; that scale set uses DIND and is the appropriate lane for portfolio application CI/CD.
+
+
+## Secret scanning model
+
+GitGuardian is the blocking pull-request secret scanner. Gitleaks runs as an advisory defense-in-depth check against the current working tree with redacted output so findings can be triaged without exposing secret material in logs.

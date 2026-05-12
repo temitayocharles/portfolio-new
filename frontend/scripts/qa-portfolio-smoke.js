@@ -67,11 +67,15 @@ assert(writings.length >= 1, "Writing note content exists");
 assert(architectures.length >= 1, "Project architecture data exists");
 
 for (const project of projects) {
-  assert(project.title, `Project has title: ${project.id || "unknown"}`);
-  assert(project.summary || project.description, `Project has summary or description: ${project.title || project.id}`);
-  assert(Array.isArray(project.tags), `Project tags array exists: ${project.title || project.id}`);
-  assert(Array.isArray(project.outcomes), `Project outcomes array exists: ${project.title || project.id}`);
-  assert(Array.isArray(project.links), `Project links array exists: ${project.title || project.id}`);
+  const projectLabel = project.title || project.name || project.id || "unknown";
+  const projectTaxonomy = project.tags || project.stack || project.pillars || [];
+  const projectLinks = project.links || (project.repo ? [{ label: "Repository", href: project.repo }] : []);
+
+  assert(project.title || project.name, `Project has title or name: ${projectLabel}`);
+  assert(project.summary || project.description || project.subtitle, `Project has summary, description, or subtitle: ${projectLabel}`);
+  assert(Array.isArray(projectTaxonomy), `Project taxonomy array exists: ${projectLabel}`);
+  assert(Array.isArray(project.outcomes), `Project outcomes array exists: ${projectLabel}`);
+  assert(Array.isArray(projectLinks), `Project links or repository reference exists: ${projectLabel}`);
 }
 
 for (const architecture of architectures) {

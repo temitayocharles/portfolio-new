@@ -37,8 +37,14 @@ jobs:
         env:
           REACT_APP_BACKEND_URL: https://api.temitayocharles.online
 
+      - name: Setup Chrome for Lighthouse
+        id: setup-chrome
+        uses: browser-actions/setup-chrome@v1
+
       - name: Run Lighthouse assertions
         run: yarn lighthouse:ci
+        env:
+          CHROME_PATH: ${{ steps.setup-chrome.outputs.chrome-path }}
 
       - name: Upload Lighthouse reports
         if: always()
