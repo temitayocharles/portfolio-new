@@ -39,13 +39,13 @@ jobs:
         run: yarn install --frozen-lockfile
 
       - name: Install Playwright test runner package
-        run: npm install --no-save @playwright/test@1.59.1
+        run: npm install --no-save --legacy-peer-deps @playwright/test@1.59.1
 
       - name: Install Playwright browser dependencies
         run: npx playwright install --with-deps chromium
 
       - name: Run Playwright smoke tests
-        run: npx playwright test
+        run: ./node_modules/.bin/playwright test
         env:
           REACT_APP_BACKEND_URL: http://127.0.0.1:8001
 

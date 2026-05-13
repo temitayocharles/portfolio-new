@@ -69,3 +69,10 @@ The backend container scan uploads SARIF on pull requests but does not currently
 ## ARC browser-test dependencies
 
 The Home Lab ARC workload runner does not include the full Chromium runtime dependency set by default. Lighthouse CI installs Chromium system dependencies before setting up Chrome, and UI Smoke installs `@playwright/test` locally during the job so `playwright.config.js` and test files resolve the runner package from project `node_modules`.
+
+
+## Final CI stabilization notes
+
+- UI Smoke installs `@playwright/test` with npm legacy peer resolution because the current React dependency graph contains `react-day-picker` and `date-fns` peer-version conflicts that Yarn tolerates but npm resolves strictly.
+- Lighthouse CI is advisory during Phase 1 because ARC headless Chrome can fail with `NO_FCP` / browser-session closure on constrained runners. The job still runs and uploads reports when available, but it does not block the PR.
+- Container scan keeps Trivy execution and SARIF/artifact generation, but SARIF upload is non-blocking because GitHub code-scanning upload can fail on pull-request tokens with `Resource not accessible by integration`.
