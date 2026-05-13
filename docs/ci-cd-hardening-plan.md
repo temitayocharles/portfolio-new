@@ -60,3 +60,12 @@ The `infraforge, workloads` labels come from `homelab-gitops/applications/arc-ru
 ## Secret scanning model
 
 GitGuardian is the blocking pull-request secret scanner. Gitleaks runs as an advisory defense-in-depth check against the current working tree with redacted output so findings can be triaged without exposing secret material in logs.
+
+
+## Container scan pull-request behavior
+
+The backend container scan uploads SARIF on pull requests but does not currently block the PR on Trivy vulnerability findings. This keeps the Phase 1 hardening PR reviewable while the SARIF results are triaged. After the backend base image and dependency findings are remediated, change the Trivy `exit-code` back to `1` for pull requests.
+
+## ARC browser-test dependencies
+
+The Home Lab ARC workload runner does not include the full Chromium runtime dependency set by default. Lighthouse CI installs Chromium system dependencies before setting up Chrome, and UI Smoke installs `@playwright/test` locally during the job so `playwright.config.js` and test files resolve the runner package from project `node_modules`.
