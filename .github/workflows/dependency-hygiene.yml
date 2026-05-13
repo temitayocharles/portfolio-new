@@ -40,7 +40,7 @@ jobs:
         run: yarn audit --level high --groups dependencies > ../frontend-yarn-audit.txt || true
 
       - name: Upload frontend audit report
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: frontend-yarn-audit
           path: frontend-yarn-audit.txt
@@ -67,7 +67,7 @@ jobs:
         run: pip-audit -r backend/requirements.txt --format=json --output=backend-pip-audit.json || true
 
       - name: Upload backend audit report
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: backend-pip-audit
           path: backend-pip-audit.json
