@@ -1,9 +1,11 @@
 import React from "react";
 import { Briefcase, MapPin, CheckCircle2 } from "lucide-react";
-import { experiences } from "@/mock";
+import { experiences as fallbackExperiences } from "@/mock";
+import { usePortfolioContent } from "@/context/PortfolioContentContext";
 import { SectionLabel } from "./About";
 
 const Experience = () => {
+  const { experiences = fallbackExperiences } = usePortfolioContent();
   return (
     <section id="experience" className="relative py-24 lg:py-32">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">

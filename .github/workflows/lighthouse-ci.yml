@@ -1,0 +1,60 @@
+name: Lighthouse CI
+
+on:
+  pull_request:
+    paths:
+      - "frontend/**"
+      - ".github/workflows/lighthouse-ci.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  lighthouse:
+    runs-on: portfolio-new-workloads
+    defaults:
+      run:
+        working-directory: frontend
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Build frontend
+        run: yarn build
+        env:
+          REACT_APP_BACKEND_URL: https://api.temitayocharles.online
+
+      - name: Install Chromium system dependencies
+        run: npx -y @playwright/test@1.59.1 install-deps chromium
+
+      - name: Setup Chrome for Lighthouse
+        id: setup-chrome
+        uses: browser-actions/setup-chrome@v1
+
+      - name: Run Lighthouse assertions
+        continue-on-error: true
+        run: yarn lighthouse:ci
+        env:
+          CHROME_PATH: ${{ steps.setup-chrome.outputs.chrome-path }}
+          LHCI_COLLECT_SETTINGS_CHROME_FLAGS: --headless=new --no-sandbox --disable-dev-shm-usage --disable-gpu
+
+      - name: Upload Lighthouse reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-reports
+          path: frontend/lhci_reports
+          if-no-files-found: ignore

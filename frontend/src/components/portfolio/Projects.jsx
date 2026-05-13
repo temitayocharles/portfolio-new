@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { ArrowUpRight, Eye, GitBranch, Layers, LockKeyhole, Sparkles, X } from "lucide-react";
-import { projects } from "@/mock";
+import { projects as fallbackProjects } from "@/mock";
+import { usePortfolioContent } from "@/context/PortfolioContentContext";
 import { SectionLabel } from "./About";
 
 const PROJECTS_SCHEMA_GUARD_VERSION = "2026-05-05-projects-array-guard-v4";
@@ -43,6 +44,7 @@ const normalizeProject = (project = {}) => ({
 });
 
 const Projects = () => {
+  const { projects = fallbackProjects } = usePortfolioContent();
   const normalizedProjects = asArray(projects).map(normalizeProject);
   const projectCards = Array.isArray(normalizedProjects) ? normalizedProjects : [];
   const [selectedProject, setSelectedProject] = useState(null);

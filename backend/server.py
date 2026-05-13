@@ -3,6 +3,7 @@ from dotenv import load_dotenv
 from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
 import os
+import json
 import logging
 import asyncio
 import resend
@@ -12,13 +13,16 @@ import re
 from html import escape
 from pathlib import Path
 from pydantic import BaseModel, EmailStr, Field, field_validator
-from typing import List, Optional, Annotated
+from typing import Any, Dict, List, Optional, Annotated
 import uuid
 from datetime import datetime, timezone
 
 
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / ".env")
+
+DEFAULT_CONTENT_PATH = ROOT_DIR / "content" / "portfolio-content.json"
+PORTFOLIO_CONTENT_PATH = Path(os.environ.get("PORTFOLIO_CONTENT_PATH", str(DEFAULT_CONTENT_PATH)))
 
 # Logging
 logging.basicConfig(
@@ -79,6 +83,59 @@ CONTACT_RATE_LIMIT_MAX_REQUESTS = _positive_int_env(
     5,
 )
 MAX_CONTACT_LIST_LIMIT = _positive_int_env("MAX_CONTACT_LIST_LIMIT", 500)
+
+CONTENT_REQUIRED_SECTIONS = {
+    "profile",
+    "heroStats",
+    "aboutParagraphs",
+    "aboutHighlights",
+    "skillGroups",
+    "experiences",
+    "projects",
+    "projectArchitectures",
+    "navLinks",
+    "writings",
+    "testimonials",
+    "heroVisuals",
+}
+
+
+def _load_portfolio_content() -> Dict[str, Any]:
+    """Load portfolio content from a structured JSON artifact.
+
+    The JSON file is bundled into the backend image so Home Lab GitOps can serve
+    deterministic content without requiring a CMS during Phase 2.
+    """
+    try:
+        with PORTFOLIO_CONTENT_PATH.open("r", encoding="utf-8") as content_file:
+            content = json.load(content_file)
+    except FileNotFoundError as exc:
+        raise RuntimeError(f"Portfolio content file not found: {PORTFOLIO_CONTENT_PATH}") from exc
+    except json.JSONDecodeError as exc:
+        raise RuntimeError(f"Portfolio content file is invalid JSON: {PORTFOLIO_CONTENT_PATH}") from exc
+
+    if not isinstance(content, dict):
+        raise RuntimeError("Portfolio content root must be a JSON object")
+
+    missing_sections = sorted(CONTENT_REQUIRED_SECTIONS.difference(content.keys()))
+    if missing_sections:
+        raise RuntimeError(
+            "Portfolio content is missing required sections: " + ", ".join(missing_sections)
+        )
+
+    return content
+
+
+def _content_summary(content: Dict[str, Any]) -> Dict[str, Any]:
+    return {
+        "source": str(PORTFOLIO_CONTENT_PATH),
+        "sections": sorted(content.keys()),
+        "project_count": len(content.get("projects", [])),
+        "architecture_count": len(content.get("projectArchitectures", [])),
+        "writing_count": len(content.get("writings", [])),
+        "testimonial_count": len(content.get("testimonials", [])),
+    }
+
 
 if RESEND_API_KEY:
     resend.api_key = RESEND_API_KEY
@@ -295,7 +352,43 @@ async def health():
             "window_seconds": CONTACT_RATE_LIMIT_WINDOW_SECONDS,
             "max_requests": CONTACT_RATE_LIMIT_MAX_REQUESTS,
         },
+        "content": {
+            "configured": PORTFOLIO_CONTENT_PATH.exists(),
+            "path": str(PORTFOLIO_CONTENT_PATH),
+        },
     }
+
+
+@api_router.get("/content")
+async def get_portfolio_content():
+    try:
+        return _load_portfolio_content()
+    except RuntimeError as exc:
+        logger.exception("Portfolio content unavailable")
+        raise HTTPException(status_code=503, detail=str(exc)) from exc
+
+
+@api_router.get("/content/summary")
+async def get_portfolio_content_summary():
+    try:
+        return _content_summary(_load_portfolio_content())
+    except RuntimeError as exc:
+        logger.exception("Portfolio content summary unavailable")
+        raise HTTPException(status_code=503, detail=str(exc)) from exc
+
+
+@api_router.get("/content/{section_name}")
+async def get_portfolio_content_section(section_name: str):
+    try:
+        content = _load_portfolio_content()
+    except RuntimeError as exc:
+        logger.exception("Portfolio content unavailable")
+        raise HTTPException(status_code=503, detail=str(exc)) from exc
+
+    if section_name not in content:
+        raise HTTPException(status_code=404, detail="Portfolio content section not found.")
+
+    return content[section_name]
 
 
 @api_router.post("/status", response_model=StatusCheck)

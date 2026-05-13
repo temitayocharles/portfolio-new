@@ -60,7 +60,11 @@
     "build": "craco build",
     "test": "craco test",
     "postbuild": "node scripts/postbuild-netlify.js",
-    "qa:portfolio": "node scripts/qa-portfolio-smoke.js"
+    "qa:portfolio": "node scripts/qa-portfolio-smoke.js",
+    "test:ci": "CI=true craco test --watchAll=false --passWithNoTests",
+    "test:ui": "npx -y @playwright/test@1.59.1 test",
+    "test:ui:headed": "npx -y @playwright/test@1.59.1 test --headed",
+    "lighthouse:ci": "npx -y @lhci/cli@0.15.1 autorun --config=./lighthouse.config.js"
   },
   "browserslist": {
     "production": [

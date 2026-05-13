@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { ArrowRight, Download, MapPin, Sparkles, Terminal } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { profile, heroStats, heroVisuals } from "@/mock";
+import { profile as fallbackProfile, heroStats as fallbackHeroStats, heroVisuals as fallbackHeroVisuals } from "@/mock";
+import { usePortfolioContent } from "@/context/PortfolioContentContext";
 import AnimatedStat from "./AnimatedStat";
 
 const ROTATING = [
@@ -25,6 +26,7 @@ const MARQUEE_TECH = [
 ];
 
 const Hero = () => {
+  const { profile = fallbackProfile, heroStats = fallbackHeroStats, heroVisuals = fallbackHeroVisuals } = usePortfolioContent();
   const [wordIdx, setWordIdx] = useState(0);
   const [termLine, setTermLine] = useState(0);
   const [typed, setTyped] = useState("");

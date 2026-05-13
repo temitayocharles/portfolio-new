@@ -7,7 +7,8 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { testimonials } from "@/mock";
+import { testimonials as fallbackTestimonials } from "@/mock";
+import { usePortfolioContent } from "@/context/PortfolioContentContext";
 import { SectionLabel } from "./About";
 
 const accentMap = {
@@ -24,6 +25,7 @@ const accentMap = {
 };
 
 const Testimonials = () => {
+  const { testimonials = fallbackTestimonials } = usePortfolioContent();
   return (
     <section id="testimonials" className="relative py-24 lg:py-32">
       <div className="absolute -top-24 left-1/4 h-[360px] w-[360px] rounded-full bg-teal-500/[0.06] blur-3xl pointer-events-none" />
