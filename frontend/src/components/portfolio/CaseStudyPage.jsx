@@ -8,7 +8,7 @@ import { PortfolioContentProvider, usePortfolioContent } from "@/context/Portfol
 import { projects as fallbackProjects } from "@/mock";
 
 const asArray = (value) => (Array.isArray(value) ? value : []);
-const FEATURED_CASE_STUDIES = ["ai-inference-lab", "infraforge", "sentinel-copilot", "openleaf", "vault-ops"];
+const FEATURED_CASE_STUDIES = ["ai-inference-lab", "project-iris", "sentinel-copilot", "infraforge", "jerry", "openleaf", "vault-ops"];
 
 const CaseStudyPage = ({ projectId }) => (
   <PortfolioContentProvider>
