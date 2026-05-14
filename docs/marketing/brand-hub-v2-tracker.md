@@ -19,7 +19,7 @@ This tracker controls the redesign of `temitayocharles.online` from a portfolio 
 
 ## Current phase
 
-Phase 5: Premium media and proof assets.
+Phase 6: Launch content kit.
 
 ## Workstreams
 
@@ -32,7 +32,7 @@ Phase 5: Premium media and proof assets.
 | BHV2-005 | Jerry/ForgeWatch relationship | Done | Ecosystem section + diagram copy | Jerry, Iris, ForgeWatch, and InfraForge relationship is clear without over-explaining. |
 | BHV2-006 | Homepage narrative redesign | Done | Implementation PR | New hero, problem-solution grid, restrained ecosystem map, flagship products. |
 | BHV2-007 | Premium visual proof assets | In progress | Static SVG proof assets and future motion plan | Assets feel cinematic, credible, restrained, and product-grade. |
-| BHV2-008 | Launch content kit | Planned | LinkedIn/social copy and product screenshots | Launch copy explains InfraForge without sounding forced or salesy. |
+| BHV2-008 | Launch content kit | In progress | LinkedIn/social copy and product screenshots | Launch copy explains InfraForge without sounding forced or salesy. |
 
 ## Flagship systems
 
@@ -116,3 +116,14 @@ Static, launch-safe assets added in this phase:
 - `frontend/public/images/brand/project-iris-personal-ai-surface.svg`
 
 Video and animation should be handled in a separate PR after the static visual language is approved.
+
+## Phase 6 launch kit added
+
+Launch content assets added in this phase:
+
+- `docs/marketing/launch-kit.md`
+- `docs/marketing/linkedin-launch-posts.md`
+- `docs/marketing/product-narrative-snippets.md`
+- `docs/marketing/media-generation-prompts.md`
+
+These documents package the brand hub for public release without changing website code.
