@@ -2,8 +2,8 @@
   "profile": {
     "name": "Temitayo Charles Akinniranye",
     "firstName": "Temitayo",
-    "title": "Founder · Platform Engineering · AI Infrastructure",
-    "tagline": "I build reliable cloud platforms, private AI workflows, and operator-friendly automation for teams that need production discipline without enterprise bloat.",
+    "title": "AI Infrastructure · Platform Engineering · DevOps",
+    "tagline": "I build production AI infrastructure, model-serving systems, Kubernetes platforms, and operator-friendly automation for teams that need reliable, observable, and scalable engineering foundations.",
     "location": "Remote",
     "email": "tayocharlesaki@gmail.com",
     "linkedin": "https://linkedin.com/in/temitayocharles",
@@ -14,20 +14,24 @@
   },
   "heroStats": [
     {
-      "value": "GitOps",
-      "label": "Home Lab production delivery"
+      "label": "InfraForge AI Lab",
+      "value": "LLM systems",
+      "detail": "model operations and serving capacity"
     },
     {
-      "value": "FastAPI",
-      "label": "Backend content and contact API"
+      "label": "4h → 15m",
+      "value": "deploy cycle",
+      "detail": "GitOps release acceleration"
     },
     {
-      "value": "K8s",
-      "label": "Platform operations and networking"
+      "label": "99.99%",
+      "value": "platform reliability",
+      "detail": "SLO-driven operations"
     },
     {
-      "value": "CI/CD",
-      "label": "Tested, scanned, reviewable changes"
+      "label": "$18K/mo",
+      "value": "cloud savings",
+      "detail": "AWS governance and FinOps"
     }
   ],
   "aboutParagraphs": [
@@ -279,6 +283,92 @@
     }
   ],
   "projects": [
+    {
+      "id": "ai-inference-lab",
+      "number": "00",
+      "category": "InfraForge AI Lab",
+      "subtitle": "Production AI inference and model operations laboratory",
+      "name": "AI Inference Lab",
+      "description": "A full InfraForge AI lab for LLM inference, model-serving APIs, GPU-backed capacity planning, benchmarking, observability, containerized runtime operations, and the engineering path from local validation to Kubernetes-native AI workloads.",
+      "pillars": [
+        "LLM Serving",
+        "Model Operations",
+        "GPU Capacity",
+        "Benchmarking",
+        "Observability"
+      ],
+      "outcomes": [
+        "Designed the lab as a complete AI infrastructure environment, not a demo: service API, health checks, metrics, container runtime, benchmark harness, documentation, and controlled operating practices.",
+        "Established an end-to-end model operations path covering local validation, model loading, latency measurement, concurrency behavior, saturation analysis, and provider-backed GPU expansion.",
+        "Mapped AI workload capacity across CPU baselines, GPU experiments, vLLM/Triton-class serving engines, Kubernetes deployment, and InfraForge platform controls.",
+        "Built the knowledge system around production signals: p95 latency, throughput, token throughput, TTFT, context windows, KV cache behavior, quantization, cold starts, and model memory sizing."
+      ],
+      "stack": [
+        "Python 3.12",
+        "FastAPI",
+        "Transformers",
+        "PyTorch",
+        "Docker",
+        "Prometheus",
+        "HTTPX",
+        "uv",
+        "vLLM",
+        "Triton",
+        "TensorRT-LLM",
+        "Kubernetes",
+        "Helm",
+        "GitOps"
+      ],
+      "repo": "Private InfraForge AI lab repository",
+      "repoUrl": null,
+      "visibility": "Private lab; public portfolio case study",
+      "featured": true,
+      "caseStudyPath": "/case/ai-inference-lab",
+      "diagramSvg": "/images/architecture/ai-inference-lab-model-operations.svg",
+      "diagramPng": null,
+      "runbookUrl": "/runbooks/ai-inference-lab-model-serving-runbook.md",
+      "caseStudy": {
+        "title": "AI Inference Lab: InfraForge Model Operations Laboratory",
+        "context": "A mature InfraForge AI lab built to operate LLM systems with platform-engineering discipline: APIs, runtime controls, metrics, benchmarks, GPU capacity planning, containerization, and a path into Kubernetes-native model operations.",
+        "problem": "AI infrastructure becomes fragile when it is treated as notebooks and one-off experiments. The lab gives model workloads a production operating model: service boundaries, observability, benchmark evidence, repeatable runtime packaging, GPU capacity strategy, and safe platform controls.",
+        "constraints": [
+          "Support local validation while keeping the system shaped for GPU-backed LLM workloads.",
+          "Separate service correctness, runtime performance, and capacity behavior instead of treating a single model response as success.",
+          "Control GPU spend through provider selection, budget tiers, and benchmark-driven escalation.",
+          "Design the lab so model-serving and training-adjacent workloads can graduate into Kubernetes without losing observability or operational discipline."
+        ],
+        "decisions": [
+          "Use FastAPI as the stable service boundary for health, generation, and metrics.",
+          "Expose Prometheus-compatible metrics before introducing heavier serving engines.",
+          "Treat benchmarks as first-class evidence, covering latency, p95, throughput, concurrency, and saturation.",
+          "Use Docker to make the runtime repeatable before scaling the workload.",
+          "Run the lab as an InfraForge brand asset: AI systems engineered with the same platform discipline as cloud, DevOps, and SRE workloads."
+        ],
+        "operationalControls": [
+          "Health endpoint for service readiness.",
+          "Structured API schemas for request and response contracts.",
+          "Prometheus request and latency metrics.",
+          "Benchmark harness for repeatable load and saturation testing.",
+          "Container runtime path for reproducible service packaging.",
+          "Environment discovery and GPU provider budget controls.",
+          "Documentation system covering concepts, commands, lab phases, validation steps, and operational safety."
+        ],
+        "evidence": [
+          "Repository contains FastAPI service implementation, inference module, schemas, logging configuration, Dockerfile, benchmark tooling, and environment validation scripts.",
+          "Documentation covers inference fundamentals, inference versus training, CPU versus GPU behavior, latency, throughput, RPS, token throughput, TTFT, batch size, concurrency, KV cache, quantization, context window, cold starts, and model memory sizing.",
+          "Benchmark materials include request and concurrency sweeps, p95 latency interpretation, and saturation analysis.",
+          "Lab tracker shows the project as a structured engineering program with environment discovery, inference fundamentals, benchmark matrix, and service documentation."
+        ],
+        "measurementNotes": {
+          "serviceReadiness": "Measured through health endpoint validation and service startup checks.",
+          "latency": "Measured through HTTP benchmark output against the generation endpoint, including average and p95 latency.",
+          "throughput": "Measured as requests per second across controlled concurrency sweeps.",
+          "capacity": "Evaluated through CPU baseline behavior, concurrency saturation, GPU provider planning, and serving-engine comparison.",
+          "operationalMaturity": "Demonstrated through docs, benchmark evidence, containerization, metrics, safety rules, and Kubernetes integration planning."
+        },
+        "result": "The lab presents the AI side of InfraForge as a serious production-capacity system: LLM serving, model operations, observability, benchmarking, GPU capacity planning, and Kubernetes-ready platform design under one operating model."
+      }
+    },
     {
       "id": "infraforge",
       "name": "TCA InfraForge",
@@ -697,7 +787,7 @@
           "recovery": "Measured from incident declaration or restore start to verified service recovery where RTO/MTTR applies."
         }
       },
-      "featured": true,
+      "featured": false,
       "caseStudyPath": "/case/openleaf",
       "diagramSvg": "/images/architecture/openleaf-reference-saas.svg",
       "diagramPng": null,
@@ -1777,6 +1867,18 @@
     }
   ],
   "writings": [
+    {
+      "id": "w-ai-inference-lab",
+      "title": "Building the InfraForge AI Inference Lab",
+      "excerpt": "A production AI lab is not a notebook. It needs model-serving APIs, benchmark evidence, Prometheus metrics, containerized runtime controls, GPU capacity strategy, and a path into Kubernetes-native LLM operations.",
+      "tag": "AI Infrastructure",
+      "readTime": "10 min",
+      "date": "May 13, 2026",
+      "accent": "amber",
+      "noteTitle": "AI infrastructure is platform engineering",
+      "noteBody": "The AI side of my work is about operating model workloads properly: runtime boundaries, health checks, metrics, p95 latency, concurrency, GPU capacity, containerization, and safe progression into Kubernetes.",
+      "featured": true
+    },
     {
       "id": "w1",
       "title": "Cutting a 4-Hour Deploy to 15 Minutes: A GitOps Playbook",
