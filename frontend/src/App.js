@@ -1,15 +1,19 @@
 import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Portfolio from "@/components/portfolio/Portfolio";
+import CaseStudyPage from "@/components/portfolio/CaseStudyPage";
+
+const getCaseStudyIdFromPath = () => {
+  if (typeof window === "undefined") return null;
+  const match = window.location.pathname.match(/^\/(?:case|projects)\/([^/?#]+)/);
+  return match ? decodeURIComponent(match[1]) : null;
+};
 
 function App() {
+  const caseStudyId = getCaseStudyIdFromPath();
+
   return (
     <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Portfolio />} />
-        </Routes>
-      </BrowserRouter>
+      {caseStudyId ? <CaseStudyPage projectId={caseStudyId} /> : <Portfolio />}
     </div>
   );
 }

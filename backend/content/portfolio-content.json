@@ -2,8 +2,8 @@
   "profile": {
     "name": "Temitayo Charles Akinniranye",
     "firstName": "Temitayo",
-    "title": "Founder · Platform Engineering · AI Infrastructure",
-    "tagline": "I build reliable cloud platforms, private AI workflows, and operator-friendly automation for teams that need production discipline without enterprise bloat.",
+    "title": "AI Infrastructure · Platform Engineering · DevOps",
+    "tagline": "I build production AI infrastructure, model-serving systems, Kubernetes platforms, and operator-friendly automation for teams that need reliable, observable, and scalable engineering foundations.",
     "location": "Remote",
     "email": "tayocharlesaki@gmail.com",
     "linkedin": "https://linkedin.com/in/temitayocharles",
@@ -14,20 +14,24 @@
   },
   "heroStats": [
     {
-      "value": "GitOps",
-      "label": "Home Lab production delivery"
+      "label": "InfraForge AI Lab",
+      "value": "LLM systems",
+      "detail": "model operations and serving capacity"
     },
     {
-      "value": "FastAPI",
-      "label": "Backend content and contact API"
+      "label": "4h → 15m",
+      "value": "deploy cycle",
+      "detail": "GitOps release acceleration"
     },
     {
-      "value": "K8s",
-      "label": "Platform operations and networking"
+      "label": "99.99%",
+      "value": "platform reliability",
+      "detail": "SLO-driven operations"
     },
     {
-      "value": "CI/CD",
-      "label": "Tested, scanned, reviewable changes"
+      "label": "$18K/mo",
+      "value": "cloud savings",
+      "detail": "AWS governance and FinOps"
     }
   ],
   "aboutParagraphs": [
@@ -280,6 +284,92 @@
   ],
   "projects": [
     {
+      "id": "ai-inference-lab",
+      "number": "00",
+      "category": "InfraForge AI Lab",
+      "subtitle": "Production AI inference and model operations laboratory",
+      "name": "AI Inference Lab",
+      "description": "A full InfraForge AI lab for LLM inference, model-serving APIs, GPU-backed capacity planning, benchmarking, observability, containerized runtime operations, and the engineering path from local validation to Kubernetes-native AI workloads.",
+      "pillars": [
+        "LLM Serving",
+        "Model Operations",
+        "GPU Capacity",
+        "Benchmarking",
+        "Observability"
+      ],
+      "outcomes": [
+        "Designed the lab as a complete AI infrastructure environment, not a demo: service API, health checks, metrics, container runtime, benchmark harness, documentation, and controlled operating practices.",
+        "Established an end-to-end model operations path covering local validation, model loading, latency measurement, concurrency behavior, saturation analysis, and provider-backed GPU expansion.",
+        "Mapped AI workload capacity across CPU baselines, GPU experiments, vLLM/Triton-class serving engines, Kubernetes deployment, and InfraForge platform controls.",
+        "Built the knowledge system around production signals: p95 latency, throughput, token throughput, TTFT, context windows, KV cache behavior, quantization, cold starts, and model memory sizing."
+      ],
+      "stack": [
+        "Python 3.12",
+        "FastAPI",
+        "Transformers",
+        "PyTorch",
+        "Docker",
+        "Prometheus",
+        "HTTPX",
+        "uv",
+        "vLLM",
+        "Triton",
+        "TensorRT-LLM",
+        "Kubernetes",
+        "Helm",
+        "GitOps"
+      ],
+      "repo": "Private InfraForge AI lab repository",
+      "repoUrl": null,
+      "visibility": "Private lab; public portfolio case study",
+      "featured": true,
+      "caseStudyPath": "/case/ai-inference-lab",
+      "diagramSvg": "/images/architecture/ai-inference-lab-model-operations.svg",
+      "diagramPng": null,
+      "runbookUrl": "/runbooks/ai-inference-lab-model-serving-runbook.md",
+      "caseStudy": {
+        "title": "AI Inference Lab: InfraForge Model Operations Laboratory",
+        "context": "A mature InfraForge AI lab built to operate LLM systems with platform-engineering discipline: APIs, runtime controls, metrics, benchmarks, GPU capacity planning, containerization, and a path into Kubernetes-native model operations.",
+        "problem": "AI infrastructure becomes fragile when it is treated as notebooks and one-off experiments. The lab gives model workloads a production operating model: service boundaries, observability, benchmark evidence, repeatable runtime packaging, GPU capacity strategy, and safe platform controls.",
+        "constraints": [
+          "Support local validation while keeping the system shaped for GPU-backed LLM workloads.",
+          "Separate service correctness, runtime performance, and capacity behavior instead of treating a single model response as success.",
+          "Control GPU spend through provider selection, budget tiers, and benchmark-driven escalation.",
+          "Design the lab so model-serving and training-adjacent workloads can graduate into Kubernetes without losing observability or operational discipline."
+        ],
+        "decisions": [
+          "Use FastAPI as the stable service boundary for health, generation, and metrics.",
+          "Expose Prometheus-compatible metrics before introducing heavier serving engines.",
+          "Treat benchmarks as first-class evidence, covering latency, p95, throughput, concurrency, and saturation.",
+          "Use Docker to make the runtime repeatable before scaling the workload.",
+          "Run the lab as an InfraForge brand asset: AI systems engineered with the same platform discipline as cloud, DevOps, and SRE workloads."
+        ],
+        "operationalControls": [
+          "Health endpoint for service readiness.",
+          "Structured API schemas for request and response contracts.",
+          "Prometheus request and latency metrics.",
+          "Benchmark harness for repeatable load and saturation testing.",
+          "Container runtime path for reproducible service packaging.",
+          "Environment discovery and GPU provider budget controls.",
+          "Documentation system covering concepts, commands, lab phases, validation steps, and operational safety."
+        ],
+        "evidence": [
+          "Repository contains FastAPI service implementation, inference module, schemas, logging configuration, Dockerfile, benchmark tooling, and environment validation scripts.",
+          "Documentation covers inference fundamentals, inference versus training, CPU versus GPU behavior, latency, throughput, RPS, token throughput, TTFT, batch size, concurrency, KV cache, quantization, context window, cold starts, and model memory sizing.",
+          "Benchmark materials include request and concurrency sweeps, p95 latency interpretation, and saturation analysis.",
+          "Lab tracker shows the project as a structured engineering program with environment discovery, inference fundamentals, benchmark matrix, and service documentation."
+        ],
+        "measurementNotes": {
+          "serviceReadiness": "Measured through health endpoint validation and service startup checks.",
+          "latency": "Measured through HTTP benchmark output against the generation endpoint, including average and p95 latency.",
+          "throughput": "Measured as requests per second across controlled concurrency sweeps.",
+          "capacity": "Evaluated through CPU baseline behavior, concurrency saturation, GPU provider planning, and serving-engine comparison.",
+          "operationalMaturity": "Demonstrated through docs, benchmark evidence, containerization, metrics, safety rules, and Kubernetes integration planning."
+        },
+        "result": "The lab presents the AI side of InfraForge as a serious production-capacity system: LLM serving, model operations, observability, benchmarking, GPU capacity planning, and Kubernetes-ready platform design under one operating model."
+      }
+    },
+    {
       "id": "infraforge",
       "name": "TCA InfraForge",
       "subtitle": "My Platform Engineering Company",
@@ -330,8 +420,36 @@
           "Separate application delivery from gateway and networking ownership to avoid Argo CD shared-resource drift.",
           "Keep stateful services recoverable through Longhorn retention, Harbor recovery notes, and documented restore paths."
         ],
-        "result": "The platform now supports production domain routing, Harbor registry recovery, portfolio API delivery, Vault-backed secrets, and a hardened operating model that can be reused for company and client workloads."
-      }
+        "result": "The platform now supports production domain routing, Harbor registry recovery, portfolio API delivery, Vault-backed secrets, and a hardened operating model that can be reused for company and client workloads.",
+        "problem": "Small teams need production discipline across Kubernetes delivery, routing, secrets, observability, and recovery without staffing a full platform department.",
+        "constraints": [
+          "Keep the model small enough for founder-led teams.",
+          "Avoid hidden manual steps during cutover and recovery.",
+          "Preserve operator visibility across delivery, runtime, and backup layers."
+        ],
+        "operationalControls": [
+          "GitOps as source of truth for platform changes.",
+          "Vault-backed secrets delivery through External Secrets.",
+          "Prometheus, Grafana, Loki, and Alertmanager for runtime visibility.",
+          "Longhorn, Harbor notes, and runbook-backed recovery paths."
+        ],
+        "evidence": [
+          "Deployment lifecycle measured from approved infrastructure change to reconciled Argo CD application health.",
+          "Recovery posture validated through documented registry, storage, and gateway restore procedures.",
+          "Platform controls map delivery, secrets, observability, backup, and edge routing into one operating model."
+        ],
+        "measurementNotes": {
+          "deploymentCycle": "Measured from approved change or merge to production-ready deployment health where the metric applies.",
+          "reliability": "Reported as service availability/SLO posture over the operating window where the platform metric applies.",
+          "costSavings": "Calculated from recurring monthly AWS spend deltas after rightsizing, tagging, audits, and governance controls.",
+          "recovery": "Measured from incident declaration or restore start to verified service recovery where RTO/MTTR applies."
+        }
+      },
+      "featured": true,
+      "caseStudyPath": "/case/infraforge",
+      "diagramSvg": "/images/architecture/infraforge-operating-platform.svg",
+      "diagramPng": "/images/architecture/infraforge-architecture.png",
+      "runbookUrl": "/runbooks/infraforge-cutover-runbook.md"
     },
     {
       "id": "project-iris",
@@ -375,7 +493,8 @@
           "Design for TLS, auth, backup, and recovery from the beginning instead of after the prototype phase."
         ],
         "result": "The project demonstrates how AI products can feel useful while still respecting operational boundaries, privacy needs, and founder-level control."
-      }
+      },
+      "featured": false
     },
     {
       "id": "jerry",
@@ -420,7 +539,8 @@
           "Treat memory, backups, and audit history as first-class parts of the assistant architecture."
         ],
         "result": "The system demonstrates a premium personal AI pattern: private by default, durable over time, and designed for controlled action instead of uncontrolled automation."
-      }
+      },
+      "featured": false
     },
     {
       "id": "ai-builders-academy",
@@ -459,7 +579,8 @@
           "Add drift checks and runbooks so platform behavior stays visible after deploy."
         ],
         "result": "The platform is positioned as an operating system for an AI education business, not a one-off app build."
-      }
+      },
+      "featured": false
     },
     {
       "id": "vault-ops",
@@ -497,8 +618,36 @@
           "Document bootstrap and recovery paths so operators can act under pressure.",
           "Validate secret shape and sync state before application rollouts depend on them."
         ],
-        "result": "The toolkit gives platform work a safer secrets operating model that is audit-friendly and practical for small teams."
-      }
+        "result": "The toolkit gives platform work a safer secrets operating model that is audit-friendly and practical for small teams.",
+        "problem": "Platform teams need safe, repeatable secret operations across Vault and Kubernetes without relying on fragile manual steps.",
+        "constraints": [
+          "Keep Vault as the authority.",
+          "Validate Kubernetes secret sync before application rollout.",
+          "Document recovery and rollback for operators working under pressure."
+        ],
+        "operationalControls": [
+          "Vault-backed secret authority.",
+          "External Secrets sync validation.",
+          "Pre-rollout secret shape checks.",
+          "Documented rotation and rollback runbook."
+        ],
+        "evidence": [
+          "Secret workflows separate authority, sync, validation, and application dependency checks.",
+          "Runbook path covers rotation, ExternalSecret verification, rollout safety, and rollback.",
+          "Operator controls are designed for repeatability under incident pressure."
+        ],
+        "measurementNotes": {
+          "deploymentCycle": "Measured from approved change or merge to production-ready deployment health where the metric applies.",
+          "reliability": "Reported as service availability/SLO posture over the operating window where the platform metric applies.",
+          "costSavings": "Calculated from recurring monthly AWS spend deltas after rightsizing, tagging, audits, and governance controls.",
+          "recovery": "Measured from incident declaration or restore start to verified service recovery where RTO/MTTR applies."
+        }
+      },
+      "featured": false,
+      "caseStudyPath": "/case/vault-ops",
+      "diagramSvg": "/images/architecture/vault-ops-secret-control-plane.svg",
+      "diagramPng": null,
+      "runbookUrl": "/runbooks/vault-ops-secret-rotation-runbook.md"
     },
     {
       "id": "sentinel-copilot",
@@ -541,8 +690,36 @@
           "Route all mutating actions through propose_write, policy evaluation, and explicit operator approval.",
           "Store outcomes and incident memory so future triage improves without turning the system into an unsafe autonomous executor."
         ],
-        "result": "ForgeWatch gives InfraForge a company-grade AIOps control plane where AI speeds investigation, but operators retain authority over production state."
-      }
+        "result": "ForgeWatch gives InfraForge a company-grade AIOps control plane where AI speeds investigation, but operators retain authority over production state.",
+        "problem": "Lean platform teams need faster alert triage without handing production authority to an autonomous AI agent.",
+        "constraints": [
+          "Do not allow uncontrolled production writes.",
+          "Ground every recommendation in Kubernetes, Prometheus, Loki, or Argo CD evidence.",
+          "Keep human approval mandatory for remediation."
+        ],
+        "operationalControls": [
+          "Read-only Kubernetes, Prometheus, Loki, and Argo CD collection.",
+          "Approval-gated write proposals.",
+          "Outcome-backed memory for future triage.",
+          "Notification path through Discord and ntfy."
+        ],
+        "evidence": [
+          "Investigation tools stay read-only by default.",
+          "Write actions require proposal, policy check, and explicit operator approval.",
+          "Incident memory stores outcomes rather than blindly executing remediation."
+        ],
+        "measurementNotes": {
+          "deploymentCycle": "Measured from approved change or merge to production-ready deployment health where the metric applies.",
+          "reliability": "Reported as service availability/SLO posture over the operating window where the platform metric applies.",
+          "costSavings": "Calculated from recurring monthly AWS spend deltas after rightsizing, tagging, audits, and governance controls.",
+          "recovery": "Measured from incident declaration or restore start to verified service recovery where RTO/MTTR applies."
+        }
+      },
+      "featured": true,
+      "caseStudyPath": "/case/sentinel-copilot",
+      "diagramSvg": "/images/architecture/forgewatch-aiops-control-plane.svg",
+      "diagramPng": "/images/architecture/forgewatch-architecture.png",
+      "runbookUrl": "/runbooks/forgewatch-triage-runbook.md"
     },
     {
       "id": "openleaf",
@@ -585,8 +762,36 @@
           "Model event-driven boundaries where services need asynchronous coordination.",
           "Include observability and chaos testing so reliability is visible, not assumed."
         ],
-        "result": "The project serves as a public architecture reference for product teams thinking through cloud-native SaaS design."
-      }
+        "result": "The project serves as a public architecture reference for product teams thinking through cloud-native SaaS design.",
+        "problem": "Digital product teams need a reference SaaS architecture that shows service boundaries, API governance, delivery, observability, and reliability controls together.",
+        "constraints": [
+          "Avoid a toy monolith while keeping the reference understandable.",
+          "Show how gateway, events, payments, and observability relate.",
+          "Make reliability testing part of the architecture, not an afterthought."
+        ],
+        "operationalControls": [
+          "Kong and decK for gateway governance.",
+          "RabbitMQ for asynchronous service coordination.",
+          "Prometheus and Chaos Mesh for reliability visibility.",
+          "Argo CD delivery path for platform-managed releases."
+        ],
+        "evidence": [
+          "Architecture models gateway governance, evented boundaries, payment workflows, and reliability testing.",
+          "Public repository provides implementation-level inspection for the reference SaaS design.",
+          "Release model connects frontend, API, service, and platform concerns."
+        ],
+        "measurementNotes": {
+          "deploymentCycle": "Measured from approved change or merge to production-ready deployment health where the metric applies.",
+          "reliability": "Reported as service availability/SLO posture over the operating window where the platform metric applies.",
+          "costSavings": "Calculated from recurring monthly AWS spend deltas after rightsizing, tagging, audits, and governance controls.",
+          "recovery": "Measured from incident declaration or restore start to verified service recovery where RTO/MTTR applies."
+        }
+      },
+      "featured": false,
+      "caseStudyPath": "/case/openleaf",
+      "diagramSvg": "/images/architecture/openleaf-reference-saas.svg",
+      "diagramPng": null,
+      "runbookUrl": "/runbooks/openleaf-release-runbook.md"
     }
   ],
   "projectArchitectures": [
@@ -1662,6 +1867,18 @@
     }
   ],
   "writings": [
+    {
+      "id": "w-ai-inference-lab",
+      "title": "Building the InfraForge AI Inference Lab",
+      "excerpt": "A production AI lab is not a notebook. It needs model-serving APIs, benchmark evidence, Prometheus metrics, containerized runtime controls, GPU capacity strategy, and a path into Kubernetes-native LLM operations.",
+      "tag": "AI Infrastructure",
+      "readTime": "10 min",
+      "date": "May 13, 2026",
+      "accent": "amber",
+      "noteTitle": "AI infrastructure is platform engineering",
+      "noteBody": "The AI side of my work is about operating model workloads properly: runtime boundaries, health checks, metrics, p95 latency, concurrency, GPU capacity, containerization, and safe progression into Kubernetes.",
+      "featured": true
+    },
     {
       "id": "w1",
       "title": "Cutting a 4-Hour Deploy to 15 Minutes: A GitOps Playbook",

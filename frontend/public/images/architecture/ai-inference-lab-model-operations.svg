@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="640" viewBox="0 0 1120 640" role="img" aria-labelledby="title desc">
+  <title id="title">AI Inference Lab Model Operations</title>
+  <desc id="desc">InfraForge AI lab architecture for LLM serving, model operations, benchmarking, metrics, GPU capacity planning, and Kubernetes progression.</desc>
+  <rect width="1120" height="640" fill="#0a0f14"/>
+  <rect x="54" y="52" width="1012" height="536" rx="34" fill="#101419" stroke="#334155"/>
+  <text x="82" y="104" fill="#f8fafc" font-family="Inter, Arial" font-size="34" font-weight="800">AI Inference Lab</text>
+  <text x="82" y="136" fill="#fbbf24" font-family="Inter, Arial" font-size="15">InfraForge model operations laboratory</text>
+  <g font-family="Inter, Arial">
+    <rect x="88" y="190" width="190" height="86" rx="18" fill="#111827" stroke="#f59e0b"/>
+    <text x="110" y="224" fill="#f8fafc" font-size="17" font-weight="700">Model API</text>
+    <text x="110" y="250" fill="#94a3b8" font-size="12">FastAPI contracts</text>
+    <rect x="344" y="190" width="190" height="86" rx="18" fill="#111827" stroke="#14b8a6"/>
+    <text x="366" y="224" fill="#f8fafc" font-size="17" font-weight="700">Inference Runtime</text>
+    <text x="366" y="250" fill="#94a3b8" font-size="12">Transformers and PyTorch</text>
+    <rect x="600" y="190" width="190" height="86" rx="18" fill="#111827" stroke="#f59e0b"/>
+    <text x="622" y="224" fill="#f8fafc" font-size="17" font-weight="700">GPU Capacity</text>
+    <text x="622" y="250" fill="#94a3b8" font-size="12">provider and budget control</text>
+    <rect x="856" y="190" width="170" height="86" rx="18" fill="#111827" stroke="#14b8a6"/>
+    <text x="878" y="224" fill="#f8fafc" font-size="17" font-weight="700">Kubernetes</text>
+    <text x="878" y="250" fill="#94a3b8" font-size="12">Helm and GitOps path</text>
+    <rect x="168" y="374" width="190" height="86" rx="18" fill="#111827" stroke="#f59e0b"/>
+    <text x="190" y="408" fill="#f8fafc" font-size="17" font-weight="700">Benchmarks</text>
+    <text x="190" y="434" fill="#94a3b8" font-size="12">latency, p95, throughput</text>
+    <rect x="466" y="374" width="190" height="86" rx="18" fill="#111827" stroke="#14b8a6"/>
+    <text x="488" y="408" fill="#f8fafc" font-size="17" font-weight="700">Observability</text>
+    <text x="488" y="434" fill="#94a3b8" font-size="12">Prometheus metrics</text>
+    <rect x="764" y="374" width="190" height="86" rx="18" fill="#111827" stroke="#f59e0b"/>
+    <text x="786" y="408" fill="#f8fafc" font-size="17" font-weight="700">Model Ops</text>
+    <text x="786" y="434" fill="#94a3b8" font-size="12">runtime, versions, rollback</text>
+    <path d="M278 233H344" stroke="#475569" stroke-width="2" stroke-dasharray="6 8"/>
+    <path d="M534 233H600" stroke="#475569" stroke-width="2" stroke-dasharray="6 8"/>
+    <path d="M790 233H856" stroke="#475569" stroke-width="2" stroke-dasharray="6 8"/>
+  </g>
+  <text x="82" y="540" fill="#64748b" font-family="Inter, Arial" font-size="13">temitayocharles.online · InfraForge AI lab architecture artifact</text>
+</svg>

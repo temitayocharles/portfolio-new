@@ -5,7 +5,8 @@ import { projects as fallbackProjects } from "@/mock";
 import { usePortfolioContent } from "@/context/PortfolioContentContext";
 import { SectionLabel } from "./About";
 
-const PROJECTS_SCHEMA_GUARD_VERSION = "2026-05-05-projects-array-guard-v4";
+const PROJECTS_SCHEMA_GUARD_VERSION = "2026-05-14-featured-case-study-routes-v1";
+const FEATURED_PROJECT_IDS = ["ai-inference-lab", "sentinel-copilot", "infraforge"];
 
 const accentMap = {
   teal: {
@@ -46,7 +47,9 @@ const normalizeProject = (project = {}) => ({
 const Projects = () => {
   const { projects = fallbackProjects } = usePortfolioContent();
   const normalizedProjects = asArray(projects).map(normalizeProject);
-  const projectCards = Array.isArray(normalizedProjects) ? normalizedProjects : [];
+  const projectCards = Array.isArray(normalizedProjects)
+    ? normalizedProjects.filter((project) => FEATURED_PROJECT_IDS.includes(project.id))
+    : [];
   const [selectedProject, setSelectedProject] = useState(null);
 
   const openProjectCaseStudy = (project, event) => {
@@ -70,8 +73,8 @@ const Projects = () => {
             <span className="text-teal-300"> production-shaped</span> constraints.
           </h2>
           <p className="text-slate-400 max-w-md text-sm leading-relaxed">
-            I selected the work that best maps to company needs: InfraForge as my platform company,
-            AI product infrastructure, AIOps, secrets automation, product delivery, and SaaS architecture.
+            I selected the strongest current case studies: AI Inference Lab for model operations,
+            ForgeWatch for AIOps, and InfraForge for production platform engineering.
           </p>
         </div>
 
@@ -151,25 +154,23 @@ const Projects = () => {
                     <span>{p.visibility}</span>
                   </div>
                   <div className="flex items-center gap-3">
-                    {isPublic && (
-                      <a href={p.repoUrl} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 text-slate-500 hover:text-teal-300 transition-colors">
+                    {p.repoUrl ? (
+                      <a href={p.repoUrl} target="_blank" rel="noreferrer" aria-label={`Open ${p.name} public GitHub repository`} className="inline-flex items-center gap-1.5 text-slate-500 hover:text-teal-300 transition-colors">
                         Repo <ArrowUpRight className="h-3.5 w-3.5" />
                       </a>
+                    ) : (
+                      <span className="inline-flex items-center gap-1.5 text-slate-500" aria-label={`${p.name} repository is private`}>
+                        <LockKeyhole className="h-3.5 w-3.5" /> Private lab
+                      </span>
                     )}
-                    <button
-                      type="button"
-                      data-portfolio-action="open-case-study"
-                      aria-haspopup="dialog"
-                      aria-label={`Open case study for ${p.name}`}
-                      onPointerUp={(event) => openProjectCaseStudy(p, event)}
-                      onClick={(event) => openProjectCaseStudy(p, event)}
-                      onKeyDown={(event) => {
-                        if (event.key === "Enter" || event.key === " ") openProjectCaseStudy(p, event);
-                      }}
-                      className={`inline-flex min-h-10 items-center gap-1.5 rounded-xl border border-white/10 bg-white/[0.035] px-3 py-2 transition-colors hover:border-teal-300/30 hover:bg-teal-300/[0.08] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-300/60 ${accent.action}`}
+                    <a
+                      href={`/case/${p.id}`}
+                      data-portfolio-action="open-case-study-page"
+                      aria-label={`Open full case study for ${p.name}`}
+                      className={`inline-flex min-h-10 items-center gap-1.5 rounded-xl border border-white/10 bg-white/[0.035] px-3 py-2 transition-colors hover:border-amber-300/30 hover:bg-amber-300/[0.07] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-300/60 ${accent.action}`}
                     >
                       Case study <ArrowUpRight className="h-3.5 w-3.5" />
-                    </button>
+                    </a>
                   </div>
                 </div>
               </article>

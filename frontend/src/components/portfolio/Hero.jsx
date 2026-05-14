@@ -81,6 +81,8 @@ const Hero = () => {
             </div>
 
             <h1 className="text-[2.7rem] sm:text-5xl lg:text-[4.25rem] font-semibold leading-[1.02] tracking-[-0.03em] text-slate-50 hero-headline">
+              <span className="sr-only">I build secure automation for the teams shipping tomorrow's infrastructure.</span>
+              <span aria-hidden="true">
               <span className="hero-headline-row">
                 I build{" "}
                 <span className="hero-rotating-slot" aria-live="polite" aria-atomic="true">
@@ -101,9 +103,10 @@ const Hero = () => {
                 </span>
               </span>
               <span className="block mt-1 lg:mt-2">
-                for the teams shipping{" "}
+                {" for the teams shipping "}
                 <span className="text-slate-50">tomorrow's</span>{" "}
                 <span className="text-teal-300">infrastructure</span>.
+              </span>
               </span>
             </h1>
 
@@ -142,7 +145,7 @@ const Hero = () => {
                 variant="outline"
                 className="border-white/10 bg-white/[0.03] hover:bg-white/[0.06] text-slate-200 hover:text-white"
               >
-                <a href={profile.resumeUrl} target="_blank" rel="noreferrer">
+                <a href={profile.resumeUrl} target="_blank" rel="noreferrer" aria-label="Download Temitayo Charles Akinniranye resume as PDF">
                   <Download className="h-4 w-4 mr-1.5" />
                   Download Resume
                 </a>
