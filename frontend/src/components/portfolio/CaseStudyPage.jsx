@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
 import { ArrowLeft, ArrowUpRight, Download, ExternalLink, GitBranch, ShieldCheck } from "lucide-react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
@@ -11,14 +10,13 @@ import { projects as fallbackProjects } from "@/mock";
 const asArray = (value) => (Array.isArray(value) ? value : []);
 const FEATURED_CASE_STUDIES = ["infraforge", "sentinel-copilot", "openleaf", "vault-ops"];
 
-const CaseStudyPage = () => (
+const CaseStudyPage = ({ projectId }) => (
   <PortfolioContentProvider>
-    <CaseStudyPageContent />
+    <CaseStudyPageContent projectId={projectId} />
   </PortfolioContentProvider>
 );
 
-const CaseStudyPageContent = () => {
-  const { projectId } = useParams();
+const CaseStudyPageContent = ({ projectId }) => {
   const { projects = fallbackProjects } = usePortfolioContent();
   const allProjects = asArray(projects);
   const project = allProjects.find((item) => item.id === projectId) || allProjects.find((item) => item.caseStudyPath === `/case/${projectId}`);
@@ -35,9 +33,9 @@ const CaseStudyPageContent = () => {
           <SectionLabel index="404" title="Case study" />
           <h1 className="mt-8 text-4xl font-semibold text-slate-50">Case study not found.</h1>
           <p className="mt-4 text-slate-400">The requested project route does not match a published case study.</p>
-          <Link to="/#projects" className="mt-8 inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-teal-300 hover:border-teal-300/30">
+          <a href="/#projects" className="mt-8 inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-teal-300 hover:border-teal-300/30">
             <ArrowLeft className="h-4 w-4" /> Back to projects
-          </Link>
+          </a>
         </main>
         <Footer />
         <Toaster />
@@ -61,9 +59,9 @@ const CaseStudyPageContent = () => {
           <div className="absolute inset-0 bg-grid pointer-events-none opacity-[0.25]" />
           <div className="absolute -top-40 right-0 h-96 w-96 rounded-full bg-teal-300/10 blur-3xl" />
           <div className="relative max-w-6xl mx-auto px-6 lg:px-10">
-            <Link to="/#projects" className="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-teal-300">
+            <a href="/#projects" className="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-teal-300">
               <ArrowLeft className="h-4 w-4" /> Back to featured projects
-            </Link>
+            </a>
             <div className="mt-8 grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-start">
               <div>
                 <SectionLabel index="CASE" title={project.category} />
@@ -127,10 +125,10 @@ const CaseStudyPageContent = () => {
             </div>
             <div className="mt-6 grid md:grid-cols-2 lg:grid-cols-4 gap-4">
               {allProjects.filter((item) => FEATURED_CASE_STUDIES.includes(item.id)).map((item) => (
-                <Link key={item.id} to={`/case/${item.id}`} className="rounded-2xl border border-white/[0.07] bg-white/[0.025] p-4 text-sm text-slate-300 hover:border-teal-300/30 hover:text-teal-200">
+                <a key={item.id} href={`/case/${item.id}`} className="rounded-2xl border border-white/[0.07] bg-white/[0.025] p-4 text-sm text-slate-300 hover:border-teal-300/30 hover:text-teal-200">
                   <div className="font-mono text-[11px] uppercase tracking-[0.16em] text-slate-500">{item.category}</div>
                   <div className="mt-2 font-semibold text-slate-100">{item.name}</div>
-                </Link>
+                </a>
               ))}
             </div>
           </div>
