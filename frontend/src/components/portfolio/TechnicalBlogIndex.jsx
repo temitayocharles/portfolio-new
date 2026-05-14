@@ -11,7 +11,7 @@ const TechnicalBlogIndex = () => {
   const posts = asArray(writings).slice(0, 6);
 
   return (
-    <section id="blog-index" className="relative py-20 bg-[#0a0f14]">
+    <section id="blog-index" className="relative py-20 bg-[#0b0f14]">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
         <SectionLabel index="BLOG" title="Technical blog index" />
         <div className="mt-8 grid lg:grid-cols-[0.9fr_1.1fr] gap-8 items-start">
