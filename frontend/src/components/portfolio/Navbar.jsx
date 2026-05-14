@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Menu, X, Github, Linkedin, Mail, Download } from "lucide-react";
+import { Menu, X, Mail, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { navLinks, profile } from "@/mock";
+
+const GithubIcon = ({ className = "" }) => <span className={className} aria-hidden="true">GH</span>;
+const LinkedinIcon = ({ className = "" }) => <span className={className} aria-hidden="true">IN</span>;
+
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -82,7 +86,7 @@ const Navbar = () => {
             aria-label="GitHub"
             className="p-2 text-slate-400 hover:text-teal-300 transition-colors"
           >
-            <Github className="h-4 w-4" />
+            <GithubIcon className="h-4 w-4" />
           </a>
           <a
             href={profile.linkedin}
@@ -91,7 +95,7 @@ const Navbar = () => {
             aria-label="LinkedIn"
             className="p-2 text-slate-400 hover:text-teal-300 transition-colors"
           >
-            <Linkedin className="h-4 w-4" />
+            <LinkedinIcon className="h-4 w-4" />
           </a>
           <Button
             asChild
@@ -128,10 +132,10 @@ const Navbar = () => {
             ))}
             <div className="flex items-center gap-3 pt-3">
               <a href={profile.github} target="_blank" rel="noreferrer" className="p-2 text-slate-400 hover:text-teal-300">
-                <Github className="h-5 w-5" />
+                <GithubIcon className="h-5 w-5" />
               </a>
               <a href={profile.linkedin} target="_blank" rel="noreferrer" className="p-2 text-slate-400 hover:text-teal-300">
-                <Linkedin className="h-5 w-5" />
+                <LinkedinIcon className="h-5 w-5" />
               </a>
               <a href={`mailto:${profile.email}`} className="p-2 text-slate-400 hover:text-teal-300">
                 <Mail className="h-5 w-5" />

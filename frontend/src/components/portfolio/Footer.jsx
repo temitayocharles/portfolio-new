@@ -1,6 +1,10 @@
 import React from "react";
-import { Github, Linkedin, Mail, ArrowUp } from "lucide-react";
+import { Mail, ArrowUp } from "lucide-react";
 import { profile } from "@/mock";
+
+const GithubIcon = ({ className = "" }) => <span className={className} aria-hidden="true">GH</span>;
+const LinkedinIcon = ({ className = "" }) => <span className={className} aria-hidden="true">IN</span>;
+
 
 const Footer = () => {
   const year = new Date().getFullYear();
@@ -44,7 +48,7 @@ const Footer = () => {
                   rel="noreferrer"
                   className="text-slate-300 hover:text-teal-300 transition-colors inline-flex items-center gap-2"
                 >
-                  <Linkedin className="h-3.5 w-3.5" />
+                  <LinkedinIcon className="h-3.5 w-3.5" />
                   LinkedIn
                 </a>
               </li>
@@ -55,7 +59,7 @@ const Footer = () => {
                   rel="noreferrer"
                   className="text-slate-300 hover:text-teal-300 transition-colors inline-flex items-center gap-2"
                 >
-                  <Github className="h-3.5 w-3.5" />
+                  <GithubIcon className="h-3.5 w-3.5" />
                   GitHub
                 </a>
               </li>
@@ -91,7 +95,7 @@ const Footer = () => {
               className="p-2 text-slate-400 hover:text-teal-300 transition-colors"
               aria-label="GitHub"
             >
-              <Github className="h-4 w-4" />
+              <GithubIcon className="h-4 w-4" />
             </a>
             <a
               href={profile.linkedin}
@@ -100,7 +104,7 @@ const Footer = () => {
               className="p-2 text-slate-400 hover:text-teal-300 transition-colors"
               aria-label="LinkedIn"
             >
-              <Linkedin className="h-4 w-4" />
+              <LinkedinIcon className="h-4 w-4" />
             </a>
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
