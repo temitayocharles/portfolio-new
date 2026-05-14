@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Menu, X, Github, LinkedinIcon, Mail, Download } from "lucide-react";
+import { Menu, X, GithubIcon, LinkedinIcon, Mail, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { navLinks, profile } from "@/mock";
 
@@ -82,7 +82,7 @@ const Navbar = () => {
             aria-label="GitHub"
             className="p-2 text-slate-400 hover:text-teal-300 transition-colors"
           >
-            <Github className="h-4 w-4" />
+            <GithubIcon className="h-4 w-4" />
           </a>
           <a
             href={profile.linkedin}
@@ -128,7 +128,7 @@ const Navbar = () => {
             ))}
             <div className="flex items-center gap-3 pt-3">
               <a href={profile.github} target="_blank" rel="noreferrer" className="p-2 text-slate-400 hover:text-teal-300">
-                <Github className="h-5 w-5" />
+                <GithubIcon className="h-5 w-5" />
               </a>
               <a href={profile.linkedin} target="_blank" rel="noreferrer" className="p-2 text-slate-400 hover:text-teal-300">
                 <LinkedinIcon className="h-5 w-5" />

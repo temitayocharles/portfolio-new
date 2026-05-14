@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Mail, LinkedinIcon, Github, Send, MapPin, Loader2, Check } from "lucide-react";
+import { Mail, LinkedinIcon, GithubIcon, Send, MapPin, Loader2, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -85,7 +85,7 @@ const Contact = () => {
                 href={profile.linkedin}
               />
               <ContactRow
-                icon={Github}
+                icon={GithubIcon}
                 label="GitHub"
                 value="github.com/temitayocharles"
                 href={profile.github}
