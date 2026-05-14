@@ -330,8 +330,36 @@
           "Separate application delivery from gateway and networking ownership to avoid Argo CD shared-resource drift.",
           "Keep stateful services recoverable through Longhorn retention, Harbor recovery notes, and documented restore paths."
         ],
-        "result": "The platform now supports production domain routing, Harbor registry recovery, portfolio API delivery, Vault-backed secrets, and a hardened operating model that can be reused for company and client workloads."
-      }
+        "result": "The platform now supports production domain routing, Harbor registry recovery, portfolio API delivery, Vault-backed secrets, and a hardened operating model that can be reused for company and client workloads.",
+        "problem": "Small teams need production discipline across Kubernetes delivery, routing, secrets, observability, and recovery without staffing a full platform department.",
+        "constraints": [
+          "Keep the model small enough for founder-led teams.",
+          "Avoid hidden manual steps during cutover and recovery.",
+          "Preserve operator visibility across delivery, runtime, and backup layers."
+        ],
+        "operationalControls": [
+          "GitOps as source of truth for platform changes.",
+          "Vault-backed secrets delivery through External Secrets.",
+          "Prometheus, Grafana, Loki, and Alertmanager for runtime visibility.",
+          "Longhorn, Harbor notes, and runbook-backed recovery paths."
+        ],
+        "evidence": [
+          "Deployment lifecycle measured from approved infrastructure change to reconciled Argo CD application health.",
+          "Recovery posture validated through documented registry, storage, and gateway restore procedures.",
+          "Platform controls map delivery, secrets, observability, backup, and edge routing into one operating model."
+        ],
+        "measurementNotes": {
+          "deploymentCycle": "Measured from approved change or merge to production-ready deployment health where the metric applies.",
+          "reliability": "Reported as service availability/SLO posture over the operating window where the platform metric applies.",
+          "costSavings": "Calculated from recurring monthly AWS spend deltas after rightsizing, tagging, audits, and governance controls.",
+          "recovery": "Measured from incident declaration or restore start to verified service recovery where RTO/MTTR applies."
+        }
+      },
+      "featured": true,
+      "caseStudyPath": "/case/infraforge",
+      "diagramSvg": "/images/architecture/infraforge-operating-platform.svg",
+      "diagramPng": "/images/architecture/infraforge-architecture.png",
+      "runbookUrl": "/runbooks/infraforge-cutover-runbook.md"
     },
     {
       "id": "project-iris",
@@ -375,7 +403,8 @@
           "Design for TLS, auth, backup, and recovery from the beginning instead of after the prototype phase."
         ],
         "result": "The project demonstrates how AI products can feel useful while still respecting operational boundaries, privacy needs, and founder-level control."
-      }
+      },
+      "featured": false
     },
     {
       "id": "jerry",
@@ -420,7 +449,8 @@
           "Treat memory, backups, and audit history as first-class parts of the assistant architecture."
         ],
         "result": "The system demonstrates a premium personal AI pattern: private by default, durable over time, and designed for controlled action instead of uncontrolled automation."
-      }
+      },
+      "featured": false
     },
     {
       "id": "ai-builders-academy",
@@ -459,7 +489,8 @@
           "Add drift checks and runbooks so platform behavior stays visible after deploy."
         ],
         "result": "The platform is positioned as an operating system for an AI education business, not a one-off app build."
-      }
+      },
+      "featured": false
     },
     {
       "id": "vault-ops",
@@ -497,8 +528,36 @@
           "Document bootstrap and recovery paths so operators can act under pressure.",
           "Validate secret shape and sync state before application rollouts depend on them."
         ],
-        "result": "The toolkit gives platform work a safer secrets operating model that is audit-friendly and practical for small teams."
-      }
+        "result": "The toolkit gives platform work a safer secrets operating model that is audit-friendly and practical for small teams.",
+        "problem": "Platform teams need safe, repeatable secret operations across Vault and Kubernetes without relying on fragile manual steps.",
+        "constraints": [
+          "Keep Vault as the authority.",
+          "Validate Kubernetes secret sync before application rollout.",
+          "Document recovery and rollback for operators working under pressure."
+        ],
+        "operationalControls": [
+          "Vault-backed secret authority.",
+          "External Secrets sync validation.",
+          "Pre-rollout secret shape checks.",
+          "Documented rotation and rollback runbook."
+        ],
+        "evidence": [
+          "Secret workflows separate authority, sync, validation, and application dependency checks.",
+          "Runbook path covers rotation, ExternalSecret verification, rollout safety, and rollback.",
+          "Operator controls are designed for repeatability under incident pressure."
+        ],
+        "measurementNotes": {
+          "deploymentCycle": "Measured from approved change or merge to production-ready deployment health where the metric applies.",
+          "reliability": "Reported as service availability/SLO posture over the operating window where the platform metric applies.",
+          "costSavings": "Calculated from recurring monthly AWS spend deltas after rightsizing, tagging, audits, and governance controls.",
+          "recovery": "Measured from incident declaration or restore start to verified service recovery where RTO/MTTR applies."
+        }
+      },
+      "featured": false,
+      "caseStudyPath": "/case/vault-ops",
+      "diagramSvg": "/images/architecture/vault-ops-secret-control-plane.svg",
+      "diagramPng": null,
+      "runbookUrl": "/runbooks/vault-ops-secret-rotation-runbook.md"
     },
     {
       "id": "sentinel-copilot",
@@ -541,8 +600,36 @@
           "Route all mutating actions through propose_write, policy evaluation, and explicit operator approval.",
           "Store outcomes and incident memory so future triage improves without turning the system into an unsafe autonomous executor."
         ],
-        "result": "ForgeWatch gives InfraForge a company-grade AIOps control plane where AI speeds investigation, but operators retain authority over production state."
-      }
+        "result": "ForgeWatch gives InfraForge a company-grade AIOps control plane where AI speeds investigation, but operators retain authority over production state.",
+        "problem": "Lean platform teams need faster alert triage without handing production authority to an autonomous AI agent.",
+        "constraints": [
+          "Do not allow uncontrolled production writes.",
+          "Ground every recommendation in Kubernetes, Prometheus, Loki, or Argo CD evidence.",
+          "Keep human approval mandatory for remediation."
+        ],
+        "operationalControls": [
+          "Read-only Kubernetes, Prometheus, Loki, and Argo CD collection.",
+          "Approval-gated write proposals.",
+          "Outcome-backed memory for future triage.",
+          "Notification path through Discord and ntfy."
+        ],
+        "evidence": [
+          "Investigation tools stay read-only by default.",
+          "Write actions require proposal, policy check, and explicit operator approval.",
+          "Incident memory stores outcomes rather than blindly executing remediation."
+        ],
+        "measurementNotes": {
+          "deploymentCycle": "Measured from approved change or merge to production-ready deployment health where the metric applies.",
+          "reliability": "Reported as service availability/SLO posture over the operating window where the platform metric applies.",
+          "costSavings": "Calculated from recurring monthly AWS spend deltas after rightsizing, tagging, audits, and governance controls.",
+          "recovery": "Measured from incident declaration or restore start to verified service recovery where RTO/MTTR applies."
+        }
+      },
+      "featured": true,
+      "caseStudyPath": "/case/sentinel-copilot",
+      "diagramSvg": "/images/architecture/forgewatch-aiops-control-plane.svg",
+      "diagramPng": "/images/architecture/forgewatch-architecture.png",
+      "runbookUrl": "/runbooks/forgewatch-triage-runbook.md"
     },
     {
       "id": "openleaf",
@@ -585,8 +672,36 @@
           "Model event-driven boundaries where services need asynchronous coordination.",
           "Include observability and chaos testing so reliability is visible, not assumed."
         ],
-        "result": "The project serves as a public architecture reference for product teams thinking through cloud-native SaaS design."
-      }
+        "result": "The project serves as a public architecture reference for product teams thinking through cloud-native SaaS design.",
+        "problem": "Digital product teams need a reference SaaS architecture that shows service boundaries, API governance, delivery, observability, and reliability controls together.",
+        "constraints": [
+          "Avoid a toy monolith while keeping the reference understandable.",
+          "Show how gateway, events, payments, and observability relate.",
+          "Make reliability testing part of the architecture, not an afterthought."
+        ],
+        "operationalControls": [
+          "Kong and decK for gateway governance.",
+          "RabbitMQ for asynchronous service coordination.",
+          "Prometheus and Chaos Mesh for reliability visibility.",
+          "Argo CD delivery path for platform-managed releases."
+        ],
+        "evidence": [
+          "Architecture models gateway governance, evented boundaries, payment workflows, and reliability testing.",
+          "Public repository provides implementation-level inspection for the reference SaaS design.",
+          "Release model connects frontend, API, service, and platform concerns."
+        ],
+        "measurementNotes": {
+          "deploymentCycle": "Measured from approved change or merge to production-ready deployment health where the metric applies.",
+          "reliability": "Reported as service availability/SLO posture over the operating window where the platform metric applies.",
+          "costSavings": "Calculated from recurring monthly AWS spend deltas after rightsizing, tagging, audits, and governance controls.",
+          "recovery": "Measured from incident declaration or restore start to verified service recovery where RTO/MTTR applies."
+        }
+      },
+      "featured": true,
+      "caseStudyPath": "/case/openleaf",
+      "diagramSvg": "/images/architecture/openleaf-reference-saas.svg",
+      "diagramPng": null,
+      "runbookUrl": "/runbooks/openleaf-release-runbook.md"
     }
   ],
   "projectArchitectures": [
