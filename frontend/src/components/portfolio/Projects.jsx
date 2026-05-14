@@ -6,7 +6,7 @@ import { usePortfolioContent } from "@/context/PortfolioContentContext";
 import { SectionLabel } from "./About";
 
 const PROJECTS_SCHEMA_GUARD_VERSION = "2026-05-14-featured-case-study-routes-v1";
-const FEATURED_PROJECT_IDS = ["infraforge", "sentinel-copilot", "openleaf"];
+const FEATURED_PROJECT_IDS = ["ai-inference-lab", "sentinel-copilot", "infraforge"];
 
 const accentMap = {
   teal: {
@@ -73,8 +73,8 @@ const Projects = () => {
             <span className="text-teal-300"> production-shaped</span> constraints.
           </h2>
           <p className="text-slate-400 max-w-md text-sm leading-relaxed">
-            I selected the three strongest public-facing case studies: InfraForge for platform operations,
-            ForgeWatch for AIOps, and OpenLeaf for cloud-native SaaS architecture.
+            I selected the strongest current case studies: AI Inference Lab for model operations,
+            ForgeWatch for AIOps, and InfraForge for production platform engineering.
           </p>
         </div>
 
