@@ -35,6 +35,7 @@ const Footer = () => {
               <li>
                 <a
                   href={`mailto:${profile.email}`}
+                  aria-label="Email Temitayo Charles Akinniranye"
                   className="text-slate-300 hover:text-teal-300 transition-colors inline-flex items-center gap-2"
                 >
                   <Mail className="h-3.5 w-3.5" />
@@ -46,6 +47,7 @@ const Footer = () => {
                   href={profile.linkedin}
                   target="_blank"
                   rel="noreferrer"
+                  aria-label="Open Temitayo Charles Akinniranye LinkedIn profile"
                   className="text-slate-300 hover:text-teal-300 transition-colors inline-flex items-center gap-2"
                 >
                   <LinkedinIcon className="h-3.5 w-3.5" />
@@ -57,6 +59,7 @@ const Footer = () => {
                   href={profile.github}
                   target="_blank"
                   rel="noreferrer"
+                  aria-label="Open Temitayo Charles Akinniranye GitHub profile"
                   className="text-slate-300 hover:text-teal-300 transition-colors inline-flex items-center gap-2"
                 >
                   <GithubIcon className="h-3.5 w-3.5" />
@@ -93,7 +96,7 @@ const Footer = () => {
               target="_blank"
               rel="noreferrer"
               className="p-2 text-slate-400 hover:text-teal-300 transition-colors"
-              aria-label="GitHub"
+              aria-label="Open Temitayo Charles Akinniranye GitHub profile"
             >
               <GithubIcon className="h-4 w-4" />
             </a>
@@ -102,7 +105,7 @@ const Footer = () => {
               target="_blank"
               rel="noreferrer"
               className="p-2 text-slate-400 hover:text-teal-300 transition-colors"
-              aria-label="LinkedIn"
+              aria-label="Open Temitayo Charles Akinniranye LinkedIn profile"
             >
               <LinkedinIcon className="h-4 w-4" />
             </a>
