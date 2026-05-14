@@ -454,30 +454,37 @@
     {
       "id": "project-iris",
       "name": "Project Iris",
-      "subtitle": "Private AI Workspace for Knowledge Operators",
-      "category": "AI Infrastructure",
-      "description": "Project Iris is a private AI workspace for operators who need useful automation without surrendering control of memory, credentials, browser actions, or internal context.",
+      "subtitle": "Governed Personal AI Assistant",
+      "category": "Personal AI",
+      "description": "Project Iris is a governed personal AI assistant for everyday digital work: email, calendar, browser workflows, research, memory, artifacts, approvals, tools, MCP, audit, and long-running tasks.",
       "stack": [
         "FastAPI",
         "React",
-        "Vite",
-        "TLS",
-        "Auth",
-        "Backups",
-        "Memory Governance"
+        "MCP Gateway",
+        "Provider OAuth",
+        "Approval Service",
+        "Memory Service",
+        "Audit Service",
+        "Email Tools",
+        "Calendar Tools",
+        "Browser Tools",
+        "Execution Worker"
       ],
       "pillars": [
-        "AI",
-        "Privacy",
-        "Local-first"
+        "Personal AI",
+        "Memory",
+        "Approvals",
+        "Everyday Work",
+        "Tooling"
       ],
       "outcomes": [
-        "Private workflow control",
-        "Governed memory model",
-        "Recoverable AI workspace"
+        "Personal work delegation without surrendering user control.",
+        "Approval-gated actions for sensitive or consequential tasks.",
+        "Memory, audit, and provider boundaries designed into the product from the start.",
+        "A practical assistant surface for email, calendar, browser activity, research, artifacts, and follow-up workflows."
       ],
       "signal": "AI operations product track",
-      "repo": "project-iris",
+      "repo": "Private Project Iris personal AI assistant repository",
       "diagramImage": {
         "src": "/images/architecture/project-iris-architecture.png",
         "alt": "Project Iris local-first AI workspace architecture diagram"
@@ -485,45 +492,68 @@
       "visibility": "Private product case study",
       "accent": "amber",
       "caseStudy": {
-        "title": "Private AI operations for founders and technical teams",
-        "context": "Project Iris explores how a private AI workspace can support operators without giving away control of memory, tools, credentials, or execution boundaries.",
-        "decisions": [
-          "Treat memory as governed infrastructure instead of a hidden black box.",
-          "Keep tool execution explicit so users understand what the assistant can act on.",
-          "Design for TLS, auth, backup, and recovery from the beginning instead of after the prototype phase."
+        "title": "Project Iris: governed personal AI for everyday work",
+        "context": "Iris is a personal AI assistant designed around real daily work: email, calendar, browser tasks, research, memory, artifacts, approvals, and long-running workflows. It is not an engineering assistant or infrastructure dashboard.",
+        "problem": "People lose time and context switching between email, calendar, research, browser tasks, notes, follow-ups, and decisions. Most assistants either stay too passive to help or become too opaque to trust.",
+        "constraints": [
+          "Keep the assistant personal, not infrastructure-focused.",
+          "Make useful delegation possible without hiding important actions from the user.",
+          "Treat memory, approvals, provider connections, and audit history as product boundaries, not afterthoughts.",
+          "Support everyday workflows while preserving user control over sensitive actions."
         ],
-        "result": "The project demonstrates how AI products can feel useful while still respecting operational boundaries, privacy needs, and founder-level control."
+        "decisions": [
+          "Use approval queues for actions that should not happen silently.",
+          "Model memory as governed product infrastructure rather than an invisible black box.",
+          "Separate browser, email, calendar, MCP, and provider integrations behind clear contracts.",
+          "Use audit and execution workers to make long-running tasks visible and recoverable."
+        ],
+        "operationalControls": [
+          "Approval service for governed action flow.",
+          "Audit service for traceability.",
+          "Memory service for durable personal context.",
+          "Provider OAuth boundaries for connected accounts.",
+          "MCP gateway for tool access through explicit contracts.",
+          "Execution worker for long-running task orchestration."
+        ],
+        "evidence": [
+          "Repository contains API and UI surfaces for approvals, audit, memory, provider connections, tools, and operator workflows.",
+          "Documentation identifies Iris as a personal AI operator assistant rather than an engineering dashboard.",
+          "Service structure includes approval, audit, memory, browser, email, calendar, MCP gateway, notification, and execution-worker concerns."
+        ],
+        "result": "Iris demonstrates a premium personal AI pattern: capable enough to help with real work, but governed enough to preserve user control, memory boundaries, auditability, and trust."
       },
-      "featured": false
+      "featured": false,
+      "caseStudyPath": "/case/project-iris"
     },
     {
       "id": "jerry",
       "name": "Jerry",
-      "subtitle": "Durable Personal AI Assistant",
-      "category": "Personal AI Infrastructure",
-      "description": "Jerry is a local-first personal assistant system built around durable memory, guarded actions, private context, and recoverable state. It treats personal AI as owned infrastructure, not a disposable chatbot.",
+      "subtitle": "Mobile AI Interaction Layer",
+      "category": "Mobile AI Companion",
+      "description": "Jerry is the mobile AI companion for quick commands, status checks, alert review, approvals, and lightweight assistant interaction. It gives personal and operational AI workflows a mobile surface without pretending to replace Iris or ForgeWatch.",
       "stack": [
-        "Ollama",
-        "Qwen",
-        "SQLite",
-        "Litestream",
-        "Cloudflare R2",
-        "Local-first Memory",
-        "Approval Gates"
+        "Python",
+        "Command Policy",
+        "Health Checks",
+        "Agent Instructions",
+        "Mobile Interaction Model",
+        "Local Assistant Runtime"
       ],
       "pillars": [
-        "Memory",
-        "Privacy",
-        "Actions",
-        "Durability"
+        "Mobile AI",
+        "Commands",
+        "Status",
+        "Approvals",
+        "Companion UI"
       ],
       "outcomes": [
-        "Local-first assistant design",
-        "Durable memory posture",
-        "Approval-gated execution path"
+        "Lightweight mobile access to AI interaction and assistant workflows.",
+        "Command policy and health checks that make the assistant runtime more governable.",
+        "A companion surface for quick status, alerts, approvals, and mobile-first interaction.",
+        "A bridge between personal AI interaction and operational awareness without collapsing those products into one."
       ],
       "signal": "Personal AI operating system track",
-      "repo": "Jerry assistant system",
+      "repo": "Private Jerry / AI Mobile Chat repository",
       "diagramImage": {
         "src": "/images/architecture/jerry-architecture.png",
         "alt": "Jerry personal assistant architecture diagram"
@@ -531,23 +561,42 @@
       "visibility": "Private product case study",
       "accent": "amber",
       "caseStudy": {
-        "title": "A personal assistant designed like infrastructure",
-        "context": "Jerry explores what happens when a personal AI assistant is treated as an operating system for daily work rather than a disposable chatbot. The focus is durable memory, explicit consent, and recoverable state.",
-        "decisions": [
-          "Use local-first storage and model execution to keep personal context under the operator's control.",
-          "Route meaningful actions through approval gates so the assistant can help without becoming opaque or risky.",
-          "Treat memory, backups, and audit history as first-class parts of the assistant architecture."
+        "title": "Jerry: the mobile companion for governed AI interaction",
+        "context": "Jerry gives the InfraForge ecosystem a lightweight mobile AI companion for quick commands, status checks, approvals, alert review, and assistant interaction.",
+        "problem": "Useful AI assistance often stays locked in desktop workflows. People need fast, mobile access to status, commands, approvals, and lightweight assistant interaction while they are away from a workstation.",
+        "constraints": [
+          "Keep Jerry lightweight and mobile-first.",
+          "Do not position Jerry as the personal AI brain; that role belongs to Iris.",
+          "Do not position Jerry as the infrastructure watcher; that role belongs to ForgeWatch.",
+          "Keep command behavior policy-aware and observable."
         ],
-        "result": "The system demonstrates a premium personal AI pattern: private by default, durable over time, and designed for controlled action instead of uncontrolled automation."
+        "decisions": [
+          "Use command policy to make allowed actions explicit.",
+          "Keep health checks close to the assistant runtime.",
+          "Treat mobile interaction as a companion layer for personal and operational AI workflows.",
+          "Preserve separation between Jerry, Iris, ForgeWatch, and InfraForge Platform."
+        ],
+        "operationalControls": [
+          "Command policy file.",
+          "Assistant runtime health check.",
+          "Agent instruction boundary.",
+          "Lightweight mobile interaction surface."
+        ],
+        "evidence": [
+          "Repository includes AGENTS.md, command policy, runtime app, health-check script, and dependency manifest.",
+          "Project structure supports a policy-aware mobile AI assistant pattern rather than a generic chatbot."
+        ],
+        "result": "Jerry makes AI interaction more available and responsive by bringing quick commands, status, approvals, and assistant interaction into a mobile-first companion surface."
       },
-      "featured": false
+      "featured": false,
+      "caseStudyPath": "/case/jerry"
     },
     {
       "id": "ai-builders-academy",
       "name": "AI Builders Academy",
-      "subtitle": "Program Delivery Platform for AI Education",
-      "category": "Product Infrastructure",
-      "description": "AI Builders Academy connects an education product to the operational pieces that make it deployable: application paths, image promotion, GitOps release controls, runtime checks, and runbooks.",
+      "subtitle": "Practical AI Builders Learning Platform",
+      "category": "AI Education Product",
+      "description": "AI Builders Academy turns AI curiosity into structured learning experiences that connect concepts to product-building practice, platform delivery, and responsible AI implementation.",
       "stack": [
         "TypeScript",
         "CI/CD",
@@ -557,28 +606,28 @@
         "Runtime Images"
       ],
       "pillars": [
-        "Delivery",
-        "Automation",
-        "Product Ops"
+        "AI Education",
+        "Builder Curriculum",
+        "Product Delivery"
       ],
       "outcomes": [
-        "Cleaner deployable paths",
-        "Image promotion discipline",
-        "Runtime drift checks"
+        "Structured path from AI curiosity to practical AI product building.",
+        "Learning platform that connects AI concepts to real implementation patterns.",
+        "Delivery discipline for an education product that can evolve beyond prototype stage."
       ],
       "signal": "Active business platform",
       "repo": "ai-builders-academy",
       "visibility": "Private product case study",
       "accent": "teal",
       "caseStudy": {
-        "title": "A business delivery platform for AI education",
-        "context": "AI Builders Academy needs delivery discipline that fits a real education business: fast application changes, clear deployable boundaries, and runtime confidence.",
+        "title": "AI Builders Academy: practical AI education for builders",
+        "context": "AI Builders Academy packages AI and platform knowledge into guided learning experiences for people who want to build real AI-enabled systems, not just consume AI theory.",
         "decisions": [
           "Refine deployable path filters so only relevant changes trigger product delivery workflows.",
           "Promote runtime images deliberately instead of relying on ambiguous moving state.",
           "Add drift checks and runbooks so platform behavior stays visible after deploy."
         ],
-        "result": "The platform is positioned as an operating system for an AI education business, not a one-off app build."
+        "result": "The platform extends InfraForge into AI education: practical, product-minded, and connected to the same systems discipline behind the rest of the ecosystem."
       },
       "featured": false
     },
@@ -654,7 +703,7 @@
       "name": "ForgeWatch",
       "subtitle": "Evidence-First AIOps Copilot for InfraForge",
       "category": "AIOps / Platform Operations",
-      "description": "ForgeWatch is an evidence-first AIOps copilot for InfraForge. It gathers signals from Kubernetes, Prometheus, Loki, and Argo CD, then turns alerts into structured triage with human-approved remediation.",
+      "description": "ForgeWatch is the operational intelligence and cluster guardian layer for InfraForge. It watches infrastructure signals, KeepHQ events, Kubernetes state, alerts, incidents, and service health, then helps operators understand what needs attention.",
       "stack": [
         "FastAPI",
         "Ollama",
@@ -668,14 +717,15 @@
         "ntfy"
       ],
       "pillars": [
-        "AIOps",
-        "Evidence",
+        "Operational Intelligence",
+        "KeepHQ Signals",
+        "Cluster Guardian",
         "Approval Gates"
       ],
       "outcomes": [
-        "Read-only autonomous investigation",
-        "Human-approved remediation",
-        "Outcome-backed memory"
+        "Infrastructure signals connected into a clearer operational picture.",
+        "Evidence-first incident review across metrics, Kubernetes state, and service health.",
+        "Human-approved remediation path that keeps operators in control."
       ],
       "signal": "Internal company control plane",
       "repo": "Private ForgeWatch AIOps repository",
@@ -684,14 +734,14 @@
       "accent": "teal",
       "caseStudy": {
         "title": "Evidence-first operations for lean platform teams",
-        "context": "ForgeWatch is the operational intelligence layer for InfraForge. It uses tool calling to collect real platform evidence first, then produces triage, digests, watchdog findings, and approval-gated write proposals for operators.",
+        "context": "ForgeWatch is the operational intelligence layer and cluster guardian for InfraForge. It watches metrics, incidents, alerts, KeepHQ signals, Kubernetes state, and service health, then turns operational noise into structured understanding.",
         "decisions": [
           "Keep Kubernetes, Prometheus, Loki, and Argo CD queries autonomous but read-only by default.",
           "Route all mutating actions through propose_write, policy evaluation, and explicit operator approval.",
           "Store outcomes and incident memory so future triage improves without turning the system into an unsafe autonomous executor."
         ],
-        "result": "ForgeWatch gives InfraForge a company-grade AIOps control plane where AI speeds investigation, but operators retain authority over production state.",
-        "problem": "Lean platform teams need faster alert triage without handing production authority to an autonomous AI agent.",
+        "result": "ForgeWatch gives InfraForge an operational intelligence layer where AI helps connect signals and speed investigation, while operators retain authority over production state.",
+        "problem": "Infrastructure teams are overwhelmed by scattered alerts, metrics, incidents, Kubernetes state, logs, and service-health signals.",
         "constraints": [
           "Do not allow uncontrolled production writes.",
           "Ground every recommendation in Kubernetes, Prometheus, Loki, or Argo CD evidence.",
@@ -792,6 +842,48 @@
       "diagramSvg": "/images/architecture/openleaf-reference-saas.svg",
       "diagramPng": null,
       "runbookUrl": "/runbooks/openleaf-release-runbook.md"
+    },
+    {
+      "id": "young-coders",
+      "number": "09",
+      "category": "Education Product",
+      "subtitle": "Practical Coding Education Platform",
+      "name": "Young Coders",
+      "description": "Young Coders is an education product that turns coding into structured, practical learning experiences for young learners, supported by production-minded platform delivery patterns.",
+      "pillars": [
+        "Coding Education",
+        "Learner Experience",
+        "Product Delivery"
+      ],
+      "outcomes": [
+        "Structured coding-learning path for young learners.",
+        "Productized education experience instead of scattered exercises.",
+        "Platform-ready delivery posture for an education business."
+      ],
+      "stack": [
+        "React",
+        "Node.js",
+        "Postgres",
+        "Docker",
+        "Learning Platform",
+        "Product Operations"
+      ],
+      "repo": "Private Young Coders repository",
+      "visibility": "Private education product case study",
+      "featured": false,
+      "caseStudyPath": null,
+      "diagramSvg": null,
+      "runbookUrl": null,
+      "caseStudy": {
+        "title": "Young Coders: practical coding education as a product",
+        "context": "Young Coders packages coding education into a structured product experience for young learners.",
+        "problem": "Young learners need practical, engaging coding pathways that feel connected to real product-building rather than isolated lessons.",
+        "decisions": [
+          "Structure learning around usable product experiences.",
+          "Treat education delivery as a product platform, not a folder of exercises."
+        ],
+        "result": "Young Coders extends the InfraForge ecosystem into practical technical education."
+      }
     }
   ],
   "projectArchitectures": [
@@ -2006,5 +2098,152 @@
   "heroVisuals": {
     "abstract": "https://images.unsplash.com/photo-1639322537228-f710d846310a?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxODl8MHwxfHNlYXJjaHwyfHxrdWJlcm5ldGVzJTIwbmV0d29ya3xlbnwwfHx8YmxhY2t8MTc3Nzc0MjE3OXww&ixlib=rb-4.1.0&q=85",
     "aboutVisual": "https://images.unsplash.com/photo-1639322537504-6427a16b0a28?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxODl8MHwxfHNlYXJjaHwzfHxrdWJlcm5ldGVzJTIwbmV0d29ya3xlbnwwfHx8YmxhY2t8MTc3Nzc0MjE3OXww&ixlib=rb-4.1.0&q=85"
+  },
+  "brandSystems": {
+    "thesis": "InfraForge builds governed AI systems and the infrastructure they need to operate reliably.",
+    "publicHubRole": "temitayocharles.online is the public InfraForge brand hub. It explains the ecosystem; it is not a node inside the ecosystem map.",
+    "narrativeRules": [
+      "Tell problem-solution stories instead of exposing internal architecture as a diagram dump.",
+      "Keep Iris positioned as a governed personal AI assistant, not an engineering assistant.",
+      "Keep Jerry positioned as a mobile AI companion and interaction surface.",
+      "Keep ForgeWatch positioned as operational intelligence and cluster guardian.",
+      "Keep private repositories represented as private proof assets, not broken public links.",
+      "Avoid generic blue AI/SaaS visual language."
+    ],
+    "systems": [
+      {
+        "id": "infraforge-platform",
+        "name": "InfraForge Platform",
+        "role": "Secure infrastructure foundation",
+        "problem": "Modern AI and software products need reliable infrastructure, delivery, secrets, observability, and automation from the beginning.",
+        "solution": "InfraForge Platform provides the operating foundation for clusters, GitOps delivery, Vault-backed secrets, observability, CI/CD, runbooks, and repeatable deployment control.",
+        "proofSignals": [
+          "Kubernetes",
+          "GitOps",
+          "Vault Ops",
+          "observability",
+          "runbooks",
+          "delivery controls"
+        ],
+        "websitePriority": "foundation"
+      },
+      {
+        "id": "ai-inference-lab",
+        "name": "AI Inference Lab",
+        "role": "Model operations and LLM-serving environment",
+        "problem": "AI models are easy to demo but hard to operate, measure, package, and scale reliably.",
+        "solution": "AI Inference Lab turns model serving into an observable, benchmarked, capacity-aware discipline with runtime packaging, metrics, latency/throughput tracking, and GPU-capacity planning.",
+        "proofSignals": [
+          "model-serving API",
+          "benchmark harness",
+          "Prometheus metrics",
+          "Docker runtime",
+          "GPU capacity planning"
+        ],
+        "websitePriority": "flagship"
+      },
+      {
+        "id": "forgewatch",
+        "name": "ForgeWatch / Sentinel Copilot",
+        "role": "Operational intelligence and cluster guardian",
+        "problem": "Infrastructure teams are overwhelmed by scattered alerts, metrics, incidents, Kubernetes state, logs, and service-health signals.",
+        "solution": "ForgeWatch watches the operational estate, connects signals through systems such as KeepHQ, classifies operational events, and helps operators understand what needs attention.",
+        "proofSignals": [
+          "KeepHQ signals",
+          "Kubernetes state",
+          "metrics",
+          "incidents",
+          "alerts",
+          "triage",
+          "approval-gated remediation"
+        ],
+        "websitePriority": "flagship"
+      },
+      {
+        "id": "project-iris",
+        "name": "Project Iris",
+        "role": "Governed personal AI assistant",
+        "problem": "People lose time switching between email, calendar, browser tasks, research, memory, documents, follow-ups, and decisions.",
+        "solution": "Iris helps manage everyday digital work through governed AI delegation: memory, approvals, tools, MCP, email, calendar, browser workflows, artifacts, audit, and long-running tasks.",
+        "proofSignals": [
+          "approval queues",
+          "memory",
+          "MCP gateway",
+          "email",
+          "calendar",
+          "browser workflows",
+          "audit",
+          "operator workspace"
+        ],
+        "websitePriority": "flagship"
+      },
+      {
+        "id": "jerry",
+        "name": "Jerry / AI Mobile Chat",
+        "role": "Mobile AI companion and interaction surface",
+        "problem": "AI assistance is often trapped in desktop workflows when people need quick mobile interaction, status, commands, and approval-style actions.",
+        "solution": "Jerry provides a lightweight mobile AI companion for commands, status checks, assistant interaction, alert review, and mobile access to governed AI workflows.",
+        "proofSignals": [
+          "mobile assistant runtime",
+          "command policy",
+          "health checks",
+          "agent instructions",
+          "mobile interaction model"
+        ],
+        "websitePriority": "supporting-flagship"
+      },
+      {
+        "id": "young-coders",
+        "name": "Young Coders",
+        "role": "Practical coding education product",
+        "problem": "Young learners need structured, engaging, practical paths into coding that feel real, not abstract.",
+        "solution": "Young Coders turns coding education into a structured product experience with learner flows, exercises, platform scaffolding, and production-minded delivery.",
+        "proofSignals": [
+          "learner flows",
+          "coding curriculum",
+          "product scaffolding",
+          "delivery discipline"
+        ],
+        "websitePriority": "education-layer"
+      },
+      {
+        "id": "ai-builders-academy",
+        "name": "AI Builders Academy",
+        "role": "AI education product",
+        "problem": "Learners need a practical path from AI curiosity to building real AI-enabled systems.",
+        "solution": "AI Builders Academy packages AI and platform knowledge into guided learning experiences that connect concepts to product-building practice.",
+        "proofSignals": [
+          "AI curriculum",
+          "program delivery",
+          "product infrastructure",
+          "learning platform operations"
+        ],
+        "websitePriority": "education-layer"
+      },
+      {
+        "id": "vault-ops",
+        "name": "Vault Ops",
+        "role": "Secrets and operational safety proof",
+        "problem": "Secrets operations become risky when they rely on manual, undocumented, or unvalidated changes.",
+        "solution": "Vault Ops turns secret handling into a governed, repeatable, auditable process across Vault, Kubernetes, External Secrets, validation, rollout, and rollback.",
+        "proofSignals": [
+          "Vault",
+          "External Secrets",
+          "rotation runbooks",
+          "validation",
+          "rollback"
+        ],
+        "websitePriority": "supporting-proof"
+      }
+    ],
+    "relationshipModel": [
+      "InfraForge Platform provides the secure runtime foundation.",
+      "AI Inference Lab proves model operations and LLM-serving capacity.",
+      "ForgeWatch watches infrastructure and operational signals.",
+      "Iris manages personal digital work through governed AI delegation.",
+      "Jerry provides mobile access to lightweight AI interaction and status/approval flows.",
+      "Young Coders and AI Builders Academy productize the knowledge layer.",
+      "Vault Ops strengthens the security and secrets story."
+    ]
   }
 }
