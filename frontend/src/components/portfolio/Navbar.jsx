@@ -131,13 +131,13 @@ const Navbar = () => {
               </button>
             ))}
             <div className="flex items-center gap-3 pt-3">
-              <a href={profile.github} target="_blank" rel="noreferrer" aria-label="Open Temitayo Charles Akinniranye GitHub profile" className="p-2 text-slate-400 hover:text-teal-300">
+              <a href={profile.github} target="_blank" rel="noreferrer" aria-label="Open Temitayo Charles Akinniranye GitHub profile" className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-slate-300 transition-all hover:border-teal-300/40 hover:bg-teal-300/10 hover:text-teal-200">
                 <GithubIcon className="h-5 w-5" />
               </a>
-              <a href={profile.linkedin} target="_blank" rel="noreferrer" aria-label="Open Temitayo Charles Akinniranye LinkedIn profile" className="p-2 text-slate-400 hover:text-teal-300">
+              <a href={profile.linkedin} target="_blank" rel="noreferrer" aria-label="Open Temitayo Charles Akinniranye LinkedIn profile" className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-slate-300 transition-all hover:border-sky-300/40 hover:bg-sky-300/10 hover:text-sky-200">
                 <LinkedinIcon className="h-5 w-5" />
               </a>
-              <a href={`mailto:${profile.email}`} aria-label="Email Temitayo Charles Akinniranye" className="p-2 text-slate-400 hover:text-teal-300">
+              <a href={`mailto:${profile.email}`} aria-label="Email Temitayo Charles Akinniranye" className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-slate-300 transition-all hover:border-amber-300/40 hover:bg-amber-300/10 hover:text-amber-200">
                 <Mail className="h-5 w-5" />
               </a>
               <Button asChild size="sm" className="ml-auto bg-teal-300 hover:bg-teal-200 text-[#0a0f14]">
