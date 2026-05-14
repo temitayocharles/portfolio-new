@@ -19,7 +19,7 @@ This tracker controls the redesign of `temitayocharles.online` from a portfolio 
 
 ## Current phase
 
-Phase 4: Flagship proof section implementation.
+Phase 5: Premium media and proof assets.
 
 ## Workstreams
 
@@ -27,11 +27,11 @@ Phase 4: Flagship proof section implementation.
 | --- | --- | --- | --- | --- |
 | BHV2-001 | Ecosystem map | Done | `docs/marketing/infraforge-ecosystem-map.md` | Every system has role, problem, solution, proof, and website priority. |
 | BHV2-002 | Brand hub V2 plan | Done | `docs/marketing/portfolio-website-v2-plan.md` | Defines homepage hierarchy, visual direction, content model, and phased PR plan. |
-| BHV2-003 | Visual system brief | Planned | `docs/marketing/visual-direction-brief.md` | Defines premium visual rules, avoids blue AI clichés, specifies diagram/animation language. |
+| BHV2-003 | Visual system brief | Done | `docs/marketing/visual-direction-brief.md` | Defines premium visual rules, avoids blue AI clichés, specifies diagram/animation language. |
 | BHV2-004 | Iris positioning correction | Done | Content model update | Iris is represented as personal AI operator, not engineering assistant. |
 | BHV2-005 | Jerry/ForgeWatch relationship | Done | Ecosystem section + diagram copy | Jerry, Iris, ForgeWatch, and InfraForge relationship is clear without over-explaining. |
 | BHV2-006 | Homepage narrative redesign | Done | Implementation PR | New hero, problem-solution grid, restrained ecosystem map, flagship products. |
-| BHV2-007 | Premium visual proof assets | In progress | SVG/animation/video assets | Assets feel cinematic, credible, restrained, and product-grade. |
+| BHV2-007 | Premium visual proof assets | In progress | Static SVG proof assets and future motion plan | Assets feel cinematic, credible, restrained, and product-grade. |
 | BHV2-008 | Launch content kit | Planned | LinkedIn/social copy and product screenshots | Launch copy explains InfraForge without sounding forced or salesy. |
 
 ## Flagship systems
@@ -105,3 +105,14 @@ Deliverables:
 - Website V2 plan exists.
 - No UI code changed in this phase.
 - A PR is opened for review.
+
+## Phase 5 assets added
+
+Static, launch-safe assets added in this phase:
+
+- `docs/marketing/visual-direction-brief.md`
+- `frontend/public/images/brand/infraforge-brand-systems-loop.svg`
+- `frontend/public/images/brand/forgewatch-iris-jerry-operator-loop.svg`
+- `frontend/public/images/brand/project-iris-personal-ai-surface.svg`
+
+Video and animation should be handled in a separate PR after the static visual language is approved.
