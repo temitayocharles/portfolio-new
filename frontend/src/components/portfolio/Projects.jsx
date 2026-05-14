@@ -154,16 +154,14 @@ const Projects = () => {
                     <span>{p.visibility}</span>
                   </div>
                   <div className="flex items-center gap-3">
-                    {isPublic && (
-                                          {p.repoUrl ? (
+                    {p.repoUrl ? (
                       <a href={p.repoUrl} target="_blank" rel="noreferrer" aria-label={`Open ${p.name} public GitHub repository`} className="inline-flex items-center gap-1.5 text-slate-500 hover:text-teal-300 transition-colors">
-                        <GitBranch className="h-3.5 w-3.5" /> Repo
+                        Repo <ArrowUpRight className="h-3.5 w-3.5" />
                       </a>
                     ) : (
                       <span className="inline-flex items-center gap-1.5 text-slate-500" aria-label={`${p.name} repository is private`}>
                         <LockKeyhole className="h-3.5 w-3.5" /> Private lab
                       </span>
-                    )}
                     )}
                     <a
                       href={`/case/${p.id}`}
