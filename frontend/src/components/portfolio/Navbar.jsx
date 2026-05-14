@@ -83,7 +83,7 @@ const Navbar = () => {
             href={profile.github}
             target="_blank"
             rel="noreferrer"
-            aria-label="GitHub"
+            aria-label="Open Temitayo Charles Akinniranye GitHub profile"
             className="p-2 text-slate-400 hover:text-teal-300 transition-colors"
           >
             <GithubIcon className="h-4 w-4" />
@@ -92,7 +92,7 @@ const Navbar = () => {
             href={profile.linkedin}
             target="_blank"
             rel="noreferrer"
-            aria-label="LinkedIn"
+            aria-label="Open Temitayo Charles Akinniranye LinkedIn profile"
             className="p-2 text-slate-400 hover:text-teal-300 transition-colors"
           >
             <LinkedinIcon className="h-4 w-4" />
@@ -112,7 +112,7 @@ const Navbar = () => {
         <button
           className="md:hidden p-2 text-slate-200"
           onClick={() => setOpen((o) => !o)}
-          aria-label="Toggle menu"
+          aria-label={open ? "Close navigation menu" : "Open navigation menu"}
         >
           {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
@@ -131,13 +131,13 @@ const Navbar = () => {
               </button>
             ))}
             <div className="flex items-center gap-3 pt-3">
-              <a href={profile.github} target="_blank" rel="noreferrer" className="p-2 text-slate-400 hover:text-teal-300">
+              <a href={profile.github} target="_blank" rel="noreferrer" aria-label="Open Temitayo Charles Akinniranye GitHub profile" className="p-2 text-slate-400 hover:text-teal-300">
                 <GithubIcon className="h-5 w-5" />
               </a>
-              <a href={profile.linkedin} target="_blank" rel="noreferrer" className="p-2 text-slate-400 hover:text-teal-300">
+              <a href={profile.linkedin} target="_blank" rel="noreferrer" aria-label="Open Temitayo Charles Akinniranye LinkedIn profile" className="p-2 text-slate-400 hover:text-teal-300">
                 <LinkedinIcon className="h-5 w-5" />
               </a>
-              <a href={`mailto:${profile.email}`} className="p-2 text-slate-400 hover:text-teal-300">
+              <a href={`mailto:${profile.email}`} aria-label="Email Temitayo Charles Akinniranye" className="p-2 text-slate-400 hover:text-teal-300">
                 <Mail className="h-5 w-5" />
               </a>
               <Button asChild size="sm" className="ml-auto bg-teal-300 hover:bg-teal-200 text-[#0a0f14]">
