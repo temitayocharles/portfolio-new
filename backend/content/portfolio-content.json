@@ -2,8 +2,8 @@
   "profile": {
     "name": "Temitayo Charles Akinniranye",
     "firstName": "Temitayo",
-    "title": "Founder · Cloud Platform · AI Infrastructure Engineer",
-    "tagline": "I build company-ready cloud platforms, secure automation, and AI infrastructure.",
+    "title": "Founder · Platform Engineering · AI Infrastructure",
+    "tagline": "I build reliable cloud platforms, private AI workflows, and operator-friendly automation for teams that need production discipline without enterprise bloat.",
     "location": "Remote",
     "email": "tayocharlesaki@gmail.com",
     "linkedin": "https://linkedin.com/in/temitayocharles",
@@ -14,43 +14,43 @@
   },
   "heroStats": [
     {
-      "value": "99.99%",
-      "label": "Platform availability"
+      "value": "GitOps",
+      "label": "Home Lab production delivery"
     },
     {
-      "value": "$216K+",
-      "label": "Annual AWS savings"
+      "value": "FastAPI",
+      "label": "Backend content and contact API"
     },
     {
-      "value": "2M+",
-      "label": "API requests / day"
+      "value": "K8s",
+      "label": "Platform operations and networking"
     },
     {
-      "value": "4h → 15m",
-      "label": "Deployment time cut"
+      "value": "CI/CD",
+      "label": "Tested, scanned, reviewable changes"
     }
   ],
   "aboutParagraphs": [
-    "I am the founder and operator behind TCA InfraForge, a platform engineering company focused on helping startups and growing teams run secure, observable, and recoverable cloud systems. My work is not framed as hobby infrastructure. It is the operating layer behind client-ready delivery, internal products, managed environments, and business-critical automation.",
-    "I started in Linux systems and infrastructure operations, then moved deeper into cloud infrastructure, DevOps, platform engineering, and reliability. Across fintech, SaaS, and remote engineering environments, I have modernized deployment workflows, migrated workloads to AWS, improved operational discipline, reduced deployment cycles from hours to minutes, lifted platform availability to 99.99%, cut AWS spend by more than $216K annually, and supported systems processing more than 2 million API requests per day.",
-    "Today, I combine company ownership, platform engineering, AI infrastructure, and workflow automation. I build Kubernetes platforms, GitOps delivery systems, AI-assisted operations workflows, and secure automation patterns with human approval, observability context, runbook memory, and operational controls. My unique value is turning infrastructure engineering into business systems that founders, operators, and engineering teams can actually run."
+    "I build practical infrastructure: Kubernetes platforms, GitOps delivery paths, secure secret workflows, private AI systems, and deployment pipelines that are understandable enough to operate under pressure.",
+    "This portfolio is not just a landing page. It is connected to a real Home Lab deployment path, a FastAPI backend, CI checks, container scanning, browser smoke tests, and structured content served through an API.",
+    "My focus is useful engineering: clean systems, clear runbooks, reliable recovery paths, and automation that helps operators make better decisions instead of hiding complexity behind dashboards."
   ],
   "aboutHighlights": [
     {
-      "label": "Years engineering",
-      "value": "8+"
+      "label": "Platform-first",
+      "value": "Kubernetes, GitOps, networking, observability, and recovery designed as one operating model."
     },
     {
-      "label": "Production releases enabled",
-      "value": "200+/mo"
+      "label": "AI with control",
+      "value": "Private assistant workflows with explicit memory, approval gates, and operator ownership."
     },
     {
-      "label": "Apps migrated to AWS",
-      "value": "12 monoliths"
+      "label": "Deployment discipline",
+      "value": "Small, reviewable changes backed by CI, smoke tests, image scanning, and rollback-aware delivery."
     },
     {
-      "label": "DR window collapsed",
-      "value": "4h → 15m"
+      "label": "Business-aware",
+      "value": "Infrastructure choices explained in terms of reliability, cost, risk, and delivery speed."
     }
   ],
   "skillGroups": [
@@ -284,7 +284,7 @@
       "name": "TCA InfraForge",
       "subtitle": "My Platform Engineering Company",
       "category": "Founder-led Platform Company",
-      "description": "TCA InfraForge is the platform engineering company I own and operate. It packages secure Kubernetes operations, GitOps delivery, secrets management, private networking, observability, and recovery workflows for startups and growing companies that need serious infrastructure without building a full platform team first.",
+      "description": "TCA InfraForge is the platform engineering company I own and operate. It packages Kubernetes operations, GitOps delivery, secrets management, private networking, observability, and recovery workflows into a practical infrastructure model for small teams that need production discipline without building a full platform department.",
       "stack": [
         "K3s",
         "ArgoCD",
@@ -311,8 +311,8 @@
       ],
       "outcomes": [
         "Repeatable platform releases",
-        "Registry and state recovery",
-        "Production domain cutover"
+        "Clear production cutover path",
+        "Recovery-focused operating model"
       ],
       "signal": "Founder-owned company platform",
       "repo": "homelab-gitops",
@@ -338,7 +338,7 @@
       "name": "Project Iris",
       "subtitle": "Private AI Workspace for Knowledge Operators",
       "category": "AI Infrastructure",
-      "description": "A local-first assistant platform for founders, operators, and technical teams that need AI workflows with memory control, tool execution, managed browser actions, TLS and auth hardening, backups, and explicit user governance.",
+      "description": "Project Iris is a private AI workspace for operators who need useful automation without surrendering control of memory, credentials, browser actions, or internal context.",
       "stack": [
         "FastAPI",
         "React",
@@ -382,7 +382,7 @@
       "name": "Jerry",
       "subtitle": "Durable Personal AI Assistant",
       "category": "Personal AI Infrastructure",
-      "description": "Jerry is a local-first personal assistant system designed around durable memory, guarded actions, private context, and recoverable state. It frames personal AI as owned infrastructure: useful, auditable, and controlled by the operator.",
+      "description": "Jerry is a local-first personal assistant system built around durable memory, guarded actions, private context, and recoverable state. It treats personal AI as owned infrastructure, not a disposable chatbot.",
       "stack": [
         "Ollama",
         "Qwen",
@@ -399,8 +399,8 @@
         "Durability"
       ],
       "outcomes": [
-        "Local-first personal AI model",
-        "Durable memory and backup posture",
+        "Local-first assistant design",
+        "Durable memory posture",
         "Approval-gated execution path"
       ],
       "signal": "Personal AI operating system track",
@@ -427,7 +427,7 @@
       "name": "AI Builders Academy",
       "subtitle": "Program Delivery Platform for AI Education",
       "category": "Product Infrastructure",
-      "description": "A delivery platform for an AI education business, connecting the TypeScript application, CI path filters, image promotion, GitOps release controls, runtime drift checks, and operational runbooks into one deployable product system.",
+      "description": "AI Builders Academy connects an education product to the operational pieces that make it deployable: application paths, image promotion, GitOps release controls, runtime checks, and runbooks.",
       "stack": [
         "TypeScript",
         "CI/CD",
@@ -466,7 +466,7 @@
       "name": "Vault Ops Toolkit",
       "subtitle": "Secrets Operations for Platform Teams",
       "category": "Security Automation",
-      "description": "An operations toolkit for teams that need auditable secret handling across environments, Vault-backed credential workflows, Kubernetes External Secrets integration, bootstrap automation, and practical recovery procedures.",
+      "description": "Vault Ops Toolkit helps operators handle secrets safely across environments with Vault-backed workflows, Kubernetes External Secrets validation, bootstrap automation, and practical recovery procedures.",
       "stack": [
         "Python",
         "Vault",
@@ -505,7 +505,7 @@
       "name": "ForgeWatch",
       "subtitle": "Evidence-First AIOps Copilot for InfraForge",
       "category": "AIOps / Platform Operations",
-      "description": "ForgeWatch, implemented in the sentinel-copilot repo, is an internal operational intelligence service for InfraForge. It gathers evidence from Kubernetes, Prometheus, Loki, and Argo CD, then turns alerts and operator questions into structured triage with approval-gated remediation.",
+      "description": "ForgeWatch is an evidence-first AIOps copilot for InfraForge. It gathers signals from Kubernetes, Prometheus, Loki, and Argo CD, then turns alerts into structured triage with human-approved remediation.",
       "stack": [
         "FastAPI",
         "Ollama",
