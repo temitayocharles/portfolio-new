@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
-import { Link } from "react-router-dom";
 import { ArrowUpRight, Eye, GitBranch, Layers, LockKeyhole, Sparkles, X } from "lucide-react";
 import { projects as fallbackProjects } from "@/mock";
 import { usePortfolioContent } from "@/context/PortfolioContentContext";
@@ -160,14 +159,14 @@ const Projects = () => {
                         Repo <ArrowUpRight className="h-3.5 w-3.5" />
                       </a>
                     )}
-                    <Link
-                      to={`/case/${p.id}`}
+                    <a
+                      href={`/case/${p.id}`}
                       data-portfolio-action="open-case-study-page"
                       aria-label={`Open full case study for ${p.name}`}
                       className={`inline-flex min-h-10 items-center gap-1.5 rounded-xl border border-white/10 bg-white/[0.035] px-3 py-2 transition-colors hover:border-teal-300/30 hover:bg-teal-300/[0.08] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-300/60 ${accent.action}`}
                     >
                       Case study <ArrowUpRight className="h-3.5 w-3.5" />
-                    </Link>
+                    </a>
                   </div>
                 </div>
               </article>
