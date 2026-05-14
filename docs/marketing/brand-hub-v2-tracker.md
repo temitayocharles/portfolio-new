@@ -19,7 +19,7 @@ This tracker controls the redesign of `temitayocharles.online` from a portfolio 
 
 ## Current phase
 
-Phase 2: Content model and product hierarchy update.
+Phase 3: Restrained ecosystem map UI implementation.
 
 ## Workstreams
 
@@ -28,9 +28,9 @@ Phase 2: Content model and product hierarchy update.
 | BHV2-001 | Ecosystem map | Done | `docs/marketing/infraforge-ecosystem-map.md` | Every system has role, problem, solution, proof, and website priority. |
 | BHV2-002 | Brand hub V2 plan | Done | `docs/marketing/portfolio-website-v2-plan.md` | Defines homepage hierarchy, visual direction, content model, and phased PR plan. |
 | BHV2-003 | Visual system brief | Planned | `docs/marketing/visual-direction-brief.md` | Defines premium visual rules, avoids blue AI clichés, specifies diagram/animation language. |
-| BHV2-004 | Iris positioning correction | In progress | Content model update | Iris is represented as personal AI operator, not engineering assistant. |
-| BHV2-005 | Jerry/ForgeWatch relationship | In progress | Ecosystem section + diagram copy | Jerry, Iris, ForgeWatch, and InfraForge relationship is clear without over-explaining. |
-| BHV2-006 | Homepage narrative redesign | Planned | Implementation PR | New hero, problem-solution grid, restrained ecosystem map, flagship products. |
+| BHV2-004 | Iris positioning correction | Done | Content model update | Iris is represented as personal AI operator, not engineering assistant. |
+| BHV2-005 | Jerry/ForgeWatch relationship | Done | Ecosystem section + diagram copy | Jerry, Iris, ForgeWatch, and InfraForge relationship is clear without over-explaining. |
+| BHV2-006 | Homepage narrative redesign | In progress | Implementation PR | New hero, problem-solution grid, restrained ecosystem map, flagship products. |
 | BHV2-007 | Premium visual proof assets | Planned | SVG/animation/video assets | Assets feel cinematic, credible, restrained, and product-grade. |
 | BHV2-008 | Launch content kit | Planned | LinkedIn/social copy and product screenshots | Launch copy explains InfraForge without sounding forced or salesy. |
 
