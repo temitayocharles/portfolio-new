@@ -48,6 +48,7 @@ const Footer = () => {
                   target="_blank"
                   rel="noreferrer"
                   aria-label="Open Temitayo Charles Akinniranye LinkedIn profile"
+                  title="LinkedIn"
                   className="text-slate-300 hover:text-teal-300 transition-colors inline-flex items-center gap-2"
                 >
                   <LinkedinIcon className="h-3.5 w-3.5" />
@@ -60,6 +61,7 @@ const Footer = () => {
                   target="_blank"
                   rel="noreferrer"
                   aria-label="Open Temitayo Charles Akinniranye GitHub profile"
+                  title="GitHub"
                   className="text-slate-300 hover:text-teal-300 transition-colors inline-flex items-center gap-2"
                 >
                   <GithubIcon className="h-3.5 w-3.5" />
