@@ -1,6 +1,10 @@
 import React from "react";
-import { GithubIcon, LinkedinIcon, Mail, ArrowUp } from "lucide-react";
+import { Mail, ArrowUp } from "lucide-react";
 import { profile } from "@/mock";
+
+const GithubIcon = ({ className = "" }) => <span className={className} aria-hidden="true">GH</span>;
+const LinkedinIcon = ({ className = "" }) => <span className={className} aria-hidden="true">IN</span>;
+
 
 const Footer = () => {
   const year = new Date().getFullYear();

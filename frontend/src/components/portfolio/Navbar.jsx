@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Menu, X, GithubIcon, LinkedinIcon, Mail, Download } from "lucide-react";
+import { Menu, X, Mail, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { navLinks, profile } from "@/mock";
+
+const GithubIcon = ({ className = "" }) => <span className={className} aria-hidden="true">GH</span>;
+const LinkedinIcon = ({ className = "" }) => <span className={className} aria-hidden="true">IN</span>;
+
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);

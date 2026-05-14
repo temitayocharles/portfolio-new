@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Mail, LinkedinIcon, GithubIcon, Send, MapPin, Loader2, Check } from "lucide-react";
+import { Mail, Send, MapPin, Loader2, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -8,6 +8,10 @@ import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { profile } from "@/mock";
 import { SectionLabel } from "./About";
+
+const GithubIcon = ({ className = "" }) => <span className={className} aria-hidden="true">GH</span>;
+const LinkedinIcon = ({ className = "" }) => <span className={className} aria-hidden="true">IN</span>;
+
 
 const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
 
@@ -79,7 +83,7 @@ const Contact = () => {
                 href={`mailto:${profile.email}`}
               />
               <ContactRow
-                icon={Linkedin}
+                icon={LinkedinIcon}
                 label="LinkedIn"
                 value="linkedin.com/in/temitayocharles"
                 href={profile.linkedin}
