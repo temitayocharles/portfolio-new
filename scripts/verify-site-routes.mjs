@@ -40,7 +40,8 @@ const externalRoutes = [
     url: "https://www.linkedin.com/in/temitayocharles",
     name: "LinkedIn profile",
     allowStatusCodes: [999],
-    warning: "LinkedIn commonly returns 999 to automated checks while the browser-visible profile can still be valid.",
+    warning:
+      "LinkedIn commonly returns 999 to automated checks while the browser-visible profile can still be valid.",
   },
 ];
 
@@ -84,20 +85,17 @@ async function main() {
   console.table(results);
 
   if (warnings.length > 0) {
-    console.warn("
-Warnings:");
+    console.warn("\nWarnings:");
     console.table(warnings.map(({ name, url, status, warning }) => ({ name, url, status, warning })));
   }
 
   if (failed.length > 0) {
-    console.error("
-Failed route checks:");
+    console.error("\nFailed route checks:");
     console.table(failed);
     process.exit(1);
   }
 
-  console.log("
-All route checks passed.");
+  console.log("\nAll route checks passed.");
 }
 
 main().catch((error) => {
