@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { profile as fallbackProfile, heroStats as fallbackHeroStats, heroVisuals as fallbackHeroVisuals } from "@/mock";
 import { usePortfolioContent } from "@/context/PortfolioContentContext";
 import AnimatedStat from "./AnimatedStat";
+import PlatformShowcase from "./PlatformShowcase";
 
 const ROTATING = [
   "company-ready platforms",
@@ -147,6 +148,8 @@ const Hero = () => {
                 </a>
               </Button>
             </div>
+
+            <PlatformShowcase />
 
             <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-2xl">
               {heroStats.map((s, i) => (
