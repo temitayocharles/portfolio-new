@@ -23,13 +23,13 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
       - name: Build backend image locally
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           context: backend
           file: backend/Dockerfile
@@ -42,7 +42,7 @@ jobs:
             VERSION=${{ github.ref_name }}
 
       - name: Scan backend image with Trivy
-        uses: aquasecurity/trivy-action@0.35.0
+        uses: aquasecurity/trivy-action@v0.36.0
         with:
           image-ref: portfolio-new-api:ci
           format: sarif
@@ -62,7 +62,7 @@ jobs:
 
       - name: Upload Trivy SARIF artifact
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: trivy-sarif-report
           path: trivy-results.sarif

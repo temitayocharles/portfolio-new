@@ -59,3 +59,24 @@ button {
 section {
   animation: fade-up 0.6s ease-out both;
 }
+
+
+/* Visual polish: portfolio depth and accessibility */
+.App {
+  background:
+    radial-gradient(circle at 15% 10%, rgba(20, 184, 166, 0.08), transparent 28rem),
+    radial-gradient(circle at 85% 20%, rgba(59, 130, 246, 0.07), transparent 30rem),
+    #0a0f14;
+}
+
+.portfolio-surface {
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  background: linear-gradient(145deg, rgba(15, 23, 42, 0.78), rgba(2, 6, 23, 0.62));
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(18px);
+}
+
+.portfolio-focus-ring:focus-visible {
+  outline: 2px solid rgba(45, 212, 191, 0.85);
+  outline-offset: 4px;
+}
