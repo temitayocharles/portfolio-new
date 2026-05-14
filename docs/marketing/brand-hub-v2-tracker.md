@@ -19,7 +19,7 @@ This tracker controls the redesign of `temitayocharles.online` from a portfolio 
 
 ## Current phase
 
-Phase 3: Restrained ecosystem map UI implementation.
+Phase 4: Flagship proof section implementation.
 
 ## Workstreams
 
@@ -30,8 +30,8 @@ Phase 3: Restrained ecosystem map UI implementation.
 | BHV2-003 | Visual system brief | Planned | `docs/marketing/visual-direction-brief.md` | Defines premium visual rules, avoids blue AI clichés, specifies diagram/animation language. |
 | BHV2-004 | Iris positioning correction | Done | Content model update | Iris is represented as personal AI operator, not engineering assistant. |
 | BHV2-005 | Jerry/ForgeWatch relationship | Done | Ecosystem section + diagram copy | Jerry, Iris, ForgeWatch, and InfraForge relationship is clear without over-explaining. |
-| BHV2-006 | Homepage narrative redesign | In progress | Implementation PR | New hero, problem-solution grid, restrained ecosystem map, flagship products. |
-| BHV2-007 | Premium visual proof assets | Planned | SVG/animation/video assets | Assets feel cinematic, credible, restrained, and product-grade. |
+| BHV2-006 | Homepage narrative redesign | Done | Implementation PR | New hero, problem-solution grid, restrained ecosystem map, flagship products. |
+| BHV2-007 | Premium visual proof assets | In progress | SVG/animation/video assets | Assets feel cinematic, credible, restrained, and product-grade. |
 | BHV2-008 | Launch content kit | Planned | LinkedIn/social copy and product screenshots | Launch copy explains InfraForge without sounding forced or salesy. |
 
 ## Flagship systems

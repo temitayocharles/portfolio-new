@@ -13,6 +13,8 @@ const internalRoutes = [
   "/case/ai-inference-lab",
   "/case/infraforge",
   "/case/sentinel-copilot",
+  "/case/project-iris",
+  "/case/jerry",
   "/case/openleaf",
   "/case/vault-ops",
   "/assets/TCA-Resume-DevOps.pdf",

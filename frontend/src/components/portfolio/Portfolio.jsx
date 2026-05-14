@@ -6,6 +6,7 @@ import Skills from "./Skills";
 import Experience from "./Experience";
 import Projects from "./Projects";
 import InfraForgeEcosystem from "./InfraForgeEcosystem";
+import FlagshipProof from "./FlagshipProof";
 import ArchitectureLab from "./ArchitectureLab";
 import Writing from "./Writing";
 import TechnicalBlogIndex from "./TechnicalBlogIndex";
@@ -28,6 +29,7 @@ const Portfolio = () => {
         <Experience />
         <Projects />
         <InfraForgeEcosystem />
+        <FlagshipProof />
         <ArchitectureLab />
         <TechnicalBlogIndex />
         <HiringManagerSummary />
