@@ -678,9 +678,9 @@
         "Outcome-backed memory"
       ],
       "signal": "Internal company control plane",
-      "repo": "sentinel-copilot",
-      "repoUrl": "https://github.com/temitayocharles/sentinel-copilot",
-      "visibility": "Public repo",
+      "repo": "Private ForgeWatch AIOps repository",
+      "repoUrl": null,
+      "visibility": "Private lab; portfolio case study available",
       "accent": "teal",
       "caseStudy": {
         "title": "Evidence-first operations for lean platform teams",
@@ -750,9 +750,9 @@
         "Reliability testing"
       ],
       "signal": "Public architecture demo",
-      "repo": "OpenLeaf-Reader-Platform",
-      "repoUrl": "https://github.com/temitayocharles/OpenLeaf-Reader-Platform",
-      "visibility": "Public repo",
+      "repo": "Private reference SaaS repository",
+      "repoUrl": null,
+      "visibility": "Private lab; portfolio case study available",
       "accent": "amber",
       "caseStudy": {
         "title": "A SaaS architecture reference for digital products",
