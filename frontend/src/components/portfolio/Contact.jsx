@@ -222,7 +222,7 @@ const ContactRow = ({ icon: Icon, label, value, href }) => {
     </div>
   );
   return href ? (
-    <a href={href} target={href.startsWith("http") ? "_blank" : undefined} rel="noreferrer" aria-label={`${title}: ${value}`} title={title} className="block group">
+    <a href={href} target={href.startsWith("http") ? "_blank" : undefined} rel="noreferrer" aria-label={`${label}: ${value}`} title={label} className="block group">
       {inner}
     </a>
   ) : (
