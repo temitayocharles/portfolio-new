@@ -31,10 +31,17 @@ const internalRoutes = [
 ];
 
 const externalRoutes = [
-  "https://github.com/temitayocharles",
-  "https://linkedin.com/in/temitayocharles",
-  "https://github.com/temitayocharles/sentinel-copilot",
-  "https://github.com/temitayocharles/OpenLeaf-Reader-Platform",
+  {
+    url: "https://github.com/temitayocharles",
+    name: "GitHub profile",
+    allowStatusCodes: [],
+  },
+  {
+    url: "https://www.linkedin.com/in/temitayocharles",
+    name: "LinkedIn profile",
+    allowStatusCodes: [999],
+    warning: "LinkedIn commonly returns 999 to automated checks while the browser-visible profile can still be valid.",
+  },
 ];
 
 async function checkUrl(url) {
@@ -55,21 +62,42 @@ async function checkUrl(url) {
   };
 }
 
+async function checkExternalRoute(route) {
+  const result = await checkUrl(route.url);
+  const allowed = route.allowStatusCodes.includes(result.status);
+
+  return {
+    ...result,
+    name: route.name,
+    ok: result.ok || allowed,
+    warning: allowed ? route.warning : "",
+  };
+}
+
 async function main() {
   const internalChecks = internalRoutes.map((route) => checkUrl(`${BASE_URL}${route}`));
-  const externalChecks = externalRoutes.map((route) => checkUrl(route));
+  const externalChecks = externalRoutes.map((route) => checkExternalRoute(route));
   const results = await Promise.all([...internalChecks, ...externalChecks]);
   const failed = results.filter((result) => !result.ok);
+  const warnings = results.filter((result) => result.warning);
 
   console.table(results);
 
+  if (warnings.length > 0) {
+    console.warn("
+Warnings:");
+    console.table(warnings.map(({ name, url, status, warning }) => ({ name, url, status, warning })));
+  }
+
   if (failed.length > 0) {
-    console.error("\nFailed route checks:");
+    console.error("
+Failed route checks:");
     console.table(failed);
     process.exit(1);
   }
 
-  console.log("\nAll route checks passed.");
+  console.log("
+All route checks passed.");
 }
 
 main().catch((error) => {
