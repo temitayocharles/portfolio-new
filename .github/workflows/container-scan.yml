@@ -62,8 +62,10 @@ jobs:
 
       - name: Upload Trivy SARIF artifact
         if: always()
+        continue-on-error: true
         uses: actions/upload-artifact@v7
         with:
           name: trivy-sarif-report
           path: trivy-results.sarif
           if-no-files-found: ignore
+          retention-days: 1
