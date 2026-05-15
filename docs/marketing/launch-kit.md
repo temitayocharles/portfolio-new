@@ -110,9 +110,9 @@ The site is designed for people who need someone who can build, operate, explain
 - Production route audit passes.
 - Homepage renders without SPA route issues.
 - Project Iris and Jerry case routes are live.
-- Brand SVG assets are reachable.
+- Interactive architecture proof surface is reachable.
 - Resume link remains unchanged.
 - Testimonials remain unchanged.
 - LinkedIn warning in route audit remains warning-only.
 - Launch posts are reviewed before publishing.
-- Screenshots are captured after final production deploy.
+- Screenshots are captured from the interactive architecture and flagship proof sections after final production deploy.
