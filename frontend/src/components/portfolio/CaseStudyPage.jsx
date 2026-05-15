@@ -76,8 +76,8 @@ const CaseStudyPageContent = ({ projectId }) => {
               <aside className="rounded-3xl border border-white/10 bg-white/[0.035] p-5">
                 <div className="text-[11px] uppercase tracking-[0.2em] text-slate-500">Artifacts</div>
                 <div className="mt-4 space-y-3">
-                  {artifactLinks.map(({ label, href, icon: Icon }) => (
-                    <a key={label} href={href} target={href.startsWith("http") ? "_blank" : undefined} rel="noreferrer" className="flex items-center justify-between gap-4 rounded-2xl border border-white/[0.07] bg-black/10 px-4 py-3 text-sm text-slate-300 hover:border-amber-300/30 hover:text-amber-200">
+                  {artifactLinks.map(({ label, href, icon: Icon, internal }) => (
+                    <a key={label} href={href} target={internal ? undefined : "_blank"} rel={internal ? undefined : "noreferrer"} className="flex items-center justify-between gap-4 rounded-2xl border border-white/[0.07] bg-black/10 px-4 py-3 text-sm text-slate-300 hover:border-amber-300/30 hover:text-amber-200">
                       <span className="inline-flex items-center gap-2"><Icon className="h-4 w-4" /> {label}</span>
                       <ExternalLink className="h-3.5 w-3.5" />
                     </a>
