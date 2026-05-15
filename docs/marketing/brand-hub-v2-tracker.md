@@ -31,7 +31,7 @@ Phase 7: Final production QA and launch readiness.
 | BHV2-004 | Iris positioning correction | Done | Content model update | Iris is represented as personal AI operator, not engineering assistant. |
 | BHV2-005 | Jerry/ForgeWatch relationship | Done | Ecosystem section + diagram copy | Jerry, Iris, ForgeWatch, and InfraForge relationship is clear without over-explaining. |
 | BHV2-006 | Homepage narrative redesign | Done | Implementation PR | New hero, problem-solution grid, restrained ecosystem map, flagship products. |
-| BHV2-007 | Premium visual proof assets | In progress | Static SVG proof assets and future motion plan | Assets feel cinematic, credible, restrained, and product-grade. |
+| BHV2-007 | Premium visual proof assets | In progress | Interactive architecture maps and future motion plan | Assets feel cinematic, credible, restrained, and product-grade. |
 | BHV2-008 | Launch content kit | In progress | LinkedIn/social copy and product screenshots | Launch copy explains InfraForge without sounding forced or salesy. |
 
 ## Flagship systems
@@ -106,16 +106,13 @@ Deliverables:
 - No UI code changed in this phase.
 - A PR is opened for review.
 
-## Phase 5 assets added
+## Phase 5 visual direction update
 
-Static, launch-safe assets added in this phase:
+Visual-direction work added in this phase:
 
 - `docs/marketing/visual-direction-brief.md`
-- `frontend/public/images/brand/infraforge-brand-systems-loop.svg`
-- `frontend/public/images/brand/forgewatch-iris-jerry-operator-loop.svg`
-- `frontend/public/images/brand/project-iris-personal-ai-surface.svg`
 
-Video and animation should be handled in a separate PR after the static visual language is approved.
+The production architecture proof surface is the interactive Architecture Lab, not standalone downloadable SVG or PNG files. Raw image files should not be promoted as public launch artifacts unless they meet the premium visual bar.
 
 ## Phase 6 launch kit added
 
@@ -136,3 +133,7 @@ Launch-readiness documents added in this phase:
 - `docs/marketing/launch-readiness-checklist.md`
 
 These documents convert the completed brand-hub workstream into a controlled release gate for public launch.
+
+## Corrective architecture pass
+
+This pass removes weak standalone image-asset exposure and makes the Architecture Lab topology-first with animated signal movement. Case-study artifact CTAs should route users to the interactive architecture section instead of opening raw SVG/PNG files.
