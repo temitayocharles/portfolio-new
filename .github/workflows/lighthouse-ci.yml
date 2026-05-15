@@ -53,8 +53,10 @@ jobs:
 
       - name: Upload Lighthouse reports
         if: always()
+        continue-on-error: true
         uses: actions/upload-artifact@v7
         with:
           name: lighthouse-reports
           path: frontend/lhci_reports
           if-no-files-found: ignore
+          retention-days: 1
