@@ -65,13 +65,11 @@ LinkedIn profile returned 999 to automated checks. This is treated as a warning 
 
 Status: Passed.
 
-### Brand proof assets
+### Architecture proof surface
 
-- `/images/brand/infraforge-brand-systems-loop.svg`
-- `/images/brand/forgewatch-iris-jerry-operator-loop.svg`
-- `/images/brand/project-iris-personal-ai-surface.svg`
+The public architecture proof surface is the interactive Architecture Lab on the homepage. Case-study artifact CTAs should direct visitors to this interactive section instead of raw SVG or PNG downloads.
 
-Status: Passed.
+Status: Passed by route reachability; manual visual QA still required.
 
 ### Architecture assets
 
