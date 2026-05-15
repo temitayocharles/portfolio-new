@@ -26,7 +26,7 @@ This checklist controls the final public-release sequence for `temitayocharles.o
 - [x] Production route audit passes.
 - [x] Case-study routes return HTTP 200.
 - [x] Resume PDF returns HTTP 200.
-- [x] Brand SVG assets return HTTP 200.
+- [x] Interactive architecture section is reachable from case-study artifact CTAs.
 - [x] Architecture SVG assets return HTTP 200.
 - [x] Runbook assets return HTTP 200.
 - [x] `sitemap.xml` returns HTTP 200.
@@ -64,8 +64,8 @@ This checklist controls the final public-release sequence for `temitayocharles.o
 - [x] LinkedIn launch post drafts exist.
 - [x] Product narrative snippets exist.
 - [x] Media-generation prompts exist.
-- [x] Static proof SVGs exist.
-- [ ] Launch screenshots captured.
+- [x] Architecture proof is handled through the interactive Architecture Lab, not raw SVG downloads.
+- [ ] Launch screenshots captured from the interactive Architecture Lab and Flagship Proof sections.
 - [ ] Final LinkedIn post selected.
 - [ ] Final launch image or carousel selected.
 

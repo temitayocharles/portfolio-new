@@ -51,8 +51,10 @@ jobs:
 
       - name: Upload Playwright report
         if: always()
+        continue-on-error: true
         uses: actions/upload-artifact@v7
         with:
           name: playwright-report
           path: frontend/playwright-report
           if-no-files-found: ignore
+          retention-days: 1

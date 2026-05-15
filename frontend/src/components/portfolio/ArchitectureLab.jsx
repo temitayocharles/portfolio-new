@@ -41,7 +41,7 @@ const ArchitectureLab = () => {
   const { projectArchitectures = fallbackProjectArchitectures } = usePortfolioContent();
   const architectures = Array.isArray(projectArchitectures) && projectArchitectures.length ? projectArchitectures : fallbackProjectArchitectures;
   const [activeId, setActiveId] = useState(architectures[0]?.id);
-  const [activeTab, setActiveTab] = useState(architectures[0]?.diagramImage ? "Visual" : "Topology");
+  const [activeTab, setActiveTab] = useState("Topology");
   const [query, setQuery] = useState("");
   const [selectedNodeId, setSelectedNodeId] = useState(architectures[0]?.nodes?.[0]?.id);
 
@@ -72,7 +72,7 @@ const ArchitectureLab = () => {
   const chooseArchitecture = (id) => {
     const next = architectures.find((item) => item.id === id) || architectures[0];
     setActiveId(id);
-    setActiveTab(next.diagramImage ? "Visual" : "Topology");
+    setActiveTab("Topology");
     setQuery("");
     setSelectedNodeId(next.nodes[0]?.id);
   };
@@ -92,8 +92,8 @@ const ArchitectureLab = () => {
                 Explore the systems behind each company-grade project.
               </h2>
               <p className="mt-5 text-slate-400 text-sm leading-relaxed">
-                Each map turns repository structure and operating intent into a clickable architecture view: services,
-                trust boundaries, evidence paths, delivery lanes, and recovery controls.
+                Each map is an interactive architecture surface: click nodes, trace live signal movement, filter
+                controls, and inspect the operational loops behind each system.
               </p>
             </div>
 
@@ -157,7 +157,7 @@ const ArchitectureLab = () => {
                 </div>
 
                 <div className="mt-5 flex flex-wrap gap-2">
-                  {active.tabs.map((tab) => (
+                  {active.tabs.filter((tab) => tab !== "Visual").map((tab) => (
                     <button
                       key={tab}
                       type="button"
@@ -210,6 +210,9 @@ const ArchitectureLab = () => {
               {activeTab === "Topology" && (
                 <div className="relative grid min-h-[620px] lg:grid-cols-[minmax(0,1fr)_280px]">
                   <div className="relative h-[520px] sm:h-[580px]">
+                    <div className="absolute left-4 top-4 z-20 inline-flex items-center gap-2 rounded-full border border-amber-300/20 bg-[#081018]/85 px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.16em] text-amber-200 backdrop-blur">
+                      <span className="h-1.5 w-1.5 rounded-full bg-amber-300 animate-pulse" /> Live signal map
+                    </div>
                     <svg viewBox="0 0 100 100" className="absolute inset-0 h-full w-full" aria-hidden="true">
                       <defs>
                         <linearGradient id="projectArchEdge" x1="0" x2="1">
@@ -228,6 +231,9 @@ const ArchitectureLab = () => {
                         return (
                           <g key={`${from}-${to}-${label}`} opacity={query.trim() || selected ? selected || !selectedNode ? 1 : 0.45 : 1}>
                             <line x1={a.x} y1={a.y} x2={b.x} y2={b.y} stroke="url(#projectArchEdge)" strokeWidth={selected ? "0.55" : "0.32"} />
+                            <circle r={selected ? "0.85" : "0.55"} fill={selected ? "#fbbf24" : "#5eead4"} opacity={selected ? "0.85" : "0.48"}>
+                              <animateMotion dur={`${5 + (index % 4)}s`} repeatCount="indefinite" path={`M ${a.x} ${a.y} L ${b.x} ${b.y}`} />
+                            </circle>
                             <circle r="0.7" fill={selected ? "#fbbf24" : "#5eead4"} opacity="0.95">
                               <animateMotion dur={`${4 + (index % 3)}s`} repeatCount="indefinite" path={`M ${a.x} ${a.y} L ${b.x} ${b.y}`} begin={`${index * 0.18}s`} />
                             </circle>
