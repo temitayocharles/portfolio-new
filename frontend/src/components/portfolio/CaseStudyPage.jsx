@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { ArrowLeft, ArrowUpRight, Download, ExternalLink, GitBranch, ShieldCheck } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, ExternalLink, GitBranch, Network, ShieldCheck } from "lucide-react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import { SectionLabel } from "./About";
@@ -44,11 +44,11 @@ const CaseStudyPageContent = ({ projectId }) => {
   }
 
   const caseStudy = project.caseStudy || {};
+  const hasArchitectureMap = project.diagramSvg || project.diagramPng || project.caseStudyPath;
   const artifactLinks = [
-    project.diagramSvg && { label: "Download architecture SVG", href: project.diagramSvg, icon: Download },
-    project.diagramPng && { label: "Download architecture PNG", href: project.diagramPng, icon: Download },
+    hasArchitectureMap && { label: "Explore interactive architecture", href: "/#architecture", icon: Network, internal: true },
     project.runbookUrl && { label: "Open runbook sample", href: project.runbookUrl, icon: ShieldCheck },
-    project.repoUrl && { label: "Open public repository", href: project.repoUrl, icon: GitBranch },
+    project.repoUrl && project.visibility === "Public repo" && { label: "Open public repository", href: project.repoUrl, icon: GitBranch },
   ].filter(Boolean);
 
   return (
