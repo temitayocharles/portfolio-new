@@ -82,17 +82,18 @@ const ArchitectureLab = () => {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(45,212,191,0.13),transparent_38%),linear-gradient(to_bottom,rgba(255,255,255,0.025),transparent)] pointer-events-none" />
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-teal-300/30 to-transparent pointer-events-none" />
 
-      <div className="relative max-w-screen-2xl mx-auto px-6 lg:px-10">
+      <div className="relative max-w-7xl mx-auto px-6 lg:px-10">
         <SectionLabel index="05" title="Architecture" eyebrow="Interactive infrastructure" />
 
         <div className="mt-10 grid lg:grid-cols-12 gap-8 lg:gap-10 items-start">
-          <aside className="lg:col-span-3 lg:sticky lg:top-28 space-y-5">
+          <aside className="lg:col-span-4 space-y-5">
             <div>
               <h2 className="text-3xl lg:text-4xl font-semibold tracking-tight text-slate-50 leading-tight">
-                Explore the operating systems behind InfraForge products.
+                Explore the systems behind each company-grade project.
               </h2>
               <p className="mt-5 text-slate-400 text-sm leading-relaxed">
-                Each map is a product-grade operating surface: select a system, click nodes, trace live signal movement, and inspect the controls that make each product believable.
+                Each map is an interactive architecture surface: click nodes, trace live signal movement, filter
+                controls, and inspect the operational loops behind each system.
               </p>
             </div>
 
@@ -137,7 +138,7 @@ const ArchitectureLab = () => {
             </div>
           </aside>
 
-          <div className="lg:col-span-9">
+          <div className="lg:col-span-8">
             <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-[#081018]/90 shadow-2xl">
               <div className="absolute inset-0 bg-grid opacity-[0.13]" />
               <div className="absolute -right-32 -top-32 h-80 w-80 rounded-full bg-teal-300/10 blur-3xl" />
@@ -207,15 +208,10 @@ const ArchitectureLab = () => {
               )}
 
               {activeTab === "Topology" && (
-                <div className="relative grid min-h-[760px] lg:grid-cols-[minmax(0,1fr)_340px]">
-                  <div className="relative h-[680px] sm:h-[760px]">
-                    <div className="absolute left-4 top-4 z-20 flex flex-wrap items-center gap-2">
-                      <div className="inline-flex items-center gap-2 rounded-full border border-amber-300/20 bg-[#081018]/85 px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.16em] text-amber-200 backdrop-blur">
-                        <span className="h-1.5 w-1.5 rounded-full bg-amber-300 animate-pulse" /> Live signal map
-                      </div>
-                      <div className="hidden rounded-full border border-teal-300/15 bg-teal-300/10 px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.16em] text-teal-200 backdrop-blur sm:inline-flex">
-                        Click nodes · trace flows · review controls
-                      </div>
+                <div className="relative grid min-h-[620px] lg:grid-cols-[minmax(0,1fr)_280px]">
+                  <div className="relative h-[520px] sm:h-[580px]">
+                    <div className="absolute left-4 top-4 z-20 inline-flex items-center gap-2 rounded-full border border-amber-300/20 bg-[#081018]/85 px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.16em] text-amber-200 backdrop-blur">
+                      <span className="h-1.5 w-1.5 rounded-full bg-amber-300 animate-pulse" /> Live signal map
                     </div>
                     <svg viewBox="0 0 100 100" className="absolute inset-0 h-full w-full" aria-hidden="true">
                       <defs>
@@ -224,15 +220,7 @@ const ArchitectureLab = () => {
                           <stop offset="50%" stopColor="#5eead4" stopOpacity="0.5" />
                           <stop offset="100%" stopColor="#fbbf24" stopOpacity="0.22" />
                         </linearGradient>
-                        <radialGradient id="archZoneGlow" cx="50%" cy="50%" r="50%">
-                          <stop offset="0%" stopColor="#5eead4" stopOpacity="0.16" />
-                          <stop offset="100%" stopColor="#5eead4" stopOpacity="0" />
-                        </radialGradient>
                       </defs>
-                      <rect x="5" y="8" width="90" height="84" rx="8" fill="none" stroke="#5eead4" strokeOpacity="0.06" />
-                      <circle cx="50" cy="50" r="33" fill="url(#archZoneGlow)" opacity="0.72" />
-                      <text x="9" y="13" fontSize="2.1" fill="#64748b" fontFamily="monospace">CONTROL PLANE</text>
-                      <text x="70" y="90" fontSize="2.1" fill="#64748b" fontFamily="monospace">RUNTIME EDGE</text>
                       {visibleEdges.map(([from, to, label], index) => {
                         const a = active.nodes.find((node) => node.id === from);
                         const b = active.nodes.find((node) => node.id === to);
@@ -271,21 +259,7 @@ const ArchitectureLab = () => {
                     ))}
                   </div>
 
-                  <aside className="relative border-t border-white/[0.06] bg-[#0a0f14]/82 p-5 lg:border-l lg:border-t-0">
-                    <div className="mb-5 grid grid-cols-3 gap-2">
-                      <div className="rounded-2xl border border-white/[0.07] bg-white/[0.025] p-3">
-                        <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-slate-500">Nodes</div>
-                        <div className="mt-1 text-lg font-semibold text-slate-100">{active.nodes.length}</div>
-                      </div>
-                      <div className="rounded-2xl border border-white/[0.07] bg-white/[0.025] p-3">
-                        <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-slate-500">Edges</div>
-                        <div className="mt-1 text-lg font-semibold text-slate-100">{active.edges.length}</div>
-                      </div>
-                      <div className="rounded-2xl border border-white/[0.07] bg-white/[0.025] p-3">
-                        <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-slate-500">Controls</div>
-                        <div className="mt-1 text-lg font-semibold text-slate-100">{active.controls.length}</div>
-                      </div>
-                    </div>
+                  <aside className="relative border-t border-white/[0.06] bg-[#0a0f14]/72 p-5 lg:border-l lg:border-t-0">
                     <div className="flex items-center gap-2 text-[11px] uppercase tracking-[0.18em] text-slate-500">
                       <Filter className="h-3.5 w-3.5" /> Selected node
                     </div>
