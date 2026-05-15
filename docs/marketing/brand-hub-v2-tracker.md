@@ -19,7 +19,7 @@ This tracker controls the redesign of `temitayocharles.online` from a portfolio 
 
 ## Current phase
 
-Phase 6: Launch content kit.
+Phase 7: Final production QA and launch readiness.
 
 ## Workstreams
 
@@ -127,3 +127,12 @@ Launch content assets added in this phase:
 - `docs/marketing/media-generation-prompts.md`
 
 These documents package the brand hub for public release without changing website code.
+
+## Phase 7 launch-readiness QA added
+
+Launch-readiness documents added in this phase:
+
+- `docs/qa/brand-hub-production-qa-report.md`
+- `docs/marketing/launch-readiness-checklist.md`
+
+These documents convert the completed brand-hub workstream into a controlled release gate for public launch.
