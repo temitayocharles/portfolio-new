@@ -897,7 +897,6 @@
       "businessValue": "Shows that InfraForge is a real platform company with an owned operating model, not a collection of lab resources.",
       "metric": "GitOps, secrets, registry, DR, and edge routing",
       "tabs": [
-        "Visual",
         "Topology",
         "Flows",
         "Controls"
@@ -1053,7 +1052,8 @@
         "NetworkPolicy segmentation",
         "Harbor recovery runbook",
         "Observable route health"
-      ]
+      ],
+      "diagramImage": null
     },
     {
       "id": "project-iris",
@@ -1065,7 +1065,6 @@
       "businessValue": "Positions private AI as a controlled product workspace for teams that need capability without losing custody of data and actions.",
       "metric": "Private memory, tool control, and recovery",
       "tabs": [
-        "Visual",
         "Topology",
         "Flows",
         "Controls"
@@ -1198,7 +1197,8 @@
         "Explicit tool boundaries",
         "Visible browser actions",
         "Backup and restore model"
-      ]
+      ],
+      "diagramImage": null
     },
     {
       "id": "jerry",
@@ -1206,15 +1206,11 @@
       "label": "Personal AI system",
       "title": "Jerry durable personal assistant architecture",
       "repo": "Jerry assistant system",
-      "diagramImage": {
-        "src": "/images/architecture/jerry-architecture.png",
-        "alt": "Jerry personal assistant architecture diagram"
-      },
+      "diagramImage": null,
       "summary": "Jerry is modeled as a local-first personal assistant with durable memory, retrieval, guarded actions, and backup-aware state. The architecture frames the assistant as an owned operating system for personal productivity rather than a novelty chatbot.",
       "businessValue": "Shows how personal AI can be designed with the same discipline as production software: memory, consent, auditability, durability, and reversible execution.",
       "metric": "Durable memory, local-first control, guarded execution",
       "tabs": [
-        "Visual",
         "Topology",
         "Flows",
         "Controls"
@@ -1482,7 +1478,8 @@
         "Runtime drift checks",
         "GitOps rollout",
         "Business runbooks"
-      ]
+      ],
+      "diagramImage": null
     },
     {
       "id": "vault-ops",
@@ -1617,7 +1614,8 @@
         "Policy-scoped access",
         "Recovery runbooks",
         "No secret guessing"
-      ]
+      ],
+      "diagramImage": null
     },
     {
       "id": "forgewatch",
@@ -1625,15 +1623,11 @@
       "label": "AIOps copilot",
       "title": "ForgeWatch evidence-first operations copilot",
       "repo": "sentinel-copilot",
-      "diagramImage": {
-        "src": "/images/architecture/forgewatch-architecture.png",
-        "alt": "ForgeWatch evidence-first AIOps architecture diagram"
-      },
+      "diagramImage": null,
       "summary": "ForgeWatch uses Ollama function calling to gather read-only evidence from Kubernetes, Prometheus, Loki, and Argo CD. It can propose write actions, but policy and operator approval control every mutation.",
       "businessValue": "Gives InfraForge and lean platform teams a safer AIOps loop where AI accelerates diagnosis without silently changing production.",
       "metric": "Read-only autonomous tools, approval-gated writes",
       "tabs": [
-        "Visual",
         "Topology",
         "Flows",
         "Controls"
@@ -1921,7 +1915,8 @@
         "Event-driven coordination",
         "Payment isolation",
         "Reliability testing"
-      ]
+      ],
+      "diagramImage": null
     }
   ],
   "navLinks": [
