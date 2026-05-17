@@ -9,16 +9,10 @@ const PortfolioContentContext = createContext({
   error: null,
 });
 
-const mergeContent = (remoteContent) => {
-  if (!remoteContent || typeof remoteContent !== "object" || Array.isArray(remoteContent)) {
-    return fallbackContent;
-  }
-
-  return {
-    ...fallbackContent,
-    ...remoteContent,
-  };
-};
+const mergeContent = (remoteContent) => ({
+  ...fallbackContent,
+  ...remoteContent,
+});
 
 export const PortfolioContentProvider = ({ children }) => {
   const [content, setContent] = useState(fallbackContent);
@@ -44,6 +38,7 @@ export const PortfolioContentProvider = ({ children }) => {
           return;
         }
 
+        setContent(fallbackContent);
         setError(err);
         setSource("fallback");
         if (process.env.NODE_ENV !== "production") {
