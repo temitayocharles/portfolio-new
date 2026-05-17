@@ -2,7 +2,7 @@
   "profile": {
     "name": "Temitayo Charles Akinniranye",
     "firstName": "Temitayo",
-    "title": "AI Infrastructure · Platform Engineering · DevOps",
+    "title": "AI Infrastructure \u00b7 Platform Engineering \u00b7 DevOps",
     "tagline": "I build production AI infrastructure, model-serving systems, Kubernetes platforms, and operator-friendly automation for teams that need reliable, observable, and scalable engineering foundations.",
     "location": "Remote",
     "email": "tayocharlesaki@gmail.com",
@@ -19,7 +19,7 @@
       "detail": "model operations and serving capacity"
     },
     {
-      "label": "4h → 15m",
+      "label": "4h \u2192 15m",
       "value": "deploy cycle",
       "detail": "GitOps release acceleration"
     },
@@ -226,7 +226,7 @@
       "role": "Senior DevOps & Cloud Platform Engineer",
       "company": "Kanshe Infotech",
       "location": "Remote",
-      "period": "Apr 2022 · Present",
+      "period": "Apr 2022 \u00b7 Present",
       "summary": "Architect and operate cloud platform, CI/CD, Kubernetes, GitOps, DevSecOps, observability, and reliability workflows for production environments, improving deployment speed, infrastructure reliability, cost governance, and operational consistency.",
       "achievements": [
         "Reduced deployment time from 4 hours to 15 minutes via GitHub Actions and Jenkins pipelines.",
@@ -235,7 +235,7 @@
         "Cut AWS spend by ~$18K / month through audits, rightsizing, tagging, and governance.",
         "Drove GitOps adoption with ArgoCD and Helm, 40+ production releases / week, no weekend windows.",
         "Integrated Trivy, Checkov, SonarQube, and HashiCorp Vault into delivery for DevSecOps and audit readiness.",
-        "Designed disaster recovery across 8 services, RTO 4h → 15m, MTTR < 30 minutes."
+        "Designed disaster recovery across 8 services, RTO 4h \u2192 15m, MTTR < 30 minutes."
       ]
     },
     {
@@ -243,13 +243,13 @@
       "role": "Platform Engineer",
       "company": "Infonas",
       "location": "Remote",
-      "period": "Mar 2020 · Mar 2022",
+      "period": "Mar 2020 \u00b7 Mar 2022",
       "summary": "Modernized application delivery, cloud infrastructure, automation, monitoring, and operational support for AWS-based environments, supporting cloud migration, microservices delivery, secure infra design, and 24/7 platform operations.",
       "achievements": [
         "Led migration of 12 monolithic applications to AWS, 35% infrastructure cost reduction.",
         "Designed GitLab CI/CD workflows scaling releases from weekly to multiple daily pushes.",
         "Built multi-AZ VPCs, least-privilege IAM, and HA EKS clusters with Terraform.",
-        "Automated provisioning, patching, and rollouts via Ansible + Terraform, env build days → < 4 hours.",
+        "Automated provisioning, patching, and rollouts via Ansible + Terraform, env build days \u2192 < 4 hours.",
         "Created Bash / Python automation for backups, restoration, and log management, 40% less manual work.",
         "Established centralized observability with ELK + CloudWatch, 35% lower MTTD on critical incidents."
       ]
@@ -259,7 +259,7 @@
       "role": "DevOps Engineer",
       "company": "Infonas",
       "location": "Remote",
-      "period": "Jan 2018 · Feb 2020",
+      "period": "Jan 2018 \u00b7 Feb 2020",
       "summary": "Developed and maintained CI/CD pipelines, infrastructure automation, containerized workloads, monitoring systems, and secure AWS operations, strengthening foundations in repeatable delivery and cloud reliability.",
       "achievements": [
         "Built CI/CD and infrastructure automation using GitLab CI/CD, Terraform, and Ansible.",
@@ -270,10 +270,10 @@
     },
     {
       "id": "earlier",
-      "role": "Linux Systems Engineer · Scrum Facilitator · Linux SysAdmin",
-      "company": "Beyond Solutions · British Council Bahrain · Cambridge International School",
+      "role": "Linux Systems Engineer \u00b7 Scrum Facilitator \u00b7 Linux SysAdmin",
+      "company": "Beyond Solutions \u00b7 British Council Bahrain \u00b7 Cambridge International School",
       "location": "On-site",
-      "period": "2014 · 2017",
+      "period": "2014 \u00b7 2017",
       "summary": "Managed Linux systems, server operations, backups, monitoring, storage, Apache, MySQL, and infrastructure documentation, building the operational discipline that still shapes how I design reliable platforms today.",
       "achievements": [
         "Managed and optimized 200+ Ubuntu and CentOS servers.",
@@ -366,7 +366,8 @@
           "capacity": "Evaluated through CPU baseline behavior, concurrency saturation, GPU provider planning, and serving-engine comparison.",
           "operationalMaturity": "Demonstrated through docs, benchmark evidence, containerization, metrics, safety rules, and Kubernetes integration planning."
         },
-        "result": "The lab presents the AI side of InfraForge as a serious production-capacity system: LLM serving, model operations, observability, benchmarking, GPU capacity planning, and Kubernetes-ready platform design under one operating model."
+        "result": "The lab presents the AI side of InfraForge as a serious production-capacity system: LLM serving, model operations, observability, benchmarking, GPU capacity planning, and Kubernetes-ready platform design under one operating model.",
+        "nextEvolution": "Graduate AI workloads from local benchmark validation to GPU-backed Kubernetes inference. Integrate vLLM and Triton serving engines, establish a multi-model capacity model within InfraForge, and extend observability coverage to token throughput, KV cache pressure, and cold-start latency."
       }
     },
     {
@@ -443,7 +444,8 @@
           "reliability": "Reported as service availability/SLO posture over the operating window where the platform metric applies.",
           "costSavings": "Calculated from recurring monthly AWS spend deltas after rightsizing, tagging, audits, and governance controls.",
           "recovery": "Measured from incident declaration or restore start to verified service recovery where RTO/MTTR applies."
-        }
+        },
+        "nextEvolution": "Expand the platform estate toward multi-cluster federation, harden disaster recovery with tested runbooks under load, and establish the InfraForge public API surface for third-party platform tooling."
       },
       "featured": true,
       "caseStudyPath": "/case/infraforge",
@@ -520,7 +522,8 @@
           "Documentation identifies Iris as a personal AI operator assistant rather than an engineering dashboard.",
           "Service structure includes approval, audit, memory, browser, email, calendar, MCP gateway, notification, and execution-worker concerns."
         ],
-        "result": "Iris demonstrates a premium personal AI pattern: capable enough to help with real work, but governed enough to preserve user control, memory boundaries, auditability, and trust."
+        "result": "Iris demonstrates a premium personal AI pattern: capable enough to help with real work, but governed enough to preserve user control, memory boundaries, auditability, and trust.",
+        "nextEvolution": "Move Iris from local MCP gateway to a hosted personal AI service with cloud-backed memory and user-approved retention policies. Expand tool coverage to project tracking, financial dashboards, and meeting workflows."
       },
       "featured": false,
       "caseStudyPath": "/case/project-iris"
@@ -586,7 +589,8 @@
           "Repository includes AGENTS.md, command policy, runtime app, health-check script, and dependency manifest.",
           "Project structure supports a policy-aware mobile AI assistant pattern rather than a generic chatbot."
         ],
-        "result": "Jerry makes AI interaction more available and responsive by bringing quick commands, status, approvals, and assistant interaction into a mobile-first companion surface."
+        "result": "Jerry makes AI interaction more available and responsive by bringing quick commands, status, approvals, and assistant interaction into a mobile-first companion surface.",
+        "nextEvolution": "Extend Jerry's command surface to cover calendar management, project tracking, and financial dashboards. Add persistent notification paths and a structured daily briefing format for mobile-first workflows."
       },
       "featured": false,
       "caseStudyPath": "/case/jerry"
@@ -690,7 +694,8 @@
           "reliability": "Reported as service availability/SLO posture over the operating window where the platform metric applies.",
           "costSavings": "Calculated from recurring monthly AWS spend deltas after rightsizing, tagging, audits, and governance controls.",
           "recovery": "Measured from incident declaration or restore start to verified service recovery where RTO/MTTR applies."
-        }
+        },
+        "nextEvolution": "Automate the full secret rotation lifecycle end-to-end with CI/CD pre-deploy gate integration. Publish runbook templates as an open-source operator toolkit for Vault and Kubernetes platform teams."
       },
       "featured": false,
       "caseStudyPath": "/case/vault-ops",
@@ -763,7 +768,8 @@
           "reliability": "Reported as service availability/SLO posture over the operating window where the platform metric applies.",
           "costSavings": "Calculated from recurring monthly AWS spend deltas after rightsizing, tagging, audits, and governance controls.",
           "recovery": "Measured from incident declaration or restore start to verified service recovery where RTO/MTTR applies."
-        }
+        },
+        "nextEvolution": "Move ForgeWatch toward autonomous triage workflows with graduated approval thresholds. Expand the RAG memory corpus with incident history and resolution outcomes. Add cross-cluster observability and drift-detection alerting."
       },
       "featured": true,
       "caseStudyPath": "/case/sentinel-copilot",
@@ -835,7 +841,8 @@
           "reliability": "Reported as service availability/SLO posture over the operating window where the platform metric applies.",
           "costSavings": "Calculated from recurring monthly AWS spend deltas after rightsizing, tagging, audits, and governance controls.",
           "recovery": "Measured from incident declaration or restore start to verified service recovery where RTO/MTTR applies."
-        }
+        },
+        "nextEvolution": "Evolve OpenLeaf into a deployable SaaS reference kit with real tenant isolation, validated chaos engineering results, and publicly available architecture documentation for platform engineering teams."
       },
       "featured": false,
       "caseStudyPath": "/case/openleaf",
