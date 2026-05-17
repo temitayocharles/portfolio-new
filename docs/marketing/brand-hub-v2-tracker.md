@@ -186,3 +186,88 @@ node scripts/generate-github-digest.mjs
 - Add individual writing article pages at `/writing/:id`.
 - Add workflow_dispatch GitHub Action for digest generation.
 - Add RSS/Atom feed for `/news` and `/writing`.
+
+---
+
+## Phase 9: Visual/product polish
+
+**Branch:** `feature/site-hub-v2-visual-product-polish`
+
+**Date:** 2026-05-17
+
+### Files changed
+
+| File | Change |
+| --- | --- |
+| `frontend/src/components/portfolio/SiteHubPage.jsx` | Full rewrite — improved visual hierarchy, premium card system, flagship spotlight, lab lanes, digest workflow strip, study type categorisation |
+| `frontend/src/components/portfolio/CaseStudyPage.jsx` | Full rewrite — numbered section rhythm (01–06), improved above-the-fold hero, accent-per-category, next-evolution section |
+| `frontend/src/content/portfolio-content.json` | Added `nextEvolution` field to `caseStudy` for 7 flagship projects |
+
+### Design goals
+
+- Premium dark editorial interface — no blue generic AI gradient.
+- Amber/teal accents only, restrained and purposeful.
+- Strong hierarchy: flagship systems visually lead the product directory.
+- No visual gimmicks, no sci-fi clichés, no raw SVG artifact presentation.
+- Design should read as a serious AI infrastructure / platform company website.
+
+### Routes improved
+
+| Route | Improvement |
+| --- | --- |
+| `/projects` | Added flagship spotlight section (AI Inference Lab, InfraForge, ForgeWatch) with larger FlagshipCard treatment. All cards now show: category tag, maturity badge, problem statement, ecosystem role, pillars, visibility label, case study CTA. Groups use SectionHeader with icon + description. |
+| `/lab` | Replaced flat 3-theme layout with 4-lane grid: Model Operations / Agent Surfaces / Infrastructure Experiments / Evaluation & Observability. Each lane has positioning narrative, system links with role descriptions, and cross-cutting concern callout for observability. Iris correctly positioned as personal AI assistant, not engineering tool. |
+| `/github` | Added 4-step DigestWorkflowStrip visual (Repository Signals → Curation → PR Review → Public Update). Added digest stats bar (signal count, private-source count, publication gate, raw commits). Signals now render as structured SignalPill chips. |
+| `/studies` | Split into 3 typed sections: Case Studies / Architecture Studies / Operational Studies. Each card shows: problem statement (amber left-border), system response, proof snippet, pillars. Feels like a case-study library, not a résumé list. |
+| `/case/*` | Numbered content rhythm: 01 Problem / 02 System / 03 Operating Model / 04 Proof / 05 Measurement / 06 Next Evolution. Bigger above-the-fold hero with per-category accent color and rule. Result callout uses amber highlight block. Next Evolution section rendered when `caseStudy.nextEvolution` is present. |
+
+### Shared design system additions (inline in SiteHubPage)
+
+- `ACCENT` token map (teal/amber/neutral) — consistent border/bg/text/dot/rule per accent.
+- `Tag` — rounded pill with accent variant.
+- `SignalPill` — neutral dark pill for tech stack / signals.
+- `MaturityBadge` — status dot + label with accent variant.
+- `SectionHeader` — icon + label + description with border-bottom rule.
+- `FlagshipCard` — larger spotlight card with top accent rule and ecosystem role block.
+- `SectionNum` — numbered section divider for case study rhythm (01–06).
+
+### Validation commands run
+
+```bash
+# Build
+cd frontend && yarn build
+# → Compiled successfully. 165 kB gzip.
+
+# Digest validation
+node scripts/generate-github-digest.mjs
+# → [OK] github-digest.json: 6 items validated.
+# → [OK] site-updates.json: 6 items validated.
+```
+
+### Constraints respected
+
+- Resume behavior: not touched.
+- Testimonials: not touched.
+- GitHub icon: present in Footer (unchanged).
+- LinkedIn icon: present in Footer (unchanged).
+- No private repository URLs or secrets introduced.
+- No new UI framework or large dependency added.
+- No root-level package.json introduced.
+- All existing routes preserved — no slug changes.
+- Backend-outage resilience intact — all content from bundled static JSON.
+- No blue generic AI gradient introduced.
+
+### Risks
+
+- `SiteHubPage.jsx` grew significantly (975 lines). If further complexity is needed, split individual section components (ProjectDirectory, LabSection, GitHubSection, StudiesSection) into their own files under `frontend/src/components/portfolio/`.
+- `PROJECT_META` and `STUDY_TYPES` lookup tables live inline in SiteHubPage — acceptable at current scale, but should migrate to `site-sections.json` or a separate metadata file if the project count grows past ~15.
+- `nextEvolution` is a new optional field on `caseStudy`. Existing projects without it render without the 06 section — backward compatible.
+
+### Follow-up items
+
+- [ ] Split SiteHubPage section components into individual files if the file grows further.
+- [ ] Migrate `PROJECT_META` maturity/status/role data into `portfolio-content.json` per-project.
+- [ ] Add `/news` editorial header upgrade to match the new SectionHeader system.
+- [ ] Consider a `/writing` filter bar (by tag: AI Infrastructure, GitOps, FinOps, etc.).
+- [ ] Add `nextEvolution` to `ai-builders-academy` and `young-coders` caseStudy entries when content is ready.
+- [ ] Run full Playwright smoke tests after deploy to verify heading changes didn't break any selectors.
