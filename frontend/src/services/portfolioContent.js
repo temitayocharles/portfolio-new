@@ -5,22 +5,30 @@ export const portfolioContentEndpoint = () => {
   return backendUrl ? `${backendUrl}/api/content` : null;
 };
 
+const FETCH_TIMEOUT_MS = 5000;
+
 export const fetchPortfolioContent = async () => {
   const endpoint = portfolioContentEndpoint();
   if (!endpoint) {
     return null;
   }
 
-  const response = await fetch(endpoint, {
-    method: "GET",
-    headers: {
-      Accept: "application/json",
-    },
-  });
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
 
-  if (!response.ok) {
-    throw new Error(`Portfolio content request failed with status ${response.status}`);
+  try {
+    const response = await fetch(endpoint, {
+      method: "GET",
+      headers: { Accept: "application/json" },
+      signal: controller.signal,
+    });
+
+    if (!response.ok) {
+      throw new Error(`Portfolio content request failed with status ${response.status}`);
+    }
+
+    return response.json();
+  } finally {
+    clearTimeout(timer);
   }
-
-  return response.json();
 };

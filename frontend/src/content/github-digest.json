@@ -1,0 +1,107 @@
+[
+  {
+    "id": "infraforge-platform-estate",
+    "title": "InfraForge platform estate",
+    "sourceType": "curated",
+    "repoVisibility": "mixed",
+    "category": "Platform Engineering",
+    "summary": "A curated public summary of platform, GitOps, observability, AI operations, and infrastructure work across public and private repositories. Covers Kubernetes operating model, ArgoCD delivery, Vault-backed secrets, Envoy Gateway routing, Longhorn storage, and disaster recovery runbooks.",
+    "publicSafe": true,
+    "signals": [
+      "GitOps operating model",
+      "AI operations tooling",
+      "cluster governance",
+      "developer platform systems",
+      "secrets management",
+      "observability stack"
+    ],
+    "publishNotes": "Do not expose private repository URLs or implementation-sensitive details."
+  },
+  {
+    "id": "ai-inference-lab-signals",
+    "title": "AI Inference Lab: model operations and LLM serving",
+    "sourceType": "curated",
+    "repoVisibility": "private",
+    "category": "AI Infrastructure",
+    "summary": "Curated summary of AI Inference Lab development: FastAPI model-serving service, Prometheus metrics integration, benchmark harness, Docker runtime packaging, GPU capacity planning, and Kubernetes-native LLM workload design.",
+    "publicSafe": true,
+    "signals": [
+      "LLM serving API",
+      "model benchmarking",
+      "GPU capacity planning",
+      "Prometheus metrics",
+      "containerized runtime",
+      "Kubernetes AI workloads"
+    ],
+    "publishNotes": "Repository is private. Publish only curated capability signals and case study references."
+  },
+  {
+    "id": "forgewatch-aiops",
+    "title": "ForgeWatch: evidence-first AIOps copilot",
+    "sourceType": "curated",
+    "repoVisibility": "private",
+    "category": "AIOps",
+    "summary": "Curated summary of ForgeWatch development: Ollama function-calling loop, read-only Kubernetes/Prometheus/Loki/ArgoCD evidence tools, approval-gated write proposals, ChromaDB RAG memory, and Discord/ntfy notification path.",
+    "publicSafe": true,
+    "signals": [
+      "evidence-first triage",
+      "approval-gated remediation",
+      "RAG memory for incidents",
+      "read-only cluster tools",
+      "operational intelligence"
+    ],
+    "publishNotes": "Repository is private. Do not expose internal tool names, API routes, or cluster configuration details."
+  },
+  {
+    "id": "project-iris-personal-ai",
+    "title": "Project Iris: governed personal AI assistant",
+    "sourceType": "curated",
+    "repoVisibility": "private",
+    "category": "Personal AI",
+    "summary": "Curated summary of Project Iris development: approval service, audit service, memory service, MCP gateway, provider OAuth boundaries, email/calendar/browser tools, and execution worker for long-running tasks.",
+    "publicSafe": true,
+    "signals": [
+      "governed AI delegation",
+      "approval queues",
+      "memory infrastructure",
+      "MCP gateway",
+      "audit trail",
+      "everyday work automation"
+    ],
+    "publishNotes": "Repository is private. Publish only product-level capability signals. Do not expose internal service routes or data schemas."
+  },
+  {
+    "id": "vault-ops-toolkit",
+    "title": "Vault Ops: secrets operations toolkit",
+    "sourceType": "curated",
+    "repoVisibility": "private",
+    "category": "DevSecOps",
+    "summary": "Curated summary of Vault Ops development: Vault bootstrap automation, External Secrets sync validation, pre-rollout secret shape checks, rotation runbooks, and recovery procedures for Kubernetes platform teams.",
+    "publicSafe": true,
+    "signals": [
+      "Vault authority model",
+      "External Secrets sync",
+      "rotation runbooks",
+      "pre-rollout validation",
+      "operator-safe recovery"
+    ],
+    "publishNotes": "Repository is private. Do not expose Vault paths, policy names, or environment-specific configuration."
+  },
+  {
+    "id": "education-products",
+    "title": "Education products: Young Coders and AI Builders Academy",
+    "sourceType": "curated",
+    "repoVisibility": "private",
+    "category": "Education",
+    "summary": "Curated summary of education product development: Young Coders practical coding curriculum and AI Builders Academy guided AI learning platform. Both products use production-minded delivery patterns with CI/CD, GitOps, and runtime checks.",
+    "publicSafe": true,
+    "signals": [
+      "structured learning paths",
+      "product delivery discipline",
+      "GitOps release model",
+      "runtime drift checks",
+      "education platform operations"
+    ],
+    "publishNotes": "Repositories are private. Publish only product-level positioning and delivery signals."
+  }
+]
