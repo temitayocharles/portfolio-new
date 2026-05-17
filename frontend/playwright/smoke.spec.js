@@ -18,6 +18,24 @@ test.describe("portfolio smoke coverage", () => {
   });
 
 
+
+  test("renders routed website hub pages", async ({ page }) => {
+    const routes = [
+      { path: "/projects", text: /Products, platforms/i },
+      { path: "/news", text: /Updates and build notes/i },
+      { path: "/writing", text: /Technical writing/i },
+      { path: "/studies", text: /Case studies and architecture studies/i },
+      { path: "/lab", text: /AI infrastructure lab/i },
+      { path: "/github", text: /GitHub and engineering activity digest/i },
+    ];
+
+    for (const route of routes) {
+      await page.goto(route.path);
+      await expect(page.getByRole("heading", { name: route.text }).first()).toBeVisible();
+      await expect(page.getByText(/Hub routing/i).first()).toBeVisible();
+    }
+  });
+
   test("renders legal and policy pages", async ({ page }) => {
     const routes = [
       { path: "/trust-safety", text: /Trust, safety/i },
