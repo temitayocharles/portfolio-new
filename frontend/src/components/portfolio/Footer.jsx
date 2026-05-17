@@ -96,6 +96,18 @@ const Footer = () => {
           </div>
         </div>
 
+        <div className="mt-8 grid gap-3 border-t border-white/5 pt-6 text-xs text-slate-500 sm:grid-cols-[auto_1fr] sm:items-start">
+          <span className="font-mono uppercase tracking-[0.18em] text-slate-600">Website hub</span>
+          <div className="flex flex-wrap gap-x-5 gap-y-2">
+            <a href="/projects" className="hover:text-teal-300">Projects</a>
+            <a href="/news" className="hover:text-teal-300">News</a>
+            <a href="/writing" className="hover:text-teal-300">Writing</a>
+            <a href="/studies" className="hover:text-teal-300">Studies</a>
+            <a href="/lab" className="hover:text-teal-300">Lab</a>
+            <a href="/github" className="hover:text-teal-300">GitHub</a>
+          </div>
+        </div>
+
         <div className="mt-8 flex flex-wrap gap-x-5 gap-y-2 border-t border-white/5 pt-6 text-xs text-slate-500">
           <a href="/trust-safety" className="hover:text-teal-300">Trust & Safety</a>
           <a href="/privacy-policy" className="hover:text-teal-300">Privacy Policy</a>
