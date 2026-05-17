@@ -10,6 +10,24 @@ test.describe("portfolio smoke coverage", () => {
     await expect(page.getByRole("heading", { name: /infrastructure/i }).first()).toBeVisible();
   });
 
+  test("renders from bundled content when the portfolio API is unavailable", async ({ page }) => {
+    await page.route("**/api/content", async (route) => {
+      await route.fulfill({
+        status: 503,
+        contentType: "application/json",
+        body: JSON.stringify({ detail: "backend unavailable during smoke test" }),
+      });
+    });
+
+    await page.goto("/");
+
+    await expect(page.locator("#top")).toBeVisible();
+    await expect(page.locator("#projects")).toBeVisible();
+    await expect(page.locator("#architecture")).toBeVisible();
+    await expect(page.locator("#contact")).toBeVisible();
+    await expect(page.getByRole("heading", { name: /infrastructure/i }).first()).toBeVisible();
+  });
+
   test("keeps project cards available for hiring and architecture review", async ({ page }) => {
     await page.goto("/#projects");
 
