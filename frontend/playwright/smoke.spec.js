@@ -36,15 +36,15 @@ test.describe("portfolio smoke coverage", () => {
       await expect(
         page.getByRole("heading", { name: route.heading }).first()
       ).toBeVisible();
-      await expect(page.getByText(/Hub routing/i).first()).toBeVisible();
+      await expect(page.getByText(/Hub sections/i).first()).toBeVisible();
     }
   });
 
   test("/projects renders product directory groups", async ({ page }) => {
     await page.goto("/projects");
 
-    await expect(page.getByText(/Flagship AI and platform systems/i).first()).toBeVisible();
-    await expect(page.getByText(/Education products/i).first()).toBeVisible();
+    await expect(page.getByText(/Flagship systems/i).first()).toBeVisible();
+    await expect(page.getByText(/Education platforms/i).first()).toBeVisible();
   });
 
   test("/news renders curated update cards", async ({ page }) => {
@@ -64,7 +64,7 @@ test.describe("portfolio smoke coverage", () => {
     await page.goto("/studies");
 
     await expect(page.getByText(/case stud/i).first()).toBeVisible();
-    await expect(page.getByText(/Read case study/i).first()).toBeVisible();
+    await expect(page.getByText(/Read study/i).first()).toBeVisible();
   });
 
   test("/lab renders AI infrastructure themes", async ({ page }) => {
@@ -79,7 +79,7 @@ test.describe("portfolio smoke coverage", () => {
     await page.goto("/github");
 
     await expect(page.getByText(/Digest model/i).first()).toBeVisible();
-    await expect(page.getByText(/No raw commits/i).first()).toBeVisible();
+    await expect(page.getByText(/Raw commits exposed/i).first()).toBeVisible();
     await expect(page.getByText(/curated signal/i).first()).toBeVisible();
   });
 
@@ -110,7 +110,6 @@ test.describe("portfolio smoke coverage", () => {
 
     for (const path of caseRoutes) {
       await page.goto(path);
-      // Page must not be blank — at least one heading must be visible
       await expect(page.getByRole("heading").first()).toBeVisible();
     }
   });
