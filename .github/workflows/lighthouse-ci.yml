@@ -52,7 +52,7 @@ jobs:
           LHCI_COLLECT_SETTINGS_CHROME_FLAGS: --headless=new --no-sandbox --disable-dev-shm-usage --disable-gpu
 
       - name: Upload Lighthouse reports
-        if: always()
+        if: always() && github.event_name != 'pull_request'
         continue-on-error: true
         uses: actions/upload-artifact@v7
         with:

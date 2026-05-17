@@ -2,6 +2,7 @@ import "./App.css";
 import Portfolio from "@/components/portfolio/Portfolio";
 import CaseStudyPage from "@/components/portfolio/CaseStudyPage";
 import LegalPage, { isLegalPagePath } from "@/components/portfolio/LegalPage";
+import SiteHubPage, { isSiteHubPath } from "@/components/portfolio/SiteHubPage";
 
 const getCaseStudyIdFromPath = () => {
   if (typeof window === "undefined") return null;
@@ -17,6 +18,8 @@ function App() {
     <div className="App">
       {isLegalPagePath(pathname) ? (
         <LegalPage path={pathname} />
+      ) : isSiteHubPath(pathname) ? (
+        <SiteHubPage path={pathname} />
       ) : caseStudyId ? (
         <CaseStudyPage projectId={caseStudyId} />
       ) : (

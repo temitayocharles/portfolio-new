@@ -19,4 +19,10 @@
   <url><loc>https://temitayocharles.online/trust-safety</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://temitayocharles.online/privacy-policy</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://temitayocharles.online/terms</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://temitayocharles.online/projects</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://temitayocharles.online/news</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://temitayocharles.online/writing</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://temitayocharles.online/studies</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://temitayocharles.online/lab</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://temitayocharles.online/github</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
 </urlset>
