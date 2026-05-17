@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
-import { ArrowLeft, BookOpen, FlaskConical, Github, Newspaper, PanelsTopLeft, PenLine } from "lucide-react";
+import { ArrowLeft, BookOpen, Code2, FlaskConical, Newspaper, PanelsTopLeft, PenLine } from "lucide-react";
 import Footer from "@/components/portfolio/Footer";
 import { usePortfolioContent } from "@/context/PortfolioContentContext";
-import { profile } from "@/mock";
 
 const routeConfig = {
   "/projects": {
@@ -44,18 +43,37 @@ const routeConfig = {
     label: "GitHub",
     title: "GitHub and engineering activity digest",
     description: "A future curated digest for public and private-source development signals, designed to publish reviewed updates without leaking sensitive implementation detail.",
-    icon: Github,
+    icon: Code2,
     type: "github",
   },
 };
 
+const asArray = (value) => (Array.isArray(value) ? value : []);
 const projectSlug = (project) => project.slug || project.id || project.key || "";
 const projectTitle = (project) => project.title || project.name || project.label || "Untitled project";
 const projectSummary = (project) => project.summary || project.description || project.shortDescription || "Project summary pending editorial review.";
 
-const asArray = (value) => (Array.isArray(value) ? value : []);
-
 export const isSiteHubPath = (pathname) => Object.prototype.hasOwnProperty.call(routeConfig, pathname);
+
+const HubNavigation = () => {
+  const currentPath = typeof window === "undefined" ? "/" : window.location.pathname;
+  return (
+    <aside className="rounded-3xl border border-white/[0.08] bg-white/[0.035] p-6">
+      <p className="text-xs font-mono uppercase tracking-[0.18em] text-slate-500">Hub routing</p>
+      <div className="mt-4 grid grid-cols-2 gap-2 text-sm">
+        {Object.entries(routeConfig).map(([path, item]) => (
+          <a
+            key={path}
+            href={path}
+            className={`rounded-2xl border px-3 py-2 transition ${path === currentPath ? "border-teal-300/40 bg-teal-300/[0.08] text-teal-100" : "border-white/[0.07] bg-black/10 text-slate-400 hover:border-teal-300/30 hover:text-teal-200"}`}
+          >
+            {item.label}
+          </a>
+        ))}
+      </div>
+    </aside>
+  );
+};
 
 const SectionShell = ({ page, children }) => {
   const Icon = page.icon;
@@ -84,16 +102,7 @@ const SectionShell = ({ page, children }) => {
               <h1 className="mt-6 max-w-4xl text-4xl font-semibold tracking-tight text-white md:text-6xl">{page.title}</h1>
               <p className="mt-5 max-w-3xl text-base leading-8 text-slate-300 md:text-lg">{page.description}</p>
             </div>
-            <aside className="rounded-3xl border border-white/[0.08] bg-white/[0.035] p-6">
-              <p className="text-xs font-mono uppercase tracking-[0.18em] text-slate-500">Hub routing</p>
-              <div className="mt-4 grid grid-cols-2 gap-2 text-sm">
-                {Object.entries(routeConfig).map(([path, item]) => (
-                  <a key={path} href={path} className={`rounded-2xl border px-3 py-2 transition ${path === window.location.pathname ? "border-teal-300/40 bg-teal-300/[0.08] text-teal-100" : "border-white/[0.07] bg-black/10 text-slate-400 hover:border-teal-300/30 hover:text-teal-200"}`}>
-                    {item.label}
-                  </a>
-                ))}
-              </div>
-            </aside>
+            <HubNavigation />
           </div>
 
           <div className="mt-10">{children}</div>
@@ -118,11 +127,7 @@ const ProjectGrid = ({ projects }) => (
               <span key={tag} className="rounded-full border border-white/[0.07] bg-black/10 px-3 py-1 text-xs text-slate-400">{tag}</span>
             ))}
           </div>
-          {slug && (
-            <a href={`/case/${slug}`} className="mt-6 inline-flex text-sm font-semibold text-amber-200 hover:text-amber-100">
-              View case study
-            </a>
-          )}
+          {slug && <a href={`/case/${slug}`} className="mt-6 inline-flex text-sm font-semibold text-amber-200 hover:text-amber-100">View case study</a>}
         </article>
       );
     })}
@@ -142,41 +147,39 @@ const WritingList = ({ writings }) => (
   </div>
 );
 
-const PlaceholderCards = ({ type }) => {
-  const cards = {
-    updates: [
-      ["Launch notes", "Short product and platform updates will live here after editorial review."],
-      ["Build digest", "Curated development signals from public and private repositories can be promoted into this section."],
-      ["Milestones", "Major releases, infrastructure upgrades, and brand updates will get a durable public record."],
-    ],
-    studies: [
-      ["AI operations", "Deeper problem-solution studies for AI Inference Lab, ForgeWatch, Project Iris, and Jerry."],
-      ["Platform reliability", "Architecture breakdowns for GitOps, observability, secrets, delivery, and incident handling."],
-      ["Product systems", "Case-study expansions for education, reading, social-impact, and developer-tooling products."],
-    ],
-    lab: [
-      ["Model operations", "GPU, inference, model-serving, and evaluation notes for AI Inference Lab."],
-      ["Agent surfaces", "Personal assistant, mobile operator, and governed automation experiments."],
-      ["Infrastructure experiments", "Homelab, Kubernetes, cloud, and self-hosted platform trials."],
-    ],
-    github: [
-      ["Curated signals", "Future digests should summarize meaningful development activity rather than dumping raw commits."],
-      ["Private-source aware", "Most important repositories may be private, so generated updates must go through reviewed summaries."],
-      ["PR-based publishing", "Generated digest content should open a reviewable pull request before becoming public."],
-    ],
-  };
-
-  return (
-    <div className="grid gap-5 md:grid-cols-3">
-      {asArray(cards[type]).map(([title, body]) => (
-        <article key={title} className="rounded-3xl border border-white/[0.08] bg-white/[0.035] p-6">
-          <h2 className="text-xl font-semibold text-white">{title}</h2>
-          <p className="mt-3 text-sm leading-7 text-slate-300">{body}</p>
-        </article>
-      ))}
-    </div>
-  );
+const placeholderGroups = {
+  updates: [
+    ["Launch notes", "Short product and platform updates will live here after editorial review."],
+    ["Build digest", "Curated development signals from public and private repositories can be promoted into this section."],
+    ["Milestones", "Major releases, infrastructure upgrades, and brand updates will get a durable public record."],
+  ],
+  studies: [
+    ["AI operations", "Deeper problem-solution studies for AI Inference Lab, ForgeWatch, Project Iris, and Jerry."],
+    ["Platform reliability", "Architecture breakdowns for GitOps, observability, secrets, delivery, and incident handling."],
+    ["Product systems", "Case-study expansions for education, reading, social-impact, and developer-tooling products."],
+  ],
+  lab: [
+    ["Model operations", "GPU, inference, model-serving, and evaluation notes for AI Inference Lab."],
+    ["Agent surfaces", "Personal assistant, mobile operator, and governed automation experiments."],
+    ["Infrastructure experiments", "Homelab, Kubernetes, cloud, and self-hosted platform trials."],
+  ],
+  github: [
+    ["Curated signals", "Future digests should summarize meaningful development activity rather than dumping raw commits."],
+    ["Private-source aware", "Most important repositories may be private, so generated updates must go through reviewed summaries."],
+    ["PR-based publishing", "Generated digest content should open a reviewable pull request before becoming public."],
+  ],
 };
+
+const PlaceholderCards = ({ type }) => (
+  <div className="grid gap-5 md:grid-cols-3">
+    {asArray(placeholderGroups[type]).map(([title, body]) => (
+      <article key={title} className="rounded-3xl border border-white/[0.08] bg-white/[0.035] p-6">
+        <h2 className="text-xl font-semibold text-white">{title}</h2>
+        <p className="mt-3 text-sm leading-7 text-slate-300">{body}</p>
+      </article>
+    ))}
+  </div>
+);
 
 const SiteHubPage = ({ path }) => {
   const content = usePortfolioContent();
@@ -184,7 +187,7 @@ const SiteHubPage = ({ path }) => {
   const projects = asArray(content.projects);
   const writings = asArray(content.writings);
 
-  let body = null;
+  let body;
   if (page.type === "projects") {
     body = <ProjectGrid projects={projects} />;
   } else if (page.type === "writing") {
