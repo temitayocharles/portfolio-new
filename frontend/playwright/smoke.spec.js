@@ -17,6 +17,21 @@ test.describe("portfolio smoke coverage", () => {
     await expect(page.locator("#projects").getByText(/production|architecture|platform|cloud/i).first()).toBeVisible();
   });
 
+
+  test("renders legal and policy pages", async ({ page }) => {
+    const routes = [
+      { path: "/trust-safety", text: /Trust, safety/i },
+      { path: "/privacy-policy", text: /Privacy policy/i },
+      { path: "/terms", text: /Terms for using/i },
+    ];
+
+    for (const route of routes) {
+      await page.goto(route.path);
+      await expect(page.getByRole("heading", { name: route.text }).first()).toBeVisible();
+      await expect(page.getByText(/Last updated/i).first()).toBeVisible();
+    }
+  });
+
   test("validates contact form fields without depending on external email delivery", async ({ page }) => {
     await page.goto("/#contact");
 

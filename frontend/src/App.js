@@ -1,6 +1,7 @@
 import "./App.css";
 import Portfolio from "@/components/portfolio/Portfolio";
 import CaseStudyPage from "@/components/portfolio/CaseStudyPage";
+import LegalPage, { isLegalPagePath } from "@/components/portfolio/LegalPage";
 
 const getCaseStudyIdFromPath = () => {
   if (typeof window === "undefined") return null;
@@ -9,11 +10,18 @@ const getCaseStudyIdFromPath = () => {
 };
 
 function App() {
+  const pathname = typeof window === "undefined" ? "/" : window.location.pathname;
   const caseStudyId = getCaseStudyIdFromPath();
 
   return (
     <div className="App">
-      {caseStudyId ? <CaseStudyPage projectId={caseStudyId} /> : <Portfolio />}
+      {isLegalPagePath(pathname) ? (
+        <LegalPage path={pathname} />
+      ) : caseStudyId ? (
+        <CaseStudyPage projectId={caseStudyId} />
+      ) : (
+        <Portfolio />
+      )}
     </div>
   );
 }

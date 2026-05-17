@@ -96,7 +96,13 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="mt-12 pt-6 border-t border-white/5 flex flex-col sm:flex-row gap-4 items-center justify-between">
+        <div className="mt-8 flex flex-wrap gap-x-5 gap-y-2 border-t border-white/5 pt-6 text-xs text-slate-500">
+          <a href="/trust-safety" className="hover:text-teal-300">Trust & Safety</a>
+          <a href="/privacy-policy" className="hover:text-teal-300">Privacy Policy</a>
+          <a href="/terms" className="hover:text-teal-300">Terms</a>
+        </div>
+
+        <div className="mt-6 pt-6 border-t border-white/5 flex flex-col sm:flex-row gap-4 items-center justify-between">
           <p className="text-xs text-slate-500 font-mono">
             © {year} {profile.name}. Crafted with discipline and a strong CI pipeline.
           </p>
