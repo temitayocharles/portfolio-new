@@ -137,3 +137,52 @@ These documents convert the completed brand-hub workstream into a controlled rel
 ## Corrective architecture pass
 
 This pass removes weak standalone image-asset exposure and makes the Architecture Lab topology-first with animated signal movement. Case-study artifact CTAs should route users to the interactive architecture section instead of opening raw SVG/PNG files.
+
+## Phase 8: Site hub v2 content architecture
+
+Branch: `feature/site-hub-v2-content-architecture`
+
+Scope: Transform hub routes from placeholders into real website sections with curated content, a private-repo-aware GitHub digest model, backend-outage resilience documentation, and expanded Playwright smoke coverage.
+
+### Completed files
+
+- `frontend/src/content/site-updates.json` — curated news and build milestone updates
+- `frontend/src/content/github-digest.json` — curated engineering activity digest (private-repo-aware)
+- `frontend/src/content/site-sections.json` — editorial taxonomy and section metadata
+- `frontend/src/components/portfolio/SiteHubPage.jsx` — enhanced hub page with real content for all six sections
+- `frontend/src/services/portfolioContent.js` — added 5-second fetch timeout for backend resilience
+- `scripts/generate-github-digest.mjs` — digest validation and optional public repo enrichment script
+- `frontend/playwright/smoke.spec.js` — expanded smoke coverage for all hub, legal, and case routes
+- `docs/qa/backend-outage-resilience.md` — backend resilience documentation
+- `docs/marketing/site-hub-v2-architecture.md` — site hub architecture documentation
+- `docs/marketing/brand-hub-v2-tracker.md` — this tracker updated
+
+### Validation commands
+
+```bash
+# Confirm branch
+git status --short --branch
+
+# Build
+cd frontend && yarn install --frozen-lockfile && yarn build
+
+# Smoke tests
+cd frontend && yarn test:ui
+
+# Route verifier
+SITE_URL="https://temitayocharles.online" node ./scripts/verify-site-routes.mjs
+
+# Digest validator
+node scripts/generate-github-digest.mjs
+```
+
+### Risks
+
+- Hub pages render from bundled static JSON; content updates require a new deploy.
+- GitHub digest enrichment requires `GH_TOKEN` in CI; absent token is non-fatal.
+
+### Follow-up items
+
+- Add individual writing article pages at `/writing/:id`.
+- Add workflow_dispatch GitHub Action for digest generation.
+- Add RSS/Atom feed for `/news` and `/writing`.

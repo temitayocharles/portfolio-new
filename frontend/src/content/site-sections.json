@@ -1,0 +1,117 @@
+{
+  "sections": [
+    {
+      "id": "projects",
+      "path": "/projects",
+      "label": "Projects",
+      "title": "Products, platforms, and operating systems",
+      "description": "A structured view of the InfraForge platform estate, AI infrastructure work, education products, and public case-study surfaces.",
+      "taxonomy": "product-directory",
+      "groups": [
+        {
+          "id": "flagship-ai-platform",
+          "label": "Flagship AI and platform systems",
+          "description": "Core AI infrastructure, operational intelligence, and platform engineering systems.",
+          "projectIds": ["ai-inference-lab", "infraforge", "sentinel-copilot"]
+        },
+        {
+          "id": "personal-ai",
+          "label": "Personal AI systems",
+          "description": "Governed personal AI assistant and mobile AI companion.",
+          "projectIds": ["project-iris", "jerry"]
+        },
+        {
+          "id": "education",
+          "label": "Education products",
+          "description": "Practical coding and AI education platforms.",
+          "projectIds": ["young-coders", "ai-builders-academy"]
+        },
+        {
+          "id": "infrastructure-devsecops",
+          "label": "Infrastructure and DevSecOps systems",
+          "description": "Secrets operations, SaaS reference architecture, and platform tooling.",
+          "projectIds": ["vault-ops", "openleaf"]
+        }
+      ]
+    },
+    {
+      "id": "news",
+      "path": "/news",
+      "label": "News",
+      "title": "Updates and build notes",
+      "description": "A curated update stream for launches, infrastructure improvements, platform milestones, and public-facing product movement.",
+      "taxonomy": "editorial-updates",
+      "contentSource": "site-updates.json",
+      "editorialNote": "All updates are reviewed before publication. Raw commits are not published."
+    },
+    {
+      "id": "writing",
+      "path": "/writing",
+      "label": "Writing",
+      "title": "Technical writing and platform thinking",
+      "description": "Engineering notes, implementation narratives, operating-model essays, and public technical communication.",
+      "taxonomy": "technical-writing",
+      "contentSource": "portfolio-content.json#writings",
+      "categories": [
+        "AI Infrastructure",
+        "GitOps",
+        "FinOps",
+        "AIOps",
+        "SRE",
+        "Kubernetes",
+        "DevSecOps"
+      ]
+    },
+    {
+      "id": "studies",
+      "path": "/studies",
+      "label": "Studies",
+      "title": "Case studies and architecture studies",
+      "description": "Deeper problem-solution breakdowns for flagship systems, including AI operations, GitOps, observability, secrets, education, and platform reliability.",
+      "taxonomy": "case-studies",
+      "caseRoutePrefix": "/case/",
+      "studyIds": [
+        "ai-inference-lab",
+        "infraforge",
+        "sentinel-copilot",
+        "project-iris",
+        "jerry",
+        "openleaf",
+        "vault-ops"
+      ]
+    },
+    {
+      "id": "lab",
+      "path": "/lab",
+      "label": "Lab",
+      "title": "AI infrastructure lab and experiments",
+      "description": "A focused surface for AI Inference Lab, GPU/model operations, agent systems, mobile AI interfaces, and platform experiments.",
+      "taxonomy": "lab-experiments",
+      "labProjectIds": ["ai-inference-lab", "sentinel-copilot", "project-iris", "jerry"],
+      "themes": [
+        "Model operations",
+        "Agent surfaces",
+        "Infrastructure experiments",
+        "GPU capacity",
+        "Observability"
+      ]
+    },
+    {
+      "id": "github",
+      "path": "/github",
+      "label": "GitHub",
+      "title": "GitHub and engineering activity digest",
+      "description": "A curated digest for public and private-source development signals, designed to publish reviewed updates without leaking sensitive implementation detail.",
+      "taxonomy": "engineering-digest",
+      "contentSource": "github-digest.json",
+      "digestModel": {
+        "approach": "curated",
+        "privateRepoAware": true,
+        "publishGate": "PR review required before publication",
+        "noRawCommits": true,
+        "noPrivateUrls": true,
+        "noSecretLeakage": true
+      }
+    }
+  ]
+}

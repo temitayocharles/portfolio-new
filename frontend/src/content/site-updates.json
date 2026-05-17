@@ -1,0 +1,62 @@
+[
+  {
+    "id": "site-hub-foundation",
+    "title": "Website hub foundation launched",
+    "date": "2026-05-17",
+    "category": "Platform",
+    "summary": "temitayocharles.online now has routed website sections for projects, news, writing, studies, lab, and GitHub activity.",
+    "impact": "Moves the site from a one-page portfolio toward a public operating hub for InfraForge, AI infrastructure, platform engineering, and product work.",
+    "relatedRoutes": ["/projects", "/news", "/lab"],
+    "visibility": "public"
+  },
+  {
+    "id": "ai-inference-lab-v1",
+    "title": "AI Inference Lab: model operations laboratory published",
+    "date": "2026-05-13",
+    "category": "AI Infrastructure",
+    "summary": "The InfraForge AI Inference Lab case study is live. Covers LLM serving, model operations, GPU capacity planning, benchmarking, Prometheus metrics, and Kubernetes-native AI workloads.",
+    "impact": "Establishes the AI infrastructure proof surface for InfraForge as a serious production-capacity system.",
+    "relatedRoutes": ["/lab", "/case/ai-inference-lab"],
+    "visibility": "public"
+  },
+  {
+    "id": "forgewatch-case-study",
+    "title": "ForgeWatch AIOps copilot case study published",
+    "date": "2026-05-10",
+    "category": "AIOps",
+    "summary": "ForgeWatch evidence-first operations copilot case study is live. Covers read-only Kubernetes/Prometheus/Loki evidence gathering, approval-gated write proposals, and outcome-backed RAG memory.",
+    "impact": "Positions ForgeWatch as the operational intelligence and cluster guardian layer for InfraForge.",
+    "relatedRoutes": ["/lab", "/case/sentinel-copilot"],
+    "visibility": "public"
+  },
+  {
+    "id": "legal-pages-live",
+    "title": "Legal pages live: Trust & Safety, Privacy Policy, Terms",
+    "date": "2026-05-08",
+    "category": "Platform",
+    "summary": "Trust & Safety, Privacy Policy, and Terms pages are now live at /trust-safety, /privacy-policy, and /terms.",
+    "impact": "Completes the compliance and trust surface for the public brand hub.",
+    "relatedRoutes": ["/trust-safety", "/privacy-policy", "/terms"],
+    "visibility": "public"
+  },
+  {
+    "id": "project-iris-case-study",
+    "title": "Project Iris governed personal AI assistant case study published",
+    "date": "2026-05-05",
+    "category": "Personal AI",
+    "summary": "Project Iris case study is live. Covers approval queues, governed memory, MCP gateway, email/calendar/browser workflows, audit service, and execution worker.",
+    "impact": "Establishes Iris as a premium personal AI pattern: capable, governed, and trust-preserving.",
+    "relatedRoutes": ["/lab", "/case/project-iris"],
+    "visibility": "public"
+  },
+  {
+    "id": "infraforge-platform-case-study",
+    "title": "InfraForge platform operating model case study published",
+    "date": "2026-04-28",
+    "category": "Platform Engineering",
+    "summary": "The InfraForge company platform case study is live. Covers GitOps, Vault-backed secrets, Envoy Gateway, Longhorn, Harbor, Prometheus/Grafana/Loki, and disaster recovery.",
+    "impact": "Demonstrates InfraForge as a real platform company with an owned operating model.",
+    "relatedRoutes": ["/projects", "/case/infraforge"],
+    "visibility": "public"
+  }
+]

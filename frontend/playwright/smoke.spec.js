@@ -1,66 +1,135 @@
 const { test, expect } = require("@playwright/test");
 
 test.describe("portfolio smoke coverage", () => {
-  test("renders the primary portfolio sections", async ({ page }) => {
+  test("homepage renders primary sections and visible content", async ({ page }) => {
     await page.goto("/");
 
     await expect(page.locator("#top")).toBeVisible();
     await expect(page.locator("#projects")).toBeVisible();
     await expect(page.locator("#contact")).toBeVisible();
-    await expect(page.getByRole("heading", { name: /infrastructure/i }).first()).toBeVisible();
+    await expect(
+      page.getByRole("heading", { name: /infrastructure/i }).first()
+    ).toBeVisible();
   });
 
-  test("keeps project cards available for hiring and architecture review", async ({ page }) => {
+  test("homepage project cards are available", async ({ page }) => {
     await page.goto("/#projects");
 
     await expect(page.locator("#projects")).toBeVisible();
-    await expect(page.locator("#projects").getByText(/production|architecture|platform|cloud/i).first()).toBeVisible();
+    await expect(
+      page.locator("#projects").getByText(/production|architecture|platform|cloud/i).first()
+    ).toBeVisible();
   });
 
-
-
-  test("renders routed website hub pages", async ({ page }) => {
+  test("website hub pages render with expected headings", async ({ page }) => {
     const routes = [
-      { path: "/projects", text: /Products, platforms/i },
-      { path: "/news", text: /Updates and build notes/i },
-      { path: "/writing", text: /Technical writing/i },
-      { path: "/studies", text: /Case studies and architecture studies/i },
-      { path: "/lab", text: /AI infrastructure lab/i },
-      { path: "/github", text: /GitHub and engineering activity digest/i },
+      { path: "/projects", heading: /Products, platforms/i },
+      { path: "/news", heading: /Updates and build notes/i },
+      { path: "/writing", heading: /Technical writing/i },
+      { path: "/studies", heading: /Case studies and architecture studies/i },
+      { path: "/lab", heading: /AI infrastructure lab/i },
+      { path: "/github", heading: /GitHub and engineering activity digest/i },
     ];
 
     for (const route of routes) {
       await page.goto(route.path);
-      await expect(page.getByRole("heading", { name: route.text }).first()).toBeVisible();
+      await expect(
+        page.getByRole("heading", { name: route.heading }).first()
+      ).toBeVisible();
       await expect(page.getByText(/Hub routing/i).first()).toBeVisible();
     }
   });
 
-  test("renders legal and policy pages", async ({ page }) => {
+  test("/projects renders product directory groups", async ({ page }) => {
+    await page.goto("/projects");
+
+    await expect(page.getByText(/Flagship AI and platform systems/i).first()).toBeVisible();
+    await expect(page.getByText(/Education products/i).first()).toBeVisible();
+  });
+
+  test("/news renders curated update cards", async ({ page }) => {
+    await page.goto("/news");
+
+    await expect(page.getByText(/curated update/i).first()).toBeVisible();
+    await expect(page.getByText(/Website hub foundation launched/i).first()).toBeVisible();
+  });
+
+  test("/writing renders writing pieces", async ({ page }) => {
+    await page.goto("/writing");
+
+    await expect(page.getByText(/platform thinking/i).first()).toBeVisible();
+  });
+
+  test("/studies renders case study cards with links", async ({ page }) => {
+    await page.goto("/studies");
+
+    await expect(page.getByText(/case stud/i).first()).toBeVisible();
+    await expect(page.getByText(/Read case study/i).first()).toBeVisible();
+  });
+
+  test("/lab renders AI infrastructure themes", async ({ page }) => {
+    await page.goto("/lab");
+
+    await expect(page.getByText(/Model operations/i).first()).toBeVisible();
+    await expect(page.getByText(/Agent surfaces/i).first()).toBeVisible();
+    await expect(page.getByText(/Infrastructure experiments/i).first()).toBeVisible();
+  });
+
+  test("/github renders curated digest with model explanation", async ({ page }) => {
+    await page.goto("/github");
+
+    await expect(page.getByText(/Digest model/i).first()).toBeVisible();
+    await expect(page.getByText(/No raw commits/i).first()).toBeVisible();
+    await expect(page.getByText(/curated signal/i).first()).toBeVisible();
+  });
+
+  test("legal and policy pages render correctly", async ({ page }) => {
     const routes = [
-      { path: "/trust-safety", text: /Trust, safety/i },
-      { path: "/privacy-policy", text: /Privacy policy/i },
-      { path: "/terms", text: /Terms for using/i },
+      { path: "/trust-safety", heading: /Trust, safety/i },
+      { path: "/privacy-policy", heading: /Privacy policy/i },
+      { path: "/terms", heading: /Terms for using/i },
     ];
 
     for (const route of routes) {
       await page.goto(route.path);
-      await expect(page.getByRole("heading", { name: route.text }).first()).toBeVisible();
+      await expect(
+        page.getByRole("heading", { name: route.heading }).first()
+      ).toBeVisible();
       await expect(page.getByText(/Last updated/i).first()).toBeVisible();
     }
   });
 
-  test("validates contact form fields without depending on external email delivery", async ({ page }) => {
+  test("critical case study routes load and are not blank", async ({ page }) => {
+    const caseRoutes = [
+      "/case/ai-inference-lab",
+      "/case/infraforge",
+      "/case/sentinel-copilot",
+      "/case/project-iris",
+      "/case/vault-ops",
+    ];
+
+    for (const path of caseRoutes) {
+      await page.goto(path);
+      // Page must not be blank — at least one heading must be visible
+      await expect(page.getByRole("heading").first()).toBeVisible();
+    }
+  });
+
+  test("contact form fields are usable without external email delivery", async ({ page }) => {
     await page.goto("/#contact");
 
     await expect(page.locator("#contact")).toBeVisible();
     await page.locator('input[name="name"]').fill("CI Smoke Test");
     await page.locator('input[name="email"]').fill("ci@example.com");
     await page.locator('input[name="subject"]').fill("Portfolio smoke validation");
-    await page.locator('textarea[name="message"]').fill("This verifies that the contact form remains usable during CI smoke testing.");
+    await page.locator('textarea[name="message"]').fill(
+      "This verifies that the contact form remains usable during CI smoke testing."
+    );
 
     await expect(page.locator('input[name="name"]')).toHaveValue("CI Smoke Test");
     await expect(page.locator('input[name="email"]')).toHaveValue("ci@example.com");
-    await expect(page.locator('textarea[name="message"]')).toContainText("contact form remains usable");
+    await expect(page.locator('textarea[name="message"]')).toContainText(
+      "contact form remains usable"
+    );
   });
 });
