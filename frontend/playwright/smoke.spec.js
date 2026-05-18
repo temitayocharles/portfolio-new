@@ -21,6 +21,20 @@ test.describe("portfolio smoke coverage", () => {
     ).toBeVisible();
   });
 
+  test("primary navigation and CTAs are accessible", async ({ page }) => {
+    await page.goto("/");
+
+    const mobileMenuToggle = page.getByRole("button", { name: /open navigation menu|close navigation menu/i });
+    if ((await mobileMenuToggle.count()) > 0) {
+      await expect(mobileMenuToggle).toBeVisible();
+    }
+    await expect(page.getByRole("button", { name: "Explore Projects" })).toBeVisible();
+    await expect(page.locator('a[href="/studies"]').first()).toBeAttached();
+    await expect(page.getByRole("link", { name: /Download Temitayo Charles Akinniranye resume as PDF/i })).toBeVisible();
+    await expect(page.getByRole("link", { name: /Open Temitayo Charles Akinniranye GitHub profile/i }).first()).toBeAttached();
+    await expect(page.getByRole("link", { name: /Open Temitayo Charles Akinniranye LinkedIn profile/i }).first()).toBeAttached();
+  });
+
   test("website hub pages render with expected headings", async ({ page }) => {
     const routes = [
       { path: "/projects", heading: /Products, platforms/i },

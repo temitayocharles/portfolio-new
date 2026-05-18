@@ -501,3 +501,30 @@ Add a manual-only GitHub Actions path to run digest validation (default) and gua
 - Validation-only mode must continue to succeed without custom secrets.
 - Enrichment mode is optional and should be treated as a manual, supervised operation.
 - Never publish private repository names, private URLs, raw private commits, tokens, or sensitive implementation details.
+
+---
+
+## Phase 15: Trust/accessibility/conversion hardening
+
+**Branch:** `feat/trust-accessibility-conversion-hardening`
+
+### Focus
+
+Address low-risk trust and conversion concerns without redesigning the public brand hub.
+
+### Implementation summary
+
+- Added conservative CSP in `frontend/public/_headers` while preserving existing security/cache headers.
+- Added explicit `WebSite` + `Person` JSON-LD in `frontend/public/index.html` using public-safe fields only.
+- Kept existing `ProfilePage` structured data, now linked to the explicit `Person` and `WebSite` nodes.
+- Tightened CTA clarity with minimal copy changes:
+  - `View Projects` -> `Explore Projects`
+  - Added `Read Case Studies` CTA on hero
+- Patched stale trust copy in platform showcase:
+  - `Launching soon` -> `In active development`
+  - `DNS pending` -> `Public rollout in progress`
+- Added lightweight accessibility smoke assertions for primary nav and key CTA accessible names.
+
+### Security and tradeoff note
+
+- CSP currently allows `'unsafe-inline'` for scripts/styles because the existing static template includes inline scripts and Google Fonts stylesheet loading. This is an explicit compatibility tradeoff, not a perfect final-state CSP.

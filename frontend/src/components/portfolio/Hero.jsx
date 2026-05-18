@@ -136,8 +136,18 @@ const Hero = () => {
                 size="lg"
                 className="bg-teal-300 hover:bg-teal-200 text-[#0a0f14] font-medium shadow-[0_0_36px_-6px] shadow-teal-400/50 group"
               >
-                View Projects
+                Explore Projects
                 <ArrowRight className="h-4 w-4 ml-1.5 transition-transform group-hover:translate-x-0.5" />
+              </Button>
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
+                className="border-white/10 bg-white/[0.03] hover:bg-white/[0.06] text-slate-200 hover:text-white"
+              >
+                <a href="/studies" aria-label="Read architecture and case studies">
+                  Read Case Studies
+                </a>
               </Button>
               <Button
                 asChild

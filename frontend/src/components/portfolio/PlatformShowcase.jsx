@@ -19,7 +19,7 @@ const platforms = [
     summary: "A product platform for missions, progress, recaps, media workflows, account-owner workspaces, billing, auth, and staged Kubernetes delivery.",
     proof: ["Missions", "Progress", "Workspace platform"],
     href: null,
-    action: "Launching soon",
+    action: "In active development",
     icon: Rocket,
   },
   {
@@ -29,7 +29,7 @@ const platforms = [
     summary: "A public-facing map for the infrastructure layer behind the products: GitOps, Kubernetes, routing, secrets, observability, and operations.",
     proof: ["GitOps", "Kubernetes", "Operations"],
     href: null,
-    action: "DNS pending",
+    action: "Public rollout in progress",
     icon: Layers3,
   },
 ];

@@ -4,6 +4,13 @@
 
 The public website remains a static-first brand hub with curated, public-safe content surfaces for projects, studies, lab work, updates, writing, legal pages, and editorial detail routes.
 
+## Security and trust hardening
+
+- `frontend/public/_headers` defines a conservative Content Security Policy for the static deployment surface.
+- Existing security headers remain in place (HSTS, `nosniff`, frame restrictions, referrer policy, permissions policy).
+- CSP currently keeps `'unsafe-inline'` for scripts/styles for compatibility with existing inline template scripts and font loading. This is an explicit tradeoff tracked for future hardening.
+- `frontend/public/index.html` includes public-safe structured data (`WebSite`, `Person`, `ProfilePage`) with no private implementation details.
+
 ## Component structure
 
 ### Route orchestrators
