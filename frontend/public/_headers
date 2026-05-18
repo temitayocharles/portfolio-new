@@ -1,21 +1,26 @@
 /*
-  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://temitayocharles.online; upgrade-insecure-requests
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; script-src 'self' 'unsafe-inline' https://us-assets.i.posthog.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self' https://temitayocharles.online https://us.i.posthog.com https://us-assets.i.posthog.com; upgrade-insecure-requests
   Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
   X-Content-Type-Options: nosniff
   X-Frame-Options: DENY
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
+
 /
   Cache-Control: no-store, no-cache, must-revalidate, max-age=0
   CDN-Cache-Control: no-store
   Cloudflare-CDN-Cache-Control: no-store
+
 /index.html
   Cache-Control: no-store, no-cache, must-revalidate, max-age=0
   CDN-Cache-Control: no-store
   Cloudflare-CDN-Cache-Control: no-store
+
 /static/*
   Cache-Control: public, max-age=31536000, immutable
+
 /assets/*
   Cache-Control: public, max-age=86400
+
 /images/*
   Cache-Control: public, max-age=86400
