@@ -352,3 +352,40 @@ SITE_URL="https://temitayocharles.online" node ./scripts/verify-site-routes.mjs
 - Add a small unit test around `useRouteMetadata` behavior in jsdom.
 - Consider deriving route metadata defaults from route config where titles/descriptions are intentionally parallel.
 - Keep frontend/backend `portfolio-content.json` in sync whenever frontend content file changes in future PRs.
+
+---
+
+## Phase 11: Editorial depth for /news and /writing
+
+**Branch:** `feat/editorial-depth-news-writing`
+
+### Focus
+
+Increase editorial depth and credibility for `/news` and `/writing` without changing route structure, adding detail routes, or redesigning the broader site system.
+
+### Implementation summary
+
+- `/news` upgraded from a flat card list to an editorially framed updates surface:
+  - publication posture panel
+  - grouped lanes for platform/operations and AI systems updates
+  - explicit public-safe publishing note
+- `/writing` upgraded from a flat list to a structured editorial index:
+  - editorial context panel
+  - thematic tracks (platform engineering, AI systems, product/operations)
+  - suggested reading path framing
+- route metadata descriptions for `/news` and `/writing` updated to reflect the stronger editorial positioning while staying concise and non-hype.
+
+### Files changed
+
+- `frontend/src/components/portfolio/hub/NewsHubSection.jsx`
+- `frontend/src/components/portfolio/hub/WritingHubSection.jsx`
+- `frontend/src/content/route-metadata.json`
+- `docs/marketing/brand-hub-v2-tracker.md`
+
+### Boundaries respected
+
+- No new routes and no `/writing/:id` detail routes.
+- No backend dependency added for first render.
+- No browser-side GitHub API calls.
+- No resume/testimonial/icon behavior changes.
+- No private repository names, private URLs, secrets, or tokens introduced.
