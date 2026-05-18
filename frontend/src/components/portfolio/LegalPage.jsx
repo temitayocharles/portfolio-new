@@ -51,7 +51,6 @@ const LegalPage = ({ path }) => {
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "auto" });
-    document.title = `${page.label} | Temitayo Charles Akinniranye`;
   }, [page.label]);
 
   return (

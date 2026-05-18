@@ -1,0 +1,121 @@
+[
+  {
+    "path": "/",
+    "title": "Temitayo Charles Akinniranye | InfraForge Platform and AI Systems",
+    "description": "Public hub for InfraForge platform systems, AI operations, case studies, and product surfaces.",
+    "type": "homepage",
+    "publicSafe": true
+  },
+  {
+    "path": "/projects",
+    "title": "Projects | Temitayo Charles Akinniranye",
+    "description": "Product and platform directory across AI systems, infrastructure, education, and operations.",
+    "type": "hub",
+    "publicSafe": true
+  },
+  {
+    "path": "/news",
+    "title": "News | Temitayo Charles Akinniranye",
+    "description": "Curated build notes, launch updates, and platform milestones.",
+    "type": "hub",
+    "publicSafe": true
+  },
+  {
+    "path": "/writing",
+    "title": "Writing | Temitayo Charles Akinniranye",
+    "description": "Technical writing, architecture narratives, and platform thinking.",
+    "type": "hub",
+    "publicSafe": true
+  },
+  {
+    "path": "/studies",
+    "title": "Studies | Temitayo Charles Akinniranye",
+    "description": "Case studies and architecture studies for flagship systems and operational platforms.",
+    "type": "hub",
+    "publicSafe": true
+  },
+  {
+    "path": "/lab",
+    "title": "Lab | Temitayo Charles Akinniranye",
+    "description": "AI infrastructure lab covering model operations, agent surfaces, and infrastructure experiments.",
+    "type": "hub",
+    "publicSafe": true
+  },
+  {
+    "path": "/github",
+    "title": "GitHub Digest | Temitayo Charles Akinniranye",
+    "description": "Curated engineering digest with public-safe signals and private-source-aware publication controls.",
+    "type": "hub",
+    "publicSafe": true
+  },
+  {
+    "path": "/trust-safety",
+    "title": "Trust and Safety | Temitayo Charles Akinniranye",
+    "description": "Trust, safety, and responsible platform operations for this public site.",
+    "type": "legal",
+    "publicSafe": true
+  },
+  {
+    "path": "/privacy-policy",
+    "title": "Privacy Policy | Temitayo Charles Akinniranye",
+    "description": "Privacy policy for the public portfolio and brand hub.",
+    "type": "legal",
+    "publicSafe": true
+  },
+  {
+    "path": "/terms",
+    "title": "Terms of Service | Temitayo Charles Akinniranye",
+    "description": "Terms for using this public website and related content.",
+    "type": "legal",
+    "publicSafe": true
+  },
+  {
+    "path": "/case/ai-inference-lab",
+    "title": "AI Inference Lab Case Study | Temitayo Charles Akinniranye",
+    "description": "Case study for AI model operations, inference serving, benchmarking, and observability.",
+    "type": "case-study",
+    "publicSafe": true
+  },
+  {
+    "path": "/case/infraforge",
+    "title": "InfraForge Case Study | Temitayo Charles Akinniranye",
+    "description": "Case study for GitOps platform operations, reliability controls, and homelab production discipline.",
+    "type": "case-study",
+    "publicSafe": true
+  },
+  {
+    "path": "/case/sentinel-copilot",
+    "title": "Sentinel Copilot Case Study | Temitayo Charles Akinniranye",
+    "description": "Case study for AIOps signal synthesis and evidence-first operational support.",
+    "type": "case-study",
+    "publicSafe": true
+  },
+  {
+    "path": "/case/project-iris",
+    "title": "Project Iris Case Study | Temitayo Charles Akinniranye",
+    "description": "Case study for governed personal AI workflows with privacy and approval controls.",
+    "type": "case-study",
+    "publicSafe": true
+  },
+  {
+    "path": "/case/jerry",
+    "title": "Jerry Case Study | Temitayo Charles Akinniranye",
+    "description": "Case study for mobile AI operator surfaces and on-the-go command workflows.",
+    "type": "case-study",
+    "publicSafe": true
+  },
+  {
+    "path": "/case/openleaf",
+    "title": "OpenLeaf Study | Temitayo Charles Akinniranye",
+    "description": "Architecture study for SaaS reference architecture and cloud-native operating model design.",
+    "type": "case-study",
+    "publicSafe": true
+  },
+  {
+    "path": "/case/vault-ops",
+    "title": "Vault Ops Study | Temitayo Charles Akinniranye",
+    "description": "Operational study for secrets automation and platform-safe credential workflows.",
+    "type": "case-study",
+    "publicSafe": true
+  }
+]

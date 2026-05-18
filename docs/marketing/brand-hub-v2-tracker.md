@@ -271,3 +271,84 @@ node scripts/generate-github-digest.mjs
 - [ ] Consider a `/writing` filter bar (by tag: AI Infrastructure, GitOps, FinOps, etc.).
 - [ ] Add `nextEvolution` to `ai-builders-academy` and `young-coders` caseStudy entries when content is ready.
 - [ ] Run full Playwright smoke tests after deploy to verify heading changes didn't break any selectors.
+
+---
+
+## Phase 10: Site hub hardening/refactor
+
+**Branch:** `feature/site-hub-v2-hardening-refactor`
+
+### Why this refactor was needed
+
+`frontend/src/components/portfolio/SiteHubPage.jsx` had become too large to safely extend after visual/product polish. Metadata and route behavior were also distributed across page components, which increased drift risk and made public-safety validation incomplete.
+
+### Components extracted
+
+- `frontend/src/components/portfolio/hub/HubDesignTokens.js`
+- `frontend/src/components/portfolio/hub/HubNavigation.jsx`
+- `frontend/src/components/portfolio/hub/HubSectionShell.jsx`
+- `frontend/src/components/portfolio/hub/HubPrimitives.jsx`
+- `frontend/src/components/portfolio/hub/ProjectsHubSection.jsx`
+- `frontend/src/components/portfolio/hub/NewsHubSection.jsx`
+- `frontend/src/components/portfolio/hub/WritingHubSection.jsx`
+- `frontend/src/components/portfolio/hub/StudiesHubSection.jsx`
+- `frontend/src/components/portfolio/hub/LabHubSection.jsx`
+- `frontend/src/components/portfolio/hub/GitHubDigestSection.jsx`
+
+### Metadata moved
+
+- `frontend/src/content/project-meta.json` added to hold public-safe project metadata previously inlined in `SiteHubPage` (`PROJECT_META` and study typing fields).
+- `frontend/src/content/route-metadata.json` added to hold route-level metadata for hub routes, legal routes, homepage, and case-study routes.
+- `frontend/src/components/portfolio/useRouteMetadata.js` added to set `document.title` and `meta[name="description"]` safely without adding dependencies.
+
+### Validation added
+
+- `scripts/generate-github-digest.mjs` now validates:
+  - `github-digest.json` array shape and required digest fields including `publishNotes`
+  - `site-updates.json` array shape
+  - `project-meta.json` schema and public-safety flags
+  - `route-metadata.json` schema and public-safety flags
+  - secret-like tokens, private implementation URLs, raw GitHub repo URLs, and disallowed localhost URLs in publishable content
+- script remains validation-first and does not require `GH_TOKEN`.
+
+### Files changed
+
+- Hub refactor and route orchestrator:
+  - `frontend/src/components/portfolio/SiteHubPage.jsx`
+  - `frontend/src/components/portfolio/hub/*`
+- Route metadata and project metadata:
+  - `frontend/src/content/project-meta.json`
+  - `frontend/src/content/route-metadata.json`
+  - `frontend/src/components/portfolio/useRouteMetadata.js`
+  - `frontend/src/App.js`
+  - `frontend/src/components/portfolio/LegalPage.jsx`
+- Validation/test/doc updates:
+  - `scripts/generate-github-digest.mjs`
+  - `frontend/playwright/smoke.spec.js`
+  - `docs/marketing/site-hub-v2-architecture.md`
+  - `docs/marketing/brand-hub-v2-tracker.md`
+
+### Commands run
+
+```bash
+git status --short --branch
+cd frontend
+yarn install --frozen-lockfile
+yarn build
+yarn test:ui
+cd ..
+node scripts/generate-github-digest.mjs
+git diff --check
+SITE_URL="https://temitayocharles.online" node ./scripts/verify-site-routes.mjs
+```
+
+### Risks
+
+- Refactor touches route rendering internals; regressions are most likely in hub section wiring and metadata lookups.
+- New content-validation rules may fail future edits that were previously accepted; this is intentional but requires discipline from future editors.
+
+### Follow-up items
+
+- Add a small unit test around `useRouteMetadata` behavior in jsdom.
+- Consider deriving route metadata defaults from route config where titles/descriptions are intentionally parallel.
+- Keep frontend/backend `portfolio-content.json` in sync whenever frontend content file changes in future PRs.
