@@ -110,12 +110,11 @@ const Hero = () => {
               </span>
             </h1>
 
-            <p className="mt-7 text-lg text-slate-400 max-w-2xl leading-relaxed">
+            <p className="mt-6 max-w-2xl text-base leading-relaxed text-slate-400 sm:text-lg">
               {profile.title} with{" "}
-              <span className="text-slate-200 font-medium">{profile.yearsExperience} years</span>{" "}
-              designing reliable systems, automating infrastructure, and supporting
-              production-grade cloud environments, Kubernetes, GitOps, AWS, Terraform,
-              DevSecOps, observability, SRE, and AI-assisted operations.
+              <span className="font-medium text-slate-200">{profile.yearsExperience} years</span>{" "}
+              shipping reliable platforms across Kubernetes, GitOps, AWS, Terraform,
+              DevSecOps, observability, and AI-assisted operations.
             </p>
 
             <div className="mt-4 flex items-center gap-4 text-sm text-slate-500">
@@ -130,11 +129,11 @@ const Hero = () => {
               </span>
             </div>
 
-            <div className="mt-9 flex flex-wrap gap-3">
+            <div className="mt-8 grid grid-cols-1 gap-3 sm:flex sm:flex-wrap">
               <Button
                 onClick={() => scrollTo("#projects")}
                 size="lg"
-                className="bg-teal-300 hover:bg-teal-200 text-[#0a0f14] font-medium shadow-[0_0_36px_-6px] shadow-teal-400/50 group"
+                className="min-h-11 w-full bg-teal-300 font-medium text-[#0a0f14] shadow-[0_0_36px_-6px] shadow-teal-400/50 hover:bg-teal-200 sm:w-auto group"
               >
                 Explore Projects
                 <ArrowRight className="h-4 w-4 ml-1.5 transition-transform group-hover:translate-x-0.5" />
@@ -143,7 +142,7 @@ const Hero = () => {
                 asChild
                 size="lg"
                 variant="outline"
-                className="border-white/10 bg-white/[0.03] hover:bg-white/[0.06] text-slate-200 hover:text-white"
+                className="min-h-11 w-full border-white/10 bg-white/[0.03] text-slate-200 hover:bg-white/[0.06] hover:text-white sm:w-auto"
               >
                 <a href="/studies" aria-label="Read architecture and case studies">
                   Read Case Studies
@@ -153,7 +152,7 @@ const Hero = () => {
                 asChild
                 size="lg"
                 variant="outline"
-                className="border-white/10 bg-white/[0.03] hover:bg-white/[0.06] text-slate-200 hover:text-white"
+                className="min-h-11 w-full border-white/10 bg-white/[0.03] text-slate-200 hover:bg-white/[0.06] hover:text-white sm:w-auto"
               >
                 <a href={profile.resumeUrl} target="_blank" rel="noreferrer" aria-label="Download Temitayo Charles Akinniranye resume as PDF">
                   <Download className="h-4 w-4 mr-1.5" />
@@ -237,14 +236,14 @@ const Hero = () => {
       </div>
 
       {/* Marquee tech stack */}
-      <div className="relative mt-20 border-y border-white/5 bg-white/[0.015] py-4 overflow-hidden">
+      <div className="relative mt-16 overflow-hidden border-y border-white/5 bg-white/[0.015] py-3.5 sm:mt-20 sm:py-4">
         <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#0a0f14] to-transparent z-10 pointer-events-none" />
         <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[#0a0f14] to-transparent z-10 pointer-events-none" />
-        <div className="flex gap-10 animate-marquee whitespace-nowrap">
+        <div className="flex animate-marquee gap-7 whitespace-nowrap sm:gap-10">
           {[...MARQUEE_TECH, ...MARQUEE_TECH].map((t, i) => (
             <span
               key={i}
-              className="font-mono text-sm text-slate-500 hover:text-teal-300 transition-colors flex items-center gap-2.5"
+              className="flex items-center gap-2 text-xs text-slate-500 transition-colors hover:text-teal-300 sm:gap-2.5 sm:text-sm font-mono"
             >
               <span className="h-1 w-1 rounded-full bg-teal-300/40" />
               {t}
