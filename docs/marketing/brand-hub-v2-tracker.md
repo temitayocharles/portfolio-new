@@ -474,3 +474,30 @@ Harden discoverability and validation coverage for `/news/:id` and `/writing/:id
 - No backend-first-render dependency added.
 - No resume/testimonial/icon behavior changes.
 - No private implementation details exposed.
+
+---
+
+## Phase 14: Manual GitHub digest workflow
+
+**Branch:** `feat/github-digest-workflow-dispatch`
+
+### Focus
+
+Add a manual-only GitHub Actions path to run digest validation (default) and guarded optional enrichment without browser-side API calls or automatic publishing.
+
+### Implementation summary
+
+- Added `.github/workflows/github-digest-dispatch.yml` with `workflow_dispatch` only.
+- Run modes:
+  - `validation` (default): runs `node scripts/generate-github-digest.mjs` with no token dependency.
+  - `enrich` (optional): passes `secrets.GITHUB_TOKEN` as `GH_TOKEN` to the same script; enrichment remains script-guarded and public-safe.
+- Workflow uses least privilege (`permissions: contents: read`).
+- No schedule, no push trigger, no pull_request trigger.
+- No auto-commit, no auto-push, no auto-PR.
+- Run log is uploaded as an artifact for operator review.
+
+### Operator notes
+
+- Validation-only mode must continue to succeed without custom secrets.
+- Enrichment mode is optional and should be treated as a manual, supervised operation.
+- Never publish private repository names, private URLs, raw private commits, tokens, or sensitive implementation details.

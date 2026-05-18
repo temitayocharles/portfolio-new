@@ -1,0 +1,55 @@
+name: GitHub Digest Dispatch
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "Run mode"
+        required: true
+        default: validation
+        type: choice
+        options:
+          - validation
+          - enrich
+
+permissions:
+  contents: read
+
+jobs:
+  digest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: npm ci --prefix frontend
+
+      - name: Run digest validation (default)
+        if: ${{ inputs.mode == 'validation' }}
+        run: node scripts/generate-github-digest.mjs | tee digest-run.log
+
+      - name: Run digest validation with optional enrichment
+        if: ${{ inputs.mode == 'enrich' }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [ -z "$GH_TOKEN" ]; then
+            echo "[INFO] GITHUB_TOKEN unavailable; running validation-only mode."
+            node scripts/generate-github-digest.mjs | tee digest-run.log
+          else
+            echo "[INFO] Enrichment requested. Running guarded enrichment with repository token."
+            node scripts/generate-github-digest.mjs | tee digest-run.log
+          fi
+
+      - name: Upload digest run log
+        uses: actions/upload-artifact@v4
+        with:
+          name: github-digest-dispatch-log
+          path: digest-run.log
+          if-no-files-found: error
