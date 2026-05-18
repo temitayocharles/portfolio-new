@@ -16,14 +16,14 @@
   {
     "path": "/news",
     "title": "News | Temitayo Charles Akinniranye",
-    "description": "Curated build notes, launch updates, and platform milestones.",
+    "description": "Curated engineering updates across platform operations, AI infrastructure, and public product milestones.",
     "type": "hub",
     "publicSafe": true
   },
   {
     "path": "/writing",
     "title": "Writing | Temitayo Charles Akinniranye",
-    "description": "Technical writing, architecture narratives, and platform thinking.",
+    "description": "Editorial index for platform engineering, GitOps, DevSecOps, AI infrastructure, and product-system execution.",
     "type": "hub",
     "publicSafe": true
   },
