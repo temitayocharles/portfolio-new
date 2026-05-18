@@ -61,6 +61,7 @@
     "test": "craco test",
     "postbuild": "node scripts/postbuild-netlify.js",
     "qa:portfolio": "node scripts/qa-portfolio-smoke.js",
+    "qa:production:rendered": "node scripts/verify-production-rendered-qa.js",
     "test:ci": "CI=true craco test --watchAll=false --passWithNoTests",
     "test:ui": "npx -y @playwright/test@1.59.1 test",
     "test:ui:headed": "npx -y @playwright/test@1.59.1 test --headed",

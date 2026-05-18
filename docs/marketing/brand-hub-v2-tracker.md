@@ -553,3 +553,30 @@ Improve homepage scan rhythm and mobile readability without changing public rout
   - reduced compressed text density on small screens
   - improved wrapping for long labels/titles and minimum tap-friendly card heights.
 - Kept all existing route behavior, legal pages, metadata model, CSP/JSON-LD behavior, and static-first rendering model intact.
+
+---
+
+## Phase 17: Production asset and CSP QA hardening
+
+**Branch:** `feat/production-asset-csp-qa-fixes`
+
+### Focus
+
+Fix browser-render failures where production routes returned SPA shell HTML but static CSS/JS assets were unresolved or blocked, resulting in near-empty renders.
+
+### Implementation summary
+
+- Added fail-fast static asset redirect guard:
+  - `_redirects` now serves `/404.html` for unresolved `/static/*` requests before SPA fallback, preventing silent HTML fallback for missing hashed assets.
+- Added minimal public-safe `frontend/public/404.html` for explicit missing-asset responses.
+- Narrowly expanded CSP runtime allowances in `_headers`:
+  - allows Cloudflare Web Analytics script host (`https://static.cloudflareinsights.com`)
+  - allows blob workers via `worker-src 'self' blob:`
+  - keeps existing restrictive defaults and no wildcard broadening.
+- Added deterministic production static asset verifier:
+  - `scripts/verify-production-assets.mjs`
+  - validates homepage-linked same-origin `/static/*` assets for status, MIME type, and non-HTML fallback behavior.
+- Added repeatable rendered production QA command:
+  - `frontend/scripts/verify-production-rendered-qa.js`
+  - `yarn qa:production:rendered`
+  - checks representative routes for non-empty body, overflow, static-asset MIME/CSP console failures, and failed static requests.

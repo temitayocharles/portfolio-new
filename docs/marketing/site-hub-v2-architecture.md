@@ -9,7 +9,18 @@ The public website remains a static-first brand hub with curated, public-safe co
 - `frontend/public/_headers` defines a conservative Content Security Policy for the static deployment surface.
 - Existing security headers remain in place (HSTS, `nosniff`, frame restrictions, referrer policy, permissions policy).
 - CSP currently keeps `'unsafe-inline'` for scripts/styles for compatibility with existing inline template scripts and font loading. This is an explicit tradeoff tracked for future hardening.
+- Runtime CSP allowances also include:
+  - `https://static.cloudflareinsights.com` for Cloudflare Web Analytics loader
+  - `worker-src 'self' blob:` for existing runtime worker creation used by analytics/session tooling.
 - `frontend/public/index.html` includes public-safe structured data (`WebSite`, `Person`, `ProfilePage`) with no private implementation details.
+
+## SPA fallback and asset fail-fast behavior
+
+- `frontend/public/_redirects` keeps SPA fallback for client routes:
+  - `/* /index.html 200`
+- To prevent missing hashed assets from being silently rewritten to HTML shell, `/static/*` is guarded first:
+  - `/static/* /404.html 404`
+- `frontend/public/404.html` is intentionally minimal and public-safe for static miss responses.
 
 ## Component structure
 
@@ -121,6 +132,13 @@ No new head-management dependency is required.
 - no localhost URLs in publishable content
 
 `GH_TOKEN` is optional. If absent, script runs in validation-only mode.
+
+## Production verification commands
+
+- Static asset integrity (status + MIME + anti-HTML-fallback):
+  - `node scripts/verify-production-assets.mjs`
+- Rendered browser QA (desktop + mobile representative routes):
+  - `cd frontend && yarn qa:production:rendered`
 
 ### Manual dispatch workflow
 
