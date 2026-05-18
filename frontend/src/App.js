@@ -3,6 +3,7 @@ import Portfolio from "@/components/portfolio/Portfolio";
 import CaseStudyPage from "@/components/portfolio/CaseStudyPage";
 import LegalPage, { isLegalPagePath } from "@/components/portfolio/LegalPage";
 import SiteHubPage, { isSiteHubPath } from "@/components/portfolio/SiteHubPage";
+import useRouteMetadata from "@/components/portfolio/useRouteMetadata";
 
 const getCaseStudyIdFromPath = () => {
   if (typeof window === "undefined") return null;
@@ -13,6 +14,9 @@ const getCaseStudyIdFromPath = () => {
 function App() {
   const pathname = typeof window === "undefined" ? "/" : window.location.pathname;
   const caseStudyId = getCaseStudyIdFromPath();
+  const metadataPath = caseStudyId ? `/case/${caseStudyId}` : pathname;
+
+  useRouteMetadata(metadataPath);
 
   return (
     <div className="App">

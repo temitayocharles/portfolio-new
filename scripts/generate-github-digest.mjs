@@ -2,15 +2,9 @@
 /**
  * generate-github-digest.mjs
  *
- * Validates curated digest content and optionally enriches public repository
- * metadata when GH_TOKEN is present.
- *
- * Safety rules:
- *   - Never prints tokens or secrets.
- *   - Never exposes private repository URLs.
- *   - Never publishes raw commit history.
- *   - Fails with clear messages when required fields are missing.
- *   - Exits 0 when GH_TOKEN is absent (validation-only mode).
+ * Validation-first script for curated site content.
+ * Optional public-repo enrichment is allowed when GH_TOKEN is present, but
+ * this script never prints token values.
  */
 
 import { readFileSync } from "fs";
@@ -21,51 +15,164 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = resolve(__dirname, "..");
 const contentDir = resolve(root, "frontend/src/content");
 
-// ─── Required field schemas ───────────────────────────────────────────────────
-
-const DIGEST_REQUIRED = ["id", "title", "sourceType", "repoVisibility", "category", "summary", "publicSafe", "signals"];
+const DIGEST_REQUIRED = [
+  "id",
+  "title",
+  "sourceType",
+  "repoVisibility",
+  "category",
+  "summary",
+  "publicSafe",
+  "signals",
+  "publishNotes",
+];
 const UPDATES_REQUIRED = ["id", "title", "date", "category", "summary", "visibility"];
+const PROJECT_META_REQUIRED = ["id", "status", "statusAccent", "ecosystemRole", "problemShort", "publicSafe"];
+const ROUTE_META_REQUIRED = ["path", "title", "description", "type", "publicSafe"];
+const ALLOWED_REPO_VISIBILITY = new Set(["public", "private", "mixed"]);
+const ALLOWED_STUDY_TYPES = new Set(["case-study", "architecture-study", "operational-study"]);
 
-// ─── Helpers ──────────────────────────────────────────────────────────────────
+const SECRET_LIKE_RE = /\b(?:ghp_[A-Za-z0-9]{30,}|github_pat_[A-Za-z0-9_]{20,}|xox[baprs]-[A-Za-z0-9-]{10,}|sk-[A-Za-z0-9]{20,}|AKIA[0-9A-Z]{16}|AIza[0-9A-Za-z_\-]{35})\b/i;
+const PRIVATE_URL_RE = /\b(?:https?:\/\/)?(?:localhost|127\.0\.0\.1|0\.0\.0\.0)(?::\d+)?(?:\/[^\s"']*)?/i;
+const RAW_GITHUB_REPO_URL_RE = /https?:\/\/github\.com\/[\w.-]+\/[\w.-]+(?:\.git)?(?:\/[\w./-]*)?/i;
+const PRIVATE_IMPLEMENTATION_URL_RE = /\b(?:https?:\/\/)?(?:internal\.|private\.|staging\.|dev\.|preview\.|corp\.|intranet\.)[A-Za-z0-9.-]+(?:\/[^\s"']*)?/i;
+
+function fail(message) {
+  console.error(`[ERROR] ${message}`);
+}
 
 function loadJson(filePath) {
   try {
     return JSON.parse(readFileSync(filePath, "utf8"));
   } catch (err) {
-    console.error(`[ERROR] Could not read ${filePath}: ${err.message}`);
+    fail(`Could not read ${filePath}: ${err.message}`);
     process.exit(1);
   }
 }
 
-function validateItems(items, requiredFields, label) {
-  let errors = 0;
-  for (const item of items) {
-    for (const field of requiredFields) {
-      if (item[field] === undefined || item[field] === null) {
-        console.error(`[ERROR] ${label} item "${item.id || "(no id)"}" is missing required field: ${field}`);
-        errors++;
-      }
-    }
-    // publicSafe must be true for publishable digest items
-    if (label === "github-digest" && item.publicSafe === false) {
-      console.error(
-        `[ERROR] github-digest item "${item.id}" has publicSafe=false. Remove or fix before publishing.`
-      );
-      errors++;
-    }
-    // Reject any item that looks like it contains a private URL
-    const raw = JSON.stringify(item);
-    if (/github\.com\/[^"]+\/[^"]+\.git/.test(raw)) {
-      console.error(
-        `[ERROR] ${label} item "${item.id}" appears to contain a raw repository URL. Remove before publishing.`
-      );
-      errors++;
+function scanForSensitiveContent(raw, label, id, options = {}) {
+  const identifier = id || "(no id)";
+
+  if (SECRET_LIKE_RE.test(raw)) {
+    return `${label} item "${identifier}" appears to contain a token or secret-like value.`;
+  }
+  if (RAW_GITHUB_REPO_URL_RE.test(raw)) {
+    return `${label} item "${identifier}" contains a raw GitHub repository URL.`;
+  }
+  if (PRIVATE_IMPLEMENTATION_URL_RE.test(raw)) {
+    return `${label} item "${identifier}" contains a private implementation URL.`;
+  }
+  if (PRIVATE_URL_RE.test(raw) && !options.allowLocalhost) {
+    return `${label} item "${identifier}" contains a localhost URL that is not allowed for published content.`;
+  }
+
+  return null;
+}
+
+function validateDigestItem(item) {
+  const errors = [];
+
+  for (const field of DIGEST_REQUIRED) {
+    if (item[field] === undefined || item[field] === null) {
+      errors.push(`github-digest item "${item.id || "(no id)"}" is missing required field: ${field}`);
     }
   }
+
+  if (item.publicSafe !== true) {
+    errors.push(`github-digest item "${item.id || "(no id)"}" must set publicSafe=true.`);
+  }
+  if (!Array.isArray(item.signals)) {
+    errors.push(`github-digest item "${item.id || "(no id)"}" must use an array for signals.`);
+  }
+  if (!ALLOWED_REPO_VISIBILITY.has(item.repoVisibility)) {
+    errors.push(`github-digest item "${item.id || "(no id)"}" has invalid repoVisibility: ${item.repoVisibility}`);
+  }
+
+  const sensitiveError = scanForSensitiveContent(JSON.stringify(item), "github-digest", item.id, {
+    allowLocalhost: item.publicSafe !== true,
+  });
+  if (sensitiveError) errors.push(sensitiveError);
+
   return errors;
 }
 
-// ─── Optional GitHub API enrichment (public repos only) ──────────────────────
+function validateUpdateItem(item) {
+  const errors = [];
+
+  for (const field of UPDATES_REQUIRED) {
+    if (item[field] === undefined || item[field] === null) {
+      errors.push(`site-updates item "${item.id || "(no id)"}" is missing required field: ${field}`);
+    }
+  }
+
+  const sensitiveError = scanForSensitiveContent(JSON.stringify(item), "site-updates", item.id);
+  if (sensitiveError) errors.push(sensitiveError);
+
+  return errors;
+}
+
+function validateProjectMeta(meta) {
+  const errors = [];
+
+  if (!meta || typeof meta !== "object" || Array.isArray(meta)) {
+    errors.push("project-meta.json must be a JSON object keyed by project id.");
+    return errors;
+  }
+
+  for (const [key, item] of Object.entries(meta)) {
+    for (const field of PROJECT_META_REQUIRED) {
+      if (item[field] === undefined || item[field] === null || item[field] === "") {
+        errors.push(`project-meta entry "${key}" is missing required field: ${field}`);
+      }
+    }
+
+    if (item.id && item.id !== key) {
+      errors.push(`project-meta entry "${key}" must have id matching the object key.`);
+    }
+    if (item.publicSafe !== true) {
+      errors.push(`project-meta entry "${key}" must set publicSafe=true.`);
+    }
+
+    const hasAnyStudyField = item.studyType || item.studyLabel || item.studyAccent;
+    if (hasAnyStudyField && (!item.studyType || !item.studyLabel || !item.studyAccent)) {
+      errors.push(`project-meta entry "${key}" must include studyType, studyLabel, and studyAccent together.`);
+    }
+    if (item.studyType && !ALLOWED_STUDY_TYPES.has(item.studyType)) {
+      errors.push(`project-meta entry "${key}" has invalid studyType: ${item.studyType}`);
+    }
+
+    const sensitiveError = scanForSensitiveContent(JSON.stringify(item), "project-meta", key);
+    if (sensitiveError) errors.push(sensitiveError);
+  }
+
+  return errors;
+}
+
+function validateRouteMetadata(metadata) {
+  const errors = [];
+
+  if (!Array.isArray(metadata)) {
+    errors.push("route-metadata.json must be a JSON array.");
+    return errors;
+  }
+
+  for (const item of metadata) {
+    for (const field of ROUTE_META_REQUIRED) {
+      if (item[field] === undefined || item[field] === null || item[field] === "") {
+        errors.push(`route-metadata entry "${item.path || "(no path)"}" is missing required field: ${field}`);
+      }
+    }
+
+    if (item.publicSafe !== true) {
+      errors.push(`route-metadata entry "${item.path || "(no path)"}" must set publicSafe=true.`);
+    }
+
+    const sensitiveError = scanForSensitiveContent(JSON.stringify(item), "route-metadata", item.path);
+    if (sensitiveError) errors.push(sensitiveError);
+  }
+
+  return errors;
+}
 
 async function enrichPublicRepo(owner, repo, token) {
   const url = `https://api.github.com/repos/${owner}/${repo}`;
@@ -78,51 +185,59 @@ async function enrichPublicRepo(owner, repo, token) {
   });
   if (!res.ok) return null;
   const data = await res.json();
-  // Only return safe public metadata
   return {
     name: data.name,
-    description: data.description,
     stargazers_count: data.stargazers_count,
     language: data.language,
-    topics: data.topics,
-    html_url: data.private ? null : data.html_url,
     private: data.private,
   };
 }
-
-// ─── Main ─────────────────────────────────────────────────────────────────────
 
 async function main() {
   console.log("[INFO] generate-github-digest: starting validation");
 
   const digestPath = resolve(contentDir, "github-digest.json");
   const updatesPath = resolve(contentDir, "site-updates.json");
+  const projectMetaPath = resolve(contentDir, "project-meta.json");
+  const routeMetadataPath = resolve(contentDir, "route-metadata.json");
 
   const digest = loadJson(digestPath);
   const updates = loadJson(updatesPath);
+  const projectMeta = loadJson(projectMetaPath);
+  const routeMetadata = loadJson(routeMetadataPath);
+
+  const errors = [];
 
   if (!Array.isArray(digest)) {
-    console.error("[ERROR] github-digest.json must be a JSON array.");
-    process.exit(1);
+    errors.push("github-digest.json must be a JSON array.");
+  } else {
+    for (const item of digest) {
+      errors.push(...validateDigestItem(item));
+    }
   }
+
   if (!Array.isArray(updates)) {
-    console.error("[ERROR] site-updates.json must be a JSON array.");
-    process.exit(1);
+    errors.push("site-updates.json must be a JSON array.");
+  } else {
+    for (const item of updates) {
+      errors.push(...validateUpdateItem(item));
+    }
   }
 
-  let totalErrors = 0;
-  totalErrors += validateItems(digest, DIGEST_REQUIRED, "github-digest");
-  totalErrors += validateItems(updates, UPDATES_REQUIRED, "site-updates");
+  errors.push(...validateProjectMeta(projectMeta));
+  errors.push(...validateRouteMetadata(routeMetadata));
 
-  if (totalErrors > 0) {
-    console.error(`[ERROR] Validation failed with ${totalErrors} error(s). Fix before publishing.`);
+  if (errors.length > 0) {
+    for (const err of errors) fail(err);
+    fail(`Validation failed with ${errors.length} error(s). Fix before publishing.`);
     process.exit(1);
   }
 
   console.log(`[OK] github-digest.json: ${digest.length} item(s) validated.`);
   console.log(`[OK] site-updates.json: ${updates.length} item(s) validated.`);
+  console.log(`[OK] project-meta.json: ${Object.keys(projectMeta).length} item(s) validated.`);
+  console.log(`[OK] route-metadata.json: ${routeMetadata.length} item(s) validated.`);
 
-  // ── Optional GitHub API enrichment ──────────────────────────────────────────
   const token = process.env.GH_TOKEN;
   if (!token) {
     console.log("[INFO] GH_TOKEN not set. Skipping GitHub API enrichment (validation-only mode).");
@@ -132,11 +247,7 @@ async function main() {
 
   console.log("[INFO] GH_TOKEN present. Attempting public repo metadata enrichment.");
 
-  // Only enrich items that are explicitly public and have a safe repo name
-  const publicItems = digest.filter(
-    (item) => item.repoVisibility === "public" && item.publicRepoName
-  );
-
+  const publicItems = digest.filter((item) => item.repoVisibility === "public" && item.publicRepoName);
   if (publicItems.length === 0) {
     console.log("[INFO] No public repo items with publicRepoName found. Nothing to enrich.");
   }
@@ -162,6 +273,6 @@ async function main() {
 }
 
 main().catch((err) => {
-  console.error("[ERROR] Unexpected failure:", err.message);
+  fail(`Unexpected failure: ${err.message}`);
   process.exit(1);
 });

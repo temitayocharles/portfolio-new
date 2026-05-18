@@ -44,6 +44,9 @@ test.describe("portfolio smoke coverage", () => {
     await page.goto("/projects");
 
     await expect(page.getByText(/Flagship systems/i).first()).toBeVisible();
+    await expect(page.getByText(/AI Inference Lab/i).first()).toBeVisible();
+    await expect(page.getByText(/InfraForge/i).first()).toBeVisible();
+    await expect(page.getByText(/ForgeWatch/i).first()).toBeVisible();
     await expect(page.getByText(/Education platforms/i).first()).toBeVisible();
   });
 
@@ -80,6 +83,7 @@ test.describe("portfolio smoke coverage", () => {
 
     await expect(page.getByText(/Digest model/i).first()).toBeVisible();
     await expect(page.getByText(/Raw commits exposed/i).first()).toBeVisible();
+    await expect(page.getByText(/^None$/).first()).toBeVisible();
     await expect(page.getByText(/curated signal/i).first()).toBeVisible();
   });
 
@@ -111,6 +115,8 @@ test.describe("portfolio smoke coverage", () => {
     for (const path of caseRoutes) {
       await page.goto(path);
       await expect(page.getByRole("heading").first()).toBeVisible();
+      await expect(page.getByText(/^01$/).first()).toBeVisible();
+      await expect(page.getByText(/^02$/).first()).toBeVisible();
     }
   });
 

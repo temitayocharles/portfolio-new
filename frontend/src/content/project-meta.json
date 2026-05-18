@@ -1,0 +1,95 @@
+{
+  "ai-inference-lab": {
+    "id": "ai-inference-lab",
+    "status": "Active Lab",
+    "statusAccent": "amber",
+    "ecosystemRole": "Model operations and AI serving foundation",
+    "problemShort": "AI models are easy to demo but hard to operate, measure, and scale reliably.",
+    "studyType": "case-study",
+    "studyLabel": "Case Study",
+    "studyAccent": "amber",
+    "publicSafe": true
+  },
+  "infraforge": {
+    "id": "infraforge",
+    "status": "Operating",
+    "statusAccent": "teal",
+    "ecosystemRole": "Core platform operating model and GitOps foundation",
+    "problemShort": "Small teams need production discipline across K8s delivery, secrets, and recovery.",
+    "studyType": "case-study",
+    "studyLabel": "Case Study",
+    "studyAccent": "teal",
+    "publicSafe": true
+  },
+  "sentinel-copilot": {
+    "id": "sentinel-copilot",
+    "status": "Active Development",
+    "statusAccent": "amber",
+    "ecosystemRole": "Operational intelligence and cluster guardian layer",
+    "problemShort": "Infrastructure teams are overwhelmed by scattered alerts, metrics, and incidents.",
+    "studyType": "case-study",
+    "studyLabel": "Case Study",
+    "studyAccent": "teal",
+    "publicSafe": true
+  },
+  "project-iris": {
+    "id": "project-iris",
+    "status": "Active Development",
+    "statusAccent": "amber",
+    "ecosystemRole": "Governed personal AI assistant for everyday work",
+    "problemShort": "People lose time context-switching between email, calendar, research, and decisions.",
+    "studyType": "case-study",
+    "studyLabel": "Case Study",
+    "studyAccent": "amber",
+    "publicSafe": true
+  },
+  "jerry": {
+    "id": "jerry",
+    "status": "Active Development",
+    "statusAccent": "amber",
+    "ecosystemRole": "Mobile operator interface for the InfraForge ecosystem",
+    "problemShort": "Useful AI assistance stays locked in desktop workflows when mobile access is needed.",
+    "studyType": "case-study",
+    "studyLabel": "Case Study",
+    "studyAccent": "amber",
+    "publicSafe": true
+  },
+  "ai-builders-academy": {
+    "id": "ai-builders-academy",
+    "status": "In Development",
+    "statusAccent": "neutral",
+    "ecosystemRole": "AI education platform for builders aged 6-16",
+    "problemShort": "Young learners lack structured, project-based AI and coding education.",
+    "publicSafe": true
+  },
+  "young-coders": {
+    "id": "young-coders",
+    "status": "In Development",
+    "statusAccent": "neutral",
+    "ecosystemRole": "Practical coding education platform",
+    "problemShort": "Coding education lacks a practical, product-building curriculum for learners.",
+    "publicSafe": true
+  },
+  "vault-ops": {
+    "id": "vault-ops",
+    "status": "Operating",
+    "statusAccent": "teal",
+    "ecosystemRole": "Secrets operations toolkit for Kubernetes platform teams",
+    "problemShort": "Platform teams need repeatable, safe secret operations without fragile manual steps.",
+    "studyType": "operational-study",
+    "studyLabel": "Operational Study",
+    "studyAccent": "amber",
+    "publicSafe": true
+  },
+  "openleaf": {
+    "id": "openleaf",
+    "status": "Published Study",
+    "statusAccent": "teal",
+    "ecosystemRole": "Reference SaaS architecture and cloud-native case study",
+    "problemShort": "Digital product teams need a reference architecture showing the full SaaS operating model.",
+    "studyType": "architecture-study",
+    "studyLabel": "Architecture Study",
+    "studyAccent": "teal",
+    "publicSafe": true
+  }
+}
