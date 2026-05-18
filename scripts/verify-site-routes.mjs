@@ -1,4 +1,25 @@
+import { readFileSync } from "fs";
+import { resolve, dirname } from "path";
+import { fileURLToPath } from "url";
+
 const BASE_URL = process.env.SITE_URL || "https://temitayocharles.online";
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const root = resolve(__dirname, "..");
+
+function loadJson(path) {
+  return JSON.parse(readFileSync(path, "utf8"));
+}
+
+const siteUpdates = loadJson(resolve(root, "frontend/src/content/site-updates.json"));
+const portfolioContent = loadJson(resolve(root, "frontend/src/content/portfolio-content.json"));
+
+const newsDetailRoutes = siteUpdates
+  .filter((item) => item.visibility === "public" && item.id)
+  .map((item) => `/news/${item.id}`);
+
+const writingDetailRoutes = (portfolioContent.writings || [])
+  .filter((item) => item.id)
+  .map((item) => `/writing/${item.id}`);
 
 const internalRoutes = [
   "/",
@@ -12,9 +33,7 @@ const internalRoutes = [
   "/#contact",
   "/projects",
   "/news",
-  "/news/site-hub-foundation",
   "/writing",
-  "/writing/w-ai-inference-lab",
   "/studies",
   "/lab",
   "/github",
@@ -36,6 +55,8 @@ const internalRoutes = [
   "/runbooks/vault-ops-secret-rotation-runbook.md",
   "/sitemap.xml",
   "/robots.txt",
+  ...newsDetailRoutes,
+  ...writingDetailRoutes,
 ];
 
 const externalRoutes = [

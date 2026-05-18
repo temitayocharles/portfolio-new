@@ -174,6 +174,95 @@ function validateRouteMetadata(metadata) {
   return errors;
 }
 
+function validateUniqueIds(items, label) {
+  const errors = [];
+  const seen = new Set();
+  for (const item of items) {
+    if (!item?.id) continue;
+    if (seen.has(item.id)) {
+      errors.push(`${label} contains duplicate id: ${item.id}`);
+    }
+    seen.add(item.id);
+  }
+  return errors;
+}
+
+function validateEditorialNewsItems(items) {
+  const errors = [];
+  for (const item of items) {
+    for (const field of ["id", "title", "summary", "category", "date"]) {
+      if (item[field] === undefined || item[field] === null || item[field] === "") {
+        errors.push(`site-updates item "${item.id || "(no id)"}" is missing editorial field: ${field}`);
+      }
+    }
+  }
+  return errors;
+}
+
+function validateEditorialWritingItems(items) {
+  const errors = [];
+  for (const item of items) {
+    if (!item?.id) errors.push(`writing item is missing id`);
+    if (!item?.title) errors.push(`writing item "${item?.id || "(no id)"}" is missing title`);
+    if (!(item?.excerpt || item?.summary)) {
+      errors.push(`writing item "${item?.id || "(no id)"}" must include excerpt or summary`);
+    }
+    if (!item?.tag) errors.push(`writing item "${item?.id || "(no id)"}" is missing tag`);
+  }
+  return errors;
+}
+
+function parseSitemapLocs(sitemapXml) {
+  const urls = [];
+  const re = /<loc>([^<]+)<\/loc>/g;
+  let match = re.exec(sitemapXml);
+  while (match) {
+    urls.push(match[1]);
+    match = re.exec(sitemapXml);
+  }
+  return urls;
+}
+
+function validateSitemapEditorialCoverage({ sitemapXml, siteUpdates, writings }) {
+  const errors = [];
+  const locs = parseSitemapLocs(sitemapXml);
+  const sitemapPaths = new Set(
+    locs
+      .filter((url) => url.startsWith("https://temitayocharles.online/"))
+      .map((url) => url.replace("https://temitayocharles.online", ""))
+  );
+
+  const expectedNews = siteUpdates
+    .filter((item) => item.visibility === "public" && item.id)
+    .map((item) => `/news/${item.id}`);
+  const expectedWriting = writings.filter((item) => item.id).map((item) => `/writing/${item.id}`);
+
+  for (const route of [...expectedNews, ...expectedWriting]) {
+    if (!sitemapPaths.has(route)) {
+      errors.push(`sitemap.xml is missing editorial detail route: ${route}`);
+    }
+  }
+
+  const newsIdSet = new Set(expectedNews.map((route) => route.replace("/news/", "")));
+  const writingIdSet = new Set(expectedWriting.map((route) => route.replace("/writing/", "")));
+  for (const path of sitemapPaths) {
+    if (path.startsWith("/news/")) {
+      const id = path.replace("/news/", "");
+      if (!newsIdSet.has(id)) {
+        errors.push(`sitemap.xml contains unknown news detail route: ${path}`);
+      }
+    }
+    if (path.startsWith("/writing/")) {
+      const id = path.replace("/writing/", "");
+      if (!writingIdSet.has(id)) {
+        errors.push(`sitemap.xml contains unknown writing detail route: ${path}`);
+      }
+    }
+  }
+
+  return errors;
+}
+
 async function enrichPublicRepo(owner, repo, token) {
   const url = `https://api.github.com/repos/${owner}/${repo}`;
   const res = await fetch(url, {
@@ -200,11 +289,15 @@ async function main() {
   const updatesPath = resolve(contentDir, "site-updates.json");
   const projectMetaPath = resolve(contentDir, "project-meta.json");
   const routeMetadataPath = resolve(contentDir, "route-metadata.json");
+  const portfolioContentPath = resolve(contentDir, "portfolio-content.json");
+  const sitemapPath = resolve(root, "frontend/public/sitemap.xml");
 
   const digest = loadJson(digestPath);
   const updates = loadJson(updatesPath);
   const projectMeta = loadJson(projectMetaPath);
   const routeMetadata = loadJson(routeMetadataPath);
+  const portfolioContent = loadJson(portfolioContentPath);
+  const sitemapXml = readFileSync(sitemapPath, "utf8");
 
   const errors = [];
 
@@ -222,7 +315,14 @@ async function main() {
     for (const item of updates) {
       errors.push(...validateUpdateItem(item));
     }
+    errors.push(...validateUniqueIds(updates, "site-updates"));
+    errors.push(...validateEditorialNewsItems(updates));
   }
+
+  const writings = Array.isArray(portfolioContent?.writings) ? portfolioContent.writings : [];
+  errors.push(...validateUniqueIds(writings, "portfolio-content.writings"));
+  errors.push(...validateEditorialWritingItems(writings));
+  errors.push(...validateSitemapEditorialCoverage({ sitemapXml, siteUpdates: updates, writings }));
 
   errors.push(...validateProjectMeta(projectMeta));
   errors.push(...validateRouteMetadata(routeMetadata));

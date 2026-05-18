@@ -40,6 +40,14 @@ The public website remains a static-first brand hub with curated, public-safe co
 
 All existing production routes remain unchanged.
 
+## Sitemap and route manifest
+
+- `frontend/public/sitemap.xml` includes:
+  - all stable public hub/case/legal routes
+  - all public-safe `/news/:id` routes from `site-updates.json`
+  - all `/writing/:id` routes from `portfolio-content.json` writings
+- `scripts/verify-site-routes.mjs` derives editorial detail routes from static content IDs at runtime, then validates each route response against production.
+
 ## Content/config file map
 
 - `frontend/src/content/portfolio-content.json`
@@ -96,6 +104,10 @@ No new head-management dependency is required.
 - `site-updates.json` array schema
 - `project-meta.json` schema
 - `route-metadata.json` schema
+- editorial route integrity:
+  - required fields for news and writing entries
+  - duplicate ID detection across news and writing collections
+  - sitemap editorial detail routes match existing static content IDs
 - no raw GitHub repository URLs in publishable curated content
 - no secret-like token values
 - no private implementation URLs
