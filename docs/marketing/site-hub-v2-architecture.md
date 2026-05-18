@@ -115,6 +115,13 @@ No new head-management dependency is required.
 
 `GH_TOKEN` is optional. If absent, script runs in validation-only mode.
 
+### Manual dispatch workflow
+
+- `.github/workflows/github-digest-dispatch.yml` provides manual-only execution via `workflow_dispatch`.
+- Default mode is validation-only and must pass without custom secrets.
+- Optional enrich mode reuses the same script with `GH_TOKEN` sourced from `secrets.GITHUB_TOKEN`.
+- Workflow is read-only (`permissions: contents: read`) and does not auto-commit or auto-push content.
+
 ## Backend/frontend content sync rule
 
 When `frontend/src/content/portfolio-content.json` changes, `backend/content/portfolio-content.json` must be updated in the same PR.
