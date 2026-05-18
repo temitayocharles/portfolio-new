@@ -53,14 +53,37 @@ test.describe("portfolio smoke coverage", () => {
   test("/news renders curated update cards", async ({ page }) => {
     await page.goto("/news");
 
-    await expect(page.getByText(/curated update/i).first()).toBeVisible();
-    await expect(page.getByText(/Website hub foundation launched/i).first()).toBeVisible();
+    await expect(page.getByText(/Engineering updates, curated for public context/i).first()).toBeVisible();
+    await expect(page.locator('a[href^="/news/"]').first()).toBeVisible();
   });
 
   test("/writing renders writing pieces", async ({ page }) => {
     await page.goto("/writing");
 
-    await expect(page.getByText(/platform thinking/i).first()).toBeVisible();
+    await expect(page.getByText(/Writing for platform operators and product builders/i).first()).toBeVisible();
+    await expect(page.locator('a[href^="/writing/"]').first()).toBeVisible();
+  });
+
+  test("news detail route loads and unknown route shows safe fallback", async ({ page }) => {
+    await page.goto("/news/site-hub-foundation");
+    await expect(page.getByRole("heading").first()).toBeVisible();
+    await expect(page.getByText(/Update detail/i).first()).toBeVisible();
+    await expect(page.locator('a[href="/news"]').first()).toBeVisible();
+
+    await page.goto("/news/unknown-entry-id");
+    await expect(page.getByText(/Content not found/i).first()).toBeVisible();
+    await expect(page.locator('a[href="/news"]').first()).toBeVisible();
+  });
+
+  test("writing detail route loads and unknown route shows safe fallback", async ({ page }) => {
+    await page.goto("/writing/w-ai-inference-lab");
+    await expect(page.getByRole("heading").first()).toBeVisible();
+    await expect(page.getByText(/Editorial detail/i).first()).toBeVisible();
+    await expect(page.locator('a[href="/writing"]').first()).toBeVisible();
+
+    await page.goto("/writing/unknown-entry-id");
+    await expect(page.getByText(/Content not found/i).first()).toBeVisible();
+    await expect(page.locator('a[href="/writing"]').first()).toBeVisible();
   });
 
   test("/studies renders case study cards with links", async ({ page }) => {

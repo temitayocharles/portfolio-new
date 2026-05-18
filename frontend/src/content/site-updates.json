@@ -5,6 +5,27 @@
     "date": "2026-05-17",
     "category": "Platform",
     "summary": "temitayocharles.online now has routed website sections for projects, news, writing, studies, lab, and GitHub activity.",
+    "detailSummary": "This release moves the site from a single-scroll portfolio toward an editorial and product narrative hub with durable route structure.",
+    "bodySections": [
+      {
+        "title": "What shipped",
+        "body": "Dedicated hub routes are now available for projects, updates, writing, studies, lab, and curated engineering digest surfaces."
+      },
+      {
+        "title": "Why it matters",
+        "body": "The route model improves discoverability and supports focused public communication without requiring backend data for first render."
+      }
+    ],
+    "takeaways": [
+      "Route-level organization is now a first-class publishing surface.",
+      "Public content remains static-first and deployment-safe.",
+      "The hub can expand editorially without changing homepage anchors."
+    ],
+    "relatedLinks": [
+      { "label": "Projects hub", "href": "/projects" },
+      { "label": "Lab hub", "href": "/lab" }
+    ],
+    "safetyNote": "Public-safe update: no private repository names or sensitive implementation details are included.",
     "impact": "Moves the site from a one-page portfolio toward a public operating hub for InfraForge, AI infrastructure, platform engineering, and product work.",
     "relatedRoutes": ["/projects", "/news", "/lab"],
     "visibility": "public"
@@ -15,6 +36,26 @@
     "date": "2026-05-13",
     "category": "AI Infrastructure",
     "summary": "The InfraForge AI Inference Lab case study is live. Covers LLM serving, model operations, GPU capacity planning, benchmarking, Prometheus metrics, and Kubernetes-native AI workloads.",
+    "detailSummary": "The public case-study surface now explains model-serving operations as an engineering discipline rather than a demo-only workflow.",
+    "bodySections": [
+      {
+        "title": "Operational scope",
+        "body": "Coverage includes serving boundaries, metrics posture, benchmark reporting, and workload progression toward Kubernetes-native operation."
+      },
+      {
+        "title": "Publication posture",
+        "body": "The published material is intentionally high-signal and public-safe, avoiding sensitive runtime topology disclosures."
+      }
+    ],
+    "takeaways": [
+      "AI infrastructure is treated as platform operations, not prompt demos.",
+      "Measurement and observability are central to credibility.",
+      "Public documentation remains curated and security-aware."
+    ],
+    "relatedLinks": [
+      { "label": "AI Inference Lab case study", "href": "/case/ai-inference-lab" },
+      { "label": "Lab hub", "href": "/lab" }
+    ],
     "impact": "Establishes the AI infrastructure proof surface for InfraForge as a serious production-capacity system.",
     "relatedRoutes": ["/lab", "/case/ai-inference-lab"],
     "visibility": "public"
@@ -25,6 +66,26 @@
     "date": "2026-05-10",
     "category": "AIOps",
     "summary": "ForgeWatch evidence-first operations copilot case study is live. Covers read-only Kubernetes/Prometheus/Loki evidence gathering, approval-gated write proposals, and outcome-backed RAG memory.",
+    "detailSummary": "This publication frames ForgeWatch as an evidence-first guardian layer with human approval boundaries.",
+    "bodySections": [
+      {
+        "title": "Operating principles",
+        "body": "Read-first evidence gathering and approval-gated write recommendations remain the core governance pattern."
+      },
+      {
+        "title": "Public communication",
+        "body": "The page explains decision quality and operator safety without exposing internal incident payloads or private repository context."
+      }
+    ],
+    "takeaways": [
+      "Operational intelligence is useful only when evidence quality is high.",
+      "Human approval remains explicit.",
+      "Public messaging should emphasize governance, not hidden internals."
+    ],
+    "relatedLinks": [
+      { "label": "ForgeWatch case study", "href": "/case/sentinel-copilot" },
+      { "label": "Lab hub", "href": "/lab" }
+    ],
     "impact": "Positions ForgeWatch as the operational intelligence and cluster guardian layer for InfraForge.",
     "relatedRoutes": ["/lab", "/case/sentinel-copilot"],
     "visibility": "public"
@@ -35,6 +96,27 @@
     "date": "2026-05-08",
     "category": "Platform",
     "summary": "Trust & Safety, Privacy Policy, and Terms pages are now live at /trust-safety, /privacy-policy, and /terms.",
+    "detailSummary": "The public hub now includes baseline trust and policy surfaces required for credible external product communication.",
+    "bodySections": [
+      {
+        "title": "What changed",
+        "body": "Dedicated legal and policy routes are now part of the navigation and route-verification baseline."
+      },
+      {
+        "title": "Why this matters",
+        "body": "Trust surfaces clarify expectations for privacy, safety, and acceptable use while keeping policy language aligned with public operation."
+      }
+    ],
+    "takeaways": [
+      "Compliance posture is now visible on public routes.",
+      "Policy pages support enterprise-grade credibility.",
+      "Legal pages are included in route monitoring."
+    ],
+    "relatedLinks": [
+      { "label": "Trust & Safety", "href": "/trust-safety" },
+      { "label": "Privacy Policy", "href": "/privacy-policy" },
+      { "label": "Terms", "href": "/terms" }
+    ],
     "impact": "Completes the compliance and trust surface for the public brand hub.",
     "relatedRoutes": ["/trust-safety", "/privacy-policy", "/terms"],
     "visibility": "public"
@@ -45,6 +127,26 @@
     "date": "2026-05-05",
     "category": "Personal AI",
     "summary": "Project Iris case study is live. Covers approval queues, governed memory, MCP gateway, email/calendar/browser workflows, audit service, and execution worker.",
+    "detailSummary": "The public case study positions Iris as a governed personal assistant with explicit control boundaries and audit-conscious workflows.",
+    "bodySections": [
+      {
+        "title": "Capability framing",
+        "body": "Iris is framed as an operator-supporting personal assistant, not an unrestricted autonomous engineering system."
+      },
+      {
+        "title": "Safety framing",
+        "body": "Approval queues and controlled actions are highlighted as first-class product requirements."
+      }
+    ],
+    "takeaways": [
+      "Governance and usability can coexist in assistant workflows.",
+      "Control boundaries are part of product quality.",
+      "Public narratives should prioritize trust over hype."
+    ],
+    "relatedLinks": [
+      { "label": "Project Iris case study", "href": "/case/project-iris" },
+      { "label": "Lab hub", "href": "/lab" }
+    ],
     "impact": "Establishes Iris as a premium personal AI pattern: capable, governed, and trust-preserving.",
     "relatedRoutes": ["/lab", "/case/project-iris"],
     "visibility": "public"
@@ -55,6 +157,26 @@
     "date": "2026-04-28",
     "category": "Platform Engineering",
     "summary": "The InfraForge company platform case study is live. Covers GitOps, Vault-backed secrets, Envoy Gateway, Longhorn, Harbor, Prometheus/Grafana/Loki, and disaster recovery.",
+    "detailSummary": "The case study clarifies InfraForge as an operating model with reliability, governance, and delivery controls.",
+    "bodySections": [
+      {
+        "title": "System posture",
+        "body": "The public narrative centers on delivery consistency, observability, and resilient operations instead of tool listing."
+      },
+      {
+        "title": "Evidence posture",
+        "body": "Published details remain high-level and product-safe while still showing practical engineering depth."
+      }
+    ],
+    "takeaways": [
+      "Platform engineering quality is communicated through operating model clarity.",
+      "Reliability and recovery are core brand proof points.",
+      "Public-safe summaries can still be technically credible."
+    ],
+    "relatedLinks": [
+      { "label": "InfraForge case study", "href": "/case/infraforge" },
+      { "label": "Projects hub", "href": "/projects" }
+    ],
     "impact": "Demonstrates InfraForge as a real platform company with an owned operating model.",
     "relatedRoutes": ["/projects", "/case/infraforge"],
     "visibility": "public"

@@ -53,6 +53,12 @@ const UpdateCard = ({ update }) => (
         ))}
       </div>
     )}
+    <a
+      href={`/news/${update.id}`}
+      className="mt-5 inline-flex items-center text-sm font-semibold text-amber-300 transition hover:text-amber-200"
+    >
+      Read update
+    </a>
   </article>
 );
 

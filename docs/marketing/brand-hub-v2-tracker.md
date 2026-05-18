@@ -389,3 +389,51 @@ Increase editorial depth and credibility for `/news` and `/writing` without chan
 - No browser-side GitHub API calls.
 - No resume/testimonial/icon behavior changes.
 - No private repository names, private URLs, secrets, or tokens introduced.
+
+---
+
+## Phase 12: Editorial detail routes
+
+**Branch:** `feat/editorial-detail-routes`
+
+### Focus
+
+Add public-safe detail routes for `/news/:id` and `/writing/:id` so hub index cards can lead to deeper editorial pages without introducing backend-first rendering dependencies.
+
+### Implementation summary
+
+- Added route support for:
+  - `/news/:id` (from `frontend/src/content/site-updates.json`)
+  - `/writing/:id` (from `frontend/src/content/portfolio-content.json` writings)
+- Added detail-page rendering with:
+  - safe back navigation
+  - title/category/date/summary context
+  - concise body sections, takeaways, and related links
+  - public-safety note
+- Added safe not-found states for unknown IDs on both route families.
+- Linked index cards from `/news` and `/writing` to their respective detail routes.
+- Extended metadata handling for dynamic detail routes via runtime metadata overrides.
+- Expanded route verifier and Playwright smoke checks with representative detail-route coverage.
+
+### Files changed
+
+- `frontend/src/App.js`
+- `frontend/src/components/portfolio/EditorialDetailPage.jsx`
+- `frontend/src/components/portfolio/useRouteMetadata.js`
+- `frontend/src/components/portfolio/hub/NewsHubSection.jsx`
+- `frontend/src/components/portfolio/hub/WritingHubSection.jsx`
+- `frontend/src/content/site-updates.json`
+- `frontend/src/content/portfolio-content.json`
+- `backend/content/portfolio-content.json`
+- `frontend/src/content/route-metadata.json`
+- `scripts/verify-site-routes.mjs`
+- `frontend/playwright/smoke.spec.js`
+- `docs/marketing/brand-hub-v2-tracker.md`
+- `docs/marketing/site-hub-v2-architecture.md`
+
+### Boundaries respected
+
+- No browser-side GitHub API calls.
+- No backend dependency for first render.
+- No resume/testimonial/icon behavior changes.
+- No private repository names, private URLs, tokens, secrets, or internal hostnames introduced.
