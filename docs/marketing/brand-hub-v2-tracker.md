@@ -437,3 +437,40 @@ Add public-safe detail routes for `/news/:id` and `/writing/:id` so hub index ca
 - No backend dependency for first render.
 - No resume/testimonial/icon behavior changes.
 - No private repository names, private URLs, tokens, secrets, or internal hostnames introduced.
+
+---
+
+## Phase 13: Editorial route SEO hardening
+
+**Branch:** `feat/editorial-route-seo-hardening`
+
+### Focus
+
+Harden discoverability and validation coverage for `/news/:id` and `/writing/:id` by enforcing sitemap completeness, content-driven route verification, and deterministic editorial-route checks.
+
+### Implementation summary
+
+- `frontend/public/sitemap.xml` now includes all public-safe news detail routes and all writing detail routes derived from static content IDs.
+- `scripts/verify-site-routes.mjs` now derives editorial detail routes from static content (`site-updates.json`, `portfolio-content.json`) instead of checking only representative paths.
+- `scripts/generate-github-digest.mjs` now validates:
+  - required editorial fields for news and writing entries
+  - duplicate IDs in news/writings
+  - sitemap editorial detail URLs map exactly to static content IDs (missing and unknown route checks)
+- Dynamic metadata behavior remains authoritative for detail pages:
+  - `<entry title> | News | Temitayo Charles Akinniranye`
+  - `<entry title> | Writing | Temitayo Charles Akinniranye`
+
+### Files changed
+
+- `frontend/public/sitemap.xml`
+- `scripts/verify-site-routes.mjs`
+- `scripts/generate-github-digest.mjs`
+- `docs/marketing/brand-hub-v2-tracker.md`
+- `docs/marketing/site-hub-v2-architecture.md`
+
+### Boundaries respected
+
+- No browser-side GitHub API calls added.
+- No backend-first-render dependency added.
+- No resume/testimonial/icon behavior changes.
+- No private implementation details exposed.
