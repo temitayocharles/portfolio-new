@@ -528,3 +528,28 @@ Address low-risk trust and conversion concerns without redesigning the public br
 ### Security and tradeoff note
 
 - CSP currently allows `'unsafe-inline'` for scripts/styles because the existing static template includes inline scripts and Google Fonts stylesheet loading. This is an explicit compatibility tradeoff, not a perfect final-state CSP.
+
+---
+
+## Phase 16: Homepage density and mobile readability
+
+**Branch:** `feat/homepage-density-mobile-readability`
+
+### Focus
+
+Improve homepage scan rhythm and mobile readability without changing public routes, product architecture, or visual direction.
+
+### Implementation summary
+
+- Tightened hero supporting copy to reduce above-the-fold reading density while preserving technical positioning.
+- Improved CTA hierarchy and mobile tap ergonomics:
+  - kept `Explore Projects` as primary
+  - retained `Read Case Studies` and resume CTA
+  - raised minimum CTA tap height and full-width mobile layout for better scan/order.
+- Improved skill matrix scannability:
+  - refined spacing and chip wrapping for dense toolchain items
+  - added clearer grouped-skill labeling semantics for accessibility.
+- Hardened mobile readability in flagship platform cards:
+  - reduced compressed text density on small screens
+  - improved wrapping for long labels/titles and minimum tap-friendly card heights.
+- Kept all existing route behavior, legal pages, metadata model, CSP/JSON-LD behavior, and static-first rendering model intact.
