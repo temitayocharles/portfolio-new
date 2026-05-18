@@ -2045,8 +2045,8 @@
       "readTime": "11 min",
       "date": "Feb 4, 2025",
       "accent": "amber",
-      "noteTitle": "Human-approved AI operations",
-      "noteBody": "AI operations should not mean blind automation. I design the flow so telemetry, logs, runbooks, and prior incidents create context first. The assistant proposes ranked actions, but the operator keeps approval authority. That keeps AI useful without giving it unsafe production control.",
+      "noteTitle": "Cost governance without production regression",
+      "noteBody": "Cloud savings are only useful when they preserve reliability. The operating model combines tagging discipline, rightsizing review, idle compute cleanup, and regression checks so cost reductions do not weaken production posture.",
       "detailSummary": "A cost-governance pattern focused on sustainable savings while preserving reliability and production confidence.",
       "bodySections": [
         {
@@ -2082,8 +2082,8 @@
       "readTime": "14 min",
       "date": "Jan 21, 2025",
       "accent": "teal",
-      "noteTitle": "GitOps as an operating model",
-      "noteBody": "GitOps works best when teams treat it as a control system, not just a deploy button. Ownership boundaries, sync waves, rollback paths, and drift checks matter because they prevent platform teams from debugging invisible state during outages.",
+      "noteTitle": "Human-approved AI operations",
+      "noteBody": "AI operations should not mean blind automation. Telemetry, logs, runbooks, and prior incidents create context first. The assistant proposes ranked actions, but the operator keeps approval authority.",
       "detailSummary": "An evidence-first AIOps framing where automation quality is gated by observability quality and human approval boundaries.",
       "bodySections": [
         {
@@ -2119,8 +2119,8 @@
       "readTime": "9 min",
       "date": "Nov 18, 2024",
       "accent": "amber",
-      "noteTitle": "Secrets are product infrastructure",
-      "noteBody": "Secrets work should be boring, auditable, and recoverable. Vault, External Secrets, and clear runbooks let a team rotate credentials, recover missing values, and validate application configuration without guessing under pressure.",
+      "noteTitle": "Reliability is operational culture",
+      "noteBody": "Availability targets are sustained by SLOs, alert quality, on-call hygiene, recovery rehearsal, and post-incident follow-through. The extra nine comes from repeatable operating habits, not heroics.",
       "detailSummary": "A reliability narrative focused on operational culture, incident learning, and measurable service posture rather than slogan metrics.",
       "bodySections": [
         {
@@ -2156,8 +2156,8 @@
       "readTime": "16 min",
       "date": "Oct 3, 2024",
       "accent": "teal",
-      "noteTitle": "Practical disaster recovery",
-      "noteBody": "Recovery is only real when operators know which data matters, where it lives, how to restore it, and how to prove the application works after the restore. For stateful Kubernetes services, volume retention, PVC binding, and app-level validation all matter.",
+      "noteTitle": "Bare-metal Kubernetes with production discipline",
+      "noteBody": "Production-grade bare-metal Kubernetes requires clear ingress, durable storage, policy controls, secrets integration, observability, and tested recovery paths. The value is operational ownership without lowering reliability standards.",
       "detailSummary": "A production-discipline look at bare-metal Kubernetes that prioritizes governance, recoverability, and platform ownership.",
       "bodySections": [
         {
