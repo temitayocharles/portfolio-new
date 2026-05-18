@@ -40,6 +40,12 @@ const WritingCard = ({ item }) => (
         <p className="mt-1 text-xs leading-6 text-slate-500">{item.noteBody}</p>
       </div>
     )}
+    <a
+      href={`/writing/${item.id}`}
+      className="mt-5 inline-flex items-center text-sm font-semibold text-amber-300 transition hover:text-amber-200"
+    >
+      Read editorial
+    </a>
   </article>
 );
 

@@ -18,10 +18,10 @@ function ensureDescriptionTag() {
   return tag;
 }
 
-export default function useRouteMetadata(pathname) {
+export default function useRouteMetadata(pathname, overrides = null) {
   useEffect(() => {
     if (typeof document === "undefined") return;
-    const metadata = resolveMetadata(pathname);
+    const metadata = overrides || resolveMetadata(pathname);
     const title = metadata?.title || DEFAULT_TITLE;
     const description = metadata?.description || "";
 
@@ -30,5 +30,5 @@ export default function useRouteMetadata(pathname) {
     if (descriptionTag && description) {
       descriptionTag.setAttribute("content", description);
     }
-  }, [pathname]);
+  }, [pathname, overrides]);
 }

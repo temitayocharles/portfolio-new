@@ -117,5 +117,19 @@
     "description": "Operational study for secrets automation and platform-safe credential workflows.",
     "type": "case-study",
     "publicSafe": true
+  },
+  {
+    "path": "/news/site-hub-foundation",
+    "title": "Website hub foundation launched | News | Temitayo Charles Akinniranye",
+    "description": "Editorial detail for the website hub foundation launch and route-structure milestone.",
+    "type": "news-detail",
+    "publicSafe": true
+  },
+  {
+    "path": "/writing/w-ai-inference-lab",
+    "title": "Building the InfraForge AI Inference Lab | Writing | Temitayo Charles Akinniranye",
+    "description": "Editorial detail on operating AI inference systems with platform discipline and public-safe communication.",
+    "type": "writing-detail",
+    "publicSafe": true
   }
 ]

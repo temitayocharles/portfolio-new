@@ -2,29 +2,28 @@
 
 ## Purpose
 
-The public website remains a static-first brand hub with curated, public-safe content surfaces for projects, studies, lab work, updates, and legal pages.
+The public website remains a static-first brand hub with curated, public-safe content surfaces for projects, studies, lab work, updates, writing, legal pages, and editorial detail routes.
 
 ## Component structure
 
 ### Route orchestrators
 
 - `frontend/src/App.js`
-  - selects legal route, site hub route, case-study route, or homepage
+  - selects legal route, site hub route, case-study route, editorial detail route, or homepage
   - applies route metadata through `useRouteMetadata`
 - `frontend/src/components/portfolio/SiteHubPage.jsx`
   - route-level hub orchestrator only
   - resolves active hub route config and delegates rendering to section components
+- `frontend/src/components/portfolio/EditorialDetailPage.jsx`
+  - renders static-content editorial detail pages for `/news/:id` and `/writing/:id`
+  - provides safe not-found fallback when ID is unknown
 
 ### Hub module split
 
 - `frontend/src/components/portfolio/hub/HubDesignTokens.js`
-  - route config, accent tokens, lane/type/group constants
 - `frontend/src/components/portfolio/hub/HubNavigation.jsx`
-  - hub route navigation UI
 - `frontend/src/components/portfolio/hub/HubSectionShell.jsx`
-  - shared shell/hero/chrome for all hub routes
 - `frontend/src/components/portfolio/hub/HubPrimitives.jsx`
-  - reusable UI primitives (`Tag`, `SignalPill`, `MaturityBadge`, `SectionHeader`)
 - `frontend/src/components/portfolio/hub/ProjectsHubSection.jsx`
 - `frontend/src/components/portfolio/hub/NewsHubSection.jsx`
 - `frontend/src/components/portfolio/hub/WritingHubSection.jsx`
@@ -32,12 +31,23 @@ The public website remains a static-first brand hub with curated, public-safe co
 - `frontend/src/components/portfolio/hub/LabHubSection.jsx`
 - `frontend/src/components/portfolio/hub/GitHubDigestSection.jsx`
 
+## Route map
+
+- `/news` — editorial updates index
+- `/news/:id` — update detail page from static `site-updates.json`
+- `/writing` — editorial writing index
+- `/writing/:id` — writing detail page from static `portfolio-content.json`
+
+All existing production routes remain unchanged.
+
 ## Content/config file map
 
 - `frontend/src/content/portfolio-content.json`
-  - primary site content used by homepage and case-study surfaces
+  - primary site content, including writings and writing-detail optional fields
+- `backend/content/portfolio-content.json`
+  - synchronized mirror of frontend content for backend consumers
 - `frontend/src/content/site-updates.json`
-  - curated updates for `/news`
+  - curated news/update items, including update-detail optional fields
 - `frontend/src/content/github-digest.json`
   - curated digest entries for `/github`
 - `frontend/src/content/site-sections.json`
@@ -45,7 +55,19 @@ The public website remains a static-first brand hub with curated, public-safe co
 - `frontend/src/content/project-meta.json`
   - public-safe per-project operational metadata used in hub sections
 - `frontend/src/content/route-metadata.json`
-  - route-level title/description metadata for homepage, hub, legal, and case-study paths
+  - route-level title/description metadata for homepage, hub, legal, case-study, and representative editorial-detail routes
+
+## Editorial detail content model
+
+Optional detail fields used by detail routes:
+
+- `detailSummary`
+- `bodySections` (`[{ title, body }]`)
+- `takeaways` (`string[]`)
+- `relatedLinks` (`[{ label, href }]`)
+- `safetyNote`
+
+These fields must stay concise and public-safe.
 
 ## Route metadata model
 
@@ -57,27 +79,14 @@ The public website remains a static-first brand hub with curated, public-safe co
 - `type`
 - `publicSafe`
 
-`frontend/src/components/portfolio/useRouteMetadata.js` applies metadata at runtime by:
+`frontend/src/components/portfolio/useRouteMetadata.js` applies metadata by:
 
 - setting `document.title`
 - creating/updating `meta[name="description"]`
+- supporting dynamic per-route overrides (used for `/news/:id` and `/writing/:id`)
 - returning safely when `document` is unavailable
 
 No new head-management dependency is required.
-
-## Project metadata model
-
-`project-meta.json` is an object keyed by project id. Each entry includes public-safe fields only:
-
-- `id`
-- `status`
-- `statusAccent`
-- `ecosystemRole`
-- `problemShort`
-- optional study fields: `studyType`, `studyLabel`, `studyAccent`
-- `publicSafe`
-
-No private repository URLs, secrets, or internal implementation endpoints are allowed.
 
 ## Digest validation model
 
@@ -96,6 +105,6 @@ No private repository URLs, secrets, or internal implementation endpoints are al
 
 ## Backend/frontend content sync rule
 
-When `frontend/src/content/portfolio-content.json` changes, `backend/content/portfolio-content.json` must be updated in the same PR to prevent drift.
+When `frontend/src/content/portfolio-content.json` changes, `backend/content/portfolio-content.json` must be updated in the same PR.
 
 If frontend content does not change, backend content must not be touched.
