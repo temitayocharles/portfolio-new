@@ -129,7 +129,7 @@ const Hero = () => {
               <Button
                 onClick={() => scrollTo("#projects")}
                 size="lg"
-                className="min-h-11 w-full bg-teal-300 font-medium text-[#0a0f14] shadow-[0_0_36px_-6px] shadow-teal-400/50 hover:bg-teal-200 sm:w-auto group"
+                className="min-h-11 w-full bg-teal-300 font-medium text-[#0a0f14] hover:bg-teal-200 sm:w-auto group"
               >
                 Explore Projects
                 <ArrowRight className="h-4 w-4 ml-1.5 transition-transform group-hover:translate-x-0.5" />
@@ -183,7 +183,7 @@ const Hero = () => {
               </div>
 
               {/* Headshot card */}
-              <div className="relative rounded-2xl overflow-hidden border border-white/10 bg-gradient-to-br from-teal-500/15 via-transparent to-amber-400/[0.08] p-1.5 shadow-2xl">
+              <div className="relative rounded-2xl overflow-hidden border border-white/10 bg-[#0f1a14]/40 p-1.5 shadow-2xl">
                 <div className="rounded-xl overflow-hidden bg-[#0e1620]">
                   <div className="aspect-[4/5]">
                     <img
@@ -193,8 +193,6 @@ const Hero = () => {
                     />
                   </div>
                 </div>
-                {/* glowing ring */}
-                <div className="absolute inset-0 rounded-2xl ring-1 ring-teal-300/20 pointer-events-none" />
               </div>
 
               {/* Animated terminal card */}

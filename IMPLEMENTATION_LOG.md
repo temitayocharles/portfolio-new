@@ -10,8 +10,8 @@
 
 | ID | Name | Branch | Status |
 |----|------|--------|--------|
-| M1 | Remove template aesthetics (orbs, glows, scrollbar, blue contamination) | `design/m1-remove-template-aesthetics` | 🟡 IN PROGRESS |
-| M2 | Color token replacement, logomark fix, button glow reduction | TBD | ⬜ PENDING |
+| M1 | Remove template aesthetics (orbs, glows, scrollbar, blue contamination) | `design/m1-remove-template-aesthetics` | ✅ COMPLETE — commit f971245 |
+| M2 | Color token replacement, logomark fix, button glow reduction | `design/m2-color-tokens-logomark` | 🟡 IN PROGRESS |
 | M3 | bg-grid opacity reduction, section dividers, gradient rule lines | TBD | ⬜ PENDING |
 | M4 | Architecture: remove animateMotion, "Live signal map", recharts, Architecture tab from PlatformShowcase | TBD | ⬜ PENDING |
 | M5 | Architecture: Fix SVG/HTML coordinate mismatch + swim lane headers | TBD | ⬜ PENDING |

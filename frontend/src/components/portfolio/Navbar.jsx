@@ -60,7 +60,7 @@ const Navbar = () => {
           }}
           className="flex items-center gap-2 group"
         >
-          <span className="h-8 w-8 rounded-md bg-gradient-to-br from-teal-300 to-teal-500/70 flex items-center justify-center font-mono text-[#0a0f14] font-bold text-sm shadow-[0_0_20px_-4px] shadow-teal-400/40">
+          <span className="h-8 w-8 rounded-md bg-[#0f1f1a] border border-teal-400/30 flex items-center justify-center font-mono text-teal-300 font-bold text-sm">
             TC
           </span>
           <span className="hidden sm:block text-slate-200 font-medium tracking-tight">
@@ -108,7 +108,7 @@ const Navbar = () => {
           <Button
             asChild
             size="sm"
-            className="bg-teal-300 hover:bg-teal-200 text-[#0a0f14] font-medium shadow-[0_0_24px_-6px] shadow-teal-400/40"
+            className="bg-teal-300 hover:bg-teal-200 text-[#0a0f14] font-medium"
           >
             <a href={profile.resumeUrl} target="_blank" rel="noreferrer">
               <Download className="h-4 w-4 mr-1.5" />

@@ -46,10 +46,10 @@ const PlatformShowcase = () => {
         Flagship platforms
       </div>
 
-      <div className="overflow-hidden rounded-3xl border border-white/10 bg-slate-950/75 shadow-[0_28px_90px_-34px_rgba(20,184,166,0.65)] backdrop-blur-xl">
+      <div className="overflow-hidden rounded-3xl border border-white/10 bg-slate-950/75 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.5)] backdrop-blur-xl">
         <div className="grid lg:grid-cols-[1.05fr_0.95fr]">
           <div className="relative min-h-[300px] p-5 sm:p-7">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_15%,rgba(45,212,191,0.18),transparent_32%),radial-gradient(circle_at_80%_5%,rgba(96,165,250,0.14),transparent_34%)]" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_15%,rgba(45,212,191,0.07),transparent_32%)]" />
             <div className="relative">
               <div className="flex flex-wrap items-center gap-2">
                 <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/20 px-3 py-1 text-xs text-slate-200">
