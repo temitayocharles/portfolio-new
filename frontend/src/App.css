@@ -7,11 +7,11 @@
 /* Subtle grid background utility used in dark sections */
 .bg-grid {
   background-image:
-    linear-gradient(to right, rgba(148, 163, 184, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(148, 163, 184, 0.05) 1px, transparent 1px);
-  background-size: 56px 56px;
-  mask-image: radial-gradient(ellipse at top, black 40%, transparent 75%);
-  -webkit-mask-image: radial-gradient(ellipse at top, black 40%, transparent 75%);
+    linear-gradient(to right, rgba(148, 163, 184, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(148, 163, 184, 0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(ellipse at top, black 30%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse at top, black 30%, transparent 70%);
 }
 
 /* Smooth scroll for in-page anchor navigation */
@@ -75,4 +75,17 @@ section {
 .portfolio-focus-ring:focus-visible {
   outline: 2px solid rgba(45, 212, 191, 0.85);
   outline-offset: 4px;
+}
+
+/* Section boundary separator — 1px rule fading left to right */
+.section-rule {
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(148, 163, 184, 0.08) 20%, rgba(148, 163, 184, 0.08) 80%, transparent);
+  border: none;
+  margin: 0;
+}
+
+/* Alternate section surface — very slight offset from base #0a0f14 */
+.section-alt {
+  background-color: #080c11;
 }

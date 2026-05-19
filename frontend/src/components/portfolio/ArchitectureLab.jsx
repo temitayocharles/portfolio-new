@@ -79,8 +79,8 @@ const ArchitectureLab = () => {
 
   return (
     <section id="architecture" className="relative py-24 lg:py-32 overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(45,212,191,0.13),transparent_38%),linear-gradient(to_bottom,rgba(255,255,255,0.025),transparent)] pointer-events-none" />
-      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-teal-300/30 to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(255,255,255,0.015),transparent)] pointer-events-none" />
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-slate-500/20 to-transparent pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-10">
         <SectionLabel index="05" title="Architecture" eyebrow="Interactive infrastructure" />

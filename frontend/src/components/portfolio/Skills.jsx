@@ -28,7 +28,7 @@ const Skills = () => {
   const { skillGroups = fallbackSkillGroups } = usePortfolioContent();
   return (
     <section id="skills" className="relative py-24 lg:py-32 bg-[#0b1117]">
-      <div className="absolute inset-0 bg-grid opacity-[0.18] pointer-events-none" />
+      <div className="absolute inset-0 bg-grid opacity-[0.08] pointer-events-none" />
       <div className="relative max-w-7xl mx-auto px-6 lg:px-10">
         <SectionLabel index="02" title="Skills" />
 
