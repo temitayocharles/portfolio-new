@@ -612,3 +612,18 @@ Apply a narrower guard so the animated hero marquee cannot render or participate
 - Forced animated marquee container to `md+` only (`hidden md:flex`), removing it from mobile rendering.
 - Kept mobile path as wrapped static chips only (`md:hidden`, `flex-wrap`, `max-w-full`, `min-w-0`).
 - Strengthened smoke coverage by asserting `.animate-marquee` is hidden on mobile viewports in addition to the horizontal overflow check.
+
+---
+
+## Phase 20: Manual visual QA cleanup
+
+**Branch:** `feat/manual-visual-qa-fixes`
+
+### Focus
+
+Close remaining manual QA cleanup by removing CSP console noise for optional public content fetches without changing static-first rendering behavior.
+
+### Implementation summary
+
+- Added `https://api.temitayocharles.online` to CSP `connect-src` in `frontend/public/_headers`.
+- Updated manual production QA note with concrete findings and verified external click-through checks (GitHub, LinkedIn, Resume download behavior).
