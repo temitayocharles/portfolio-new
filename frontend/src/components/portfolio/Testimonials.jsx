@@ -27,7 +27,7 @@ const accentMap = {
 const Testimonials = () => {
   const { testimonials = fallbackTestimonials } = usePortfolioContent();
   return (
-    <section id="testimonials" className="relative py-24 lg:py-32">
+    <section id="testimonials" className="relative overflow-x-clip py-24 lg:py-32">
       <div className="absolute -top-24 left-1/4 h-[360px] w-[360px] rounded-full bg-teal-500/[0.06] blur-3xl pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-10">
