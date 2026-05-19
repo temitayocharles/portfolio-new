@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ArrowRight, ExternalLink, GraduationCap, Layers3, Rocket, Sparkles } from "lucide-react";
+import { ArrowRight, ExternalLink, GraduationCap, BrainCircuit, Rocket, Sparkles } from "lucide-react";
 
 const platforms = [
   {
@@ -23,14 +23,14 @@ const platforms = [
     icon: Rocket,
   },
   {
-    id: "infra",
-    label: "Architecture proof",
-    title: "InfraForge Architecture",
-    summary: "A public-facing map for the infrastructure layer behind the products: GitOps, Kubernetes, routing, secrets, observability, and operations.",
-    proof: ["GitOps", "Kubernetes", "Operations"],
-    href: null,
-    action: "Public rollout in progress",
-    icon: Layers3,
+    id: "aiops",
+    label: "Platform engineering",
+    title: "AI Operations Platform",
+    summary: "Read-only AI-assisted ops layer for Kubernetes, ArgoCD, Prometheus, and Loki — operator support, observability context, and workflow hints with human review gates.",
+    proof: ["GitOps", "Observability", "Operator AI"],
+    href: "/studies/ai-operations-automation",
+    action: "Read case study",
+    icon: BrainCircuit,
   },
 ];
 
@@ -66,10 +66,17 @@ const PlatformShowcase = () => {
               </div>
               <div className="mt-6">
                 {active.href ? (
-                  <a href={active.href} target="_blank" rel="noreferrer" className="group inline-flex min-h-11 items-center gap-2 rounded-full bg-teal-300 px-4 py-2 text-sm font-semibold text-slate-950 hover:bg-teal-200">
-                    {active.action}
-                    <ExternalLink className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-                  </a>
+                  active.href.startsWith("http") ? (
+                    <a href={active.href} target="_blank" rel="noreferrer" className="group inline-flex min-h-11 items-center gap-2 rounded-full bg-teal-300 px-4 py-2 text-sm font-semibold text-slate-950 hover:bg-teal-200">
+                      {active.action}
+                      <ExternalLink className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                    </a>
+                  ) : (
+                    <a href={active.href} className="group inline-flex min-h-11 items-center gap-2 rounded-full bg-teal-300 px-4 py-2 text-sm font-semibold text-slate-950 hover:bg-teal-200">
+                      {active.action}
+                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                    </a>
+                  )
                 ) : (
                   <span className="inline-flex min-h-11 items-center gap-2 rounded-full border border-white/10 bg-white/[0.05] px-4 py-2 text-sm font-semibold text-slate-300">
                     {active.action}

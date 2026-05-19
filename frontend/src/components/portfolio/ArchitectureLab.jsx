@@ -92,7 +92,7 @@ const ArchitectureLab = () => {
                 Explore the systems behind each company-grade project.
               </h2>
               <p className="mt-5 text-slate-400 text-sm leading-relaxed">
-                Each map is an interactive architecture surface: click nodes, trace live signal movement, filter
+                Each map is an interactive architecture surface: click nodes, trace data paths, filter
                 controls, and inspect the operational loops behind each system.
               </p>
             </div>
@@ -210,8 +210,8 @@ const ArchitectureLab = () => {
               {activeTab === "Topology" && (
                 <div className="relative grid min-h-[620px] lg:grid-cols-[minmax(0,1fr)_280px]">
                   <div className="relative h-[520px] sm:h-[580px]">
-                    <div className="absolute left-4 top-4 z-20 inline-flex items-center gap-2 rounded-full border border-amber-300/20 bg-[#081018]/85 px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.16em] text-amber-200 backdrop-blur">
-                      <span className="h-1.5 w-1.5 rounded-full bg-amber-300 animate-pulse" /> Live signal map
+                    <div className="absolute left-4 top-4 z-20 inline-flex items-center gap-2 rounded-full border border-slate-600/30 bg-[#081018]/85 px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.16em] text-slate-400 backdrop-blur">
+                      <span className="h-1.5 w-1.5 rounded-full bg-slate-500" /> Platform topology
                     </div>
                     <svg viewBox="0 0 100 100" className="absolute inset-0 h-full w-full" aria-hidden="true">
                       <defs>
@@ -231,12 +231,6 @@ const ArchitectureLab = () => {
                         return (
                           <g key={`${from}-${to}-${label}`} opacity={query.trim() || selected ? selected || !selectedNode ? 1 : 0.45 : 1}>
                             <line x1={a.x} y1={a.y} x2={b.x} y2={b.y} stroke="url(#projectArchEdge)" strokeWidth={selected ? "0.55" : "0.32"} />
-                            <circle r={selected ? "0.85" : "0.55"} fill={selected ? "#fbbf24" : "#5eead4"} opacity={selected ? "0.85" : "0.48"}>
-                              <animateMotion dur={`${5 + (index % 4)}s`} repeatCount="indefinite" path={`M ${a.x} ${a.y} L ${b.x} ${b.y}`} />
-                            </circle>
-                            <circle r="0.7" fill={selected ? "#fbbf24" : "#5eead4"} opacity="0.95">
-                              <animateMotion dur={`${4 + (index % 3)}s`} repeatCount="indefinite" path={`M ${a.x} ${a.y} L ${b.x} ${b.y}`} begin={`${index * 0.18}s`} />
-                            </circle>
                             <text x={mx} y={my - 1.5} textAnchor="middle" fontSize="2.1" fill={selected ? "#cbd5e1" : "#64748b"} fontFamily="monospace">
                               {label}
                             </text>
