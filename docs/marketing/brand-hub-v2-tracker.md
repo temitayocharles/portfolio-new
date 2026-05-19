@@ -596,3 +596,19 @@ Resolve remaining production QA failure where mobile homepage reported horizonta
 - Replaced mobile hero marquee animation track with a wrapped static chip row while keeping the animated marquee on `sm+` breakpoints.
 - Kept the same toolchain vocabulary and visual style, but removed the oversized mobile scrolling track that expanded document width.
 - Added a focused smoke assertion to ensure homepage `documentElement.scrollWidth` does not exceed `clientWidth`.
+
+---
+
+## Phase 19: Force mobile hero marquee off
+
+**Branch:** `feat/force-mobile-hero-marquee-off`
+
+### Focus
+
+Apply a narrower guard so the animated hero marquee cannot render or participate in layout on mobile.
+
+### Implementation summary
+
+- Forced animated marquee container to `md+` only (`hidden md:flex`), removing it from mobile rendering.
+- Kept mobile path as wrapped static chips only (`md:hidden`, `flex-wrap`, `max-w-full`, `min-w-0`).
+- Strengthened smoke coverage by asserting `.animate-marquee` is hidden on mobile viewports in addition to the horizontal overflow check.

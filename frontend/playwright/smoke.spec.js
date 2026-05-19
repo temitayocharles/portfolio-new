@@ -27,6 +27,10 @@ test.describe("portfolio smoke coverage", () => {
       () => document.documentElement.scrollWidth > document.documentElement.clientWidth
     );
     expect(overflow).toBeFalsy();
+    const viewport = page.viewportSize();
+    if (viewport && viewport.width < 768) {
+      await expect(page.locator(".animate-marquee")).toBeHidden();
+    }
   });
 
   test("primary navigation and CTAs are accessible", async ({ page }) => {
