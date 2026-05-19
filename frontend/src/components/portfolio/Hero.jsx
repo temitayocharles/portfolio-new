@@ -239,7 +239,7 @@ const Hero = () => {
       <div className="relative mt-16 overflow-hidden border-y border-white/5 bg-white/[0.015] py-3.5 sm:mt-20 sm:py-4">
         <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#0a0f14] to-transparent z-10 pointer-events-none" />
         <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[#0a0f14] to-transparent z-10 pointer-events-none" />
-        <div className="hidden sm:flex animate-marquee gap-7 whitespace-nowrap sm:gap-10">
+        <div className="hidden md:flex animate-marquee gap-7 whitespace-nowrap md:gap-10" aria-hidden="true">
           {[...MARQUEE_TECH, ...MARQUEE_TECH].map((t, i) => (
             <span
               key={i}
@@ -250,9 +250,9 @@ const Hero = () => {
             </span>
           ))}
         </div>
-        <div className="sm:hidden flex flex-wrap items-center justify-center gap-x-4 gap-y-2 px-6">
+        <div className="flex max-w-full flex-wrap items-center justify-center gap-x-4 gap-y-2 px-6 md:hidden">
           {MARQUEE_TECH.map((t) => (
-            <span key={t} className="inline-flex items-center gap-1.5 font-mono text-xs text-slate-500">
+            <span key={t} className="inline-flex min-w-0 items-center gap-1.5 break-words font-mono text-xs text-slate-500">
               <span className="h-1 w-1 rounded-full bg-teal-300/40" />
               {t}
             </span>
