@@ -28,7 +28,6 @@ const FlagshipProof = () => {
   return (
     <section id="flagship-proof" className="relative overflow-hidden bg-[#0a0f14] py-24 lg:py-32">
       <div className="absolute inset-0 bg-grid opacity-[0.12] pointer-events-none" />
-      <div className="absolute left-1/2 top-0 h-[26rem] w-[26rem] -translate-x-1/2 rounded-full bg-amber-300/[0.035] blur-3xl" />
       <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
         <SectionLabel index="06" title="Flagship Proof" />
         <div className="mt-10 grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">

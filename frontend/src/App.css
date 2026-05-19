@@ -63,10 +63,7 @@ section {
 
 /* Visual polish: portfolio depth and accessibility */
 .App {
-  background:
-    radial-gradient(circle at 15% 10%, rgba(20, 184, 166, 0.08), transparent 28rem),
-    radial-gradient(circle at 85% 20%, rgba(59, 130, 246, 0.07), transparent 30rem),
-    #0a0f14;
+  background: #0a0f14;
 }
 
 .portfolio-surface {
