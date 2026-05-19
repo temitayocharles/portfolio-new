@@ -221,7 +221,7 @@ const Hero = () => {
 
               {/* Floating tag top-right */}
               <div className="absolute -top-3 left-2 bg-[#0e1620] border border-white/10 rounded-lg px-3 py-1.5 font-mono text-[11px] text-amber-200/90 shadow-xl flex items-center gap-1.5">
-                <span className="h-1.5 w-1.5 rounded-full bg-amber-300 animate-pulse" />
+                <span className="h-1.5 w-1.5 rounded-full bg-amber-300" />
                 99.99% uptime
               </div>
             </div>

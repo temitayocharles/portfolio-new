@@ -88,7 +88,7 @@ const Projects = () => {
             return (
               <article
                 key={p.id}
-                className={`group relative overflow-hidden rounded-2xl border border-white/5 bg-gradient-to-b from-white/[0.04] to-white/[0.015] p-6 transition-[border-color,box-shadow,background-color] duration-300 hover:shadow-[0_24px_80px_-48px_rgba(94,234,212,0.75)] ${accent.border}`}
+                className={`group relative overflow-hidden rounded-2xl border border-white/5 bg-gradient-to-b from-white/[0.04] to-white/[0.015] p-6 transition-[border-color,box-shadow,background-color] duration-300 hover:shadow-[0_16px_48px_-32px_rgba(94,234,212,0.30)] ${accent.border}`}
               >
                 <div className={`pointer-events-none absolute -right-16 -top-16 h-44 w-44 rounded-full bg-gradient-to-br ${accent.glow} to-transparent blur-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100`} />
 

@@ -44,8 +44,8 @@ const About = () => {
                 {/* subtle header label */}
                 <div className="absolute top-4 left-4 right-4 flex items-center justify-between font-mono text-[10px] text-slate-500 uppercase tracking-[0.2em]">
                   <span className="inline-flex items-center gap-1.5">
-                    <span className="h-1.5 w-1.5 rounded-full bg-teal-300 animate-pulse" />
-                    live topology
+                    <span className="h-1.5 w-1.5 rounded-full bg-teal-300/60" />
+                    topology
                   </span>
                   <span>prod.us-east-1</span>
                 </div>

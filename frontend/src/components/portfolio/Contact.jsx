@@ -166,7 +166,7 @@ const Contact = () => {
                 <Button
                   type="submit"
                   disabled={status !== "idle"}
-                  className="bg-teal-300 hover:bg-teal-200 text-[#0a0f14] font-medium min-w-[150px] shadow-[0_0_24px_-6px] shadow-teal-400/40"
+                  className="bg-teal-300 hover:bg-teal-200 text-[#0a0f14] font-medium min-w-[150px]"
                 >
                   {status === "sending" && (
                     <>
