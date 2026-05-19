@@ -580,3 +580,19 @@ Fix browser-render failures where production routes returned SPA shell HTML but 
   - `frontend/scripts/verify-production-rendered-qa.js`
   - `yarn qa:production:rendered`
   - checks representative routes for non-empty body, overflow, static-asset MIME/CSP console failures, and failed static requests.
+
+---
+
+## Phase 18: Mobile homepage overflow fix
+
+**Branch:** `feat/mobile-home-overflow-fix`
+
+### Focus
+
+Resolve remaining production QA failure where mobile homepage reported horizontal overflow.
+
+### Implementation summary
+
+- Replaced mobile hero marquee animation track with a wrapped static chip row while keeping the animated marquee on `sm+` breakpoints.
+- Kept the same toolchain vocabulary and visual style, but removed the oversized mobile scrolling track that expanded document width.
+- Added a focused smoke assertion to ensure homepage `documentElement.scrollWidth` does not exceed `clientWidth`.

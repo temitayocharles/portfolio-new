@@ -21,6 +21,14 @@ test.describe("portfolio smoke coverage", () => {
     ).toBeVisible();
   });
 
+  test("homepage does not horizontally overflow", async ({ page }) => {
+    await page.goto("/");
+    const overflow = await page.evaluate(
+      () => document.documentElement.scrollWidth > document.documentElement.clientWidth
+    );
+    expect(overflow).toBeFalsy();
+  });
+
   test("primary navigation and CTAs are accessible", async ({ page }) => {
     await page.goto("/");
 
