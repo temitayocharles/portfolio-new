@@ -138,7 +138,7 @@ const ArchitectureLab = () => {
                     onClick={() => chooseArchitecture(item.id)}
                     className={`group w-full rounded-2xl border p-4 text-left transition-all duration-300 ${
                       isActive
-                        ? "border-teal-300/35 bg-teal-300/[0.08] shadow-[0_18px_70px_-45px_rgba(94,234,212,0.9)]"
+                        ? "border-teal-300/35 bg-teal-300/[0.08]"
                         : "border-white/[0.06] bg-white/[0.025] hover:border-white/15 hover:bg-white/[0.04]"
                     }`}
                   >

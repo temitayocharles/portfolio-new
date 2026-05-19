@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ArrowRight, ExternalLink, GraduationCap, BrainCircuit, Rocket, Sparkles } from "lucide-react";
+import { ArrowRight, ExternalLink, GraduationCap, BrainCircuit, Rocket } from "lucide-react";
 
 const platforms = [
   {
@@ -41,8 +41,7 @@ const PlatformShowcase = () => {
 
   return (
     <div className="mt-10 max-w-3xl">
-      <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-teal-300/20 bg-teal-300/[0.06] px-3 py-1 text-[11px] font-mono uppercase tracking-[0.22em] text-teal-200">
-        <Sparkles className="h-3.5 w-3.5" />
+      <div className="mb-3 font-mono text-[10px] uppercase tracking-[0.22em] text-slate-600">
         Flagship platforms
       </div>
 

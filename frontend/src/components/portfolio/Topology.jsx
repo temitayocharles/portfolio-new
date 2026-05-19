@@ -53,22 +53,6 @@ const Topology = ({ className = "" }) => {
               stroke="url(#edgeGrad)"
               strokeWidth="1"
             />
-            {/* traveling data packet */}
-            <circle r="1.8" fill="#5eead4">
-              <animateMotion
-                dur={`${3 + (i % 4) * 0.7}s`}
-                repeatCount="indefinite"
-                path={`M ${na.x} ${na.y} L ${nb.x} ${nb.y}`}
-                begin={`${(i * 0.35).toFixed(2)}s`}
-              />
-              <animate
-                attributeName="opacity"
-                values="0;1;1;0"
-                dur={`${3 + (i % 4) * 0.7}s`}
-                repeatCount="indefinite"
-                begin={`${(i * 0.35).toFixed(2)}s`}
-              />
-            </circle>
           </g>
         );
       })}
