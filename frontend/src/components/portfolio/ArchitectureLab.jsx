@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useRef, useState, useEffect } from "react";
 import {
   Activity,
   ArrowRight,
@@ -77,6 +77,26 @@ const ArchitectureLab = () => {
     setSelectedNodeId(next.nodes[0]?.id);
   };
 
+  // Measure topology container so SVG lines and HTML nodes share the same coordinate space
+  const topoRef = useRef(null);
+  const [topoDims, setTopoDims] = useState({ w: 0, h: 0 });
+  useEffect(() => {
+    const el = topoRef.current;
+    if (!el) return;
+    const ro = new ResizeObserver((entries) => {
+      const { width, height } = entries[0].contentRect;
+      setTopoDims({ w: width, h: height });
+    });
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
+
+  // Convert 0-100 node coordinates to pixel positions within the measured container
+  const toPx = (x, y) => ({
+    px: topoDims.w > 0 ? (x / 100) * topoDims.w : x * 4,
+    py: topoDims.h > 0 ? (y / 100) * topoDims.h : y * 4,
+  });
+
   return (
     <section id="architecture" className="relative py-24 lg:py-32 overflow-hidden">
       <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(255,255,255,0.015),transparent)] pointer-events-none" />
@@ -141,7 +161,6 @@ const ArchitectureLab = () => {
           <div className="lg:col-span-8">
             <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-[#081018]/90 shadow-2xl">
               <div className="absolute inset-0 bg-grid opacity-[0.13]" />
-              <div className="absolute -right-32 -top-32 h-80 w-80 rounded-full bg-teal-300/10 blur-3xl" />
 
               <div className="relative border-b border-white/[0.06] bg-white/[0.025] p-5 sm:p-6">
                 <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
@@ -151,7 +170,7 @@ const ArchitectureLab = () => {
                     <p className="mt-2 max-w-3xl text-sm leading-relaxed text-slate-400">{active.summary}</p>
                   </div>
                   <div className="inline-flex w-fit items-center gap-2 rounded-full border border-amber-300/20 bg-amber-300/[0.07] px-3 py-1.5 text-xs font-mono text-amber-200">
-                    <span className="h-1.5 w-1.5 rounded-full bg-amber-300 animate-pulse" />
+                    <span className="h-1.5 w-1.5 rounded-full bg-amber-300" />
                     {active.metric}
                   </div>
                 </div>
@@ -209,11 +228,56 @@ const ArchitectureLab = () => {
 
               {activeTab === "Topology" && (
                 <div className="relative grid min-h-[620px] lg:grid-cols-[minmax(0,1fr)_280px]">
-                  <div className="relative h-[520px] sm:h-[580px]">
+                  {/* Topology canvas — ref measured so SVG and HTML share pixel space */}
+                  <div ref={topoRef} className="relative h-[520px] sm:h-[580px] overflow-hidden">
                     <div className="absolute left-4 top-4 z-20 inline-flex items-center gap-2 rounded-full border border-slate-600/30 bg-[#081018]/85 px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.16em] text-slate-400 backdrop-blur">
                       <span className="h-1.5 w-1.5 rounded-full bg-slate-500" /> Platform topology
                     </div>
-                    <svg viewBox="0 0 100 100" className="absolute inset-0 h-full w-full" aria-hidden="true">
+
+                    {/* Swim lane bands — vertical columns derived from unique x-bands */}
+                    {(() => {
+                      const layers = [...new Set(active.nodes.map((n) => n.layer))];
+                      // Group nodes by their approximate x-band (every ~20 units)
+                      const bands = [];
+                      const bandWidth = 100 / Math.max(layers.length, 1);
+                      const nodesByLayer = layers.map((layer) => ({
+                        layer,
+                        nodes: active.nodes.filter((n) => n.layer === layer),
+                      }));
+                      // Sort bands by average x position
+                      nodesByLayer.sort((a, b) => {
+                        const avgA = a.nodes.reduce((s, n) => s + n.x, 0) / a.nodes.length;
+                        const avgB = b.nodes.reduce((s, n) => s + n.x, 0) / b.nodes.length;
+                        return avgA - avgB;
+                      });
+                      return nodesByLayer.map(({ layer, nodes }, i) => {
+                        const xs = nodes.map((n) => n.x);
+                        const minX = Math.min(...xs) - 10;
+                        const maxX = Math.max(...xs) + 10;
+                        const pxLeft = topoDims.w > 0 ? (Math.max(0, minX) / 100) * topoDims.w : 0;
+                        const pxWidth = topoDims.w > 0 ? ((Math.min(100, maxX) - Math.max(0, minX)) / 100) * topoDims.w : 80;
+                        return (
+                          <div
+                            key={layer}
+                            className="absolute top-0 bottom-0 border-r border-white/[0.04] last:border-r-0"
+                            style={{ left: pxLeft, width: pxWidth, pointerEvents: "none" }}
+                          >
+                            <span className="absolute top-2 left-0 right-0 text-center font-mono text-[9px] uppercase tracking-[0.15em] text-slate-600 px-1 truncate">
+                              {layer}
+                            </span>
+                          </div>
+                        );
+                      });
+                    })()}
+
+                    {/* Edge lines — SVG with explicit pixel dimensions matching container */}
+                    <svg
+                      width={topoDims.w || "100%"}
+                      height={topoDims.h || "100%"}
+                      className="absolute inset-0"
+                      aria-hidden="true"
+                      style={{ overflow: "visible" }}
+                    >
                       <defs>
                         <linearGradient id="projectArchEdge" x1="0" x2="1">
                           <stop offset="0%" stopColor="#5eead4" stopOpacity="0.08" />
@@ -225,13 +289,15 @@ const ArchitectureLab = () => {
                         const a = active.nodes.find((node) => node.id === from);
                         const b = active.nodes.find((node) => node.id === to);
                         if (!a || !b) return null;
-                        const mx = (a.x + b.x) / 2;
-                        const my = (a.y + b.y) / 2;
+                        const { px: ax, py: ay } = toPx(a.x, a.y);
+                        const { px: bx, py: by } = toPx(b.x, b.y);
+                        const mx = (ax + bx) / 2;
+                        const my = (ay + by) / 2;
                         const selected = selectedNode && (selectedNode.id === from || selectedNode.id === to);
                         return (
                           <g key={`${from}-${to}-${label}`} opacity={query.trim() || selected ? selected || !selectedNode ? 1 : 0.45 : 1}>
-                            <line x1={a.x} y1={a.y} x2={b.x} y2={b.y} stroke="url(#projectArchEdge)" strokeWidth={selected ? "0.55" : "0.32"} />
-                            <text x={mx} y={my - 1.5} textAnchor="middle" fontSize="2.1" fill={selected ? "#cbd5e1" : "#64748b"} fontFamily="monospace">
+                            <line x1={ax} y1={ay} x2={bx} y2={by} stroke="url(#projectArchEdge)" strokeWidth={selected ? 1.4 : 0.8} />
+                            <text x={mx} y={my - 6} textAnchor="middle" fontSize="9" fill={selected ? "#cbd5e1" : "#64748b"} fontFamily="monospace">
                               {label}
                             </text>
                           </g>
@@ -239,18 +305,22 @@ const ArchitectureLab = () => {
                       })}
                     </svg>
 
-                    {filteredNodes.map((node) => (
-                      <button
-                        key={node.id}
-                        type="button"
-                        onClick={() => setSelectedNodeId(node.id)}
-                        className={`absolute -translate-x-1/2 -translate-y-1/2 rounded-2xl border px-3 py-2 text-left text-xs font-mono backdrop-blur-md shadow-2xl transition-all hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-300/60 ${toneClass[node.tone] || toneClass.teal} ${selectedNode?.id === node.id ? "ring-2 ring-teal-300/40" : ""}`}
-                        style={{ left: `${node.x}%`, top: `${node.y}%` }}
-                      >
-                        <span className={`mr-2 inline-block h-1.5 w-1.5 rounded-full shadow-lg ${nodeToneDot[node.tone] || nodeToneDot.teal}`} />
-                        {node.label}
-                      </button>
-                    ))}
+                    {/* Node buttons — pixel-positioned matching SVG coordinate space */}
+                    {filteredNodes.map((node) => {
+                      const { px, py } = toPx(node.x, node.y);
+                      return (
+                        <button
+                          key={node.id}
+                          type="button"
+                          onClick={() => setSelectedNodeId(node.id)}
+                          className={`absolute -translate-x-1/2 -translate-y-1/2 rounded-2xl border px-3 py-2 text-left text-xs font-mono backdrop-blur-md shadow-2xl transition-all hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-300/60 ${toneClass[node.tone] || toneClass.teal} ${selectedNode?.id === node.id ? "ring-2 ring-teal-300/40" : ""}`}
+                          style={{ left: px, top: py }}
+                        >
+                          <span className={`mr-2 inline-block h-1.5 w-1.5 rounded-full shadow-lg ${nodeToneDot[node.tone] || nodeToneDot.teal}`} />
+                          {node.label}
+                        </button>
+                      );
+                    })}
                   </div>
 
                   <aside className="relative border-t border-white/[0.06] bg-[#0a0f14]/72 p-5 lg:border-l lg:border-t-0">

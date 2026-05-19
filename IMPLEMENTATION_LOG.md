@@ -11,9 +11,9 @@
 | ID | Name | Branch | Status |
 |----|------|--------|--------|
 | M1 | Remove template aesthetics (orbs, glows, scrollbar, blue contamination) | `design/m1-remove-template-aesthetics` | ✅ COMPLETE — commit f971245 |
-| M2 | Color token replacement, logomark fix, button glow reduction | `design/m2-color-tokens-logomark` | 🟡 IN PROGRESS |
-| M3 | bg-grid opacity reduction, section dividers, gradient rule lines | TBD | ⬜ PENDING |
-| M4 | Architecture: remove animateMotion, "Live signal map", recharts, Architecture tab from PlatformShowcase | TBD | ⬜ PENDING |
+| M2 | Color token replacement, logomark fix, button glow reduction | `design/m2-color-tokens-logomark` | ✅ COMPLETE — commit 4a1551b |
+| M3 | bg-grid opacity reduction, section dividers, gradient rule lines | `design/m3-grid-section-differentiation` | ✅ COMPLETE — commit 54d8bd7 |
+| M4 | Architecture: remove animateMotion, "Live signal map", recharts, Architecture tab from PlatformShowcase | `design/m4-architecture-removals` | ✅ COMPLETE — commit 4c070cc |
 | M5 | Architecture: Fix SVG/HTML coordinate mismatch + swim lane headers | TBD | ⬜ PENDING |
 | M6 | Architecture: Four-zone ecosystem map (new component) | TBD | ⬜ PENDING |
 | M7 | Hero right column redesign + IA restructuring | TBD | ⬜ PENDING |
