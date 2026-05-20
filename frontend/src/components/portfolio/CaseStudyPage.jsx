@@ -198,8 +198,7 @@ const CaseStudyPageContent = ({ projectId }) => {
 
         {/* ── Hero ──────────────────────────────────────────────────────────── */}
         <section className="relative overflow-hidden border-b border-white/[0.05] pt-32 pb-20 lg:pt-36 lg:pb-24">
-          {/* Accent rule */}
-          <div className={`absolute top-0 left-0 h-px w-40 ${a.rule}`} />
+          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-slate-500/20 to-transparent" />
 
           <div className="relative mx-auto max-w-6xl px-6 lg:px-10">
             {/* Back link */}
@@ -220,12 +219,12 @@ const CaseStudyPageContent = ({ projectId }) => {
                   {project.category}
                 </div>
 
-                <h1 className="mt-6 text-4xl font-semibold tracking-tight text-slate-50 lg:text-6xl lg:leading-[1.02]">
+                <h1 className="mt-6 text-4xl font-semibold tracking-[-0.02em] text-slate-50 lg:text-6xl lg:leading-[1.02]">
                   {caseStudy.title || project.name}
                 </h1>
 
                 {/* Context / subtitle */}
-                <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-400">
+                <p className="mt-6 max-w-2xl text-lg leading-[1.75] text-slate-300">
                   {caseStudy.context || project.description}
                 </p>
 

@@ -25,7 +25,7 @@ const HiringManagerSummary = () => {
           <h2 className="mt-6 text-3xl lg:text-4xl font-semibold tracking-[-0.02em] text-slate-50">
             Senior platform engineer who can connect delivery, reliability, security, and AI operations.
           </h2>
-          <p className="mt-5 text-slate-400 leading-relaxed">
+          <p className="mt-5 text-slate-300 leading-[1.75]">
             {profile.name} is positioned for senior DevOps, platform engineering, SRE, DevSecOps, and AI infrastructure roles where production discipline matters more than tool lists.
           </p>
         </div>

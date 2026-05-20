@@ -1,5 +1,5 @@
 import React from "react";
-import { ArrowUpRight, BrainCircuit, ShieldCheck, Sparkles, Workflow } from "lucide-react";
+import { ArrowUpRight, BrainCircuit, Server, ShieldCheck, Workflow } from "lucide-react";
 import { usePortfolioContent } from "@/context/PortfolioContentContext";
 import { SectionLabel } from "./About";
 
@@ -14,7 +14,7 @@ const iconByProject = {
   "ai-inference-lab": BrainCircuit,
   "project-iris": Workflow,
   "sentinel-copilot": ShieldCheck,
-  infraforge: Sparkles,
+  infraforge: Server,
 };
 const asArray = (value) => (Array.isArray(value) ? value : []);
 
@@ -47,7 +47,7 @@ const FlagshipProof = () => {
         <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
           {items.map((project, index) => {
             const system = systems[systemByProject[project.id]] || {};
-            const Icon = iconByProject[project.id] || Sparkles;
+            const Icon = iconByProject[project.id] || Server;
             const chips = asArray(system.proofSignals?.length ? system.proofSignals : project.pillars).slice(0, 4);
             return (
               <article key={project.id} className="rounded-[1.75rem] border border-white/[0.08] bg-gradient-to-b from-white/[0.045] to-white/[0.018] p-5 transition-all hover:-translate-y-0.5 hover:border-amber-300/30">
