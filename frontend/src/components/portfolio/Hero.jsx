@@ -106,7 +106,7 @@ const Hero = () => {
               </span>
             </h1>
 
-            <p className="mt-6 max-w-2xl text-base leading-relaxed text-slate-400 sm:text-lg">
+            <p className="mt-6 max-w-xl text-base leading-[1.75] text-slate-300 sm:text-[1.0625rem]">
               {profile.title} with{" "}
               <span className="font-medium text-slate-200">{profile.yearsExperience} years</span>{" "}
               shipping reliable platforms across Kubernetes, GitOps, AWS, Terraform,

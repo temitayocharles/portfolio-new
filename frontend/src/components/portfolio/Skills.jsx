@@ -33,7 +33,7 @@ const Skills = () => {
         <SectionLabel index="02" title="Skills" />
 
         <div className="mt-10 flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between lg:gap-6">
-          <h2 className="text-3xl lg:text-4xl font-semibold tracking-tight text-slate-50 max-w-3xl leading-tight">
+          <h2 className="text-3xl lg:text-4xl font-semibold tracking-[-0.02em] text-slate-50 max-w-3xl leading-tight">
             A platform engineer's toolkit, from
             <span className="text-teal-300"> Kubernetes & GitOps </span>
             to AI-assisted operations.

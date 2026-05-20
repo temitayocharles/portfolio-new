@@ -68,7 +68,7 @@ const Projects = () => {
         <SectionLabel index="04" title="Projects" />
 
         <div className="mt-10 mb-14 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
-          <h2 className="text-3xl lg:text-4xl font-semibold tracking-tight text-slate-50 max-w-3xl leading-tight">
+          <h2 className="text-3xl lg:text-4xl font-semibold tracking-[-0.02em] text-slate-50 max-w-3xl leading-tight">
             Founder-led and business-facing systems with
             <span className="text-teal-300"> production-shaped</span> constraints.
           </h2>

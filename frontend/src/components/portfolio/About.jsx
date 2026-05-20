@@ -14,14 +14,14 @@ const About = () => {
 
         <div className="mt-12 grid lg:grid-cols-12 gap-10 lg:gap-14">
           <div className="lg:col-span-7">
-            <h2 className="text-3xl lg:text-4xl font-semibold tracking-tight text-slate-50 leading-tight">
+            <h2 className="text-3xl lg:text-4xl font-semibold tracking-[-0.02em] text-slate-50 leading-tight">
               Founder and platform engineer connecting infrastructure,
               <span className="text-teal-300"> reliability</span>, and
               <span className="text-teal-300"> AI workflows</span> into systems
               companies can operate.
             </h2>
 
-            <div className="mt-8 space-y-5 text-slate-400 leading-relaxed">
+            <div className="mt-8 space-y-5 text-slate-300 leading-[1.75] text-[0.9375rem]">
               {aboutParagraphs.map((p, i) => (
                 <p key={i}>{p}</p>
               ))}

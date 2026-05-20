@@ -59,11 +59,56 @@ const LabLaneCard = ({ lane, projects }) => {
   );
 };
 
+const LabLoopDiagram = () => (
+  <div className="mb-10">
+    <div className="mb-3 font-mono text-[10px] uppercase tracking-[0.18em] text-slate-600">How the four lanes relate</div>
+    <svg
+      viewBox="0 0 580 72"
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-full max-w-2xl"
+      aria-label="Lab lane dependency loop: Model Ops feeds Agent Surfaces feeds Operator Interfaces, Observability closes the loop"
+      role="img"
+    >
+      {/* Lane boxes */}
+      <rect x="2" y="16" width="118" height="40" rx="8" fill="rgba(251,191,36,0.06)" stroke="rgba(251,191,36,0.22)" strokeWidth="1"/>
+      <text x="61" y="33" textAnchor="middle" fontFamily="monospace" fontSize="9" fill="rgba(251,191,36,0.7)" letterSpacing="1">MODEL OPS</text>
+      <text x="61" y="47" textAnchor="middle" fontFamily="monospace" fontSize="8" fill="#475569">AI Inference Lab</text>
+
+      <rect x="156" y="16" width="118" height="40" rx="8" fill="rgba(94,234,212,0.04)" stroke="rgba(94,234,212,0.18)" strokeWidth="1"/>
+      <text x="215" y="33" textAnchor="middle" fontFamily="monospace" fontSize="9" fill="rgba(94,234,212,0.7)" letterSpacing="1">AGENT SURFACES</text>
+      <text x="215" y="47" textAnchor="middle" fontFamily="monospace" fontSize="8" fill="#475569">Iris · Jerry · ForgeWatch</text>
+
+      <rect x="310" y="16" width="118" height="40" rx="8" fill="rgba(94,234,212,0.03)" stroke="rgba(94,234,212,0.12)" strokeWidth="1"/>
+      <text x="369" y="33" textAnchor="middle" fontFamily="monospace" fontSize="9" fill="rgba(94,234,212,0.55)" letterSpacing="1">INFRA PLATFORM</text>
+      <text x="369" y="47" textAnchor="middle" fontFamily="monospace" fontSize="8" fill="#475569">InfraForge · VaultOps</text>
+
+      <rect x="464" y="16" width="114" height="40" rx="8" fill="rgba(148,163,184,0.03)" stroke="rgba(148,163,184,0.12)" strokeWidth="1"/>
+      <text x="521" y="33" textAnchor="middle" fontFamily="monospace" fontSize="9" fill="rgba(148,163,184,0.5)" letterSpacing="1">EVAL / OBS</text>
+      <text x="521" y="47" textAnchor="middle" fontFamily="monospace" fontSize="8" fill="#475569">Prometheus · Loki</text>
+
+      {/* Forward arrows */}
+      <line x1="120" y1="36" x2="154" y2="36" stroke="rgba(94,234,212,0.25)" strokeWidth="1"/>
+      <polygon points="150,33 154,36 150,39" fill="rgba(94,234,212,0.4)"/>
+
+      <line x1="274" y1="36" x2="308" y2="36" stroke="rgba(94,234,212,0.2)" strokeWidth="1"/>
+      <polygon points="304,33 308,36 304,39" fill="rgba(94,234,212,0.3)"/>
+
+      <line x1="428" y1="36" x2="462" y2="36" stroke="rgba(148,163,184,0.2)" strokeWidth="1"/>
+      <polygon points="458,33 462,36 458,39" fill="rgba(148,163,184,0.25)"/>
+
+      {/* Loop-back arc from Eval/Obs back to Model Ops */}
+      <path d="M521 56 Q521 68 280 68 Q60 68 61 56" fill="none" stroke="rgba(148,163,184,0.12)" strokeWidth="1" strokeDasharray="3 3"/>
+      <polygon points="57,53 61,57 65,53" fill="rgba(148,163,184,0.2)"/>
+    </svg>
+  </div>
+);
+
 const LabHubSection = ({ projects }) => (
   <div className="space-y-10">
     <p className="font-mono text-xs uppercase tracking-[0.18em] text-slate-600">
       AI infrastructure · model operations · agent systems · platform experiments
     </p>
+    <LabLoopDiagram />
     <div className="grid gap-5 md:grid-cols-2">
       {LAB_LANES.map((lane) => (
         <LabLaneCard key={lane.id} lane={lane} projects={projects} />

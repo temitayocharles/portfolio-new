@@ -108,7 +108,7 @@ const ArchitectureLab = () => {
         <div className="mt-10 grid lg:grid-cols-12 gap-8 lg:gap-10 items-start">
           <aside className="lg:col-span-4 space-y-5">
             <div>
-              <h2 className="text-3xl lg:text-4xl font-semibold tracking-tight text-slate-50 leading-tight">
+              <h2 className="text-3xl lg:text-4xl font-semibold tracking-[-0.02em] text-slate-50 leading-tight">
                 Explore the systems behind each company-grade project.
               </h2>
               <p className="mt-5 text-slate-400 text-sm leading-relaxed">
