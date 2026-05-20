@@ -70,12 +70,12 @@ const Contact = () => {
 
         <div className="mt-12 grid lg:grid-cols-12 gap-10 lg:gap-14">
           <div className="lg:col-span-5">
-            <h2 className="text-3xl lg:text-[2.5rem] font-semibold tracking-tight text-slate-50 leading-[1.1]">
+            <h2 className="text-3xl lg:text-[2.5rem] font-semibold tracking-[-0.02em] text-slate-50 leading-[1.1]">
               Let's build{" "}
               <span className="text-teal-300">reliable, secure, and AI-ready</span>{" "}
               infrastructure.
             </h2>
-            <p className="mt-5 text-slate-400 leading-relaxed">
+            <p className="mt-5 text-slate-300 leading-[1.75]">
               Open to opportunities where I can help teams improve cloud
               reliability, accelerate delivery, reduce operational risk,
               strengthen DevSecOps, and build modern platform engineering
