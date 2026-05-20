@@ -1,21 +1,20 @@
 import React from "react";
 
-// Animated SVG network topology: nodes connected by flowing edges.
-// Used decoratively behind the About visual. Subtle, not noisy.
+// Decorative SVG topology in About section — uses actual InfraForge component names
 const nodes = [
-  { id: "gw", x: 80, y: 60, label: "GW", accent: "teal" },
-  { id: "api", x: 200, y: 40, label: "API", accent: "teal" },
-  { id: "svc", x: 320, y: 80, label: "SVC", accent: "amber" },
-  { id: "db", x: 380, y: 190, label: "DB", accent: "teal" },
-  { id: "cache", x: 240, y: 210, label: "CACHE", accent: "teal" },
-  { id: "worker", x: 110, y: 200, label: "WORKER", accent: "amber" },
-  { id: "obs", x: 240, y: 130, label: "OBS", accent: "teal" },
+  { id: "envoy",   x: 80,  y: 60,  label: "ENVOY",   accent: "teal"  },
+  { id: "argocd",  x: 200, y: 40,  label: "ARGOCD",  accent: "teal"  },
+  { id: "vault",   x: 320, y: 80,  label: "VAULT",   accent: "amber" },
+  { id: "longhorn",x: 380, y: 190, label: "LONGHORN", accent: "teal"  },
+  { id: "harbor",  x: 240, y: 210, label: "HARBOR",  accent: "teal"  },
+  { id: "eso",     x: 110, y: 200, label: "ESO",     accent: "amber" },
+  { id: "prom",    x: 240, y: 130, label: "PROM",    accent: "teal"  },
 ];
 
 const edges = [
-  ["gw", "api"], ["api", "svc"], ["svc", "db"], ["svc", "cache"],
-  ["api", "worker"], ["worker", "cache"], ["api", "obs"],
-  ["svc", "obs"], ["worker", "obs"],
+  ["envoy", "argocd"], ["argocd", "vault"], ["vault", "longhorn"], ["vault", "harbor"],
+  ["argocd", "eso"], ["eso", "harbor"], ["argocd", "prom"],
+  ["vault", "prom"], ["eso", "prom"],
 ];
 
 const getNode = (id) => nodes.find((n) => n.id === id);
@@ -33,23 +32,17 @@ const Topology = ({ className = "" }) => {
           <stop offset="50%" stopColor="#5eead4" stopOpacity="0.35" />
           <stop offset="100%" stopColor="#5eead4" stopOpacity="0.05" />
         </linearGradient>
-        <radialGradient id="nodeGlow" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="#5eead4" stopOpacity="0.35" />
-          <stop offset="100%" stopColor="#5eead4" stopOpacity="0" />
-        </radialGradient>
       </defs>
 
       {/* edges */}
-      {edges.map(([a, b], i) => {
+      {edges.map(([a, b]) => {
         const na = getNode(a);
         const nb = getNode(b);
         return (
           <g key={`${a}-${b}`}>
             <line
-              x1={na.x}
-              y1={na.y}
-              x2={nb.x}
-              y2={nb.y}
+              x1={na.x} y1={na.y}
+              x2={nb.x} y2={nb.y}
               stroke="url(#edgeGrad)"
               strokeWidth="1"
             />
@@ -62,26 +55,10 @@ const Topology = ({ className = "" }) => {
         const color = n.accent === "amber" ? "#fbbf24" : "#5eead4";
         return (
           <g key={n.id}>
-            <circle cx={n.x} cy={n.y} r="18" fill="url(#nodeGlow)" />
-            <circle
-              cx={n.x}
-              cy={n.y}
-              r="7"
-              fill="#0b121b"
-              stroke={color}
-              strokeWidth="1.5"
-            />
-            <circle cx={n.x} cy={n.y} r="2.2" fill={color}>
-              <animate
-                attributeName="opacity"
-                values="0.5;1;0.5"
-                dur="2.4s"
-                repeatCount="indefinite"
-              />
-            </circle>
+            <circle cx={n.x} cy={n.y} r="7" fill="#0b121b" stroke={color} strokeWidth="1.5" />
+            <circle cx={n.x} cy={n.y} r="2.2" fill={color} opacity="0.7" />
             <text
-              x={n.x}
-              y={n.y + 22}
+              x={n.x} y={n.y + 22}
               textAnchor="middle"
               fontSize="8"
               fontFamily="'Geist Mono', monospace"

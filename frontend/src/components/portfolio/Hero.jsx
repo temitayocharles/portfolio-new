@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { ArrowRight, Download, MapPin, Sparkles, Terminal } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { profile as fallbackProfile, heroStats as fallbackHeroStats, heroVisuals as fallbackHeroVisuals } from "@/mock";
+import { profile as fallbackProfile, heroStats as fallbackHeroStats } from "@/mock";
 import { usePortfolioContent } from "@/context/PortfolioContentContext";
 import AnimatedStat from "./AnimatedStat";
 import PlatformShowcase from "./PlatformShowcase";
@@ -27,7 +27,7 @@ const MARQUEE_TECH = [
 ];
 
 const Hero = () => {
-  const { profile = fallbackProfile, heroStats = fallbackHeroStats, heroVisuals = fallbackHeroVisuals } = usePortfolioContent();
+  const { profile = fallbackProfile, heroStats = fallbackHeroStats } = usePortfolioContent();
   const [wordIdx, setWordIdx] = useState(0);
   const [termLine, setTermLine] = useState(0);
   const [typed, setTyped] = useState("");
@@ -171,16 +171,6 @@ const Hero = () => {
           {/* Visual side */}
           <div className="lg:col-span-5 relative">
             <div className="relative max-w-md mx-auto">
-              {/* Decorative abstract image */}
-              <div className="absolute -top-12 -right-8 w-44 h-44 rounded-2xl overflow-hidden border border-white/5 rotate-6 opacity-80 hidden md:block pointer-events-none">
-                <img
-                  src={heroVisuals.abstract}
-                  alt="Kubernetes cluster network visualization"
-                  className="h-full w-full object-cover"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-tr from-[#0a0f14] via-transparent to-transparent" />
-              </div>
 
               {/* Headshot card */}
               <div className="relative rounded-2xl overflow-hidden border border-white/10 bg-[#0f1a14]/40 p-1.5 shadow-2xl">
