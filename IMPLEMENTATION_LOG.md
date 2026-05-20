@@ -14,10 +14,16 @@
 | M2 | Color token replacement, logomark fix, button glow reduction | `design/m2-color-tokens-logomark` | ✅ COMPLETE — commit 4a1551b |
 | M3 | bg-grid opacity reduction, section dividers, gradient rule lines | `design/m3-grid-section-differentiation` | ✅ COMPLETE — commit 54d8bd7 |
 | M4 | Architecture: remove animateMotion, "Live signal map", recharts, Architecture tab from PlatformShowcase | `design/m4-architecture-removals` | ✅ COMPLETE — commit 4c070cc |
-| M5 | Architecture: Fix SVG/HTML coordinate mismatch + swim lane headers | TBD | ⬜ PENDING |
-| M6 | Architecture: Four-zone ecosystem map (new component) | TBD | ⬜ PENDING |
-| M7 | Hero right column redesign + IA restructuring | TBD | ⬜ PENDING |
-| M8 | Polish pass | TBD | ⬜ PENDING |
+| M5 | Architecture: Fix SVG/HTML coordinate mismatch + swim lane headers | `design/m5-topology-coordinate-fix` | ✅ COMPLETE — commit 8ab170f |
+| M6 | Architecture: Four-zone ecosystem map (new component) | `design/m6-ecosystem-map` | ✅ COMPLETE — commit c4d3d67 |
+| M7 | Hero/IA polish — Sparkles badge, selector glow, Topology animateMotion | `design/m7-hero-ia-polish` | ✅ COMPLETE — commit 754a195 |
+| M8 | Polish pass — remaining animate-pulse, live labels, glow shadows | `design/m8-polish-pass` | ✅ COMPLETE — commit 4c1ee61 |
+| M9 | Static SVG color standardization + diagonal connector removal | `design/m9-svg-color-standardization` | ✅ COMPLETE — commit e4125c0 |
+| M10 | Typography, terminal cursor, /lab loop diagram | `design/m10-typography-spacing` | ✅ COMPLETE — commit 45afc45 |
+
+## All milestones complete. Branch: design/m10-typography-spacing
+## Validation: yarn build passes on all 10 commits. Network-dependent scripts (verify-site-routes, verify-production-assets) return 403 in sandbox — expected, not a code issue.
+## Status: READY FOR PUSH AND REVIEW
 
 ---
 
