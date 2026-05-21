@@ -14,7 +14,7 @@ const StudyCard = ({ project }) => {
   const evidenceSnippet = asArray(cs.evidence)[0] || null;
 
   return (
-    <article className="flex flex-col rounded-2xl border border-white/[0.08] bg-white/[0.03] p-6 transition hover:border-teal-400/20 hover:bg-white/[0.04]">
+    <article className="flex flex-col rounded-2xl border border-white/[0.08] bg-white/[0.03] p-6 transition hover:border-stone-400/18 hover:bg-white/[0.04]">
       <div className="flex flex-wrap items-center gap-2">
         <Tag accent={studyAccent}>{studyLabel}</Tag>
         <Tag accent={typeMeta.statusAccent || "neutral"}>{project.category}</Tag>

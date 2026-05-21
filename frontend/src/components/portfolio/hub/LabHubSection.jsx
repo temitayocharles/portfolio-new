@@ -10,7 +10,7 @@ const LabSystemLink = ({ project }) => {
   return (
     <a
       href={slug}
-      className="flex items-center justify-between rounded-xl border border-white/[0.07] bg-black/15 px-4 py-3.5 transition hover:border-teal-400/25 hover:bg-white/[0.03]"
+      className="flex items-center justify-between rounded-xl border border-white/[0.07] bg-black/15 px-4 py-3.5 transition hover:border-stone-400/22 hover:bg-white/[0.03]"
     >
       <div>
         <p className="text-sm font-medium text-slate-200">{project.name}</p>
@@ -48,8 +48,8 @@ const LabLaneCard = ({ lane, projects }) => {
         </div>
       )}
       {lane.standalone && (
-        <div className="mt-5 rounded-xl border border-teal-400/10 bg-teal-400/[0.03] px-4 py-3">
-          <p className="mb-1 font-mono text-xs uppercase tracking-widest text-teal-300">Cross-cutting concern</p>
+        <div className="mt-5 rounded-xl border border-stone-400/10 bg-stone-400/[0.03] px-4 py-3">
+          <p className="mb-1 font-mono text-xs uppercase tracking-widest text-stone-400">Cross-cutting concern</p>
           <p className="text-xs leading-6 text-slate-500">
             Observability practices span all lab systems and are not isolated to a single project.
           </p>
@@ -74,12 +74,12 @@ const LabLoopDiagram = () => (
       <text x="61" y="33" textAnchor="middle" fontFamily="monospace" fontSize="9" fill="rgba(251,191,36,0.7)" letterSpacing="1">MODEL OPS</text>
       <text x="61" y="47" textAnchor="middle" fontFamily="monospace" fontSize="8" fill="#475569">AI Inference Lab</text>
 
-      <rect x="156" y="16" width="118" height="40" rx="8" fill="rgba(94,234,212,0.04)" stroke="rgba(94,234,212,0.18)" strokeWidth="1"/>
-      <text x="215" y="33" textAnchor="middle" fontFamily="monospace" fontSize="9" fill="rgba(94,234,212,0.7)" letterSpacing="1">AGENT SURFACES</text>
+      <rect x="156" y="16" width="118" height="40" rx="8" fill="rgba(139,147,153,0.04)" stroke="rgba(139,147,153,0.20)" strokeWidth="1"/>
+      <text x="215" y="33" textAnchor="middle" fontFamily="monospace" fontSize="9" fill="rgba(139,147,153,0.72)" letterSpacing="1">AGENT SURFACES</text>
       <text x="215" y="47" textAnchor="middle" fontFamily="monospace" fontSize="8" fill="#475569">Iris · Jerry · ForgeWatch</text>
 
-      <rect x="310" y="16" width="118" height="40" rx="8" fill="rgba(94,234,212,0.03)" stroke="rgba(94,234,212,0.12)" strokeWidth="1"/>
-      <text x="369" y="33" textAnchor="middle" fontFamily="monospace" fontSize="9" fill="rgba(94,234,212,0.55)" letterSpacing="1">INFRA PLATFORM</text>
+      <rect x="310" y="16" width="118" height="40" rx="8" fill="rgba(139,147,153,0.03)" stroke="rgba(139,147,153,0.14)" strokeWidth="1"/>
+      <text x="369" y="33" textAnchor="middle" fontFamily="monospace" fontSize="9" fill="rgba(139,147,153,0.58)" letterSpacing="1">INFRA PLATFORM</text>
       <text x="369" y="47" textAnchor="middle" fontFamily="monospace" fontSize="8" fill="#475569">InfraForge · VaultOps</text>
 
       <rect x="464" y="16" width="114" height="40" rx="8" fill="rgba(148,163,184,0.03)" stroke="rgba(148,163,184,0.12)" strokeWidth="1"/>
@@ -87,11 +87,11 @@ const LabLoopDiagram = () => (
       <text x="521" y="47" textAnchor="middle" fontFamily="monospace" fontSize="8" fill="#475569">Prometheus · Loki</text>
 
       {/* Forward arrows */}
-      <line x1="120" y1="36" x2="154" y2="36" stroke="rgba(94,234,212,0.25)" strokeWidth="1"/>
-      <polygon points="150,33 154,36 150,39" fill="rgba(94,234,212,0.4)"/>
+      <line x1="120" y1="36" x2="154" y2="36" stroke="rgba(139,147,153,0.28)" strokeWidth="1"/>
+      <polygon points="150,33 154,36 150,39" fill="rgba(139,147,153,0.42)"/>
 
-      <line x1="274" y1="36" x2="308" y2="36" stroke="rgba(94,234,212,0.2)" strokeWidth="1"/>
-      <polygon points="304,33 308,36 304,39" fill="rgba(94,234,212,0.3)"/>
+      <line x1="274" y1="36" x2="308" y2="36" stroke="rgba(139,147,153,0.22)" strokeWidth="1"/>
+      <polygon points="304,33 308,36 304,39" fill="rgba(139,147,153,0.32)"/>
 
       <line x1="428" y1="36" x2="462" y2="36" stroke="rgba(148,163,184,0.2)" strokeWidth="1"/>
       <polygon points="458,33 462,36 458,39" fill="rgba(148,163,184,0.25)"/>

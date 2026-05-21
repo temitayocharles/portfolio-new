@@ -28,12 +28,12 @@ const iconMap = {
 };
 
 const toneClass = {
-  teal: "border-teal-300/35 bg-teal-300/10 text-teal-100 shadow-teal-300/20",
+  teal: "border-stone-400/30 bg-stone-400/[0.08] text-stone-100 shadow-stone-400/10",
   amber: "border-amber-300/35 bg-amber-300/10 text-amber-100 shadow-amber-300/20",
 };
 
 const nodeToneDot = {
-  teal: "bg-teal-300 shadow-teal-300/50",
+  teal: "bg-stone-400 shadow-stone-400/40",
   amber: "bg-amber-300 shadow-amber-300/50",
 };
 
@@ -134,7 +134,7 @@ const ArchitectureLab = () => {
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
                 placeholder="Filter nodes, layers, controls"
-                className="w-full rounded-2xl border border-white/10 bg-white/[0.035] py-3 pl-10 pr-4 text-sm text-slate-200 outline-none transition focus:border-teal-300/40 focus:ring-2 focus:ring-teal-300/15"
+                className="w-full rounded-2xl border border-white/10 bg-white/[0.035] py-3 pl-10 pr-4 text-sm text-slate-200 outline-none transition focus:border-amber-400/30 focus:ring-2 focus:ring-amber-400/10"
               />
             </div>
 
@@ -149,12 +149,12 @@ const ArchitectureLab = () => {
                     onClick={() => chooseArchitecture(item.id)}
                     className={`group w-full rounded-2xl border p-4 text-left transition-all duration-300 ${
                       isActive
-                        ? "border-teal-300/35 bg-teal-300/[0.08]"
+                        ? "border-stone-400/30 bg-stone-400/[0.07]"
                         : "border-white/[0.06] bg-white/[0.025] hover:border-white/15 hover:bg-white/[0.04]"
                     }`}
                   >
                     <div className="flex items-start gap-3">
-                      <div className={`mt-0.5 h-10 w-10 rounded-xl border flex items-center justify-center ${isActive ? "border-teal-300/30 text-teal-300 bg-teal-300/10" : "border-white/10 text-slate-500 bg-white/[0.03] group-hover:text-slate-300"}`}>
+                      <div className={`mt-0.5 h-10 w-10 rounded-xl border flex items-center justify-center ${isActive ? "border-stone-400/25 text-stone-300 bg-stone-400/10" : "border-white/10 text-slate-500 bg-white/[0.03] group-hover:text-slate-300"}`}>
                         <Icon className="h-4 w-4" />
                       </div>
                       <div className="min-w-0">
@@ -176,7 +176,7 @@ const ArchitectureLab = () => {
               <div className="relative border-b border-white/[0.06] bg-white/[0.025] p-5 sm:p-6">
                 <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
                   <div>
-                    <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-teal-300">{active.label}</div>
+                    <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-stone-400">{active.label}</div>
                     <h3 className="mt-2 text-2xl font-semibold text-slate-50">{active.title}</h3>
                     <p className="mt-2 max-w-3xl text-sm leading-relaxed text-slate-400">{active.summary}</p>
                   </div>
@@ -194,7 +194,7 @@ const ArchitectureLab = () => {
                       onClick={() => setActiveTab(tab)}
                       className={`inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-xs font-mono transition ${
                         activeTab === tab
-                          ? "border-teal-300/35 bg-teal-300/10 text-teal-200"
+                          ? "border-stone-400/30 bg-stone-400/[0.08] text-stone-200"
                           : "border-white/[0.07] bg-white/[0.025] text-slate-500 hover:text-slate-300 hover:border-white/15"
                       }`}
                     >
@@ -223,7 +223,7 @@ const ArchitectureLab = () => {
                     </div>
                     <div className="grid gap-4 border-t border-white/[0.06] bg-[#0a0f14]/88 p-4 sm:grid-cols-[1.2fr_0.8fr] sm:p-5">
                       <div>
-                        <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-teal-300">Curated systems visual</div>
+                        <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-stone-400">Curated systems visual</div>
                         <p className="mt-2 text-sm leading-relaxed text-slate-400">
                           This board is the executive visual for the project. Use the topology, flows, and controls tabs for the interactive technical drill-down.
                         </p>
@@ -291,9 +291,9 @@ const ArchitectureLab = () => {
                     >
                       <defs>
                         <linearGradient id="projectArchEdge" x1="0" x2="1">
-                          <stop offset="0%" stopColor="#5eead4" stopOpacity="0.08" />
-                          <stop offset="50%" stopColor="#5eead4" stopOpacity="0.5" />
-                          <stop offset="100%" stopColor="#fbbf24" stopOpacity="0.22" />
+                          <stop offset="0%" stopColor="#8b9399" stopOpacity="0.06" />
+                          <stop offset="50%" stopColor="#8b9399" stopOpacity="0.42" />
+                          <stop offset="100%" stopColor="#c97c44" stopOpacity="0.18" />
                         </linearGradient>
                       </defs>
                       {visibleEdges.map(([from, to, label], index) => {
@@ -324,7 +324,7 @@ const ArchitectureLab = () => {
                           key={node.id}
                           type="button"
                           onClick={() => setSelectedNodeId(node.id)}
-                          className={`absolute -translate-x-1/2 -translate-y-1/2 rounded-2xl border px-3 py-2 text-left text-xs font-mono backdrop-blur-md shadow-2xl transition-all hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-300/60 ${toneClass[node.tone] || toneClass.teal} ${selectedNode?.id === node.id ? "ring-2 ring-teal-300/40" : ""}`}
+                          className={`absolute -translate-x-1/2 -translate-y-1/2 rounded-2xl border px-3 py-2 text-left text-xs font-mono backdrop-blur-md shadow-2xl transition-all hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/50 ${toneClass[node.tone] || toneClass.teal} ${selectedNode?.id === node.id ? "ring-2 ring-stone-400/35" : ""}`}
                           style={{ left: px, top: py }}
                         >
                           <span className={`mr-2 inline-block h-1.5 w-1.5 rounded-full shadow-lg ${nodeToneDot[node.tone] || nodeToneDot.teal}`} />
@@ -356,9 +356,9 @@ const ArchitectureLab = () => {
                 <div className="relative p-5 sm:p-6">
                   <div className="grid gap-4">
                     {active.flows.map((flow, index) => (
-                      <div key={flow} className="group rounded-2xl border border-white/[0.07] bg-white/[0.025] p-4 transition hover:border-teal-300/25 hover:bg-teal-300/[0.045]">
+                      <div key={flow} className="group rounded-2xl border border-white/[0.07] bg-white/[0.025] p-4 transition hover:border-stone-400/20 hover:bg-stone-400/[0.04]">
                         <div className="flex items-start gap-4">
-                          <div className="flex h-9 w-9 flex-none items-center justify-center rounded-xl border border-teal-300/20 bg-teal-300/10 font-mono text-xs text-teal-200">
+                          <div className="flex h-9 w-9 flex-none items-center justify-center rounded-xl border border-stone-400/20 bg-stone-400/[0.07] font-mono text-xs text-stone-300">
                             {String(index + 1).padStart(2, "0")}
                           </div>
                           <div>
@@ -382,7 +382,7 @@ const ArchitectureLab = () => {
                     {active.controls.map((control) => (
                       <div key={control} className="rounded-2xl border border-white/[0.07] bg-white/[0.025] p-4">
                         <div className="flex items-start gap-3">
-                          <CheckCircle2 className="mt-0.5 h-5 w-5 flex-none text-teal-300" />
+                          <CheckCircle2 className="mt-0.5 h-5 w-5 flex-none text-stone-400" />
                           <div>
                             <div className="font-medium text-slate-100">{control}</div>
                             <p className="mt-2 text-sm leading-relaxed text-slate-500">

@@ -19,7 +19,7 @@ const HubSectionShell = ({ page, routeConfig, children }) => {
         <div className="relative mx-auto max-w-7xl">
           <a
             href="/"
-            className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-sm text-slate-400 transition hover:border-teal-400/30 hover:text-teal-300"
+            className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-sm text-slate-400 transition hover:border-stone-400/25 hover:text-stone-300"
           >
             <ArrowLeft className="h-3.5 w-3.5" />
             Home

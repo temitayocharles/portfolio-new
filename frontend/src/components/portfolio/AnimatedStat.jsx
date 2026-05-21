@@ -51,7 +51,7 @@ const AnimatedStat = ({ value, label, className = "" }) => {
   return (
     <div
       ref={ref}
-      className={`group rounded-lg border border-white/5 bg-white/[0.02] hover:bg-white/[0.04] hover:border-teal-300/25 px-4 py-3 transition-colors ${className}`}
+      className={`group rounded-lg border border-white/5 bg-white/[0.02] hover:bg-white/[0.04] hover:border-stone-400/18 px-4 py-3 transition-colors ${className}`}
     >
       <div className="text-xl font-semibold text-slate-100 font-mono tracking-tight tabular-nums">
         {display}

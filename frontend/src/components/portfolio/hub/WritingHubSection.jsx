@@ -26,7 +26,7 @@ const EDITORIAL_TRACKS = [
 ];
 
 const WritingCard = ({ item }) => (
-  <article className="flex flex-col rounded-2xl border border-white/[0.08] bg-white/[0.03] p-6 transition hover:border-teal-400/15 hover:bg-white/[0.04]">
+  <article className="flex flex-col rounded-2xl border border-white/[0.08] bg-white/[0.03] p-6 transition hover:border-stone-400/18 hover:bg-white/[0.04]">
     <div className="flex flex-wrap items-center justify-between gap-3">
       <Tag accent={item.accent || "teal"}>{item.tag || item.type || "Writing"}</Tag>
       {item.readTime && <span className="font-mono text-xs text-slate-600">{item.readTime}</span>}

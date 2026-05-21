@@ -16,8 +16,8 @@ const HubNavigation = ({ routeConfig }) => {
               href={path}
               className={`flex items-center gap-2 rounded-xl border px-3 py-2.5 text-xs transition ${
                 active
-                  ? "border-teal-400/30 bg-teal-400/[0.08] text-teal-100"
-                  : "border-white/[0.06] bg-black/10 text-slate-400 hover:border-teal-400/20 hover:text-teal-300"
+                  ? "border-stone-400/25 bg-stone-400/[0.07] text-stone-100"
+                  : "border-white/[0.06] bg-black/10 text-slate-400 hover:border-stone-400/20 hover:text-stone-300"
               }`}
             >
               <Icon className="h-3.5 w-3.5 flex-none" />

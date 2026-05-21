@@ -14,7 +14,7 @@ const DigestWorkflowStrip = () => (
         return (
           <React.Fragment key={step.label}>
             <div className="flex flex-1 flex-col items-center gap-2 text-center">
-              <span className="flex h-10 w-10 items-center justify-center rounded-full border border-teal-400/20 bg-teal-400/[0.07] text-teal-300">
+              <span className="flex h-10 w-10 items-center justify-center rounded-full border border-stone-400/18 bg-stone-400/[0.07] text-stone-300">
                 <StepIcon className="h-4 w-4" />
               </span>
               <p className="text-sm font-medium text-slate-200">{step.label}</p>
@@ -35,7 +35,7 @@ const DigestWorkflowStrip = () => (
 const DigestCard = ({ item }) => {
   const visibility = visibilityConfig[item.repoVisibility] || visibilityConfig.mixed;
   return (
-    <article className="flex flex-col rounded-2xl border border-white/[0.08] bg-white/[0.03] p-6 transition hover:border-teal-400/15 hover:bg-white/[0.04]">
+    <article className="flex flex-col rounded-2xl border border-white/[0.08] bg-white/[0.03] p-6 transition hover:border-stone-400/18 hover:bg-white/[0.04]">
       <div className="flex flex-wrap items-center gap-2">
         <Tag accent="teal">{item.category}</Tag>
         <Tag accent={visibility.accent}>

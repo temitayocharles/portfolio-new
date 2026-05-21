@@ -84,7 +84,7 @@ const EditorialDetailPage = ({ type, entryId }) => {
           <p className="mt-4 text-slate-400">The requested entry may have moved or was never published.</p>
           <a
             href={config.backHref}
-            className="mt-8 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-sm text-slate-300 hover:border-teal-300/30 hover:text-teal-200"
+            className="mt-8 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-sm text-slate-300 hover:border-stone-400/22 hover:text-stone-200"
           >
             <ArrowLeft className="h-4 w-4" />
             {config.backLabel}
@@ -102,7 +102,7 @@ const EditorialDetailPage = ({ type, entryId }) => {
         <div className="mx-auto max-w-4xl">
           <a
             href={config.backHref}
-            className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-sm text-slate-300 hover:border-teal-300/30 hover:text-teal-200"
+            className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-sm text-slate-300 hover:border-stone-400/22 hover:text-stone-200"
           >
             <ArrowLeft className="h-4 w-4" />
             {config.backLabel}
@@ -110,7 +110,7 @@ const EditorialDetailPage = ({ type, entryId }) => {
 
           <article className="mt-8 rounded-3xl border border-white/[0.08] bg-white/[0.025] p-6 md:p-10">
             <div className="flex flex-wrap items-center gap-3 text-xs">
-              <span className="rounded-full border border-teal-400/20 bg-teal-400/[0.06] px-3 py-1 font-mono uppercase tracking-[0.15em] text-teal-200">
+              <span className="rounded-full border border-stone-400/18 bg-stone-400/[0.05] px-3 py-1 font-mono uppercase tracking-[0.15em] text-stone-200">
                 {config.label}
               </span>
               <span className="rounded-full border border-white/[0.08] bg-black/20 px-3 py-1 font-mono uppercase tracking-[0.15em] text-slate-400">
@@ -161,7 +161,7 @@ const EditorialDetailPage = ({ type, entryId }) => {
                     <a
                       key={link.href}
                       href={link.href}
-                      className="rounded-full border border-white/[0.08] bg-white/[0.02] px-3 py-1 text-xs text-slate-300 hover:border-teal-300/30 hover:text-teal-200"
+                      className="rounded-full border border-white/[0.08] bg-white/[0.02] px-3 py-1 text-xs text-slate-300 hover:border-stone-400/22 hover:text-stone-200"
                     >
                       {link.label}
                     </a>

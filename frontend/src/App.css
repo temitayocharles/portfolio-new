@@ -73,7 +73,7 @@ section {
 }
 
 .portfolio-focus-ring:focus-visible {
-  outline: 2px solid rgba(45, 212, 191, 0.85);
+  outline: 2px solid rgba(201, 124, 68, 0.80);
   outline-offset: 4px;
 }
 

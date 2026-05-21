@@ -20,7 +20,7 @@ import { PortfolioContentProvider } from "@/context/PortfolioContentContext";
 const Portfolio = () => {
   return (
     <PortfolioContentProvider>
-      <div className="min-h-screen bg-[#0a0f14] text-slate-200 antialiased selection:bg-teal-300/30 selection:text-teal-100">
+      <div className="min-h-screen bg-[#0a0f14] text-slate-200 antialiased selection:bg-amber-400/20 selection:text-amber-100">
       <Navbar />
       <main>
         <Hero />

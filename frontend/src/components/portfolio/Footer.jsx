@@ -22,7 +22,7 @@ const Footer = () => {
         <div className="grid md:grid-cols-3 gap-8 items-start">
           <div>
             <div className="flex items-center gap-2">
-              <span className="h-8 w-8 rounded-md bg-[#0f1f1a] border border-teal-400/30 flex items-center justify-center font-mono text-teal-300 font-bold text-sm">
+              <span className="h-8 w-8 rounded-md bg-[#141210] border border-stone-500/35 flex items-center justify-center font-mono text-stone-300 font-bold text-sm">
                 TC
               </span>
               <span className="text-slate-200 font-medium">
@@ -44,7 +44,7 @@ const Footer = () => {
                 <a
                   href={`mailto:${profile.email}`}
                   aria-label="Email Temitayo Charles Akinniranye"
-                  className="text-slate-300 hover:text-teal-300 transition-colors inline-flex items-center gap-2"
+                  className="text-slate-300 hover:text-stone-300 transition-colors inline-flex items-center gap-2"
                 >
                   <Mail className="h-3.5 w-3.5" />
                   {profile.email}
@@ -57,7 +57,7 @@ const Footer = () => {
                   rel="noreferrer"
                   aria-label="Open Temitayo Charles Akinniranye LinkedIn profile"
                   title="LinkedIn"
-                  className="text-slate-300 hover:text-teal-300 transition-colors inline-flex items-center gap-2"
+                  className="text-slate-300 hover:text-stone-300 transition-colors inline-flex items-center gap-2"
                 >
                   <LinkedinIcon className="h-3.5 w-3.5" />
                   LinkedIn
@@ -70,7 +70,7 @@ const Footer = () => {
                   rel="noreferrer"
                   aria-label="Open Temitayo Charles Akinniranye GitHub profile"
                   title="GitHub"
-                  className="text-slate-300 hover:text-teal-300 transition-colors inline-flex items-center gap-2"
+                  className="text-slate-300 hover:text-stone-300 transition-colors inline-flex items-center gap-2"
                 >
                   <GithubIcon className="h-3.5 w-3.5" />
                   GitHub
@@ -99,19 +99,19 @@ const Footer = () => {
         <div className="mt-8 grid gap-3 border-t border-white/5 pt-6 text-xs text-slate-500 sm:grid-cols-[auto_1fr] sm:items-start">
           <span className="font-mono uppercase tracking-[0.18em] text-slate-600">Website hub</span>
           <div className="flex flex-wrap gap-x-5 gap-y-2">
-            <a href="/projects" className="hover:text-teal-300">Projects</a>
-            <a href="/news" className="hover:text-teal-300">News</a>
-            <a href="/writing" className="hover:text-teal-300">Writing</a>
-            <a href="/studies" className="hover:text-teal-300">Studies</a>
-            <a href="/lab" className="hover:text-teal-300">Lab</a>
-            <a href="/github" className="hover:text-teal-300">GitHub</a>
+            <a href="/projects" className="hover:text-stone-300">Projects</a>
+            <a href="/news" className="hover:text-stone-300">News</a>
+            <a href="/writing" className="hover:text-stone-300">Writing</a>
+            <a href="/studies" className="hover:text-stone-300">Studies</a>
+            <a href="/lab" className="hover:text-stone-300">Lab</a>
+            <a href="/github" className="hover:text-stone-300">GitHub</a>
           </div>
         </div>
 
         <div className="mt-8 flex flex-wrap gap-x-5 gap-y-2 border-t border-white/5 pt-6 text-xs text-slate-500">
-          <a href="/trust-safety" className="hover:text-teal-300">Trust & Safety</a>
-          <a href="/privacy-policy" className="hover:text-teal-300">Privacy Policy</a>
-          <a href="/terms" className="hover:text-teal-300">Terms</a>
+          <a href="/trust-safety" className="hover:text-stone-300">Trust & Safety</a>
+          <a href="/privacy-policy" className="hover:text-stone-300">Privacy Policy</a>
+          <a href="/terms" className="hover:text-stone-300">Terms</a>
         </div>
 
         <div className="mt-6 pt-6 border-t border-white/5 flex flex-col sm:flex-row gap-4 items-center justify-between">
@@ -123,7 +123,7 @@ const Footer = () => {
               href={profile.github}
               target="_blank"
               rel="noreferrer"
-              className="p-2 text-slate-400 hover:text-teal-300 transition-colors"
+              className="p-2 text-slate-400 hover:text-stone-300 transition-colors"
               aria-label="Open Temitayo Charles Akinniranye GitHub profile"
             >
               <GithubIcon className="h-4 w-4" />
@@ -132,14 +132,14 @@ const Footer = () => {
               href={profile.linkedin}
               target="_blank"
               rel="noreferrer"
-              className="p-2 text-slate-400 hover:text-teal-300 transition-colors"
+              className="p-2 text-slate-400 hover:text-stone-300 transition-colors"
               aria-label="Open Temitayo Charles Akinniranye LinkedIn profile"
             >
               <LinkedinIcon className="h-4 w-4" />
             </a>
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="ml-2 inline-flex items-center gap-1.5 px-3 py-2 rounded-md border border-white/10 text-slate-300 hover:text-teal-300 hover:border-teal-300/30 transition-colors text-xs font-mono"
+              className="ml-2 inline-flex items-center gap-1.5 px-3 py-2 rounded-md border border-white/10 text-slate-300 hover:text-stone-300 hover:border-stone-400/22 transition-colors text-xs font-mono"
             >
               <ArrowUp className="h-3.5 w-3.5" />
               Top
