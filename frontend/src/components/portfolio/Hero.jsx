@@ -161,7 +161,7 @@ const Hero = () => {
 
             <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-2xl">
               {heroStats.map((s, i) => (
-                <div key={s.label} style={{ animation: `fade-up 0.6s ease-out ${i * 80}ms both` }}>
+                <div key={s.label}>
                   <AnimatedStat value={s.value} label={s.label} />
                 </div>
               ))}

@@ -64,7 +64,6 @@ const Testimonials = () => {
                 >
                   <article
                     className={`h-full relative rounded-2xl border border-white/5 bg-gradient-to-b from-white/[0.035] to-transparent p-6 transition-colors ${a.border}`}
-                    style={{ animation: `fade-up 0.55s ease-out ${i * 60}ms both` }}
                   >
                     <Quote className={`h-7 w-7 ${a.icon} mb-4`} />
 

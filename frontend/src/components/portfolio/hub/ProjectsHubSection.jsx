@@ -12,7 +12,7 @@ const FlagshipCard = ({ project }) => {
 
   return (
     <article className="relative flex flex-col rounded-2xl border border-white/[0.10] bg-white/[0.04] p-7 transition hover:border-teal-400/25 hover:bg-white/[0.055]">
-      <div className="absolute top-0 left-7 h-px w-16 bg-teal-400/60" />
+      <div className="absolute top-0 left-7 h-px w-16 bg-slate-500/30" />
       <div className="flex flex-wrap items-center gap-2">
         <Tag accent="teal">{project.category}</Tag>
         {meta.status && <MaturityBadge status={meta.status} accent={meta.statusAccent} />}

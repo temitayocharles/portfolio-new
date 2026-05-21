@@ -35,7 +35,7 @@ const FlagshipProof = () => {
             <div className="inline-flex rounded-full border border-amber-300/15 bg-amber-300/[0.055] px-3 py-1 font-mono text-[11px] uppercase tracking-[0.18em] text-amber-200">
               Product-grade systems
             </div>
-            <h2 className="mt-6 max-w-3xl text-3xl font-semibold leading-tight tracking-tight text-slate-50 lg:text-5xl">
+            <h2 className="mt-6 max-w-3xl text-3xl font-semibold leading-tight tracking-[-0.02em] text-slate-50 lg:text-5xl">
               The clearest evidence sits where real problems meet governed execution.
             </h2>
           </div>
@@ -57,7 +57,7 @@ const FlagshipProof = () => {
                   </div>
                   <span className="font-mono text-[11px] text-slate-600">0{index + 1}</span>
                 </div>
-                <h3 className="mt-6 text-2xl font-semibold tracking-tight text-slate-50">{project.name}</h3>
+                <h3 className="mt-6 text-2xl font-semibold tracking-[-0.02em] text-slate-50">{project.name}</h3>
                 <p className="mt-2 text-sm text-amber-100/80">{system.role || project.subtitle}</p>
                 <p className="mt-5 text-sm leading-relaxed text-slate-400"><span className="text-slate-200">Problem:</span> {system.problem || project.caseStudy?.problem || project.description}</p>
                 <p className="mt-3 text-sm leading-relaxed text-slate-300"><span className="text-slate-200">Answer:</span> {system.solution || project.caseStudy?.result || project.description}</p>

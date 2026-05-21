@@ -71,7 +71,6 @@ const Writing = () => {
                 >
                   <article
                     className={`h-full rounded-2xl border border-white/5 bg-gradient-to-b from-white/[0.035] to-transparent p-6 transition-[border-color,box-shadow,background-color] duration-300 ${a.hover}`}
-                    style={{ animation: `fade-up 0.55s ease-out ${i * 70}ms both` }}
                   >
                     <div className="flex items-start justify-between gap-3">
                       <span

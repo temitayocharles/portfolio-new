@@ -95,7 +95,7 @@ const ContentBlock = ({ title, body, highlight = false, accent = "teal" }) => {
           {title}
         </h3>
       )}
-      <p className="text-sm leading-relaxed text-slate-300">{body}</p>
+      <p className="text-sm leading-[1.75] text-slate-300">{body}</p>
     </article>
   );
 };
@@ -113,7 +113,7 @@ const ContentList = ({ title, items, accent = "teal" }) => {
       )}
       <ul className="space-y-3">
         {list.map((item, i) => (
-          <li key={i} className="flex gap-3 text-sm leading-relaxed text-slate-300">
+          <li key={i} className="flex gap-3 text-sm leading-[1.75] text-slate-300">
             <span className={`mt-2 h-1.5 w-1.5 flex-none rounded-full ${a.dot}`} />
             <span>{item}</span>
           </li>
@@ -155,7 +155,7 @@ const CaseStudyPageContent = ({ projectId }) => {
           <h1 className="mt-8 text-4xl font-semibold text-slate-50">
             Case study not found.
           </h1>
-          <p className="mt-4 text-slate-400">
+          <p className="mt-4 text-slate-300">
             The requested project route does not match a published case study.
           </p>
           <a
@@ -300,7 +300,7 @@ const CaseStudyPageContent = ({ projectId }) => {
                     <span className={`font-mono text-xs font-bold ${a.text}`}>
                       {String(i + 1).padStart(2, "0")}
                     </span>
-                    <p className="mt-3 text-sm leading-relaxed text-slate-300">{decision}</p>
+                    <p className="mt-3 text-sm leading-[1.75] text-slate-300">{decision}</p>
                   </article>
                 ))}
               </div>
@@ -322,7 +322,7 @@ const CaseStudyPageContent = ({ projectId }) => {
                     <span
                       className={`mt-1 h-2 w-2 flex-none rounded-full ${a.dot}`}
                     />
-                    <p className="text-sm leading-relaxed text-slate-300">{ctrl}</p>
+                    <p className="text-sm leading-[1.75] text-slate-300">{ctrl}</p>
                   </div>
                 ))}
               </div>
@@ -341,7 +341,7 @@ const CaseStudyPageContent = ({ projectId }) => {
                     key={i}
                     className="rounded-2xl border border-white/[0.07] bg-white/[0.025] p-5"
                   >
-                    <p className="text-sm leading-relaxed text-slate-300">{item}</p>
+                    <p className="text-sm leading-[1.75] text-slate-300">{item}</p>
                   </div>
                 ))}
               </div>
@@ -363,7 +363,7 @@ const CaseStudyPageContent = ({ projectId }) => {
                     <div className={`mb-2 font-mono text-xs font-bold ${a.text}`}>
                       {key}
                     </div>
-                    <p className="text-sm leading-relaxed text-slate-400">{value}</p>
+                    <p className="text-sm leading-[1.75] text-slate-300">{value}</p>
                   </div>
                 ))}
               </div>
@@ -379,7 +379,7 @@ const CaseStudyPageContent = ({ projectId }) => {
                 <p className="mb-4 font-mono text-xs uppercase tracking-[0.2em] text-amber-400">
                   Result
                 </p>
-                <p className="text-lg leading-relaxed text-slate-200">{caseStudy.result}</p>
+                <p className="text-lg leading-[1.75] text-slate-200">{caseStudy.result}</p>
               </div>
             </div>
           </section>
@@ -395,7 +395,7 @@ const CaseStudyPageContent = ({ projectId }) => {
                   className={`rounded-2xl border p-6 ${a.border} ${a.bg.replace("[0.08]", "[0.04]")}`}
                 >
                   <Lightbulb className={`h-5 w-5 mb-4 ${a.text}`} />
-                  <p className="text-sm leading-relaxed text-slate-300">
+                  <p className="text-sm leading-[1.75] text-slate-300">
                     {caseStudy.nextEvolution}
                   </p>
                 </div>
