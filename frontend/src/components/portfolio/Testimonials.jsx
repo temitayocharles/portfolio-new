@@ -13,9 +13,9 @@ import { SectionLabel } from "./About";
 
 const accentMap = {
   teal: {
-    avatar: "bg-teal-300/15 text-teal-200 border-teal-300/30",
-    border: "hover:border-teal-300/30",
-    icon: "text-teal-300/60",
+    avatar: "bg-stone-400/12 text-stone-200 border-stone-400/28",
+    border: "hover:border-stone-400/22",
+    icon: "text-stone-400/55",
   },
   amber: {
     avatar: "bg-amber-300/15 text-amber-200 border-amber-300/30",
@@ -35,7 +35,7 @@ const Testimonials = () => {
         <div className="mt-10 mb-12 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
           <h2 className="text-3xl lg:text-4xl font-semibold tracking-[-0.02em] text-slate-50 max-w-3xl leading-tight">
             Trusted by{" "}
-            <span className="text-teal-300">engineering leaders</span> shipping
+            <span className="text-stone-300">engineering leaders</span> shipping
             production-grade platforms.
           </h2>
           <div className="flex items-center gap-2">
@@ -98,8 +98,8 @@ const Testimonials = () => {
               /{testimonials.length} engagement stories
             </p>
             <div className="flex items-center gap-2">
-              <CarouselPrevious className="relative left-0 top-0 translate-y-0 bg-white/[0.04] border-white/10 text-slate-300 hover:bg-teal-300/10 hover:border-teal-300/30 hover:text-teal-200" />
-              <CarouselNext className="relative right-0 top-0 translate-y-0 bg-white/[0.04] border-white/10 text-slate-300 hover:bg-teal-300/10 hover:border-teal-300/30 hover:text-teal-200" />
+              <CarouselPrevious className="relative left-0 top-0 translate-y-0 bg-white/[0.04] border-white/10 text-slate-300 hover:bg-stone-400/[0.08] hover:border-stone-400/22 hover:text-stone-200" />
+              <CarouselNext className="relative right-0 top-0 translate-y-0 bg-white/[0.04] border-white/10 text-slate-300 hover:bg-stone-400/[0.08] hover:border-stone-400/22 hover:text-stone-200" />
             </div>
           </div>
         </Carousel>

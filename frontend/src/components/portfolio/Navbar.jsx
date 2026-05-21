@@ -60,12 +60,12 @@ const Navbar = () => {
           }}
           className="flex items-center gap-2 group"
         >
-          <span className="h-8 w-8 rounded-md bg-[#0f1f1a] border border-teal-400/30 flex items-center justify-center font-mono text-teal-300 font-bold text-sm">
+          <span className="h-8 w-8 rounded-md bg-[#171410] border border-stone-600/40 flex items-center justify-center font-mono text-stone-300 font-bold text-sm">
             TC
           </span>
           <span className="hidden sm:block text-slate-200 font-medium tracking-tight">
             {profile.firstName}
-            <span className="text-teal-300">.</span>
+            <span className="text-stone-400">.</span>
           </span>
         </a>
 
@@ -76,7 +76,7 @@ const Navbar = () => {
                 onClick={() => handleNav(l.href)}
                 className={`px-3 py-2 text-sm rounded-md transition-colors ${
                   active === l.href
-                    ? "text-teal-300"
+                    ? "text-stone-200"
                     : "text-slate-400 hover:text-slate-100"
                 }`}
               >
@@ -92,7 +92,7 @@ const Navbar = () => {
             target="_blank"
             rel="noreferrer"
             aria-label="Open Temitayo Charles Akinniranye GitHub profile"
-            className="p-2 text-slate-400 hover:text-teal-300 transition-colors"
+            className="p-2 text-slate-400 hover:text-stone-300 transition-colors"
           >
             <GithubIcon className="h-4 w-4" />
           </a>
@@ -101,14 +101,14 @@ const Navbar = () => {
             target="_blank"
             rel="noreferrer"
             aria-label="Open Temitayo Charles Akinniranye LinkedIn profile"
-            className="p-2 text-slate-400 hover:text-teal-300 transition-colors"
+            className="p-2 text-slate-400 hover:text-stone-300 transition-colors"
           >
             <LinkedinIcon className="h-4 w-4" />
           </a>
           <Button
             asChild
             size="sm"
-            className="bg-teal-300 hover:bg-teal-200 text-[#0a0f14] font-medium"
+            className="bg-stone-100 hover:bg-stone-50 text-[#0a0f14] font-medium"
           >
             <a href={profile.resumeUrl} target="_blank" rel="noreferrer">
               <Download className="h-4 w-4 mr-1.5" />
@@ -133,22 +133,22 @@ const Navbar = () => {
               <button
                 key={l.href}
                 onClick={() => handleNav(l.href)}
-                className="text-left px-3 py-3 text-slate-300 hover:text-teal-300 transition-colors border-b border-white/5"
+                className="text-left px-3 py-3 text-slate-300 hover:text-stone-200 transition-colors border-b border-white/5"
               >
                 {l.label}
               </button>
             ))}
             <div className="flex items-center gap-3 pt-3">
-              <a href={profile.github} target="_blank" rel="noreferrer" aria-label="Open Temitayo Charles Akinniranye GitHub profile" className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-slate-300 transition-all hover:border-teal-300/40 hover:bg-teal-300/10 hover:text-teal-200">
+              <a href={profile.github} target="_blank" rel="noreferrer" aria-label="Open Temitayo Charles Akinniranye GitHub profile" className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-slate-300 transition-all hover:border-stone-400/30 hover:bg-stone-400/[0.08] hover:text-stone-200">
                 <GithubIcon className="h-5 w-5" />
               </a>
-              <a href={profile.linkedin} target="_blank" rel="noreferrer" aria-label="Open Temitayo Charles Akinniranye LinkedIn profile" className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-slate-300 transition-all hover:border-teal-300/40 hover:bg-teal-300/10 hover:text-teal-200">
+              <a href={profile.linkedin} target="_blank" rel="noreferrer" aria-label="Open Temitayo Charles Akinniranye LinkedIn profile" className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-slate-300 transition-all hover:border-stone-400/30 hover:bg-stone-400/[0.08] hover:text-stone-200">
                 <LinkedinIcon className="h-5 w-5" />
               </a>
               <a href={`mailto:${profile.email}`} aria-label="Email Temitayo Charles Akinniranye" className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-slate-300 transition-all hover:border-amber-300/40 hover:bg-amber-300/10 hover:text-amber-200">
                 <Mail className="h-5 w-5" />
               </a>
-              <Button asChild size="sm" className="ml-auto bg-teal-300 hover:bg-teal-200 text-[#0a0f14]">
+              <Button asChild size="sm" className="ml-auto bg-stone-100 hover:bg-stone-50 text-[#0a0f14]">
                 <a href={profile.resumeUrl} target="_blank" rel="noreferrer">
                   <Download className="h-4 w-4 mr-1.5" />
                   Resume

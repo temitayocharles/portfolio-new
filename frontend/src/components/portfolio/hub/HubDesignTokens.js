@@ -84,12 +84,12 @@ export const routeConfig = {
 
 export const ACCENT = {
   teal: {
-    border: "border-teal-400/20",
-    bg: "bg-teal-400/[0.08]",
-    text: "text-teal-300",
-    dot: "bg-teal-400",
-    rule: "bg-teal-400",
-    pill: "border-teal-400/20 bg-teal-400/[0.06] text-teal-200",
+    border: "border-stone-400/18",
+    bg: "bg-stone-400/[0.06]",
+    text: "text-stone-300",
+    dot: "bg-stone-400",
+    rule: "bg-stone-400",
+    pill: "border-stone-400/18 bg-stone-400/[0.05] text-stone-200",
   },
   amber: {
     border: "border-amber-400/20",

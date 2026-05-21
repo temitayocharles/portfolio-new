@@ -23,12 +23,12 @@ const UPDATE_LANES = [
 ];
 
 const laneAccent = {
-  teal: "border-teal-400/15 bg-teal-400/[0.04] text-teal-200",
+  teal: "border-stone-400/14 bg-stone-400/[0.04] text-stone-200",
   amber: "border-amber-400/15 bg-amber-400/[0.04] text-amber-200",
 };
 
 const UpdateCard = ({ update }) => (
-  <article className="rounded-2xl border border-white/[0.08] bg-white/[0.03] p-6 transition hover:border-teal-400/15 hover:bg-white/[0.04]">
+  <article className="rounded-2xl border border-white/[0.08] bg-white/[0.03] p-6 transition hover:border-stone-400/18 hover:bg-white/[0.04]">
     <div className="flex flex-wrap items-center justify-between gap-3">
       <Tag accent="teal">{update.category}</Tag>
       <time className="font-mono text-xs text-slate-600">{update.date}</time>
@@ -36,7 +36,7 @@ const UpdateCard = ({ update }) => (
     <h2 className="mt-4 text-xl font-semibold text-white">{update.title}</h2>
     <p className="mt-3 text-sm leading-7 text-slate-300">{update.summary}</p>
     {update.impact && (
-      <p className="mt-4 rounded-xl border border-teal-400/10 bg-teal-400/[0.04] px-4 py-3 text-sm text-teal-200">
+      <p className="mt-4 rounded-xl border border-stone-400/10 bg-stone-400/[0.04] px-4 py-3 text-sm text-stone-200">
         {update.impact}
       </p>
     )}
@@ -46,7 +46,7 @@ const UpdateCard = ({ update }) => (
           <a
             key={route}
             href={route}
-            className="rounded-full border border-white/[0.07] bg-black/10 px-3 py-1 text-xs text-slate-500 transition hover:text-teal-300"
+            className="rounded-full border border-white/[0.07] bg-black/10 px-3 py-1 text-xs text-slate-500 transition hover:text-stone-300"
           >
             {route}
           </a>

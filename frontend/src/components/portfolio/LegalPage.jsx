@@ -56,15 +56,15 @@ const LegalPage = ({ path }) => {
   return (
     <main className="min-h-screen bg-[#0a0f14] text-slate-100">
       <section className="relative overflow-hidden px-6 py-10 lg:px-10 lg:py-14">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_0%,rgba(45,212,191,0.12),transparent_32rem),radial-gradient(circle_at_80%_10%,rgba(251,191,36,0.08),transparent_28rem)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_0%,rgba(201,124,68,0.07),transparent_32rem),radial-gradient(circle_at_80%_10%,rgba(251,191,36,0.06),transparent_28rem)]" />
         <div className="relative mx-auto max-w-4xl">
-          <a href="/" className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-sm text-slate-300 hover:border-teal-300/40 hover:text-teal-200">
+          <a href="/" className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-sm text-slate-300 hover:border-stone-400/25 hover:text-stone-200">
             <ArrowLeft className="h-4 w-4" />
             Back to portfolio
           </a>
 
           <div className="mt-12 rounded-[2rem] border border-white/10 bg-[#0d141c]/86 p-6 shadow-2xl backdrop-blur md:p-10">
-            <div className="inline-flex items-center gap-2 rounded-full border border-teal-300/20 bg-teal-300/[0.08] px-3 py-1.5 text-xs font-mono uppercase tracking-[0.18em] text-teal-200">
+            <div className="inline-flex items-center gap-2 rounded-full border border-stone-400/18 bg-stone-400/[0.06] px-3 py-1.5 text-xs font-mono uppercase tracking-[0.18em] text-stone-200">
               <Icon className="h-3.5 w-3.5" />
               {page.label}
             </div>

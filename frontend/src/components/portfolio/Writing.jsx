@@ -14,15 +14,15 @@ import { SectionLabel } from "./About";
 
 const accentMap = {
   teal: {
-    tag: "bg-teal-300/[0.08] text-teal-200 border-teal-300/20",
-    icon: "text-teal-300 hover:text-teal-200",
-    hover: "hover:border-teal-300/30 hover:shadow-[0_0_40px_-12px_rgba(94,234,212,0.25)]",
-    result: "border-teal-300/20 bg-teal-300/[0.06] text-teal-100",
+    tag: "bg-stone-400/[0.06] text-stone-200 border-stone-400/18",
+    icon: "text-stone-300 hover:text-stone-100",
+    hover: "hover:border-stone-400/22",
+    result: "border-stone-400/18 bg-stone-400/[0.05] text-stone-100",
   },
   amber: {
     tag: "bg-amber-300/[0.08] text-amber-200 border-amber-300/20",
     icon: "text-amber-300 hover:text-amber-200",
-    hover: "hover:border-amber-300/30 hover:shadow-[0_0_40px_-12px_rgba(251,191,36,0.22)]",
+    hover: "hover:border-amber-300/30",
     result: "border-amber-300/20 bg-amber-300/[0.06] text-amber-100",
   },
 };
@@ -48,7 +48,7 @@ const Writing = () => {
         <div className="mt-10 mb-12 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
           <h2 className="text-3xl lg:text-4xl font-semibold tracking-[-0.02em] text-slate-50 max-w-3xl leading-tight">
             Notes on{" "}
-            <span className="text-teal-300">company-grade platforms</span>, reliability, and
+            <span className="text-stone-300">company-grade platforms</span>, reliability, and
             AI-assisted operations.
           </h2>
           <p className="text-slate-400 max-w-md text-sm leading-relaxed">
@@ -110,7 +110,7 @@ const Writing = () => {
                         onKeyDown={(event) => {
                           if (event.key === "Enter" || event.key === " ") openNote(w, event);
                         }}
-                        className={`group inline-flex min-h-10 items-center gap-1 rounded-xl border border-white/10 bg-white/[0.035] px-3 py-2 text-sm transition-colors hover:border-teal-300/30 hover:bg-teal-300/[0.08] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-300/60 ${a.icon}`}
+                        className={`group inline-flex min-h-10 items-center gap-1 rounded-xl border border-white/10 bg-white/[0.035] px-3 py-2 text-sm transition-colors hover:border-stone-400/22 hover:bg-stone-400/[0.07] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/50 ${a.icon}`}
                       >
                         Read
                         <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -127,8 +127,8 @@ const Writing = () => {
               /swipe or use arrows
             </p>
             <div className="flex items-center gap-2">
-              <CarouselPrevious className="relative left-0 top-0 translate-y-0 bg-white/[0.04] border-white/10 text-slate-300 hover:bg-teal-300/10 hover:border-teal-300/30 hover:text-teal-200" />
-              <CarouselNext className="relative right-0 top-0 translate-y-0 bg-white/[0.04] border-white/10 text-slate-300 hover:bg-teal-300/10 hover:border-teal-300/30 hover:text-teal-200" />
+              <CarouselPrevious className="relative left-0 top-0 translate-y-0 bg-white/[0.04] border-white/10 text-slate-300 hover:bg-stone-400/[0.08] hover:border-stone-400/22 hover:text-stone-200" />
+              <CarouselNext className="relative right-0 top-0 translate-y-0 bg-white/[0.04] border-white/10 text-slate-300 hover:bg-stone-400/[0.08] hover:border-stone-400/22 hover:text-stone-200" />
             </div>
           </div>
         </Carousel>
@@ -163,11 +163,11 @@ const NoteModal = ({ note, onClose }) => {
       <div className="relative w-full max-w-2xl max-h-[86vh] overflow-y-auto rounded-3xl border border-white/10 bg-[#081018] shadow-2xl">
         <div className="sticky top-0 z-10 flex items-start justify-between gap-4 border-b border-white/10 bg-[#081018]/95 p-5 sm:p-6 backdrop-blur">
           <div>
-            <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-teal-300">Operator note</div>
+            <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-stone-400">Operator note</div>
             <h3 className="mt-2 text-2xl font-semibold text-slate-50">{note.noteTitle || note.title}</h3>
             <p className="mt-1 text-sm text-slate-500">{note.tag} · {note.readTime} · {note.date}</p>
           </div>
-          <button type="button" onClick={onClose} className="rounded-full border border-white/10 bg-white/[0.04] p-2 text-slate-400 hover:text-slate-100 hover:border-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-300/60">
+          <button type="button" onClick={onClose} className="rounded-full border border-white/10 bg-white/[0.04] p-2 text-slate-400 hover:text-slate-100 hover:border-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/50">
             <X className="h-4 w-4" />
           </button>
         </div>

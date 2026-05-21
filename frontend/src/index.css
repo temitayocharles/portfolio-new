@@ -28,8 +28,8 @@ code,
   content: "\2588";
   display: inline-block;
   margin-left: 2px;
-  color: #5eead4;
-  opacity: 0.7;
+  color: #c97c44;
+  opacity: 0.85;
 }
 
 /* Marquee tech-stack scroll */
@@ -51,31 +51,49 @@ code,
 
 @layer base {
   :root {
+    /* M13: graphite/carbon/mineral base — away from AI-blue teal */
     --background: 210 33% 6%;
-    --foreground: 210 20% 92%;
+    --foreground: 30 12% 91%;
     --card: 210 32% 8%;
-    --card-foreground: 210 20% 92%;
+    --card-foreground: 30 12% 91%;
     --popover: 210 32% 8%;
-    --popover-foreground: 210 20% 92%;
-    --primary: 168 76% 64%;
+    --popover-foreground: 30 12% 91%;
+    /* Primary shifted to warm stone white — not aqua */
+    --primary: 30 10% 88%;
     --primary-foreground: 210 33% 6%;
-    --secondary: 210 25% 14%;
-    --secondary-foreground: 210 20% 92%;
-    --muted: 210 25% 14%;
-    --muted-foreground: 215 16% 57%;
-    --accent: 210 25% 14%;
-    --accent-foreground: 210 20% 92%;
+    --secondary: 210 20% 13%;
+    --secondary-foreground: 30 8% 84%;
+    --muted: 210 20% 13%;
+    --muted-foreground: 215 12% 52%;
+    --accent: 210 20% 13%;
+    --accent-foreground: 30 8% 84%;
     --destructive: 0 70% 55%;
     --destructive-foreground: 210 20% 98%;
-    --border: 210 20% 18%;
-    --input: 210 20% 18%;
-    --ring: 168 76% 64%;
-    --chart-1: 168 76% 64%;
+    --border: 210 18% 16%;
+    --input: 210 18% 16%;
+    /* Ring: warm amber focus — not aqua */
+    --ring: 28 80% 56%;
+    --chart-1: 168 45% 52%;
     --chart-2: 38 92% 65%;
-    --chart-3: 197 37% 24%;
+    --chart-3: 210 30% 22%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
+
+    /* M13 palette tokens */
+    --m13-graphite-50:  #f0eeec;
+    --m13-graphite-200: #c8c4be;
+    --m13-graphite-400: #8b9399;
+    --m13-graphite-600: #4a5258;
+    --m13-graphite-800: #1e2429;
+    --m13-graphite-900: #0d1218;
+    --m13-warm-accent:  #c97c44;  /* restrained terracotta */
+    --m13-warm-muted:   #7a4e2d;
+    --m13-warm-subtle:  rgba(201,124,68,0.12);
+    --m13-teal-data:    #5eead4;  /* teal kept ONLY as data/status signal */
+    --m13-teal-subtle:  rgba(94,234,212,0.06);
+    --m13-border-rule:  rgba(200,196,190,0.08);
+    --m13-border-card:  rgba(200,196,190,0.06);
   }
 }
 
@@ -209,8 +227,8 @@ body {
 }
 
 ::selection {
-  background: rgba(45, 212, 191, 0.28);
-  color: #ecfeff;
+  background: rgba(201, 124, 68, 0.25);
+  color: #f5f0eb;
 }
 
 * {

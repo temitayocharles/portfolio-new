@@ -28,9 +28,9 @@ const Topology = ({ className = "" }) => {
     >
       <defs>
         <linearGradient id="edgeGrad" x1="0%" x2="100%">
-          <stop offset="0%" stopColor="#5eead4" stopOpacity="0.05" />
-          <stop offset="50%" stopColor="#5eead4" stopOpacity="0.35" />
-          <stop offset="100%" stopColor="#5eead4" stopOpacity="0.05" />
+          <stop offset="0%" stopColor="#8b9399" stopOpacity="0.04" />
+          <stop offset="50%" stopColor="#8b9399" stopOpacity="0.28" />
+          <stop offset="100%" stopColor="#8b9399" stopOpacity="0.04" />
         </linearGradient>
       </defs>
 
@@ -52,7 +52,7 @@ const Topology = ({ className = "" }) => {
 
       {/* nodes */}
       {nodes.map((n) => {
-        const color = n.accent === "amber" ? "#fbbf24" : "#5eead4";
+        const color = n.accent === "amber" ? "#c97c44" : "#8b9399";
         return (
           <g key={n.id}>
             <circle cx={n.x} cy={n.y} r="7" fill="#0b121b" stroke={color} strokeWidth="1.5" />

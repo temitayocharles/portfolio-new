@@ -69,9 +69,9 @@ const Hero = () => {
       <div className="relative max-w-7xl mx-auto px-6 lg:px-10">
         <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
           <div className="lg:col-span-7">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-teal-300/25 bg-teal-300/[0.07] text-teal-300 text-xs font-mono tracking-wide mb-7 backdrop-blur-sm">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-stone-400/20 bg-stone-400/[0.06] text-stone-300 text-xs font-mono tracking-wide mb-7 backdrop-blur-sm">
               <span className="relative flex h-1.5 w-1.5">
-                <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-teal-300" />
+                <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-stone-300" />
               </span>
               Available for new platform engagements
             </div>
@@ -84,7 +84,7 @@ const Hero = () => {
                 <span className="hero-rotating-slot" aria-live="polite" aria-atomic="true">
                   <span
                     key={wordIdx}
-                    className="hero-rotating-word bg-gradient-to-r from-teal-200 via-teal-300 to-teal-400 bg-clip-text text-transparent"
+                    className="hero-rotating-word bg-gradient-to-r from-stone-200 via-amber-200 to-stone-300 bg-clip-text text-transparent"
                   >
                     {ROTATING[wordIdx]}
                   </span>
@@ -94,14 +94,14 @@ const Hero = () => {
                     preserveAspectRatio="none"
                     aria-hidden="true"
                   >
-                    <path d="M0 5 Q 50 0 100 4 T 200 3" stroke="#5eead4" strokeWidth="2" fill="none" opacity="0.5" />
+                    <path d="M0 5 Q 50 0 100 4 T 200 3" stroke="#c97c44" strokeWidth="1.5" fill="none" opacity="0.4" />
                   </svg>
                 </span>
               </span>
               <span className="block mt-1 lg:mt-2">
                 {" for the teams shipping "}
                 <span className="text-slate-50">tomorrow's</span>{" "}
-                <span className="text-teal-300">infrastructure</span>.
+                <span className="text-stone-300">infrastructure</span>.
               </span>
               </span>
             </h1>
@@ -129,7 +129,7 @@ const Hero = () => {
               <Button
                 onClick={() => scrollTo("#projects")}
                 size="lg"
-                className="min-h-11 w-full bg-teal-300 font-medium text-[#0a0f14] hover:bg-teal-200 sm:w-auto group"
+                className="min-h-11 w-full bg-stone-100 font-medium text-[#0a0f14] hover:bg-stone-50 sm:w-auto group"
               >
                 Explore Projects
                 <ArrowRight className="h-4 w-4 ml-1.5 transition-transform group-hover:translate-x-0.5" />
@@ -190,13 +190,13 @@ const Hero = () => {
                 <div className="flex items-center gap-1.5 px-3 py-2 border-b border-white/5 bg-white/[0.02]">
                   <span className="h-2.5 w-2.5 rounded-full bg-rose-400/70" />
                   <span className="h-2.5 w-2.5 rounded-full bg-amber-400/70" />
-                  <span className="h-2.5 w-2.5 rounded-full bg-teal-300/70" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-emerald-500/70" />
                   <div className="ml-2 flex items-center gap-1.5 text-[10px] font-mono text-slate-500">
                     <Terminal className="h-3 w-3" /> tca, zsh
                   </div>
                 </div>
                 <div className="px-3.5 py-3 min-h-[90px] font-mono text-[11.5px] leading-relaxed">
-                  <div className="text-teal-300">
+                  <div className="text-amber-300/90">
                     <span className="text-slate-500 mr-1.5">{currentLine.p}</span>
                     <span className="term-cursor">{typed}</span>
                   </div>
@@ -227,9 +227,9 @@ const Hero = () => {
           {[...MARQUEE_TECH, ...MARQUEE_TECH].map((t, i) => (
             <span
               key={i}
-              className="flex items-center gap-2 text-xs text-slate-500 transition-colors hover:text-teal-300 sm:gap-2.5 sm:text-sm font-mono"
+              className="flex items-center gap-2 text-xs text-slate-500 transition-colors hover:text-stone-300 sm:gap-2.5 sm:text-sm font-mono"
             >
-              <span className="h-1 w-1 rounded-full bg-teal-300/40" />
+              <span className="h-1 w-1 rounded-full bg-stone-500/50" />
               {t}
             </span>
           ))}
@@ -237,7 +237,7 @@ const Hero = () => {
         <div className="flex max-w-full flex-wrap items-center justify-center gap-x-4 gap-y-2 px-6 md:hidden">
           {MARQUEE_TECH.map((t) => (
             <span key={t} className="inline-flex min-w-0 items-center gap-1.5 break-words font-mono text-xs text-slate-500">
-              <span className="h-1 w-1 rounded-full bg-teal-300/40" />
+              <span className="h-1 w-1 rounded-full bg-stone-500/50" />
               {t}
             </span>
           ))}

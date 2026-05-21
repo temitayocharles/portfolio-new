@@ -72,7 +72,7 @@ const Contact = () => {
           <div className="lg:col-span-5">
             <h2 className="text-3xl lg:text-[2.5rem] font-semibold tracking-[-0.02em] text-slate-50 leading-[1.1]">
               Let's build{" "}
-              <span className="text-teal-300">reliable, secure, and AI-ready</span>{" "}
+              <span className="text-stone-300">reliable, secure, and AI-ready</span>{" "}
               infrastructure.
             </h2>
             <p className="mt-5 text-slate-300 leading-[1.75]">
@@ -118,7 +118,7 @@ const Contact = () => {
                     value={form.name}
                     onChange={onChange}
                     placeholder="Your full name"
-                    className="bg-[#0e1620] border-white/10 text-slate-100 placeholder:text-slate-600 focus-visible:ring-teal-300/40 focus-visible:border-teal-300/40"
+                    className="bg-[#0e1620] border-white/10 text-slate-100 placeholder:text-slate-600 focus-visible:ring-amber-400/30 focus-visible:border-amber-400/30"
                   />
                 </Field>
                 <Field label="Email" htmlFor="email">
@@ -129,7 +129,7 @@ const Contact = () => {
                     value={form.email}
                     onChange={onChange}
                     placeholder="you@company.com"
-                    className="bg-[#0e1620] border-white/10 text-slate-100 placeholder:text-slate-600 focus-visible:ring-teal-300/40 focus-visible:border-teal-300/40"
+                    className="bg-[#0e1620] border-white/10 text-slate-100 placeholder:text-slate-600 focus-visible:ring-amber-400/30 focus-visible:border-amber-400/30"
                   />
                 </Field>
               </div>
@@ -141,7 +141,7 @@ const Contact = () => {
                     value={form.subject}
                     onChange={onChange}
                     placeholder="Platform engineering engagement, hiring, collaboration..."
-                    className="bg-[#0e1620] border-white/10 text-slate-100 placeholder:text-slate-600 focus-visible:ring-teal-300/40 focus-visible:border-teal-300/40"
+                    className="bg-[#0e1620] border-white/10 text-slate-100 placeholder:text-slate-600 focus-visible:ring-amber-400/30 focus-visible:border-amber-400/30"
                   />
                 </Field>
               </div>
@@ -154,7 +154,7 @@ const Contact = () => {
                     value={form.message}
                     onChange={onChange}
                     placeholder="Tell me about your team, the platform challenges you're facing, and what success looks like."
-                    className="bg-[#0e1620] border-white/10 text-slate-100 placeholder:text-slate-600 focus-visible:ring-teal-300/40 focus-visible:border-teal-300/40 resize-none"
+                    className="bg-[#0e1620] border-white/10 text-slate-100 placeholder:text-slate-600 focus-visible:ring-amber-400/30 focus-visible:border-amber-400/30 resize-none"
                   />
                 </Field>
               </div>
@@ -166,7 +166,7 @@ const Contact = () => {
                 <Button
                   type="submit"
                   disabled={status !== "idle"}
-                  className="bg-teal-300 hover:bg-teal-200 text-[#0a0f14] font-medium min-w-[150px]"
+                  className="bg-stone-100 hover:bg-stone-50 text-[#0a0f14] font-medium min-w-[150px]"
                 >
                   {status === "sending" && (
                     <>
@@ -210,8 +210,8 @@ const Field = ({ label, htmlFor, children }) => (
 
 const ContactRow = ({ icon: Icon, label, value, href }) => {
   const inner = (
-    <div className="flex items-center gap-3 px-4 py-3 rounded-lg border border-white/5 bg-white/[0.02] hover:border-teal-300/25 hover:bg-white/[0.04] transition-colors">
-      <div className="h-9 w-9 rounded-md bg-teal-300/10 border border-teal-300/20 flex items-center justify-center text-teal-300">
+    <div className="flex items-center gap-3 px-4 py-3 rounded-lg border border-white/5 bg-white/[0.02] hover:border-stone-400/20 hover:bg-white/[0.04] transition-colors">
+      <div className="h-9 w-9 rounded-md bg-stone-400/[0.07] border border-stone-400/18 flex items-center justify-center text-stone-300">
         <Icon className="h-4 w-4" />
       </div>
       <div className="min-w-0">

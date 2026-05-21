@@ -35,7 +35,7 @@ const Skills = () => {
         <div className="mt-10 flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between lg:gap-6">
           <h2 className="text-3xl lg:text-4xl font-semibold tracking-[-0.02em] text-slate-50 max-w-3xl leading-tight">
             A platform engineer's toolkit, from
-            <span className="text-teal-300"> Kubernetes & GitOps </span>
+            <span className="text-stone-300"> Kubernetes &amp; GitOps </span>
             to AI-assisted operations.
           </h2>
           <p className="max-w-md text-sm leading-relaxed text-slate-400">
@@ -50,10 +50,10 @@ const Skills = () => {
             return (
               <div
                 key={group.id}
-                className="group relative rounded-xl border border-white/5 bg-gradient-to-b from-white/[0.03] to-transparent p-5 transition-colors hover:border-teal-300/25 sm:p-6"
+                className="group relative rounded-xl border border-white/5 bg-gradient-to-b from-white/[0.03] to-transparent p-5 transition-colors hover:border-stone-400/20 sm:p-6"
               >
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="h-10 w-10 rounded-lg bg-teal-300/10 border border-teal-300/20 flex items-center justify-center text-teal-300 group-hover:bg-teal-300/15 transition-colors">
+                  <div className="h-10 w-10 rounded-lg bg-stone-400/10 border border-stone-400/15 flex items-center justify-center text-stone-300 group-hover:bg-stone-400/15 transition-colors">
                     <Icon className="h-5 w-5" />
                   </div>
                   <h3 className="text-base font-medium text-slate-100">
@@ -65,7 +65,7 @@ const Skills = () => {
                   {group.items.map((item) => (
                     <span
                       key={item}
-                      className="break-words rounded-md border border-white/[0.06] bg-white/[0.04] px-2.5 py-1 text-[11px] text-slate-300 transition-colors hover:border-teal-300/30 hover:text-teal-200 font-mono"
+                      className="break-words rounded-md border border-white/[0.06] bg-white/[0.04] px-2.5 py-1 text-[11px] text-slate-300 transition-colors hover:border-stone-400/25 hover:text-stone-200 font-mono"
                     >
                       {item}
                     </span>

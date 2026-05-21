@@ -10,12 +10,12 @@ const FEATURED_PROJECT_IDS = ["ai-inference-lab", "sentinel-copilot", "infraforg
 
 const accentMap = {
   teal: {
-    border: "hover:border-teal-300/35",
-    chipBorder: "border-teal-300/20",
-    chipText: "text-teal-200",
-    iconBg: "bg-teal-300/10 border-teal-300/20 text-teal-300",
-    pillarBg: "bg-teal-300/[0.06] text-teal-200 border-teal-300/15",
-    action: "text-teal-300 hover:text-teal-200",
+    border: "hover:border-stone-400/28",
+    chipBorder: "border-stone-400/18",
+    chipText: "text-stone-200",
+    iconBg: "bg-stone-400/[0.08] border-stone-400/18 text-stone-300",
+    pillarBg: "bg-stone-400/[0.05] text-stone-200 border-stone-400/14",
+    action: "text-stone-300 hover:text-stone-100",
   },
   amber: {
     border: "hover:border-amber-300/35",
@@ -61,14 +61,14 @@ const Projects = () => {
   return (
     <section id="projects" data-schema-guard={PROJECTS_SCHEMA_GUARD_VERSION} className="relative py-24 lg:py-32 bg-[#0b1117]">
       <div className="absolute inset-0 bg-grid opacity-[0.18] pointer-events-none" />
-      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-teal-300/30 to-transparent pointer-events-none" />
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-stone-500/18 to-transparent pointer-events-none" />
       <div className="relative max-w-7xl mx-auto px-6 lg:px-10">
         <SectionLabel index="04" title="Projects" />
 
         <div className="mt-10 mb-14 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
           <h2 className="text-3xl lg:text-4xl font-semibold tracking-[-0.02em] text-slate-50 max-w-3xl leading-tight">
             Founder-led and business-facing systems with
-            <span className="text-teal-300"> production-shaped</span> constraints.
+            <span className="text-stone-300"> production-shaped</span> constraints.
           </h2>
           <p className="text-slate-400 max-w-md text-sm leading-relaxed">
             I selected the strongest current case studies: AI Inference Lab for model operations,
@@ -122,7 +122,7 @@ const Projects = () => {
                   <ul className="space-y-1.5">
                     {asArray(outcomes).map((item) => (
                       <li key={item} className="flex items-start gap-2 text-xs text-slate-400">
-                        <span className="mt-1.5 h-1 w-1 rounded-full bg-teal-300/70" />
+                        <span className="mt-1.5 h-1 w-1 rounded-full bg-stone-400/60" />
                         <span>{item}</span>
                       </li>
                     ))}
@@ -152,7 +152,7 @@ const Projects = () => {
                   </div>
                   <div className="flex items-center gap-3">
                     {p.repoUrl ? (
-                      <a href={p.repoUrl} target="_blank" rel="noreferrer" aria-label={`Open ${p.name} public GitHub repository`} className="inline-flex items-center gap-1.5 text-slate-500 hover:text-teal-300 transition-colors">
+                      <a href={p.repoUrl} target="_blank" rel="noreferrer" aria-label={`Open ${p.name} public GitHub repository`} className="inline-flex items-center gap-1.5 text-slate-500 hover:text-stone-300 transition-colors">
                         Repo <ArrowUpRight className="h-3.5 w-3.5" />
                       </a>
                     ) : (
@@ -164,7 +164,7 @@ const Projects = () => {
                       href={`/case/${p.id}`}
                       data-portfolio-action="open-case-study-page"
                       aria-label={`Open full case study for ${p.name}`}
-                      className={`inline-flex min-h-10 items-center gap-1.5 rounded-xl border border-white/10 bg-white/[0.035] px-3 py-2 transition-colors hover:border-amber-300/30 hover:bg-amber-300/[0.07] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-300/60 ${accent.action}`}
+                      className={`inline-flex min-h-10 items-center gap-1.5 rounded-xl border border-white/10 bg-white/[0.035] px-3 py-2 transition-colors hover:border-amber-300/30 hover:bg-amber-300/[0.07] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/50 ${accent.action}`}
                     >
                       Case study <ArrowUpRight className="h-3.5 w-3.5" />
                     </a>
@@ -206,11 +206,11 @@ const ProjectCaseStudy = ({ project, onClose }) => {
       <div className="relative w-full max-w-3xl max-h-[86vh] overflow-y-auto rounded-3xl border border-white/10 bg-[#081018] shadow-2xl">
         <div className="sticky top-0 z-10 flex items-start justify-between gap-4 border-b border-white/10 bg-[#081018]/95 p-5 sm:p-6 backdrop-blur">
           <div>
-            <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-teal-300">Case study</div>
+            <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-stone-400">Case study</div>
             <h3 className="mt-2 text-2xl font-semibold text-slate-50">{safeProject.caseStudy?.title || safeProject.name}</h3>
             <p className="mt-1 text-sm text-slate-400">{safeProject.name} · {safeProject.category}</p>
           </div>
-          <button type="button" onClick={onClose} className="rounded-full border border-white/10 bg-white/[0.04] p-2 text-slate-400 hover:text-slate-100 hover:border-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-300/60">
+          <button type="button" onClick={onClose} className="rounded-full border border-white/10 bg-white/[0.04] p-2 text-slate-400 hover:text-slate-100 hover:border-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/50">
             <X className="h-4 w-4" />
           </button>
         </div>
@@ -223,7 +223,7 @@ const ProjectCaseStudy = ({ project, onClose }) => {
             <ul className="space-y-3">
               {asArray(safeProject.caseStudy?.decisions?.length ? safeProject.caseStudy.decisions : safeProject.outcomes).map((item) => (
                 <li key={item} className="flex gap-3 text-sm text-slate-300 leading-relaxed">
-                  <span className="mt-2 h-1.5 w-1.5 flex-none rounded-full bg-teal-300" />
+                  <span className="mt-2 h-1.5 w-1.5 flex-none rounded-full bg-stone-400/70" />
                   <span>{item}</span>
                 </li>
               ))}
