@@ -15,7 +15,6 @@ const accentMap = {
     chipText: "text-teal-200",
     iconBg: "bg-teal-300/10 border-teal-300/20 text-teal-300",
     pillarBg: "bg-teal-300/[0.06] text-teal-200 border-teal-300/15",
-    glow: "from-teal-300/15",
     action: "text-teal-300 hover:text-teal-200",
   },
   amber: {
@@ -24,7 +23,6 @@ const accentMap = {
     chipText: "text-amber-200",
     iconBg: "bg-amber-300/10 border-amber-300/20 text-amber-300",
     pillarBg: "bg-amber-300/[0.06] text-amber-200 border-amber-300/15",
-    glow: "from-amber-300/15",
     action: "text-amber-300 hover:text-amber-200",
   },
 };
@@ -88,9 +86,8 @@ const Projects = () => {
             return (
               <article
                 key={p.id}
-                className={`group relative overflow-hidden rounded-2xl border border-white/5 bg-gradient-to-b from-white/[0.04] to-white/[0.015] p-6 transition-[border-color,box-shadow,background-color] duration-300 hover:shadow-[0_16px_48px_-32px_rgba(94,234,212,0.30)] ${accent.border}`}
+                className={`group relative overflow-hidden rounded-2xl border border-white/5 bg-gradient-to-b from-white/[0.04] to-white/[0.015] p-6 transition-[border-color,background-color] duration-300 ${accent.border}`}
               >
-                <div className={`pointer-events-none absolute -right-16 -top-16 h-44 w-44 rounded-full bg-gradient-to-br ${accent.glow} to-transparent blur-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100`} />
 
                 <div className="relative flex items-start justify-between gap-4">
                   <div className={`h-11 w-11 rounded-lg border flex items-center justify-center ${accent.iconBg}`}>

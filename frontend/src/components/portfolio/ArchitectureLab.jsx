@@ -40,7 +40,18 @@ const nodeToneDot = {
 const ArchitectureLab = () => {
   const { projectArchitectures = fallbackProjectArchitectures } = usePortfolioContent();
   const architectures = Array.isArray(projectArchitectures) && projectArchitectures.length ? projectArchitectures : fallbackProjectArchitectures;
-  const [activeId, setActiveId] = useState(architectures[0]?.id);
+
+  // Read ?project= param from URL so case study pages can deep-link to a specific architecture
+  const initialId = useMemo(() => {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const requested = params.get("project");
+      if (requested && architectures.find((a) => a.id === requested)) return requested;
+    } catch (_) {}
+    return architectures[0]?.id;
+  }, [architectures]);
+
+  const [activeId, setActiveId] = useState(initialId);
   const [activeTab, setActiveTab] = useState("Topology");
   const [query, setQuery] = useState("");
   const [selectedNodeId, setSelectedNodeId] = useState(architectures[0]?.nodes?.[0]?.id);
