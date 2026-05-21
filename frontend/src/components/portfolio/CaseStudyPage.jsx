@@ -179,7 +179,7 @@ const CaseStudyPageContent = ({ projectId }) => {
 
   const artifactLinks = [
     project.diagramSvg || project.diagramPng || project.caseStudyPath
-      ? { label: "Explore interactive architecture", href: "/#architecture", icon: Network, internal: true }
+      ? { label: "Explore interactive architecture", href: `/#architecture?project=${project.id}`, icon: Network, internal: true }
       : null,
     project.runbookUrl
       ? { label: "Open runbook sample", href: project.runbookUrl, icon: ShieldCheck }
