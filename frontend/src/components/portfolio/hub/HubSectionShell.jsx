@@ -15,7 +15,7 @@ const HubSectionShell = ({ page, routeConfig, children }) => {
   return (
     <main className="min-h-screen bg-[#0a0f14] text-slate-100">
       <section className="relative overflow-hidden border-b border-white/[0.05] px-6 py-12 lg:px-10 lg:py-20">
-        <div className={`absolute top-0 left-0 h-px w-32 ${a.rule}`} />
+        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-slate-500/20 to-transparent" />
         <div className="relative mx-auto max-w-7xl">
           <a
             href="/"
@@ -32,10 +32,10 @@ const HubSectionShell = ({ page, routeConfig, children }) => {
                 <Icon className="h-3.5 w-3.5" />
                 {page.eyebrow}
               </div>
-              <h1 className="mt-6 max-w-4xl text-4xl font-semibold tracking-tight text-white md:text-5xl lg:text-6xl">
+              <h1 className="mt-6 max-w-4xl text-4xl font-semibold tracking-[-0.02em] text-white md:text-5xl lg:text-6xl">
                 {page.title}
               </h1>
-              <p className="mt-5 max-w-2xl text-base leading-8 text-slate-400 md:text-lg">
+              <p className="mt-5 max-w-2xl text-base leading-[1.75] text-slate-300 md:text-lg">
                 {page.description}
               </p>
             </div>

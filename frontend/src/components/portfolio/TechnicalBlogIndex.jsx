@@ -16,8 +16,8 @@ const TechnicalBlogIndex = () => {
         <SectionLabel index="BLOG" title="Technical blog index" />
         <div className="mt-8 grid lg:grid-cols-[0.9fr_1.1fr] gap-8 items-start">
           <div>
-            <h2 className="text-3xl lg:text-4xl font-semibold tracking-tight text-slate-50">Readable notes for platform operators and engineering leaders.</h2>
-            <p className="mt-4 text-slate-400 leading-relaxed">A compact index of the strongest writing topics already represented on the site: GitOps, FinOps, AIOps, SRE, Kubernetes, and DevSecOps.</p>
+            <h2 className="text-3xl lg:text-4xl font-semibold tracking-[-0.02em] text-slate-50">Readable notes for platform operators and engineering leaders.</h2>
+            <p className="mt-4 text-slate-300 leading-[1.75]">A compact index of the strongest writing topics already represented on the site: GitOps, FinOps, AIOps, SRE, Kubernetes, and DevSecOps.</p>
           </div>
           <div className="grid sm:grid-cols-2 gap-4">
             {posts.map((post) => (

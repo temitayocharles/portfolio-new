@@ -119,8 +119,8 @@ const EditorialDetailPage = ({ type, entryId }) => {
               {detail.date && <time className="font-mono text-slate-500">{detail.date}</time>}
             </div>
 
-            <h1 className="mt-6 text-3xl font-semibold tracking-tight text-white md:text-5xl">{detail.title}</h1>
-            <p className="mt-5 text-base leading-8 text-slate-300 md:text-lg">{detail.summary}</p>
+            <h1 className="mt-6 text-3xl font-semibold tracking-[-0.02em] text-white md:text-5xl">{detail.title}</h1>
+            <p className="mt-5 text-base leading-[1.75] text-slate-300 md:text-lg">{detail.summary}</p>
 
             {detail.detailSummary && (
               <section className="mt-8 rounded-2xl border border-white/[0.07] bg-black/20 p-5">
