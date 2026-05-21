@@ -22,7 +22,7 @@ const HiringManagerSummary = () => {
           <div className="inline-flex items-center gap-2 rounded-full border border-amber-300/15 bg-amber-300/[0.055] px-3 py-1 font-mono text-[11px] uppercase tracking-[0.18em] text-amber-200">
             <BriefcaseBusiness className="h-3.5 w-3.5" /> Hiring Manager Summary
           </div>
-          <h2 className="mt-6 text-3xl lg:text-4xl font-semibold tracking-tight text-slate-50">
+          <h2 className="mt-6 text-3xl lg:text-4xl font-semibold tracking-[-0.02em] text-slate-50">
             Senior platform engineer who can connect delivery, reliability, security, and AI operations.
           </h2>
           <p className="mt-5 text-slate-400 leading-relaxed">

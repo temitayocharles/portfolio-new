@@ -14,14 +14,14 @@ const About = () => {
 
         <div className="mt-12 grid lg:grid-cols-12 gap-10 lg:gap-14">
           <div className="lg:col-span-7">
-            <h2 className="text-3xl lg:text-4xl font-semibold tracking-tight text-slate-50 leading-tight">
+            <h2 className="text-3xl lg:text-4xl font-semibold tracking-[-0.02em] text-slate-50 leading-tight">
               Founder and platform engineer connecting infrastructure,
               <span className="text-teal-300"> reliability</span>, and
               <span className="text-teal-300"> AI workflows</span> into systems
               companies can operate.
             </h2>
 
-            <div className="mt-8 space-y-5 text-slate-400 leading-relaxed">
+            <div className="mt-8 space-y-5 text-slate-300 leading-[1.75] text-[0.9375rem]">
               {aboutParagraphs.map((p, i) => (
                 <p key={i}>{p}</p>
               ))}
@@ -44,8 +44,8 @@ const About = () => {
                 {/* subtle header label */}
                 <div className="absolute top-4 left-4 right-4 flex items-center justify-between font-mono text-[10px] text-slate-500 uppercase tracking-[0.2em]">
                   <span className="inline-flex items-center gap-1.5">
-                    <span className="h-1.5 w-1.5 rounded-full bg-teal-300 animate-pulse" />
-                    live topology
+                    <span className="h-1.5 w-1.5 rounded-full bg-teal-300/60" />
+                    topology
                   </span>
                   <span>prod.us-east-1</span>
                 </div>

@@ -28,12 +28,12 @@ const Skills = () => {
   const { skillGroups = fallbackSkillGroups } = usePortfolioContent();
   return (
     <section id="skills" className="relative py-24 lg:py-32 bg-[#0b1117]">
-      <div className="absolute inset-0 bg-grid opacity-[0.18] pointer-events-none" />
+      <div className="absolute inset-0 bg-grid opacity-[0.08] pointer-events-none" />
       <div className="relative max-w-7xl mx-auto px-6 lg:px-10">
         <SectionLabel index="02" title="Skills" />
 
         <div className="mt-10 flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between lg:gap-6">
-          <h2 className="text-3xl lg:text-4xl font-semibold tracking-tight text-slate-50 max-w-3xl leading-tight">
+          <h2 className="text-3xl lg:text-4xl font-semibold tracking-[-0.02em] text-slate-50 max-w-3xl leading-tight">
             A platform engineer's toolkit, from
             <span className="text-teal-300"> Kubernetes & GitOps </span>
             to AI-assisted operations.

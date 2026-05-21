@@ -30,6 +30,71 @@ const fallbackBrandSystems = {
 
 const take = (value, count) => (Array.isArray(value) ? value.slice(0, count) : []);
 
+// Static four-zone ecosystem diagram — no animation, no canvas, no library
+const EcosystemMap = () => (
+  <div className="mt-12 mb-2">
+    <div className="mb-3 font-mono text-[10px] uppercase tracking-[0.18em] text-slate-600">Platform dependency map</div>
+    <div className="relative w-full overflow-x-auto">
+      <svg
+        viewBox="0 0 640 260"
+        xmlns="http://www.w3.org/2000/svg"
+        className="w-full max-w-2xl"
+        aria-label="InfraForge ecosystem dependency map"
+        role="img"
+      >
+        {/* Zone: Foundation (bottom-left) */}
+        <rect x="8" y="148" width="168" height="100" rx="10" fill="rgba(251,191,36,0.04)" stroke="rgba(251,191,36,0.18)" strokeWidth="1" />
+        <text x="20" y="168" fontFamily="monospace" fontSize="8" fill="rgba(251,191,36,0.5)" letterSpacing="2">FOUNDATION</text>
+        <text x="20" y="185" fontFamily="monospace" fontSize="10" fill="#e2e8f0">InfraForge Platform</text>
+        <text x="20" y="200" fontFamily="monospace" fontSize="10" fill="#e2e8f0">Vault Ops</text>
+        <text x="20" y="218" fontFamily="monospace" fontSize="8" fill="#475569">secure runtime · secrets</text>
+
+        {/* Zone: AI & Observability (top-left) */}
+        <rect x="8" y="12" width="168" height="120" rx="10" fill="rgba(94,234,212,0.03)" stroke="rgba(94,234,212,0.15)" strokeWidth="1" />
+        <text x="20" y="32" fontFamily="monospace" fontSize="8" fill="rgba(94,234,212,0.5)" letterSpacing="2">AI &amp; OBSERVABILITY</text>
+        <text x="20" y="50" fontFamily="monospace" fontSize="10" fill="#e2e8f0">AI Inference Lab</text>
+        <text x="20" y="67" fontFamily="monospace" fontSize="10" fill="#e2e8f0">ForgeWatch</text>
+        <text x="20" y="85" fontFamily="monospace" fontSize="8" fill="#475569">model ops · signal watching</text>
+
+        {/* Zone: Operator Layer (top-right) */}
+        <rect x="302" y="12" width="168" height="120" rx="10" fill="rgba(94,234,212,0.025)" stroke="rgba(94,234,212,0.10)" strokeWidth="1" />
+        <text x="314" y="32" fontFamily="monospace" fontSize="8" fill="rgba(94,234,212,0.4)" letterSpacing="2">OPERATOR LAYER</text>
+        <text x="314" y="50" fontFamily="monospace" fontSize="10" fill="#e2e8f0">Project Iris</text>
+        <text x="314" y="67" fontFamily="monospace" fontSize="10" fill="#e2e8f0">Jerry</text>
+        <text x="314" y="85" fontFamily="monospace" fontSize="8" fill="#475569">governed AI · mobile access</text>
+
+        {/* Zone: Education (bottom-right) */}
+        <rect x="302" y="148" width="168" height="100" rx="10" fill="rgba(148,163,184,0.025)" stroke="rgba(148,163,184,0.10)" strokeWidth="1" />
+        <text x="314" y="168" fontFamily="monospace" fontSize="8" fill="rgba(148,163,184,0.4)" letterSpacing="2">EDUCATION</text>
+        <text x="314" y="185" fontFamily="monospace" fontSize="10" fill="#e2e8f0">AI Builders Academy</text>
+        <text x="314" y="200" fontFamily="monospace" fontSize="10" fill="#e2e8f0">Young Coders</text>
+        <text x="314" y="218" fontFamily="monospace" fontSize="8" fill="#475569">knowledge layer · products</text>
+
+        {/* Arrows between zones */}
+        {/* Foundation → AI & Observability: serves inference runtime */}
+        <line x1="92" y1="148" x2="92" y2="132" stroke="rgba(251,191,36,0.25)" strokeWidth="1" strokeDasharray="3 2" />
+        <polygon points="88,133 92,124 96,133" fill="rgba(251,191,36,0.35)" />
+        <text x="96" y="142" fontFamily="monospace" fontSize="7.5" fill="#64748b">serves inference runtime</text>
+
+        {/* Foundation → Operator Layer: secrets + platform APIs */}
+        <line x1="176" y1="198" x2="302" y2="198" stroke="rgba(251,191,36,0.2)" strokeWidth="1" strokeDasharray="3 2" />
+        <polygon points="293,194 302,198 293,202" fill="rgba(251,191,36,0.3)" />
+        <text x="185" y="192" fontFamily="monospace" fontSize="7.5" fill="#64748b">secrets + platform APIs</text>
+
+        {/* AI & Observability → Operator Layer: model context */}
+        <line x1="176" y1="72" x2="302" y2="72" stroke="rgba(94,234,212,0.2)" strokeWidth="1" strokeDasharray="3 2" />
+        <polygon points="293,68 302,72 293,76" fill="rgba(94,234,212,0.3)" />
+        <text x="185" y="66" fontFamily="monospace" fontSize="7.5" fill="#64748b">model context</text>
+
+        {/* Operator Layer → Education: platform model */}
+        <line x1="386" y1="132" x2="386" y2="148" stroke="rgba(148,163,184,0.2)" strokeWidth="1" strokeDasharray="3 2" />
+        <polygon points="382,147 386,156 390,147" fill="rgba(148,163,184,0.25)" />
+        <text x="312" y="144" fontFamily="monospace" fontSize="7.5" fill="#64748b">platform model</text>
+      </svg>
+    </div>
+  </div>
+);
+
 const SystemCard = ({ system, index }) => {
   const Icon = iconMap[system.id] || Layers3;
   const tone = priorityTone[system.websitePriority] || priorityTone["supporting-proof"];
@@ -80,7 +145,7 @@ const InfraForgeEcosystem = () => {
     <section id="ecosystem" className="relative overflow-hidden border-y border-white/5 bg-[#080d12] py-24 lg:py-32">
       <div className="absolute inset-0 bg-grid opacity-[0.12] pointer-events-none" />
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-amber-300/25 to-transparent" />
-      <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-teal-300/20 to-transparent" />
+      <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-slate-600/20 to-transparent" />
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
         <SectionLabel index="05" title="InfraForge Ecosystem" />
@@ -111,10 +176,11 @@ const InfraForgeEcosystem = () => {
                 ))}
               </div>
             </div>
+
+            <EcosystemMap />
           </div>
 
-          <div className="relative rounded-[2rem] border border-white/[0.07] bg-[#0b1117] p-4 shadow-[0_28px_100px_-70px_rgba(20,184,166,0.55)]">
-            <div className="absolute left-10 right-10 top-1/2 hidden h-px bg-gradient-to-r from-transparent via-slate-700 to-transparent lg:block" />
+          <div className="relative rounded-[2rem] border border-white/[0.07] bg-[#0b1117] p-4">
             <div className="grid gap-4 md:grid-cols-2">
               {systems.map((system, index) => (
                 <SystemCard key={system.id} system={system} index={index} />

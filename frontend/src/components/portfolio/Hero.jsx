@@ -63,18 +63,14 @@ const Hero = () => {
 
   return (
     <section id="top" className="relative pt-32 pb-24 lg:pt-36 lg:pb-28 overflow-hidden">
-      {/* Animated gradient orbs */}
-      <div className="absolute inset-0 bg-grid pointer-events-none opacity-[0.4]" />
-      <div className="absolute -top-40 -left-40 h-[520px] w-[520px] rounded-full bg-teal-500/15 blur-[120px] pointer-events-none animate-drift" />
-      <div className="absolute top-20 right-0 h-[460px] w-[460px] rounded-full bg-amber-400/[0.08] blur-[120px] pointer-events-none animate-drift-rev" />
-      <div className="absolute bottom-0 left-1/3 h-[380px] w-[380px] rounded-full bg-teal-300/[0.06] blur-[100px] pointer-events-none animate-glow" />
+      {/* bg-grid only — orbs removed */}
+      <div className="absolute inset-0 bg-grid pointer-events-none opacity-[0.18]" />
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-10">
         <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
           <div className="lg:col-span-7">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-teal-300/25 bg-teal-300/[0.07] text-teal-300 text-xs font-mono tracking-wide mb-7 backdrop-blur-sm">
               <span className="relative flex h-1.5 w-1.5">
-                <span className="absolute inline-flex h-full w-full rounded-full bg-teal-300 opacity-75 animate-ping" />
                 <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-teal-300" />
               </span>
               Available for new platform engagements
@@ -110,7 +106,7 @@ const Hero = () => {
               </span>
             </h1>
 
-            <p className="mt-6 max-w-2xl text-base leading-relaxed text-slate-400 sm:text-lg">
+            <p className="mt-6 max-w-xl text-base leading-[1.75] text-slate-300 sm:text-[1.0625rem]">
               {profile.title} with{" "}
               <span className="font-medium text-slate-200">{profile.yearsExperience} years</span>{" "}
               shipping reliable platforms across Kubernetes, GitOps, AWS, Terraform,
@@ -133,7 +129,7 @@ const Hero = () => {
               <Button
                 onClick={() => scrollTo("#projects")}
                 size="lg"
-                className="min-h-11 w-full bg-teal-300 font-medium text-[#0a0f14] shadow-[0_0_36px_-6px] shadow-teal-400/50 hover:bg-teal-200 sm:w-auto group"
+                className="min-h-11 w-full bg-teal-300 font-medium text-[#0a0f14] hover:bg-teal-200 sm:w-auto group"
               >
                 Explore Projects
                 <ArrowRight className="h-4 w-4 ml-1.5 transition-transform group-hover:translate-x-0.5" />
@@ -187,7 +183,7 @@ const Hero = () => {
               </div>
 
               {/* Headshot card */}
-              <div className="relative rounded-2xl overflow-hidden border border-white/10 bg-gradient-to-br from-teal-500/15 via-transparent to-amber-400/[0.08] p-1.5 shadow-2xl">
+              <div className="relative rounded-2xl overflow-hidden border border-white/10 bg-[#0f1a14]/40 p-1.5 shadow-2xl">
                 <div className="rounded-xl overflow-hidden bg-[#0e1620]">
                   <div className="aspect-[4/5]">
                     <img
@@ -197,8 +193,6 @@ const Hero = () => {
                     />
                   </div>
                 </div>
-                {/* glowing ring */}
-                <div className="absolute inset-0 rounded-2xl ring-1 ring-teal-300/20 pointer-events-none" />
               </div>
 
               {/* Animated terminal card */}
@@ -227,7 +221,7 @@ const Hero = () => {
 
               {/* Floating tag top-right */}
               <div className="absolute -top-3 left-2 bg-[#0e1620] border border-white/10 rounded-lg px-3 py-1.5 font-mono text-[11px] text-amber-200/90 shadow-xl flex items-center gap-1.5">
-                <span className="h-1.5 w-1.5 rounded-full bg-amber-300 animate-pulse" />
+                <span className="h-1.5 w-1.5 rounded-full bg-amber-300" />
                 99.99% uptime
               </div>
             </div>

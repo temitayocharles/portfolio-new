@@ -64,7 +64,6 @@ const Contact = () => {
 
   return (
     <section id="contact" className="relative py-24 lg:py-32">
-      <div className="absolute -top-32 right-0 h-[420px] w-[420px] rounded-full bg-teal-500/10 blur-3xl pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-10">
         <SectionLabel index="07" title="Contact" />
@@ -167,7 +166,7 @@ const Contact = () => {
                 <Button
                   type="submit"
                   disabled={status !== "idle"}
-                  className="bg-teal-300 hover:bg-teal-200 text-[#0a0f14] font-medium min-w-[150px] shadow-[0_0_24px_-6px] shadow-teal-400/40"
+                  className="bg-teal-300 hover:bg-teal-200 text-[#0a0f14] font-medium min-w-[150px]"
                 >
                   {status === "sending" && (
                     <>

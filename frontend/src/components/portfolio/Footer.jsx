@@ -22,7 +22,7 @@ const Footer = () => {
         <div className="grid md:grid-cols-3 gap-8 items-start">
           <div>
             <div className="flex items-center gap-2">
-              <span className="h-8 w-8 rounded-md bg-gradient-to-br from-teal-300 to-teal-500/70 flex items-center justify-center font-mono text-[#0a0f14] font-bold text-sm">
+              <span className="h-8 w-8 rounded-md bg-[#0f1f1a] border border-teal-400/30 flex items-center justify-center font-mono text-teal-300 font-bold text-sm">
                 TC
               </span>
               <span className="text-slate-200 font-medium">

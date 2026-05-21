@@ -12,7 +12,7 @@ const Experience = () => {
         <SectionLabel index="03" title="Experience" />
 
         <div className="mt-10 mb-14 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
-          <h2 className="text-3xl lg:text-4xl font-semibold tracking-tight text-slate-50 max-w-3xl leading-tight">
+          <h2 className="text-3xl lg:text-4xl font-semibold tracking-[-0.02em] text-slate-50 max-w-3xl leading-tight">
             From Linux systems to{" "}
             <span className="text-teal-300">AI-assisted platform engineering</span>.
           </h2>
@@ -27,7 +27,7 @@ const Experience = () => {
               <li key={exp.id} className="relative pl-12 md:pl-16">
                 {/* Marker */}
                 <span className="absolute left-0 md:left-1 top-1 h-7 w-7 rounded-full bg-[#0e1620] border border-teal-300/40 flex items-center justify-center">
-                  <span className="h-2 w-2 rounded-full bg-teal-300 shadow-[0_0_10px] shadow-teal-300" />
+                  <span className="h-2 w-2 rounded-full bg-teal-300" />
                 </span>
 
                 <div className="rounded-xl border border-white/5 bg-white/[0.02] hover:border-teal-300/20 transition-colors p-6 lg:p-7">

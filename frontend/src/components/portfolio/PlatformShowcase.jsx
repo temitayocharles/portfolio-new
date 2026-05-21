@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ArrowRight, ExternalLink, GraduationCap, Layers3, Rocket, Sparkles } from "lucide-react";
+import { ArrowRight, ExternalLink, GraduationCap, BrainCircuit, Rocket } from "lucide-react";
 
 const platforms = [
   {
@@ -23,14 +23,14 @@ const platforms = [
     icon: Rocket,
   },
   {
-    id: "infra",
-    label: "Architecture proof",
-    title: "InfraForge Architecture",
-    summary: "A public-facing map for the infrastructure layer behind the products: GitOps, Kubernetes, routing, secrets, observability, and operations.",
-    proof: ["GitOps", "Kubernetes", "Operations"],
-    href: null,
-    action: "Public rollout in progress",
-    icon: Layers3,
+    id: "aiops",
+    label: "Platform engineering",
+    title: "AI Operations Platform",
+    summary: "Read-only AI-assisted ops layer for Kubernetes, ArgoCD, Prometheus, and Loki — operator support, observability context, and workflow hints with human review gates.",
+    proof: ["GitOps", "Observability", "Operator AI"],
+    href: "/studies/ai-operations-automation",
+    action: "Read case study",
+    icon: BrainCircuit,
   },
 ];
 
@@ -41,15 +41,14 @@ const PlatformShowcase = () => {
 
   return (
     <div className="mt-10 max-w-3xl">
-      <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-teal-300/20 bg-teal-300/[0.06] px-3 py-1 text-[11px] font-mono uppercase tracking-[0.22em] text-teal-200">
-        <Sparkles className="h-3.5 w-3.5" />
+      <div className="mb-3 font-mono text-[10px] uppercase tracking-[0.22em] text-slate-600">
         Flagship platforms
       </div>
 
-      <div className="overflow-hidden rounded-3xl border border-white/10 bg-slate-950/75 shadow-[0_28px_90px_-34px_rgba(20,184,166,0.65)] backdrop-blur-xl">
+      <div className="overflow-hidden rounded-3xl border border-white/10 bg-slate-950/75 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.5)] backdrop-blur-xl">
         <div className="grid lg:grid-cols-[1.05fr_0.95fr]">
           <div className="relative min-h-[300px] p-5 sm:p-7">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_15%,rgba(45,212,191,0.18),transparent_32%),radial-gradient(circle_at_80%_5%,rgba(96,165,250,0.14),transparent_34%)]" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_15%,rgba(45,212,191,0.07),transparent_32%)]" />
             <div className="relative">
               <div className="flex flex-wrap items-center gap-2">
                 <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/20 px-3 py-1 text-xs text-slate-200">
@@ -66,10 +65,17 @@ const PlatformShowcase = () => {
               </div>
               <div className="mt-6">
                 {active.href ? (
-                  <a href={active.href} target="_blank" rel="noreferrer" className="group inline-flex min-h-11 items-center gap-2 rounded-full bg-teal-300 px-4 py-2 text-sm font-semibold text-slate-950 hover:bg-teal-200">
-                    {active.action}
-                    <ExternalLink className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-                  </a>
+                  active.href.startsWith("http") ? (
+                    <a href={active.href} target="_blank" rel="noreferrer" className="group inline-flex min-h-11 items-center gap-2 rounded-full bg-teal-300 px-4 py-2 text-sm font-semibold text-slate-950 hover:bg-teal-200">
+                      {active.action}
+                      <ExternalLink className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                    </a>
+                  ) : (
+                    <a href={active.href} className="group inline-flex min-h-11 items-center gap-2 rounded-full bg-teal-300 px-4 py-2 text-sm font-semibold text-slate-950 hover:bg-teal-200">
+                      {active.action}
+                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                    </a>
+                  )
                 ) : (
                   <span className="inline-flex min-h-11 items-center gap-2 rounded-full border border-white/10 bg-white/[0.05] px-4 py-2 text-sm font-semibold text-slate-300">
                     {active.action}
